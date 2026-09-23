@@ -1,0 +1,89 @@
+observed_exam_group,missing_count,missing_bin,missing_subjects,n,pct_group
+science_only,0,0,(none),313095,95.04143520626536
+science_only,1,1,Foreign language,7256,2.2025923564945513
+science_only,1,1,Literature,509,0.15450930394924567
+science_only,1,1,Biology,55,0.016695504356008865
+science_only,1,1,Physics,21,0.006374647117748839
+science_only,1,1,Mathematics,6,0.0018213277479282397
+science_only,1,1,Chemistry,3,0.0009106638739641199
+science_only,2,2,Literature | Foreign language,1665,0.5054184500500866
+science_only,2,2,Literature | Biology,292,0.08863795039917433
+science_only,2,2,Literature | Physics,141,0.04280120207631363
+science_only,2,2,Chemistry | Biology,88,0.026712806969614183
+science_only,2,2,Physics | Biology,21,0.006374647117748839
+science_only,2,2,Foreign language | Biology,11,0.003339100871201773
+science_only,2,2,Physics | Chemistry,10,0.0030355462465470663
+science_only,2,2,Literature | Chemistry,4,0.0012142184986188265
+science_only,2,2,Foreign language | Physics,3,0.0009106638739641199
+science_only,2,2,Mathematics | Literature,3,0.0009106638739641199
+science_only,2,2,Mathematics | Foreign language,2,0.0006071092493094133
+science_only,2,2,Mathematics | Physics,1,0.00030355462465470664
+science_only,3,3-4,Literature | Foreign language | Biology,3019,0.9164314118325593
+science_only,3,3-4,Literature | Foreign language | Physics,1864,0.5658258203563731
+science_only,3,3-4,Literature | Chemistry | Biology,1100,0.3339100871201773
+science_only,3,3-4,Literature | Physics | Biology,140,0.042497647451658925
+science_only,3,3-4,Foreign language | Chemistry | Biology,15,0.0045533193698206
+science_only,3,3-4,Literature | Physics | Chemistry,14,0.004249764745165893
+science_only,3,3-4,Literature | Foreign language | Chemistry,6,0.0018213277479282397
+science_only,3,3-4,Mathematics | Literature | Foreign language,4,0.0012142184986188265
+science_only,3,3-4,Foreign language | Physics | Biology,3,0.0009106638739641199
+science_only,3,3-4,Foreign language | Physics | Chemistry,1,0.00030355462465470664
+science_only,3,3-4,Mathematics | Literature | Physics,1,0.00030355462465470664
+science_only,3,3-4,Mathematics | Physics | Chemistry,1,0.00030355462465470664
+science_only,4,3-4,Literature | Foreign language | Chemistry | Biology,55,0.016695504356008865
+science_only,4,3-4,Mathematics | Literature | Physics | Chemistry,6,0.0018213277479282397
+science_only,4,3-4,Literature | Foreign language | Physics | Chemistry,4,0.0012142184986188265
+science_only,4,3-4,Mathematics | Literature | Physics | Biology,3,0.0009106638739641199
+science_only,4,3-4,Literature | Foreign language | Physics | Biology,2,0.0006071092493094133
+science_only,4,3-4,Mathematics | Literature | Foreign language | Biology,1,0.00030355462465470664
+science_only,5,5+,Mathematics | Literature | Foreign language | Physics | Chemistry,5,0.0015177731232735331
+social_only,0,0,(none),559881,81.87633168717178
+social_only,1,1,Foreign language,4549,0.6652403507976596
+social_only,1,1,Civic education,1085,0.15866910982973415
+social_only,1,1,Mathematics,191,0.027931612882469332
+social_only,1,1,Literature,43,0.006288268868828174
+social_only,1,1,History,26,0.0038022090834775005
+social_only,1,1,Geography,19,0.002778537407156635
+social_only,2,2,Foreign language | Civic education,102712,15.020480745466962
+social_only,2,2,Mathematics | Foreign language,551,0.08057758480754242
+social_only,2,2,Geography | Civic education,165,0.024129403798991828
+social_only,2,2,History | Civic education,65,0.009505522708693752
+social_only,2,2,Mathematics | Civic education,64,0.00935928389779077
+social_only,2,2,History | Geography,28,0.004094686705283462
+social_only,2,2,Literature | Civic education,14,0.002047343352641731
+social_only,2,2,Mathematics | Literature,14,0.002047343352641731
+social_only,2,2,Literature | Foreign language,8,0.0011699104872238463
+social_only,2,2,Mathematics | History,6,0.0008774328654178847
+social_only,2,2,Foreign language | History,5,0.0007311940545149039
+social_only,2,2,Literature | Geography,5,0.0007311940545149039
+social_only,2,2,Foreign language | Geography,2,0.00029247762180596156
+social_only,2,2,Literature | History,2,0.00029247762180596156
+social_only,2,2,Mathematics | Geography,2,0.00029247762180596156
+social_only,3,3-4,Mathematics | Foreign language | Civic education,12690,1.8557705103588262
+social_only,3,3-4,Foreign language | Geography | Civic education,1279,0.18703943914491242
+social_only,3,3-4,Mathematics | Geography | Civic education,51,0.00745817935605202
+social_only,3,3-4,Mathematics | History | Civic education,49,0.007165701734246058
+social_only,3,3-4,Foreign language | History | Civic education,46,0.006726985301537116
+social_only,3,3-4,Mathematics | Foreign language | History,40,0.005849552436119231
+social_only,3,3-4,Literature | Geography | Civic education,32,0.004679641948895385
+social_only,3,3-4,Literature | Foreign language | Civic education,28,0.004094686705283462
+social_only,3,3-4,Literature | History | Civic education,17,0.0024860597853506735
+social_only,3,3-4,Mathematics | Foreign language | Geography,16,0.0023398209744476925
+social_only,3,3-4,Mathematics | History | Geography,13,0.0019011045417387502
+social_only,3,3-4,Foreign language | History | Geography,6,0.0008774328654178847
+social_only,3,3-4,Mathematics | Literature | Foreign language,6,0.0008774328654178847
+social_only,3,3-4,Literature | History | Geography,5,0.0007311940545149039
+social_only,3,3-4,Literature | Foreign language | History,3,0.00043871643270894237
+social_only,3,3-4,Mathematics | Literature | Geography,2,0.00029247762180596156
+social_only,3,3-4,Mathematics | Literature | History,2,0.00029247762180596156
+social_only,4,3-4,Mathematics | Foreign language | History | Geography,24,0.003509731461671539
+social_only,4,3-4,Mathematics | Foreign language | History | Civic education,17,0.0024860597853506735
+social_only,4,3-4,Literature | Foreign language | Geography | Civic education,11,0.0016086269199327887
+social_only,4,3-4,Mathematics | Literature | Foreign language | Civic education,10,0.0014623881090298078
+social_only,4,3-4,Literature | Foreign language | History | Civic education,8,0.0011699104872238463
+social_only,4,3-4,Mathematics | Literature | Geography | Civic education,8,0.0011699104872238463
+social_only,4,3-4,Mathematics | Foreign language | Geography | Civic education,6,0.0008774328654178847
+social_only,4,3-4,Literature | Foreign language | History | Geography,2,0.00029247762180596156
+social_only,4,3-4,Mathematics | Literature | Foreign language | History,1,0.00014623881090298078
+social_only,5,5+,Mathematics | Literature | Foreign language | Geography | Civic education,3,0.00043871643270894237
+social_only,5,5+,Mathematics | Literature | Foreign language | History | Civic education,1,0.00014623881090298078

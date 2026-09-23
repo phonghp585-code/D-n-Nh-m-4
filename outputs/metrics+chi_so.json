@@ -1,0 +1,1860 @@
+{
+  "provenance": {
+    "source": "data/raw/original.csv",
+    "source_sha256": "cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5",
+    "python": "3.12.14",
+    "pandas": "3.0.1",
+    "numpy": "2.5.3",
+    "matplotlib": "3.11.2",
+    "raw_tokens": {
+      "Biology | blank_or_whitespace": 697435,
+      "Chemistry | blank_or_whitespace": 693942,
+      "Civic education | blank_or_whitespace": 456608,
+      "Foreign language | blank_or_whitespace": 141063,
+      "Foreign language code | blank_or_whitespace": 141063,
+      "Geography | blank_or_whitespace": 339926,
+      "History | blank_or_whitespace": 338613,
+      "Literature | blank_or_whitespace": 13821,
+      "Mathematics | blank_or_whitespace": 18687,
+      "Physics | blank_or_whitespace": 694871
+    },
+    "slide_reference": "INFO3020 Week 3 PPTX, slides 7, 13-18, 20-29, 32, 35"
+  },
+  "audit": {
+    "rows": 1022060,
+    "columns": 11,
+    "missing": {
+      "Student ID": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "Mathematics": {
+        "count": 18687,
+        "percent": 1.8283662407295072
+      },
+      "Literature": {
+        "count": 13821,
+        "percent": 1.3522689470285503
+      },
+      "Foreign language": {
+        "count": 141063,
+        "percent": 13.801831595013992
+      },
+      "Physics": {
+        "count": 694871,
+        "percent": 67.98730015850342
+      },
+      "Chemistry": {
+        "count": 693942,
+        "percent": 67.89640529910181
+      },
+      "Biology": {
+        "count": 697435,
+        "percent": 68.23816605678728
+      },
+      "History": {
+        "count": 338613,
+        "percent": 33.130442439778484
+      },
+      "Geography": {
+        "count": 339926,
+        "percent": 33.25890847895427
+      },
+      "Civic education": {
+        "count": 456608,
+        "percent": 44.675263683149716
+      },
+      "Foreign language code": {
+        "count": 141063,
+        "percent": 13.801831595013992
+      }
+    },
+    "student_id_missing_count": 0,
+    "student_id_duplicate_extra_rows": 0,
+    "student_id_duplicate_involved_rows": 0,
+    "student_id_conflicting_groups": 0,
+    "whole_row_duplicate_extra_rows": 0,
+    "invalid_student_id_format": 0,
+    "out_of_range_or_nonfinite_scores": {
+      "Mathematics": 0,
+      "Literature": 0,
+      "Foreign language": 0,
+      "Physics": 0,
+      "Chemistry": 0,
+      "Biology": 0,
+      "History": 0,
+      "Geography": 0,
+      "Civic education": 0
+    },
+    "invalid_language_code": 0,
+    "language_score_code_mismatch": 0,
+    "exam_groups": {
+      "science_only": 329430,
+      "social_only": 683813,
+      "both_observed": 0,
+      "neither_observed": 8817
+    },
+    "foreign_language_codes": {
+      "N1": 876102,
+      "<NA>": 141063,
+      "N4": 2940,
+      "N3": 716,
+      "N6": 659,
+      "N7": 407,
+      "N2": 87,
+      "N5": 86
+    }
+  },
+  "quality_scores": [
+    {
+      "dimension": "Completeness",
+      "score_1_to_5": 3,
+      "evidence": "Math missing 18687/1022060; 683813 have social scores only; 8817 have no composite score",
+      "limitation": "Registration and exemption records are unavailable; true required-score denominator is unknown"
+    },
+    {
+      "dimension": "Accuracy",
+      "score_1_to_5": 2,
+      "evidence": "No independent official result table or candidate-level reconciliation in this project",
+      "limitation": "In-range scores alone cannot establish that a published score matches the actual result"
+    },
+    {
+      "dimension": "Consistency",
+      "score_1_to_5": 4,
+      "evidence": "Foreign-language score/code state mismatches 0; both composite groups observed 0",
+      "limitation": "Unusual partial subject patterns need registration metadata"
+    },
+    {
+      "dimension": "Validity",
+      "score_1_to_5": 5,
+      "evidence": "Out-of-range/nonfinite score cells 0; invalid language codes 0; invalid non-null ID formats 0",
+      "limitation": "Language-code set follows dataset documentation and project mapping, not independent exam authority"
+    },
+    {
+      "dimension": "Uniqueness",
+      "score_1_to_5": 5,
+      "evidence": "Extra repeated Student IDs 0; extra whole-row duplicates 0",
+      "limitation": "Student ID is treated as the row identifier in this file"
+    },
+    {
+      "dimension": "Timeliness",
+      "score_1_to_5": 4,
+      "evidence": "2023 exam data answers questions about the 2023 published-score distribution",
+      "limitation": "No candidate-level collection/update timestamps; it is not current-year exam data"
+    }
+  ],
+  "missing_patterns": {
+    "group_counts": {
+      "science_only": 329430,
+      "social_only": 683813,
+      "both_observed": 0,
+      "neither_observed": 8817
+    },
+    "observed_subject_count_table": [
+      {
+        "science_observed_count": 0,
+        "0": 8817,
+        "1": 1836,
+        "2": 116734,
+        "3": 565243
+      },
+      {
+        "science_observed_count": 1,
+        "0": 1468,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      {
+        "science_observed_count": 2,
+        "0": 5422,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      {
+        "science_observed_count": 3,
+        "0": 322540,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      }
+    ],
+    "missing_by_context": [
+      {
+        "column": "Physics",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 2241,
+        "pct_within_group": 0.6802659138511975
+      },
+      {
+        "column": "Physics",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 683813,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "Physics",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "Physics",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 8817,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "Chemistry",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 1312,
+        "pct_within_group": 0.39826366754697506
+      },
+      {
+        "column": "Chemistry",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 683813,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "Chemistry",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "Chemistry",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 8817,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "Biology",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 4805,
+        "pct_within_group": 1.4585799714658654
+      },
+      {
+        "column": "Biology",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 683813,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "Biology",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "Biology",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 8817,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "History",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 329430,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "History",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 366,
+        "pct_within_group": 0.05352340479049097
+      },
+      {
+        "column": "History",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "History",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 8817,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "Geography",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 329430,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "Geography",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 1679,
+        "pct_within_group": 0.24553496350610474
+      },
+      {
+        "column": "Geography",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "Geography",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 8817,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "Civic education",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 329430,
+        "pct_within_group": 100.0
+      },
+      {
+        "column": "Civic education",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 118361,
+        "pct_within_group": 17.30897189728771
+      },
+      {
+        "column": "Civic education",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "Civic education",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 8817,
+        "pct_within_group": 100.0
+      }
+    ],
+    "core_missing_by_group": [
+      {
+        "column": "Mathematics",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 33,
+        "pct_within_group": 0.010017302613605318
+      },
+      {
+        "column": "Mathematics",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 13767,
+        "pct_within_group": 2.0132697097013366
+      },
+      {
+        "column": "Mathematics",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "Mathematics",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 4887,
+        "pct_within_group": 55.427015991833954
+      },
+      {
+        "column": "Literature",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 8838,
+        "pct_within_group": 2.682815772698297
+      },
+      {
+        "column": "Literature",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 225,
+        "pct_within_group": 0.03290373245317068
+      },
+      {
+        "column": "Literature",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "Literature",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 4758,
+        "pct_within_group": 53.96393331064988
+      },
+      {
+        "column": "Foreign language",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 13916,
+        "pct_within_group": 4.224266156694897
+      },
+      {
+        "column": "Foreign language",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 122024,
+        "pct_within_group": 17.844644661625328
+      },
+      {
+        "column": "Foreign language",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "Foreign language",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 5123,
+        "pct_within_group": 58.103663377566065
+      },
+      {
+        "column": "Foreign language code",
+        "observed_exam_group": "science_only",
+        "group_n": 329430,
+        "missing_n": 13916,
+        "pct_within_group": 4.224266156694897
+      },
+      {
+        "column": "Foreign language code",
+        "observed_exam_group": "social_only",
+        "group_n": 683813,
+        "missing_n": 122024,
+        "pct_within_group": 17.844644661625328
+      },
+      {
+        "column": "Foreign language code",
+        "observed_exam_group": "both_observed",
+        "group_n": 0,
+        "missing_n": 0,
+        "pct_within_group": null
+      },
+      {
+        "column": "Foreign language code",
+        "observed_exam_group": "neither_observed",
+        "group_n": 8817,
+        "missing_n": 5123,
+        "pct_within_group": 58.103663377566065
+      }
+    ],
+    "presence_pattern_columns": [
+      "Mathematics",
+      "Literature",
+      "Foreign language",
+      "Physics",
+      "Chemistry",
+      "Biology",
+      "History",
+      "Geography",
+      "Civic education"
+    ],
+    "presence_pattern_bit_rule": "1 = published score present; 0 = missing",
+    "top_score_presence_patterns": [
+      {
+        "observed_bits": "111000111",
+        "n": 559881,
+        "pct_all_rows": 54.779660685282664
+      },
+      {
+        "observed_bits": "111111000",
+        "n": 313095,
+        "pct_all_rows": 30.633720133847326
+      },
+      {
+        "observed_bits": "110000110",
+        "n": 102712,
+        "pct_all_rows": 10.049507856681604
+      },
+      {
+        "observed_bits": "010000110",
+        "n": 12690,
+        "pct_all_rows": 1.241610081599906
+      },
+      {
+        "observed_bits": "110111000",
+        "n": 7256,
+        "pct_all_rows": 0.709938751149639
+      },
+      {
+        "observed_bits": "110000111",
+        "n": 4549,
+        "pct_all_rows": 0.44508150206445807
+      },
+      {
+        "observed_bits": "000000000",
+        "n": 4476,
+        "pct_all_rows": 0.43793906424280377
+      },
+      {
+        "observed_bits": "111000000",
+        "n": 3445,
+        "pct_all_rows": 0.3370643602136861
+      },
+      {
+        "observed_bits": "100110000",
+        "n": 3019,
+        "pct_all_rows": 0.2953838326517034
+      },
+      {
+        "observed_bits": "100011000",
+        "n": 1864,
+        "pct_all_rows": 0.18237676848717296
+      }
+    ],
+    "language_score_code_table": {
+      "code_missing": {
+        "score_missing": 141063,
+        "score_present": 0
+      },
+      "code_present": {
+        "score_missing": 0,
+        "score_present": 880997
+      }
+    }
+  },
+  "missing_layers": {
+    "raw_nine_score_missing_counts": [
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 0,
+        "missing_bin": "0",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "n": 313095,
+        "pct_group": 95.04143520626536
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "n": 7850,
+        "pct_group": 2.3829038035394468
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 5,
+        "missing_bin": "5+",
+        "n": 2241,
+        "pct_group": 0.6802659138511975
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 6,
+        "missing_bin": "5+",
+        "n": 6168,
+        "pct_group": 1.8723249248702305
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 7,
+        "missing_bin": "5+",
+        "n": 71,
+        "pct_group": 0.02155237835048417
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 8,
+        "missing_bin": "5+",
+        "n": 5,
+        "pct_group": 0.0015177731232735331
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 9,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 0,
+        "missing_bin": "0",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "n": 559881,
+        "pct_group": 81.87633168717178
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "n": 5913,
+        "pct_group": 0.8647100888693254
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 5,
+        "missing_bin": "5+",
+        "n": 103643,
+        "pct_group": 15.156629078417637
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 6,
+        "missing_bin": "5+",
+        "n": 14285,
+        "pct_group": 2.0890214137490806
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 7,
+        "missing_bin": "5+",
+        "n": 87,
+        "pct_group": 0.012722776548559328
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 8,
+        "missing_bin": "5+",
+        "n": 4,
+        "pct_group": 0.0005849552436119231
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 9,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 0,
+        "missing_bin": "0",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 5,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 6,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 7,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 8,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "both_observed",
+        "missing_count": 9,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": null
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 0,
+        "missing_bin": "0",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 5,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 6,
+        "missing_bin": "5+",
+        "n": 3445,
+        "pct_group": 39.07224679596234
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 7,
+        "missing_bin": "5+",
+        "n": 452,
+        "pct_group": 5.126460247249631
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 8,
+        "missing_bin": "5+",
+        "n": 444,
+        "pct_group": 5.035726437563797
+      },
+      {
+        "observed_exam_group": "neither_observed",
+        "missing_count": 9,
+        "missing_bin": "5+",
+        "n": 4476,
+        "pct_group": 50.76556651922422
+      }
+    ],
+    "context_six_score_missing_counts": [
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 0,
+        "missing_bin": "0",
+        "n": 313095,
+        "pct_group": 95.04143520626536
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "n": 7850,
+        "pct_group": 2.3829038035394468
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "n": 2241,
+        "pct_group": 0.6802659138511975
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "n": 6168,
+        "pct_group": 1.8723249248702305
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "n": 71,
+        "pct_group": 0.02155237835048417
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 5,
+        "missing_bin": "5+",
+        "n": 5,
+        "pct_group": 0.0015177731232735331
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 6,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": 0.0
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 0,
+        "missing_bin": "0",
+        "n": 559881,
+        "pct_group": 81.87633168717178
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "n": 5913,
+        "pct_group": 0.8647100888693254
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "n": 103643,
+        "pct_group": 15.156629078417637
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "n": 14285,
+        "pct_group": 2.0890214137490806
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "n": 87,
+        "pct_group": 0.012722776548559328
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 5,
+        "missing_bin": "5+",
+        "n": 4,
+        "pct_group": 0.0005849552436119231
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 6,
+        "missing_bin": "5+",
+        "n": 0,
+        "pct_group": 0.0
+      }
+    ],
+    "context_missing_subject_patterns": [
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 0,
+        "missing_bin": "0",
+        "missing_subjects": "(none)",
+        "n": 313095,
+        "pct_group": 95.04143520626536
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Foreign language",
+        "n": 7256,
+        "pct_group": 2.2025923564945513
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Literature",
+        "n": 509,
+        "pct_group": 0.15450930394924567
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Biology",
+        "n": 55,
+        "pct_group": 0.016695504356008865
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Physics",
+        "n": 21,
+        "pct_group": 0.006374647117748839
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Mathematics",
+        "n": 6,
+        "pct_group": 0.0018213277479282397
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Chemistry",
+        "n": 3,
+        "pct_group": 0.0009106638739641199
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Literature | Foreign language",
+        "n": 1665,
+        "pct_group": 0.5054184500500866
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Literature | Biology",
+        "n": 292,
+        "pct_group": 0.08863795039917433
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Literature | Physics",
+        "n": 141,
+        "pct_group": 0.04280120207631363
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Chemistry | Biology",
+        "n": 88,
+        "pct_group": 0.026712806969614183
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Physics | Biology",
+        "n": 21,
+        "pct_group": 0.006374647117748839
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Foreign language | Biology",
+        "n": 11,
+        "pct_group": 0.003339100871201773
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Physics | Chemistry",
+        "n": 10,
+        "pct_group": 0.0030355462465470663
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Literature | Chemistry",
+        "n": 4,
+        "pct_group": 0.0012142184986188265
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Foreign language | Physics",
+        "n": 3,
+        "pct_group": 0.0009106638739641199
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Mathematics | Literature",
+        "n": 3,
+        "pct_group": 0.0009106638739641199
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Mathematics | Foreign language",
+        "n": 2,
+        "pct_group": 0.0006071092493094133
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Mathematics | Physics",
+        "n": 1,
+        "pct_group": 0.00030355462465470664
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | Biology",
+        "n": 3019,
+        "pct_group": 0.9164314118325593
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | Physics",
+        "n": 1864,
+        "pct_group": 0.5658258203563731
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Chemistry | Biology",
+        "n": 1100,
+        "pct_group": 0.3339100871201773
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Physics | Biology",
+        "n": 140,
+        "pct_group": 0.042497647451658925
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Foreign language | Chemistry | Biology",
+        "n": 15,
+        "pct_group": 0.0045533193698206
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Physics | Chemistry",
+        "n": 14,
+        "pct_group": 0.004249764745165893
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | Chemistry",
+        "n": 6,
+        "pct_group": 0.0018213277479282397
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Foreign language",
+        "n": 4,
+        "pct_group": 0.0012142184986188265
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Foreign language | Physics | Biology",
+        "n": 3,
+        "pct_group": 0.0009106638739641199
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Foreign language | Physics | Chemistry",
+        "n": 1,
+        "pct_group": 0.00030355462465470664
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Physics",
+        "n": 1,
+        "pct_group": 0.00030355462465470664
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Physics | Chemistry",
+        "n": 1,
+        "pct_group": 0.00030355462465470664
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | Chemistry | Biology",
+        "n": 55,
+        "pct_group": 0.016695504356008865
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Physics | Chemistry",
+        "n": 6,
+        "pct_group": 0.0018213277479282397
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | Physics | Chemistry",
+        "n": 4,
+        "pct_group": 0.0012142184986188265
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Physics | Biology",
+        "n": 3,
+        "pct_group": 0.0009106638739641199
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | Physics | Biology",
+        "n": 2,
+        "pct_group": 0.0006071092493094133
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Foreign language | Biology",
+        "n": 1,
+        "pct_group": 0.00030355462465470664
+      },
+      {
+        "observed_exam_group": "science_only",
+        "missing_count": 5,
+        "missing_bin": "5+",
+        "missing_subjects": "Mathematics | Literature | Foreign language | Physics | Chemistry",
+        "n": 5,
+        "pct_group": 0.0015177731232735331
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 0,
+        "missing_bin": "0",
+        "missing_subjects": "(none)",
+        "n": 559881,
+        "pct_group": 81.87633168717178
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Foreign language",
+        "n": 4549,
+        "pct_group": 0.6652403507976596
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Civic education",
+        "n": 1085,
+        "pct_group": 0.15866910982973415
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Mathematics",
+        "n": 191,
+        "pct_group": 0.027931612882469332
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Literature",
+        "n": 43,
+        "pct_group": 0.006288268868828174
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "History",
+        "n": 26,
+        "pct_group": 0.0038022090834775005
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 1,
+        "missing_bin": "1",
+        "missing_subjects": "Geography",
+        "n": 19,
+        "pct_group": 0.002778537407156635
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Foreign language | Civic education",
+        "n": 102712,
+        "pct_group": 15.020480745466962
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Mathematics | Foreign language",
+        "n": 551,
+        "pct_group": 0.08057758480754242
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Geography | Civic education",
+        "n": 165,
+        "pct_group": 0.024129403798991828
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "History | Civic education",
+        "n": 65,
+        "pct_group": 0.009505522708693752
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Mathematics | Civic education",
+        "n": 64,
+        "pct_group": 0.00935928389779077
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "History | Geography",
+        "n": 28,
+        "pct_group": 0.004094686705283462
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Literature | Civic education",
+        "n": 14,
+        "pct_group": 0.002047343352641731
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Mathematics | Literature",
+        "n": 14,
+        "pct_group": 0.002047343352641731
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Literature | Foreign language",
+        "n": 8,
+        "pct_group": 0.0011699104872238463
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Mathematics | History",
+        "n": 6,
+        "pct_group": 0.0008774328654178847
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Foreign language | History",
+        "n": 5,
+        "pct_group": 0.0007311940545149039
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Literature | Geography",
+        "n": 5,
+        "pct_group": 0.0007311940545149039
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Foreign language | Geography",
+        "n": 2,
+        "pct_group": 0.00029247762180596156
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Literature | History",
+        "n": 2,
+        "pct_group": 0.00029247762180596156
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 2,
+        "missing_bin": "2",
+        "missing_subjects": "Mathematics | Geography",
+        "n": 2,
+        "pct_group": 0.00029247762180596156
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Foreign language | Civic education",
+        "n": 12690,
+        "pct_group": 1.8557705103588262
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Foreign language | Geography | Civic education",
+        "n": 1279,
+        "pct_group": 0.18703943914491242
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Geography | Civic education",
+        "n": 51,
+        "pct_group": 0.00745817935605202
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | History | Civic education",
+        "n": 49,
+        "pct_group": 0.007165701734246058
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Foreign language | History | Civic education",
+        "n": 46,
+        "pct_group": 0.006726985301537116
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Foreign language | History",
+        "n": 40,
+        "pct_group": 0.005849552436119231
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Geography | Civic education",
+        "n": 32,
+        "pct_group": 0.004679641948895385
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | Civic education",
+        "n": 28,
+        "pct_group": 0.004094686705283462
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | History | Civic education",
+        "n": 17,
+        "pct_group": 0.0024860597853506735
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Foreign language | Geography",
+        "n": 16,
+        "pct_group": 0.0023398209744476925
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | History | Geography",
+        "n": 13,
+        "pct_group": 0.0019011045417387502
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Foreign language | History | Geography",
+        "n": 6,
+        "pct_group": 0.0008774328654178847
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Foreign language",
+        "n": 6,
+        "pct_group": 0.0008774328654178847
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | History | Geography",
+        "n": 5,
+        "pct_group": 0.0007311940545149039
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | History",
+        "n": 3,
+        "pct_group": 0.00043871643270894237
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Geography",
+        "n": 2,
+        "pct_group": 0.00029247762180596156
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 3,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | History",
+        "n": 2,
+        "pct_group": 0.00029247762180596156
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Foreign language | History | Geography",
+        "n": 24,
+        "pct_group": 0.003509731461671539
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Foreign language | History | Civic education",
+        "n": 17,
+        "pct_group": 0.0024860597853506735
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | Geography | Civic education",
+        "n": 11,
+        "pct_group": 0.0016086269199327887
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Foreign language | Civic education",
+        "n": 10,
+        "pct_group": 0.0014623881090298078
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | History | Civic education",
+        "n": 8,
+        "pct_group": 0.0011699104872238463
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Geography | Civic education",
+        "n": 8,
+        "pct_group": 0.0011699104872238463
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Foreign language | Geography | Civic education",
+        "n": 6,
+        "pct_group": 0.0008774328654178847
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Literature | Foreign language | History | Geography",
+        "n": 2,
+        "pct_group": 0.00029247762180596156
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 4,
+        "missing_bin": "3-4",
+        "missing_subjects": "Mathematics | Literature | Foreign language | History",
+        "n": 1,
+        "pct_group": 0.00014623881090298078
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 5,
+        "missing_bin": "5+",
+        "missing_subjects": "Mathematics | Literature | Foreign language | Geography | Civic education",
+        "n": 3,
+        "pct_group": 0.00043871643270894237
+      },
+      {
+        "observed_exam_group": "social_only",
+        "missing_count": 5,
+        "missing_bin": "5+",
+        "missing_subjects": "Mathematics | Literature | Foreign language | History | Civic education",
+        "n": 1,
+        "pct_group": 0.00014623881090298078
+      }
+    ],
+    "missing_context_classification": [
+      {
+        "column": "Mathematics",
+        "missing_n": 18687,
+        "structural_candidate_opposite_group_n": 0,
+        "unresolved_observed_group_n": 13800,
+        "unresolved_no_group_n": 4887,
+        "unresolved_total_n": 18687
+      },
+      {
+        "column": "Literature",
+        "missing_n": 13821,
+        "structural_candidate_opposite_group_n": 0,
+        "unresolved_observed_group_n": 9063,
+        "unresolved_no_group_n": 4758,
+        "unresolved_total_n": 13821
+      },
+      {
+        "column": "Foreign language",
+        "missing_n": 141063,
+        "structural_candidate_opposite_group_n": 0,
+        "unresolved_observed_group_n": 135940,
+        "unresolved_no_group_n": 5123,
+        "unresolved_total_n": 141063
+      },
+      {
+        "column": "Physics",
+        "missing_n": 694871,
+        "structural_candidate_opposite_group_n": 683813,
+        "unresolved_observed_group_n": 2241,
+        "unresolved_no_group_n": 8817,
+        "unresolved_total_n": 11058
+      },
+      {
+        "column": "Chemistry",
+        "missing_n": 693942,
+        "structural_candidate_opposite_group_n": 683813,
+        "unresolved_observed_group_n": 1312,
+        "unresolved_no_group_n": 8817,
+        "unresolved_total_n": 10129
+      },
+      {
+        "column": "Biology",
+        "missing_n": 697435,
+        "structural_candidate_opposite_group_n": 683813,
+        "unresolved_observed_group_n": 4805,
+        "unresolved_no_group_n": 8817,
+        "unresolved_total_n": 13622
+      },
+      {
+        "column": "History",
+        "missing_n": 338613,
+        "structural_candidate_opposite_group_n": 329430,
+        "unresolved_observed_group_n": 366,
+        "unresolved_no_group_n": 8817,
+        "unresolved_total_n": 9183
+      },
+      {
+        "column": "Geography",
+        "missing_n": 339926,
+        "structural_candidate_opposite_group_n": 329430,
+        "unresolved_observed_group_n": 1679,
+        "unresolved_no_group_n": 8817,
+        "unresolved_total_n": 10496
+      },
+      {
+        "column": "Civic education",
+        "missing_n": 456608,
+        "structural_candidate_opposite_group_n": 329430,
+        "unresolved_observed_group_n": 118361,
+        "unresolved_no_group_n": 8817,
+        "unresolved_total_n": 127178
+      },
+      {
+        "column": "Foreign language code",
+        "missing_n": 141063,
+        "structural_candidate_opposite_group_n": 0,
+        "unresolved_observed_group_n": 135940,
+        "unresolved_no_group_n": 5123,
+        "unresolved_total_n": 141063
+      }
+    ],
+    "only_student_id_rows": 4476,
+    "neither_group_rows": 8817,
+    "civic_language_context": {
+      "social_civic_missing_n": 118361,
+      "social_civic_missing_foreign_language_missing_n": 116811,
+      "social_civic_present_n": 565452,
+      "social_civic_present_foreign_language_missing_n": 5213
+    },
+    "interpretation": "Opposite-group blanks are structural candidates, not verified non-applicable scores; every other blank remains unresolved."
+  },
+  "missing_treatment_columns": [
+    "Mathematics",
+    "Literature",
+    "Foreign language",
+    "Physics",
+    "Chemistry",
+    "Biology",
+    "History",
+    "Geography",
+    "Civic education",
+    "Foreign language code"
+  ],
+  "experiment": {
+    "target_column": "Mathematics",
+    "design": "Artificially mask observed scores; no naturally missing score is imputed",
+    "eligible_observed_math_rows": 1003373,
+    "excluded_conflicting_id_rows": 0,
+    "sample_size": 50000,
+    "seed": 3020,
+    "mask_fraction": 0.2,
+    "artificially_masked": 10000,
+    "donor_count": 40000,
+    "min_group_observed": 30,
+    "global_median": 6.6,
+    "group_medians": {
+      "science_only": 7.6,
+      "social_only": 5.8
+    },
+    "group_donor_counts": {
+      "science_only": 13125,
+      "social_only": 26745
+    },
+    "group_fill_counts": {
+      "social_only": 6662,
+      "science_only": 3296
+    },
+    "fallback_count": 42,
+    "eligible_group_counts": {
+      "science_only": 329397,
+      "social_only": 670046,
+      "both_observed": 0,
+      "neither_observed": 3930
+    },
+    "sample_group_counts": {
+      "science_only": 16421,
+      "social_only": 33407,
+      "both_observed": 0,
+      "neither_observed": 172
+    },
+    "methods": {
+      "original_observed_sample": {
+        "n_total": 50000,
+        "n_observed": 50000,
+        "n_missing": 0,
+        "mean": 6.25642,
+        "std_sample": 1.6276039338522472
+      },
+      "after_masking": {
+        "n_total": 50000,
+        "n_observed": 40000,
+        "n_missing": 10000,
+        "mean": 6.256234999999999,
+        "std_sample": 1.6283165878132402
+      },
+      "global_median": {
+        "n_total": 50000,
+        "n_observed": 50000,
+        "n_missing": 0,
+        "mean": 6.324988,
+        "std_sample": 1.4628840010226405,
+        "n_imputed": 10000,
+        "mae_masked": 1.31656,
+        "rmse_masked": 1.660527626990891,
+        "delta_mean_vs_original": 0.06856799999999996,
+        "delta_std_vs_original": -0.16471993282960673
+      },
+      "group_median": {
+        "n_total": 50000,
+        "n_observed": 50000,
+        "n_missing": 0,
+        "mean": 6.284316000000001,
+        "std_sample": 1.5057227354872222,
+        "n_imputed": 10000,
+        "mae_masked": 1.10064,
+        "rmse_masked": 1.3958280696418164,
+        "delta_mean_vs_original": 0.02789600000000103,
+        "delta_std_vs_original": -0.12188119836502498
+      }
+    }
+  },
+  "natural_missing_sensitivity": {
+    "assumption": "Every naturally blank Math cell represents an existing but unpublished score; unverified",
+    "missing_n": 18687,
+    "global_median": 6.6,
+    "group_medians": {
+      "science_only": 7.6,
+      "social_only": 5.8
+    },
+    "group_donor_counts": {
+      "science_only": 329397,
+      "social_only": 670046
+    },
+    "group_fill_counts": {
+      "social_only": 13767,
+      "science_only": 33
+    },
+    "fallback_count": 4887,
+    "methods": {
+      "published_math_only": {
+        "n_total": 1022060,
+        "n_observed": 1003373,
+        "n_missing": 18687,
+        "mean": 6.250557469654853,
+        "std_sample": 1.6333359071731997
+      },
+      "hypothetical_global_median": {
+        "n_total": 1022060,
+        "n_observed": 1022060,
+        "n_missing": 0,
+        "mean": 6.256946558910436,
+        "std_sample": 1.619012364728175,
+        "n_imputed": 18687,
+        "delta_mean_vs_published": 0.006389089255582903,
+        "delta_std_vs_published": -0.014323542445024762
+      },
+      "hypothetical_group_median": {
+        "n_total": 1022060,
+        "n_observed": 1022060,
+        "n_missing": 0,
+        "mean": 6.246202962644072,
+        "std_sample": 1.619372518297511,
+        "n_imputed": 18687,
+        "delta_mean_vs_published": -0.004354507010781106,
+        "delta_std_vs_published": -0.01396338887568871
+      }
+    }
+  }
+}
