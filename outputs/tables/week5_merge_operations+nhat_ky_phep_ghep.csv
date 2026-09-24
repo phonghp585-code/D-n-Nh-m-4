@@ -1,0 +1,5 @@
+﻿merge,rows_before,right_rows,rows_after,how,validate
+reference_source_check,64,63,64,left,one_to_one
+distinct_key_check,63,64,63,left,one_to_one
+key_candidate_counts,63,63,63,inner,one_to_one
+exam_council_integration,1022060,64,1022060,left,many_to_one

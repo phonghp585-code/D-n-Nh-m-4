@@ -1,0 +1,37 @@
+﻿observed_exam_group,column,group_rows,missing_cells,structural_candidate_cells,unresolved_cells,missing_pct_within_group
+science_only,Mathematics,329430,33,0,33,0.010017302613605318
+science_only,Literature,329430,8838,0,8838,2.682815772698297
+science_only,Foreign language,329430,13916,0,13916,4.224266156694897
+science_only,Physics,329430,2241,0,2241,0.6802659138511975
+science_only,Chemistry,329430,1312,0,1312,0.39826366754697506
+science_only,Biology,329430,4805,0,4805,1.4585799714658654
+science_only,History,329430,329430,329430,0,100.0
+science_only,Geography,329430,329430,329430,0,100.0
+science_only,Civic education,329430,329430,329430,0,100.0
+social_only,Mathematics,683813,13767,0,13767,2.0132697097013366
+social_only,Literature,683813,225,0,225,0.03290373245317068
+social_only,Foreign language,683813,122024,0,122024,17.844644661625328
+social_only,Physics,683813,683813,683813,0,100.0
+social_only,Chemistry,683813,683813,683813,0,100.0
+social_only,Biology,683813,683813,683813,0,100.0
+social_only,History,683813,366,0,366,0.05352340479049097
+social_only,Geography,683813,1679,0,1679,0.24553496350610474
+social_only,Civic education,683813,118361,0,118361,17.30897189728771
+both_observed,Mathematics,0,0,0,0,0.0
+both_observed,Literature,0,0,0,0,0.0
+both_observed,Foreign language,0,0,0,0,0.0
+both_observed,Physics,0,0,0,0,0.0
+both_observed,Chemistry,0,0,0,0,0.0
+both_observed,Biology,0,0,0,0,0.0
+both_observed,History,0,0,0,0,0.0
+both_observed,Geography,0,0,0,0,0.0
+both_observed,Civic education,0,0,0,0,0.0
+neither_observed,Mathematics,8817,4887,0,4887,55.427015991833954
+neither_observed,Literature,8817,4758,0,4758,53.96393331064988
+neither_observed,Foreign language,8817,5123,0,5123,58.103663377566065
+neither_observed,Physics,8817,8817,0,8817,100.0
+neither_observed,Chemistry,8817,8817,0,8817,100.0
+neither_observed,Biology,8817,8817,0,8817,100.0
+neither_observed,History,8817,8817,0,8817,100.0
+neither_observed,Geography,8817,8817,0,8817,100.0
+neither_observed,Civic education,8817,8817,0,8817,100.0

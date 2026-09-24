@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-09-23",
+  "source_sha256": "cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5",
+  "method": "Kiểm tra thủ công bằng công cụ web; pipeline đọc lại nhật ký này, không tự truy vấn Internet.",
+  "sources": [
+    {
+      "id": "kaggle",
+      "url": "https://www.kaggle.com/datasets/duongtruongbinh/vietnamese-national-high-school-graduation-exam",
+      "result": "Mở trực tiếp không trích xuất được nội dung; kết quả tìm kiếm có Data Card của Truong-Binh Duong, tệp scores.csv, 11 cột và mã N1–N7. Phần mô tả đã đọc không cung cấp nhật ký thu thập hoặc liên kết bảng điểm gốc từng thí sinh. Chưa tải lại tệp Kaggle để so hash với original.csv.",
+      "excerpt": "High School graduation exam scores for more 1 Million students in Vietnam 2023",
+      "limitation": "Data Card nói 1,5 triệu người nhưng CSV địa phương có 1.022.060 dòng; dùng số đếm thực tế. Trang này không xác minh được điểm cá nhân."
+    },
+    {
+      "id": "official_directory",
+      "url": "https://baochinhphu.vn/cach-tra-cuu-diem-thi-tot-nghiep-thpt-nam-2023-102230717160222763.htm",
+      "result": "Bài ngày 17/07/2023 liệt kê địa chỉ tra cứu Hà Nội và TP.HCM. Dùng làm đầu mối tìm nguồn, không làm bằng chứng điểm thi.",
+      "excerpt": "Mã sở | Tên Sở GDĐT | Đường link tra cứu điểm"
+    },
+    {
+      "id": "hanoi",
+      "url": "https://tracuu.hanoi.edu.vn/",
+      "result": "Trang hiện tại có tiêu đề kỳ thi 2026; không thu được bảng điểm cá nhân năm 2023.",
+      "excerpt": "Trang thông tin kỳ thi quốc gia 2026"
+    },
+    {
+      "id": "hcm_2023",
+      "url": "https://tracuudiemthibgd.hcm.edu.vn/",
+      "result": "Công cụ web trả Internal Error khi mở địa chỉ được liệt kê cho năm 2023. Đây là lỗi truy cập trong lần kiểm tra, không chứng minh website không hoạt động với mọi người.",
+      "excerpt": "Internal Error"
+    },
+    {
+      "id": "hcm_current",
+      "url": "https://diemthi.hcm.edu.vn/",
+      "result": "Trang tra cứu hiện có yêu cầu số báo danh và captcha; nội dung đọc được không xác định kỳ thi 2023. Không gửi yêu cầu tra cứu hoặc thu được kết quả cá nhân.",
+      "excerpt": "Nhập số báo danh để tra cứu kết quả"
+    }
+  ],
+  "records": [
+    {"student_id": "01053185", "query": "\"2023\" \"01053185\" điểm thi", "source_ids": ["kaggle", "official_directory", "hanoi"], "search_result": "Không tìm thấy kết quả liên quan xác minh điểm cá nhân trong các kết quả được trả về.", "verdict": "unresolved"},
+    {"student_id": "01053192", "query": "\"2023\" \"01053192\" \"điểm\"", "source_ids": ["kaggle", "official_directory", "hanoi"], "search_result": "Không tìm thấy kết quả liên quan xác minh điểm cá nhân trong các kết quả được trả về.", "verdict": "unresolved"},
+    {"student_id": "01053271", "query": "\"2023\" \"01053271\" \"điểm\"", "source_ids": ["kaggle", "official_directory", "hanoi"], "search_result": "Không tìm thấy kết quả liên quan xác minh điểm cá nhân trong các kết quả được trả về.", "verdict": "unresolved"},
+    {"student_id": "02016503", "query": "\"2023\" \"02016503\" điểm thi", "source_ids": ["kaggle", "official_directory", "hcm_2023", "hcm_current"], "search_result": "Không tìm thấy kết quả liên quan xác minh điểm cá nhân trong các kết quả được trả về.", "verdict": "unresolved"},
+    {"student_id": "02019084", "query": "\"2023\" \"02019084\" \"điểm\"", "source_ids": ["kaggle", "official_directory", "hcm_2023", "hcm_current"], "search_result": "Không tìm thấy kết quả liên quan xác minh điểm cá nhân trong các kết quả được trả về.", "verdict": "unresolved"}
+  ]
+}

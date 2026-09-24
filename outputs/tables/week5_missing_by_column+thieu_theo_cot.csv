@@ -1,0 +1,12 @@
+﻿column,rows_total,missing_n,observed_n,missing_pct,decision
+Student ID,1022060,0,1022060,0.0,Giữ null; không suy đoán nguyên nhân từng dòng
+Mathematics,1022060,18687,1003373,1.8283662407295072,Giữ null; không suy đoán nguyên nhân từng dòng
+Literature,1022060,13821,1008239,1.3522689470285503,Giữ null; không suy đoán nguyên nhân từng dòng
+Foreign language,1022060,141063,880997,13.801831595013992,Giữ null; không suy đoán nguyên nhân từng dòng
+Physics,1022060,694871,327189,67.98730015850342,Giữ null; không suy đoán nguyên nhân từng dòng
+Chemistry,1022060,693942,328118,67.89640529910181,Giữ null; không suy đoán nguyên nhân từng dòng
+Biology,1022060,697435,324625,68.23816605678728,Giữ null; không suy đoán nguyên nhân từng dòng
+History,1022060,338613,683447,33.130442439778484,Giữ null; không suy đoán nguyên nhân từng dòng
+Geography,1022060,339926,682134,33.25890847895427,Giữ null; không suy đoán nguyên nhân từng dòng
+Civic education,1022060,456608,565452,44.675263683149716,Giữ null; không suy đoán nguyên nhân từng dòng
+Foreign language code,1022060,141063,880997,13.801831595013992,Giữ null; không suy đoán nguyên nhân từng dòng

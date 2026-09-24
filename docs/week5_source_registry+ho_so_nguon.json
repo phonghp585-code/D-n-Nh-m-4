@@ -1,0 +1,55 @@
+{
+  "exam_council_reference": {
+    "file": "data/raw/exam_councils_2023.csv",
+    "description": "63 mã và tên Sở GDĐT từ bảng tra cứu điểm thi 2023 của Báo Chính phủ; mã 65 bổ sung từ Phụ lục VIII Công văn 1515/BGDĐT-QLCL để giữ trọn danh mục Hội đồng thi.",
+    "url": "https://baochinhphu.vn/cach-tra-cuu-diem-thi-tot-nghiep-thpt-nam-2023-102230717160222763.htm",
+    "checked_at": "2026-09-24",
+    "extraction": "Chuẩn hóa mã 1–9 của cột Mã sở thành chuỗi 01–09; giữ nguyên 63 tên ở cột Tên Sở GDĐT. Mã 65 và tên lấy nguyên văn từ cột Mã/Tên Hội đồng thi của Phụ lục VIII. Không có mã 20.",
+    "schema_mapping": {
+      "exam_year": "Giá trị cố định 2023 theo năm của hai nguồn.",
+      "exam_council_code": "Cột Mã sở của Báo Chính phủ (63 mã) được zfill(2); mã 65 lấy từ Mã Hội đồng thi của Phụ lục VIII. Mã Sở và mã Hội đồng thi tương ứng cùng giá trị trong phụ lục năm 2023.",
+      "exam_council_name": "Cột Tên Sở GDĐT của Báo Chính phủ (63 tên), cộng Tên Hội đồng thi mã 65 của Phụ lục VIII."
+    },
+    "name_variant_code_33": "Báo Chính phủ ghi 'Sở GDĐT Thừa Thiên Huế'; Phụ lục VIII ghi 'Sở GDĐT Thừa Thiên -Huế'. File ghép giữ cách viết của nguồn Báo Chính phủ cho 63 mã dùng trong dữ liệu chính.",
+    "sha256": "9c93850400d83a148a81de5879001ecafa0e26ba70b072000c7a0eec21cfb530"
+  },
+  "government_table_excerpt": {
+    "file": "docs/week5_gov_table_excerpt+trich_bang_nguon.csv",
+    "source_url": "https://baochinhphu.vn/cach-tra-cuu-diem-thi-tot-nghiep-thpt-nam-2023-102230717160222763.htm",
+    "published_at": "2023-07-17 16:39",
+    "checked_at": "2026-09-24",
+    "rows": 63,
+    "source_columns": ["Mã sở", "Tên Sở GDĐT"],
+    "local_columns": ["source_code", "source_name"],
+    "sha256": "5304a9c15a3f718ed1fbf91f7e972c021e35b4797ba5d33e05efea0d26728af8"
+  },
+  "supplemental_code_65": {
+    "exam_council_code": "65",
+    "exam_council_name": "Cục Nhà trường -Bộ Quốc phòng",
+    "document_number": "1515/BGDĐT-QLCL",
+    "document_date": null,
+    "document_date_note": "Bản PDF chỉ ghi tháng 4/2023 và để trống ngày; không suy đoán ngày ban hành.",
+    "appendix": "VIII — Mã số Hội đồng thi",
+    "pdf_page_index_range_zero_based": [41, 43],
+    "url": "https://hic.edu.vn/wp-content/uploads/2023/05/230407-1515_BGDDT_QLCL-HD-to-chuc-ky-thi-TN-THPT-nam-2023.pdf",
+    "url_note": "Bản PDF công văn do Bộ GDĐT ban hành được lưu trên trang của một cơ sở giáo dục.",
+    "checked_at": "2026-09-24"
+  },
+  "student_id_structure": {
+    "url": "https://caodangsaigon.edu.vn/ky-thi-thpt-cdsg/huong-dan-cach-tra-so-bao-danh-thi-thpt-quoc-gia-2023/",
+    "published_at": "2023-06-15",
+    "checked_at": "2026-09-24",
+    "rule": "Hai chữ số đầu là mã Hội đồng thi; sáu chữ số tiếp theo là số thứ tự trong Hội đồng thi."
+  },
+  "main_dataset": {
+    "file": "data/raw/original.csv",
+    "description": "CSV gốc điểm thi THPT năm 2023 đang dùng trong dự án.",
+    "url": "https://www.kaggle.com/datasets/duongtruongbinh/vietnamese-national-high-school-graduation-exam",
+    "sha256": "cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5"
+  },
+  "historical_cleaning_decisions": {
+    "file": "docs/week5_prior_decisions+quyet_dinh_tuan_truoc.csv",
+    "description": "Bản chụp 35 quyết định Week 3–4 đã tổng hợp từ nhật ký Week 4 và các báo cáo/bảng bằng chứng hiện có. Ngày gốc chưa rõ được để trống.",
+    "source_sha256": "cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5"
+  }
+}

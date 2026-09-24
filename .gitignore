@@ -13,3 +13,6 @@ htmlcov/
 .DS_Store
 Thumbs.db
 docs/PLAN_WEEK3_GPT56_SOL.md
+outputs/_review/
+README.md
+mujctieu.md

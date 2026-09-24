@@ -1,0 +1,8 @@
+﻿step,rows_before,rows_after,rows_removed,scope_rows,changed_rows,result
+01_read_sources,0,1022060,0,1022060,0,"Đọc CSV gốc và danh mục 2023; kiểm tra schema, hash, mã duy nhất."
+02_text_standardization,1022060,1022060,0,1022060,0,"NFKC, strip, gộp whitespace; uppercase mã ngoại ngữ; kiểm tra mã sau chuẩn hóa."
+03_exact_duplicate_removal,1022060,1022060,0,1022060,0,Loại bản ghi trùng hoàn toàn sau lần xuất hiện đầu; xung đột ID làm pipeline dừng.
+04_audit_and_missing,1022060,1022060,0,3394966,0,"Giữ null; xác thực ID, mã, miền điểm 0–10; phân nhóm ô thiếu cấu trúc ứng viên và chưa rõ."
+05_outlier_detection,1022060,1022060,0,34857,0,"Tính lại IQR/Z-score; cờ chỉ để điều tra, không sửa/xóa điểm."
+06_merge_exam_council,1022060,1022060,0,1022060,0,"Left many-to-one merge; 1,022,060 khớp, 0 không khớp."
+07_roundtrip_validation,1022060,1022060,0,1022060,0,"Đọc lại CSV, xác nhận schema, thứ tự, điểm, null, mã chuỗi và match count."

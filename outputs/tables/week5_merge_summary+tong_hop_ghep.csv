@@ -1,0 +1,2 @@
+﻿main_rows_before_merge,main_rows_after_merge,reference_rows,main_distinct_keys,reference_distinct_keys,reference_duplicate_keys,matched_rows,unmatched_rows,record_match_rate_pct,matched_distinct_keys,unmatched_distinct_keys,key_match_rate_pct,unused_reference_codes,row_count_preserved
+1022060,1022060,64,63,64,0,1022060,0,100.0,63,0,100.0,1,True

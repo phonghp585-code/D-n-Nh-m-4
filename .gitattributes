@@ -1,0 +1,2 @@
+# Preserve exact file bytes: source and reproducibility manifests use SHA-256.
+* -text

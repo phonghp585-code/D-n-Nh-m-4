@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-09-23T10:51:49.900038+00:00",
+  "source": "data/raw/original.csv",
+  "source_sha256": "cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5",
+  "cleaned_sha256": "862d7951991e9e436bd0f51a07dc2f593ca8e04f9cdabbe33d645bc3840b67cf",
+  "rows": 1022060,
+  "columns": [
+    "Student ID",
+    "Mathematics",
+    "Literature",
+    "Foreign language",
+    "Physics",
+    "Chemistry",
+    "Biology",
+    "History",
+    "Geography",
+    "Civic education",
+    "Foreign language code"
+  ],
+  "python": "3.12.14",
+  "pandas": "3.0.1",
+  "numpy": "2.5.3",
+  "parameters": {
+    "iqr_multiplier": 1.5,
+    "quantile_interpolation": "linear",
+    "z_threshold": 3,
+    "ddof": 0,
+    "ranking": "abs_z desc, Student ID asc, column asc; distinct Student ID"
+  },
+  "flagged_cells": 34857,
+  "flagged_students": 30190,
+  "iqr_students": 30190,
+  "z_students": 15037,
+  "top5_ids": [
+    "01053185",
+    "01053192",
+    "01053271",
+    "02016503",
+    "02019084"
+  ],
+  "verdicts": {
+    "unresolved": 5
+  },
+  "source_checks_sha256": "f12979bf1483d53528a1f0c7fe2ffcccc14b9e60e46c9ff80783db3b802118d2",
+  "source_checked_at": "2026-09-23",
+  "text_changed_rows": {
+    "Student ID": 0,
+    "Foreign language code": 0
+  },
+  "cleaning_log_entries": 35,
+  "validation": {
+    "source_unchanged": true,
+    "same_scores": true,
+    "same_missingness": true,
+    "csv_roundtrip_exact": true,
+    "same_schema_and_order": true,
+    "text_idempotent": true,
+    "detail_counts_reconciled": true,
+    "top5_unique": true,
+    "top5_raw_and_week3_match": true
+  }
+}

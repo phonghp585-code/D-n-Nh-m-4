@@ -1,24 +1,99 @@
-# Điểm thi tốt nghiệp THPT 2023 — INFO3020 Week 3
+# Điểm thi THPT 2023 — Week 3, 4 và 5
 
-Dự án hoàn thành ba bài EX3.1–EX3.3 của slide 35 trong `W3 - Data Quality and Processing_.pptx`: chấm sáu tiêu chí chất lượng có bằng chứng, giải thích từng cột có dữ liệu thiếu, và so sánh hai cách điền trên điểm Toán. [Bài báo cáo](docs/report+bao_cao.md) trình bày kết quả và giới hạn. Tệp slide do người dùng cung cấp nằm ngoài repo, tại thư mục Downloads.
+## Bắt đầu ở đây
 
-## Dữ liệu và nguyên tắc
+**Bài hiện tại là Week 5.** Dữ liệu dùng tiếp cho Week 6–8 là `data/processed/week5_final+du_lieu_cuoi.csv`. Mở báo cáo để đọc kết quả; mở notebook để xem các ô code và đầu ra.
 
-`data/raw/original.csv` là CSV gốc của [dataset Kaggle](https://www.kaggle.com/datasets/duongtruongbinh/vietnamese-national-high-school-graduation-exam), gồm 1.022.060 dòng, 11 cột, SHA-256 `cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5`. Code đọc Student ID như chuỗi để giữ số 0 đầu. Tệp `data/processed/exam_2023.parquet` giữ 11 cột, các điểm đã công bố và các ô trống. Điểm được điền thử chỉ nằm trong phép so sánh, không ghi vào Parquet.
+| Bạn muốn làm gì? | Mở file này |
+|---|---|
+| Đọc bài Week 5 | [Báo cáo Week 5](docs/week5_report+bao_cao.md) |
+| Xem notebook Week 5 | [Notebook Week 5](notebooks/week5_exercises+bai_tap_tuan5.ipynb) |
+| Xem kết luận kiểm tra bài và cách quản lý file | [Kiểm tra Week 5](docs/week5_review+kiem_tra_bai.md) |
+| Hiểu 16 cột dữ liệu cuối | [Từ điển dữ liệu](docs/week5_data_dictionary+tu_dien_du_lieu.md) |
+| Xem các quyết định làm sạch | [Cleaning Log](outputs/tables/week5_cleaning_log+nhat_ky_lam_sach.csv) |
+| Xem nguồn thứ hai và khóa ghép | [Nguồn và mapping](docs/week5_source_mapping+anh_xa_nguon.md) |
+| Xem kế hoạch các tuần tiếp theo | [Kế hoạch](mujctieu.md) |
 
-Các môn tổ hợp có nhiều ô trống phù hợp với cấu trúc chọn môn, nhưng CSV không có hồ sơ đăng ký, chương trình học, miễn thi hoặc vắng thi để xác nhận nguyên nhân từng ô. Pipeline tách ô thiếu ở tổ hợp đối diện thành **ứng viên không áp dụng theo cấu trúc** và các ô còn lại thành **chưa rõ nguyên nhân**; cả hai vẫn giữ null. Báo cáo đối chiếu số môn thiếu trên cả 9 cột điểm với số môn thiếu trong 6 cột liên quan theo nhóm điểm tổ hợp quan sát. Có 4.476 dòng chỉ còn Student ID, cần đối soát nguồn trước khi diễn giải.
+## Chạy Week 5
 
-## Chạy lại
+Tại thư mục gốc dự án trong PowerShell:
 
-Dùng PowerShell tại thư mục gốc của repo:
+```powershell
+& .venv/Scripts/python.exe src/main.py
+```
+
+Một lệnh tái tạo CSV cuối, bảng kiểm tra, hình, báo cáo và notebook đã có kết quả. Nếu Python đang dùng đã cài các thư viện trong `requirements.txt`, có thể chạy `python src/main.py`.
+
+Kiểm thử và kiểm tra tái lập (chạy sau lệnh trên):
+
+```powershell
+& .venv/Scripts/python.exe -m unittest discover -s tests -v
+& .venv/Scripts/python.exe src/verify_week5.py
+```
+
+Phép kiểm tái lập sao chép raw, hồ sơ nguồn và code vào thư mục sạch, chạy pipeline rồi so SHA-256 từng đầu ra với lần chạy hiện tại. Bằng chứng lưu tại [week5_verification+kiem_tra_tai_lap.json](outputs/week5_verification+kiem_tra_tai_lap.json). Manifest không so byte vì có thời gian chạy. Thư mục kiểm tra tạm do lệnh tạo được dọn sau khi hoàn tất.
+
+Notebook Week 5 đọc và kiểm tra đầu ra đã sinh; **Run All của notebook không thay thế lệnh chạy từ raw**. Biểu đồ được nhúng trong notebook. Để chạy notebook, chọn kernel `.venv` và mở từ thư mục gốc hoặc `notebooks/`.
+
+## Quy tắc đặt tên
+
+File đầu ra và tài liệu Week 5 dùng `week5_ten_tieng_anh+ten_tieng_viet`, ví dụ `week5_cleaning_log+nhat_ky_lam_sach.csv`. Phần tiếng Việt không dấu, ngăn cách từ bằng `_`, theo mẫu song ngữ có sẵn ở Week 3. Báo cáo và notebook giữ tên song ngữ như Week 4. Module Python dùng tên import hợp lệ, không có dấu `+`: `analyze_week5.py`.
+
+## File nào sửa, file nào được sinh lại?
+
+| Nhóm | Vai trò | Cách quản lý |
+|---|---|---|
+| `data/raw/original.csv` | Nguồn điểm thi gốc, 1.022.060 dòng × 11 cột | Giữ nguyên |
+| `data/raw/exam_councils_2023.csv` | Danh mục 64 mã Hội đồng thi năm 2023 | Giữ cùng hồ sơ nguồn |
+| `docs/week5_source_registry+ho_so_nguon.json`, `week5_source_mapping+anh_xa_nguon.md`, `week5_gov_table_excerpt+trich_bang_nguon.csv`, `week5_prior_decisions+quyet_dinh_tuan_truoc.csv` | Đầu vào nguồn, mapping và lịch sử | Không xóa khi dọn báo cáo; pipeline cần các file này |
+| `src/` | Code tính toán và tạo báo cáo/notebook | Sửa logic ở đây rồi chạy lại |
+| `tests/` | Kiểm thử các quy tắc xử lý | Chạy sau khi sửa code |
+| `data/processed/` | Dữ liệu cuối theo từng tuần | Dùng `week5_final+du_lieu_cuoi.csv` cho bước tiếp theo |
+| `outputs/tables/` | Bảng bằng chứng do code sinh | Không cần mở từng file; đi qua link trong báo cáo |
+| `outputs/figures/` | Mỗi biểu đồ chỉ có một file PNG | Code Week 3–5 chỉ xuất PNG |
+| `outputs/*metrics*.json`, `week5_manifest+ho_so_dau_ra.json`, `week5_verification+kiem_tra_tai_lap.json` | Số liệu và bằng chứng kiểm tra | Dành cho truy vết, không phải báo cáo chính |
+| `docs/*report+bao_cao.md`, `week5_data_dictionary+tu_dien_du_lieu.md` | Báo cáo được sinh từ code | Week 5 sửa tại `src/report_week5.py` hoặc phần từ điển trong pipeline |
+| `notebooks/week*_exercises+bai_tap_tuan*.ipynb` | Notebook trình bày từng tuần | Bản sinh lại; sửa bền vững trong `src/build*_notebook.py` |
+| `mujctieu.md`, các PDF W5–W7 | Kế hoạch và đề bài tham chiếu | Không phải dữ liệu đầu vào của pipeline |
+| `.venv/`, `__pycache__/`, `outputs/_review/` | Môi trường và file kiểm tra tạm | Không đưa vào bài nộp |
+
+Đã dọn các mục rác: `data.ipynb` (0 byte), `reports/` (rỗng, chỉ có `.gitkeep`) và thư mục tạm rỗng `outputs/tmpyuf6r4fg/` đều đã bị xóa. Báo cáo thật nằm trong `docs/`.
+
+## Code của từng tuần
+
+| Tuần | Xử lý | Sinh bài trình bày | Báo cáo / notebook |
+|---|---|---|---|
+| 3 | `src/analyze.py` | `src/build_notebook.py` | [Báo cáo](docs/report+bao_cao.md) · [Notebook](notebooks/week3_exercises+bai_tap_tuan3.ipynb) |
+| 4 | `src/analyze_week4.py` | `src/build_week4_notebook.py`, `src/week4_explanations.py` | [Báo cáo](docs/week4_report+bao_cao.md) · [Notebook](notebooks/week4_exercises+bai_tap_tuan4.ipynb) |
+| 5 | `src/main.py` → `src/analyze_week5.py` | `src/report_week5.py`, `src/build_week5_notebook.py` | [Báo cáo](docs/week5_report+bao_cao.md) · [Notebook](notebooks/week5_exercises+bai_tap_tuan5.ipynb) |
+
+Week 5 dùng lại hàm đọc dữ liệu, chuẩn hóa và ngoại lệ trong `src/analyze_week4.py`, cùng module `src/week4_explanations.py` mà nó import. Vì thế không xóa code Week 4 khi chỉ nộp Week 5. Nộp cả `src/` là cách đơn giản nhất.
+
+Chạy lại bài cũ khi cần:
 
 ```powershell
 & .venv/Scripts/python.exe -m src.analyze
 & .venv/Scripts/python.exe -m src.build_notebook
-& .venv/Scripts/python.exe -m unittest discover -s tests -v
+& .venv/Scripts/python.exe -m src.build_week4_notebook
 ```
 
-Nếu cần tạo môi trường mới:
+Week 4 cần các đầu ra/bằng chứng Week 3 đi kèm để đối chiếu. Week 5 dùng bản chụp lịch sử trong `docs/` và không cần đầu ra Week 3–4 để chạy.
+
+## Bộ bài Week 5
+
+Yêu cầu trực tiếp của EX5.3 là `data/processed/` và Cleaning Log đầy đủ. Để người chấm đọc và chạy lại, giữ cấu trúc đường dẫn:
+
+- `README.md`, `requirements.txt`, toàn bộ `src/` và `tests/`.
+- Hai file `data/raw/` và `data/processed/week5_final+du_lieu_cuoi.csv`.
+- Các file `docs/week5_*` (gồm báo cáo, từ điển và hồ sơ nguồn).
+- `notebooks/week5_exercises+bai_tap_tuan5.ipynb`.
+- `outputs/tables/week5_*`, `outputs/figures/week5_*`, `outputs/week5_manifest+ho_so_dau_ra.json` và `outputs/week5_verification+kiem_tra_tai_lap.json`.
+
+Khi chia sẻ cả repo, giữ Week 3–4 để truy vết lịch sử. Không cần tạo thêm `final.csv`, `merge_report.md` hoặc `EDA.ipynb` chỉ để giống cấu trúc minh họa: nội dung tương ứng đã có trong bộ file Week 5. Trang bài tập Week 5 không bắt buộc xuất báo cáo PDF.
+
+## Môi trường và cách đọc dữ liệu
+
+Tạo môi trường mới nếu chưa có `.venv` (cần cài `uv` trước):
 
 ```powershell
 uv venv .venv
@@ -26,28 +101,16 @@ $env:UV_CACHE_DIR = (Join-Path (Get-Location) '.venv/.uv-cache')
 uv pip install --python .venv/Scripts/python.exe -r requirements.txt
 ```
 
-Lệnh thứ nhất quét token nguồn, kiểm tra schema, xử lý số liệu trên toàn CSV và sinh bảng/hình. Lệnh thứ hai xây dựng và thực thi các ô code của notebook trong một namespace mới, lưu kết quả hiển thị vào `notebooks/week3_exercises+bai_tap_tuan3.ipynb`; không cần cài Jupyter để tạo notebook. Muốn chạy ô tương tác trong VS Code hoặc Jupyter, chọn kernel Python của `.venv` và cài hỗ trợ notebook của công cụ đó nếu cần.
+Kiểm tra hiện tại dùng Python 3.12.14, pandas 3.0.1, NumPy 2.5.3, PyArrow 25.0.1, Matplotlib 3.11.2. `requirements.txt` quy định phiên bản tối thiểu, chưa khóa toàn bộ môi trường; kết quả so hash được xác nhận trong môi trường hiện tại.
 
-## Tệp đầu ra
+```python
+import pandas as pd
 
-| Đường dẫn | Nội dung |
-|---|---|
-| `src/analyze.py` | Pipeline audit và hai so sánh Median |
-| `src/build_notebook.py` | Tạo notebook có kết quả từ lần chạy sạch |
-| `notebooks/week3_exercises+bai_tap_tuan3.ipynb` | Bài trình bày từng bước và kết quả đã chạy |
-| `docs/report+bao_cao.md` | Bài viết EX3.1–EX3.3, phương pháp và giới hạn |
-| `docs/foreign_language_code+ma_ngoai_ngu.md` | Ghi chú mapping mã ngoại ngữ |
-| `outputs/metrics+chi_so.json` | Provenance, audit, pattern và số liệu thí nghiệm |
-| `outputs/tables/column_profile+ho_so_cot.csv` | Kiểu, missing, unique, min/max của từng cột |
-| `outputs/tables/missing_treatment+cach_xu_ly_thieu.csv` | Cơ chế giả thuyết, treatment và lý do của mọi cột thiếu |
-| `outputs/tables/raw_nine_score_missing_counts+thieu_9_mon.csv` | Số điểm thiếu trên 9 môn, theo nhóm điểm tổ hợp quan sát |
-| `outputs/tables/context_six_score_missing_counts+thieu_6_mon.csv` | Số ô trống trong 6 môn liên quan của hai nhóm xác định được |
-| `outputs/tables/context_missing_subject_patterns+mau_mon_thieu.csv` | Mọi tổ hợp môn thiếu cụ thể trong 6 môn liên quan |
-| `outputs/tables/missing_context_classification+phan_loai_o_thieu.csv` | Mỗi cột: ứng viên cấu trúc và phần chưa rõ theo ngữ cảnh |
-| `outputs/tables/natural_missing_sensitivity+do_nhay_thieu_tu_nhien.csv` | Hai cách điền giả định trên 18.687 ô Toán đang trống |
-| `outputs/tables/imputation_comparison+so_sanh_dien_khuyet.csv` | Hai cách điền trên 10.000 điểm Toán che nhân tạo và sai số |
-| `outputs/figures/*.png` | Biểu đồ tỷ lệ thiếu, matrix mẫu và hai phân phối Toán |
+df = pd.read_csv(
+    'data/processed/week5_final+du_lieu_cuoi.csv',
+    dtype={'Student ID': 'string', 'Foreign language code': 'string',
+           'exam_council_code': 'string'},
+)
+```
 
-Sáu điểm chất lượng, số đếm pattern theo nhóm, phân loại ô thiếu, bảng chéo và token nguồn được lưu trong `outputs/metrics+chi_so.json`. EX3.3 có hai góc nhìn. Bảng **nhạy cảm** điền thử những ô Toán thiếu tự nhiên dưới giả định chưa xác minh rằng tất cả đều có điểm thật. Bảng **thí nghiệm** che ngẫu nhiên 20% điểm Toán trong mẫu 50.000 dòng có điểm để đo sai số trên cùng các ô che. Hai phương pháp là Global Median và Group Median theo nhóm có điểm tự nhiên/xã hội; nhóm không rõ dùng trung vị chung. Seed 3020. Các kết quả không xác nhận giá trị thật của ô Toán tự nhiên đang trống.
-
-Tài liệu slide tham chiếu: các trang 7, 13–18, 20–29, 32 và 35 của tệp PPTX người dùng cung cấp. Kết quả máy đọc đầy đủ nằm trong `outputs/metrics+chi_so.json`; các bảng CSV giữ số chưa làm tròn, còn báo cáo làm tròn để dễ đọc.
+CSV dùng UTF-8 BOM. Luôn đọc các mã dạng chuỗi để giữ số 0 đầu. Dữ liệu cuối giữ điểm 0, ô thiếu và điểm ngoại lệ chưa xác minh. `observed_exam_group` mô tả điểm đang có, không xác nhận đăng ký môn; tên Hội đồng thi không chứng minh nơi cư trú hoặc chất lượng giáo dục. Mô hình sau này phải chia train/test trước khi fit scaling, encoding hoặc imputation.

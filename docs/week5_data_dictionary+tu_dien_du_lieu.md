@@ -1,0 +1,26 @@
+# Từ điển dữ liệu Week 5
+
+Bảng mô tả 16 cột của `data/processed/week5_final+du_lieu_cuoi.csv`. Các tên cột giữ nguyên để đối chiếu dữ liệu nguồn.
+
+| Cột | Ý nghĩa | Nguồn |
+| --- | --- | --- |
+| `Student ID` | Mã thí sinh dạng chuỗi 8 chữ số; hai chữ số đầu là mã Hội đồng thi năm 2023. | Nguồn chính |
+| `Mathematics` | Điểm môn Toán, thang 0–10; null được giữ nguyên. | Nguồn chính |
+| `Literature` | Điểm môn Ngữ văn, thang 0–10; null được giữ nguyên. | Nguồn chính |
+| `Foreign language` | Điểm môn Ngoại ngữ, thang 0–10; null được giữ nguyên. | Nguồn chính |
+| `Physics` | Điểm môn Vật lý, thang 0–10; null được giữ nguyên. | Nguồn chính |
+| `Chemistry` | Điểm môn Hóa học, thang 0–10; null được giữ nguyên. | Nguồn chính |
+| `Biology` | Điểm môn Sinh học, thang 0–10; null được giữ nguyên. | Nguồn chính |
+| `History` | Điểm môn Lịch sử, thang 0–10; null được giữ nguyên. | Nguồn chính |
+| `Geography` | Điểm môn Địa lý, thang 0–10; null được giữ nguyên. | Nguồn chính |
+| `Civic education` | Điểm môn Giáo dục công dân, thang 0–10; null được giữ nguyên. | Nguồn chính |
+| `Foreign language code` | Mã ngôn ngữ N1–N7; giữ chuỗi, viết hoa sau chuẩn hóa. | Nguồn chính |
+| `exam_year` | Năm kỳ thi dùng khi ghép danh mục; mọi dòng trong bộ này là 2023. | Thông tin kỳ thi |
+| `exam_council_code` | Mã Hội đồng thi hai ký tự tra từ hai số đầu của Student ID. | Tính từ Student ID; xác minh bằng danh mục nguồn |
+| `exam_council_name` | Tên Hội đồng thi năm 2023: 63 mã theo bảng Báo Chính phủ, mã 65 theo Phụ lục VIII; không nhất thiết là nơi cư trú/trường học. | Danh mục Hội đồng thi |
+| `observed_exam_group` | Nhóm suy từ điểm quan sát ở ba môn KHTN/KHXH; không khẳng định môn đã đăng ký. | Tính từ điểm nguồn |
+| `merge_status` | matched: mã có trong danh mục; left_only: không ghép được và tên để thiếu. | Kết quả merge |
+
+`observed_exam_group` chỉ là nhóm điểm hiện diện trong CSV; `science_only`/`social_only` không xác minh hồ sơ đăng ký. Những ô thiếu ở tổ hợp đối diện chỉ là ứng viên thiếu có tính cấu trúc.
+
+Nguồn và quy tắc ánh xạ: [week5_source_mapping+anh_xa_nguon.md](week5_source_mapping+anh_xa_nguon.md).
