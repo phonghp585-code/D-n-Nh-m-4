@@ -8,7 +8,7 @@ from unittest.mock import patch
 import numpy as np
 import pandas as pd
 
-from src.analyze import SCORES, analyze_missing_layers, audit, derive_observed_groups, impute_masked_math, profile_columns
+from src.week3.analyze import SCORES, analyze_missing_layers, audit, derive_observed_groups, impute_masked_math, profile_columns
 
 
 class AnalysisTests(unittest.TestCase):

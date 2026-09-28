@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.analyze_week4 import COLUMNS, SCORES, TEXT, normalize_text
-from src.analyze_week5 import (exact_duplicate_rows, id_conflicts,
+from src.week4.analyze_week4 import COLUMNS, SCORES, TEXT, normalize_text
+from src.week5.analyze_week5 import (exact_duplicate_rows, id_conflicts,
                                 left_merge_council, observed_exam_group,
                                 missing_by_observed_group, diagnose_raw_csv,
                                 score_domain_issues)
@@ -84,7 +84,7 @@ class Week5Tests(unittest.TestCase):
         self.assertEqual(issues["value"].tolist(), [-0.01])
 
     def test_generated_notebook_code_cells_compile(self):
-        from src.build_week5_notebook import cells
+        from src.week5.build_week5_notebook import cells
         code_cells = [cell for cell in cells() if cell["cell_type"] == "code"]
         self.assertGreater(len(code_cells), 0)
         for index, cell in enumerate(code_cells):

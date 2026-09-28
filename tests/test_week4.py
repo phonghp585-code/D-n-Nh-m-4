@@ -4,13 +4,13 @@ import unittest
 import numpy as np
 import pandas as pd
 
-from src.analyze_week4 import (COLUMNS, SCORES, detect_column, detect_outliers,
+from src.week4.analyze_week4 import (COLUMNS, SCORES, detect_column, detect_outliers,
                                normalize_text, select_top5, standardize)
 
 
 class Week4Tests(unittest.TestCase):
     def test_generated_notebook_cells_compile(self):
-        from src.build_week4_notebook import build_cells
+        from src.week4.build_week4_notebook import build_cells
         cells = [cell for cell in build_cells() if cell['cell_type'] == 'code']
         self.assertGreater(len(cells), 0)
         for index, cell in enumerate(cells):

@@ -1,0 +1,85 @@
+{
+  "checked_at_utc": "2026-09-28T07:43:56.765606+00:00",
+  "method": "Direct HTTP GET of five public VietNamNet result pages; verify page title contains exam year 2023 and the exact candidate ID, then extract the subject-score table. Web search tool could not open these detail URLs; direct HTTPS retrieval succeeded.",
+  "source_type": "Public newspaper score lookup; not an individual official score certificate.",
+  "conclusion_vi": "Cả năm nguồn đối chứng công bố GDCD = 0, khớp CSV. Chưa xác minh ý nghĩa số 0 và tình trạng dự thi; giữ kết luận unresolved và giữ nguyên dữ liệu.",
+  "limitations_vi": "Không xác định nguyên nhân điểm 0, tình trạng dự thi, kỷ luật hoặc thay đổi sau phúc khảo. Chưa đối chiếu giấy chứng nhận điểm hay hồ sơ gốc của Sở/Bộ.",
+  "records": [
+    {
+      "student_id": "01053185",
+      "url": "https://vietnamnet.vn/giao-duc/diem-thi/tra-cuu-diem-thi-tot-nghiep-thpt/2023/01053185.html",
+      "title": "Chi tiết điểm thi tốt nghiệp THPT năm 2023 của số báo danh 01053185",
+      "tables": [
+        "Môn Điểm Văn 4.5 Sử 5 Địa 5 GDCD 0",
+        "TT Ngành Khối thi Trường Điểm chuẩn năm 2022 Tổng điểm 3 môn của thí sinh"
+      ],
+      "published_gdcd": 0.0,
+      "local_gdcd": 0.0,
+      "matches_local_gdcd": true,
+      "verdict": "unresolved",
+      "action": "keep",
+      "publication_status": "zero_confirmed_as_published"
+    },
+    {
+      "student_id": "01053192",
+      "url": "https://vietnamnet.vn/giao-duc/diem-thi/tra-cuu-diem-thi-tot-nghiep-thpt/2023/01053192.html",
+      "title": "Chi tiết điểm thi tốt nghiệp THPT năm 2023 của số báo danh 01053192",
+      "tables": [
+        "Môn Điểm Toán 7 Văn 6.25 Sử 3.75 Địa 0 GDCD 0",
+        "TT Ngành Khối thi Trường Điểm chuẩn năm 2022 Tổng điểm 3 môn của thí sinh"
+      ],
+      "published_gdcd": 0.0,
+      "local_gdcd": 0.0,
+      "matches_local_gdcd": true,
+      "verdict": "unresolved",
+      "action": "keep",
+      "publication_status": "zero_confirmed_as_published"
+    },
+    {
+      "student_id": "01053271",
+      "url": "https://vietnamnet.vn/giao-duc/diem-thi/tra-cuu-diem-thi-tot-nghiep-thpt/2023/01053271.html",
+      "title": "Chi tiết điểm thi tốt nghiệp THPT năm 2023 của số báo danh 01053271",
+      "tables": [
+        "Môn Điểm Toán 6.2 Văn 6.25 Sử 7.75 Địa 4 GDCD 0",
+        "TT Ngành Khối thi Trường Điểm chuẩn năm 2022 Tổng điểm 3 môn của thí sinh"
+      ],
+      "published_gdcd": 0.0,
+      "local_gdcd": 0.0,
+      "matches_local_gdcd": true,
+      "verdict": "unresolved",
+      "action": "keep",
+      "publication_status": "zero_confirmed_as_published"
+    },
+    {
+      "student_id": "02016503",
+      "url": "https://vietnamnet.vn/giao-duc/diem-thi/tra-cuu-diem-thi-tot-nghiep-thpt/2023/02016503.html",
+      "title": "Chi tiết điểm thi tốt nghiệp THPT năm 2023 của số báo danh 02016503",
+      "tables": [
+        "Môn Điểm Toán 3.8 Văn 2 Sử 4.25 Địa 0 Ngoại ngữ 3.8 GDCD 0",
+        "TT Ngành Khối thi Trường Điểm chuẩn năm 2022 Tổng điểm 3 môn của thí sinh"
+      ],
+      "published_gdcd": 0.0,
+      "local_gdcd": 0.0,
+      "matches_local_gdcd": true,
+      "verdict": "unresolved",
+      "action": "keep",
+      "publication_status": "zero_confirmed_as_published"
+    },
+    {
+      "student_id": "02019084",
+      "url": "https://vietnamnet.vn/giao-duc/diem-thi/tra-cuu-diem-thi-tot-nghiep-thpt/2023/02019084.html",
+      "title": "Chi tiết điểm thi tốt nghiệp THPT năm 2023 của số báo danh 02019084",
+      "tables": [
+        "Môn Điểm Toán 8.2 Văn 7 Sử 7.75 Địa 0 Ngoại ngữ 9 GDCD 0",
+        "TT Ngành Khối thi Trường Điểm chuẩn năm 2022 Tổng điểm 3 môn của thí sinh"
+      ],
+      "published_gdcd": 0.0,
+      "local_gdcd": 0.0,
+      "matches_local_gdcd": true,
+      "verdict": "unresolved",
+      "action": "keep",
+      "publication_status": "zero_confirmed_as_published"
+    }
+  ],
+  "interpretation_updated_at": "2026-09-28"
+}

@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.analyze_week5 import ROOT, run_week5
+from src.week5.analyze_week5 import ROOT, run_week5
 
 
 def main() -> None:
@@ -24,9 +24,9 @@ def main() -> None:
           f"{metrics['processing']['rows_after_exact_duplicate_removal']:,} processed")
     print(f"Council match: {merge['matched_rows']:,} matched / "
           f"{merge['unmatched_rows']:,} unmatched ({merge['record_match_rate_pct']:.4f}%)")
-    print(f"Output CSV: {args.output_root / 'data/processed/week5_final+du_lieu_cuoi.csv'}")
-    print(f"Report: {args.output_root / 'docs/week5_report+bao_cao.md'}")
-    print(f"Manifest: {args.output_root / 'outputs/week5_manifest+ho_so_dau_ra.json'}")
+    print(f"Output CSV: {args.output_root / 'data/processed/week5/week5_final+du_lieu_cuoi.csv'}")
+    print(f"Report: {args.output_root / 'docs/week5/week5_report+bao_cao.md'}")
+    print(f"Manifest: {args.output_root / 'outputs/week5/week5_manifest+ho_so_dau_ra.json'}")
 
 
 if __name__ == "__main__":
