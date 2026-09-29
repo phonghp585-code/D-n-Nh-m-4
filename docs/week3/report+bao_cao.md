@@ -2,8 +2,6 @@
 
 **Nguồn và phạm vi.** Bài sử dụng tệp `data/raw/original.csv` của [bộ dữ liệu điểm thi THPT 2023 trên Kaggle](https://www.kaggle.com/datasets/duongtruongbinh/vietnamese-national-high-school-graduation-exam). SHA-256 của tệp khi chạy là `cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5`. Có **1.022.060 dòng và 11 cột**: mã thí sinh, chín môn điểm, mã ngoại ngữ. Mục tiêu là đánh giá mức phù hợp của file để mô tả **điểm đã công bố của kỳ thi 2023**. Con số người dự thi trên trang giới thiệu nguồn không được dùng làm mẫu số thay cho số dòng CSV thực tế.
 
-Yêu cầu bài tập được đối chiếu với slide 35 của `W3 - Data Quality and Processing_.pptx`; sáu chiều ở slide 7; tìm giá trị thiếu giả ở slide 13–15; cơ chế và cách xử lý ở slide 16–29; so sánh cách điền ở slide 32. Những ví dụ về `vn_jobs` trong slide là ví dụ phương pháp, không phải chỉ dẫn phải điền hết điểm thi.
-
 ## Kiểm tra chất lượng dữ liệu
 
 Thang 1–5 dưới đây là rubric đánh giá cho mục tiêu phân tích điểm đã công bố năm 2023: 5 = các phép kiểm liên quan đều tốt và có bằng chứng mạnh; 4 = tốt nhưng còn giới hạn nhỏ; 3 = dùng được có điều kiện; 2 = thiếu bằng chứng quan trọng hoặc có vấn đề lớn; 1 = chưa phù hợp mục tiêu. Điểm này là phán đoán có lập luận, không phải tỷ lệ phần trăm bản ghi chính xác. Sáu tiêu chí được đánh giá riêng; không tính một điểm tổng hợp tùy ý.
