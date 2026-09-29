@@ -4,7 +4,7 @@
 
 Yêu cầu bài tập được đối chiếu với slide 35 của `W3 - Data Quality and Processing_.pptx`; sáu chiều ở slide 7; tìm giá trị thiếu giả ở slide 13–15; cơ chế và cách xử lý ở slide 16–29; so sánh cách điền ở slide 32. Những ví dụ về `vn_jobs` trong slide là ví dụ phương pháp, không phải chỉ dẫn phải điền hết điểm thi.
 
-## EX3.1 — Kiểm tra chất lượng dữ liệu
+## Kiểm tra chất lượng dữ liệu
 
 Thang 1–5 dưới đây là rubric đánh giá cho mục tiêu phân tích điểm đã công bố năm 2023: 5 = các phép kiểm liên quan đều tốt và có bằng chứng mạnh; 4 = tốt nhưng còn giới hạn nhỏ; 3 = dùng được có điều kiện; 2 = thiếu bằng chứng quan trọng hoặc có vấn đề lớn; 1 = chưa phù hợp mục tiêu. Điểm này là phán đoán có lập luận, không phải tỷ lệ phần trăm bản ghi chính xác. Sáu tiêu chí được đánh giá riêng; không tính một điểm tổng hợp tùy ý.
 
@@ -29,7 +29,7 @@ Số đếm chi tiết có trong `outputs/week3/tables/column_profile+ho_so_cot.
 
 ![Tỷ lệ thiếu trên toàn bộ CSV](../../outputs/week3/figures/missing_rates+ty_le_thieu.png)
 
-## EX3.2 — Cơ chế thiếu và cách xử lý
+## Cơ chế thiếu và cách xử lý
 
 MCAR là xác suất thiếu không phụ thuộc thông tin liên quan; MAR là xác suất thiếu có thể giải thích bằng các biến đã quan sát khi điều kiện hóa; MNAR còn phụ thuộc thông tin chưa quan sát. Theo slide 18, nhãn cơ chế không thể suy ra từ bảng số liệu một mình. Ô trống vì môn không được thi là trường hợp **không áp dụng theo thiết kế**; cần tách khỏi ba cơ chế của một giá trị lẽ ra tồn tại. Dataset không có đăng ký môn, tình trạng miễn/vắng thi hoặc nhật ký thu thập, nên các nhãn sau là giả thuyết vận hành.
 
