@@ -90,7 +90,7 @@ File `data/processed/week3/exam_2023.parquet` giữ 11 cột và các giá trị
 
 ![Mẫu ô thiếu trong 2.000 dòng lấy ngẫu nhiên, seed 3020, sắp theo nhóm điểm quan sát](../../outputs/week3/figures/missing_matrix_sample+ma_tran_mau_o_thieu.png)
 
-## EX3.3 — So sánh Global Median và Group Median trên điểm Toán
+## So sánh Global Median và Group Median trên điểm Toán
 
 **So sánh trực tiếp trên những ô Toán đang thiếu, dưới dạng phân tích nhạy cảm.** Có 18.687 ô Toán trống. Giả sử tất cả đều là điểm đã tồn tại nhưng chưa được ghi nhận, điền thử theo hai cách trên *bản sao trong bộ nhớ*: A dùng trung vị chung **6,6** của 1.003.373 điểm Toán quan sát; B dùng trung vị **7,6** ở nhóm có điểm tự nhiên và **5,8** ở nhóm có điểm xã hội. Với 4.887 dòng không thấy điểm tổ hợp, B dùng trung vị chung 6,6. Phân nhóm dựa vào điểm tổ hợp, không dùng điểm Toán. Giả định “điểm thật có tồn tại” hiện **chưa được xác minh**. Không xuất các điểm thử này vào Parquet.
 
