@@ -1,7 +1,6 @@
 # INFO3020 Week 5 — Transformation, reduction & integration
 
-**Bài tập:** EX5.1–EX5.3 · **Hạn:** 23:59 ngày trước buổi học Week 6  
-**Câu hỏi nghiên cứu:** *Phân bố điểm thi THPT năm 2023 khác nhau thế nào giữa các Hội đồng thi, và tỷ lệ thiếu điểm cùng nhóm môn quan sát ảnh hưởng gì đến cách diễn giải?*
+
 
 ## Phạm vi và nguồn dữ liệu
 
@@ -11,7 +10,7 @@ Nguồn bổ sung là danh mục **64 mã Hội đồng thi**. **63 mã và tên
 
 Quy tắc ghép lấy **hai ký tự đầu của Student ID** làm `exam_council_code`, theo [hướng dẫn cấu trúc số báo danh năm 2023](https://caodangsaigon.edu.vn/ky-thi-thpt-cdsg/huong-dan-cach-tra-so-bao-danh-thi-thpt-quoc-gia-2023/). Trong lần chạy, 63/63 mã riêng ở dữ liệu chính khớp danh mục. Tên Hội đồng thi theo mã không chứng minh nơi cư trú hay trường học của thí sinh.
 
-## EX5.1 — Pipeline tiền xử lý
+## Pipeline tiền xử lý
 
 Pipeline gồm đọc và kiểm tra nguồn → chuẩn hóa chuỗi và kiểm tra mã → phát hiện/loại bản ghi trùng hoàn toàn (so trên cột gốc đã parse, giữ lần đầu) → kiểm tra ID xung đột và miền điểm → thống kê thiếu → tính cờ ngoại lệ → suy nhóm môn quan sát → ghép danh mục → ghi dữ liệu và kiểm tra round-trip. Nếu có ID xung đột, điểm ngoài 0–10, mã sai hoặc khóa nguồn trùng, pipeline dừng. **Không điền giá trị thiếu, không sửa/xóa ngoại lệ, không scale/encode/PCA.**
 
@@ -87,7 +86,7 @@ Student ID và Foreign language code được đọc dạng chuỗi để giữ 
 
 **Cách đếm:** distinct = số giá trị khác nhau, không tính null; thiếu được báo riêng. `Dòng đổi` so sánh giá trị trước/sau, trong đó hai null được xem là không đổi. Tổng cộng **0 dòng đổi** ở hai cột; đây là kết quả quan sát từ dữ liệu, không đặt biến thể giả để giảm distinct. Bảng lỗi định dạng (nếu có) ở [`week5_text_validation_issues+loi_dinh_dang_chuoi.csv`](../../outputs/week5/tables/week5_text_validation_issues+loi_dinh_dang_chuoi.csv).
 
-## EX5.2 — Ghép nguồn danh mục Hội đồng thi
+## Ghép nguồn danh mục Hội đồng thi
 
 Chuẩn hóa khóa `(exam_year=2023, exam_council_code=Student ID[:2])`; ghép trái bằng `validate="many_to_one"` và `indicator=True`. Khóa bên danh mục phải duy nhất. Ghép trái bảo đảm giữ thí sinh không khớp để có thể đối soát; trường tên để trống và `merge_status=left_only`.
 
@@ -120,7 +119,7 @@ Mỗi phép `merge` in `len(df)` ngay trước và sau khi thực hiện. Ba ph�
 
 **Cách đọc biểu đồ:** đây là thanh ngang xếp chồng 100%; trục ngang là tỷ lệ bản ghi, xanh là khớp và cam là không khớp. Nhãn ghi số dòng cùng tỷ lệ trong mỗi nhóm. Biểu đồ cho thấy độ phủ của danh mục mã, không đo độ chính xác của điểm thi.
 
-## EX5.3 — Dữ liệu bàn giao và khả năng tái lập
+## Dữ liệu bàn giao và khả năng tái lập
 
 Dữ liệu cuối [`week5_final+du_lieu_cuoi.csv`](../../data/processed/week5/week5_final+du_lieu_cuoi.csv) gồm **1.022.060 dòng, 16 cột** theo đúng thứ tự:
 
