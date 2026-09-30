@@ -8,12 +8,12 @@ Thang 1–5 dưới đây là rubric đánh giá cho mục tiêu phân tích đi
 
 | Tiêu chí | Điểm | Bằng chứng chính | Giới hạn |
 |---|---:|---|---|
-| Completeness | **3/5** | Toán thiếu 18.687/1.022.060 (1,828%); Văn thiếu 13.821 (1,352%). Các môn tổ hợp thiếu nhiều nhưng pattern phụ thuộc nhóm điểm đã công bố. | Không có hồ sơ đăng ký hoặc miễn thi để xác định ô nào thực sự phải có điểm. |
-| Accuracy | **2/5** | Có nguồn CSV và các phép kiểm nội bộ, nhưng không có bảng điểm chính thức độc lập để đối soát điểm từng thí sinh. | Điểm hợp lệ về định dạng vẫn có thể là điểm ghi sai. |
-| Consistency | **4/5** | Không có dòng nào mà điểm Ngoại ngữ có nhưng mã thiếu hoặc ngược lại; không có dòng có điểm ở cả hai nhóm tổ hợp. | Các pattern môn chưa đầy đủ cần metadata để diễn giải. |
-| Validity | **5/5** | Chín cột điểm có 0 giá trị ngoài [0,10] hoặc vô hạn; 0 mã ngoại ngữ ngoài N1–N7; 0 Student ID có dữ liệu sai định dạng tám chữ số. | Tập mã N1–N7 dựa trên tài liệu/mapping của dataset, chưa đối chiếu văn bản quy chế chính thức. |
-| Uniqueness | **5/5** | 0 Student ID trùng, 0 toàn dòng trùng trong 1.022.060 bản ghi. | Kết luận dựa trên giả định Student ID là định danh thí sinh trong CSV này. |
-| Timeliness | **4/5** | File không có thời điểm thu thập hoặc sửa theo từng thí sinh; không đại diện trực tiếp cho kỳ thi năm khác. |
+| Completeness (Tính hoàn thiện)| **3/5** | Toán thiếu 18.687/1.022.060 (1,828%); Văn thiếu 13.821 (1,352%). Các môn tổ hợp thiếu nhiều nhưng pattern phụ thuộc nhóm điểm đã công bố. | Không có hồ sơ đăng ký hoặc miễn thi để xác định ô nào thực sự phải có điểm. |
+| Accuracy(Tính chính xác) | **2/5** | Có nguồn CSV và các phép kiểm nội bộ, nhưng không có bảng điểm chính thức độc lập để đối soát điểm từng thí sinh. | Điểm hợp lệ về định dạng vẫn có thể là điểm ghi sai. |
+| Consistency(Tính đồng nhất) | **4/5** | Không có dòng nào mà điểm Ngoại ngữ có nhưng mã thiếu hoặc ngược lại; không có dòng có điểm ở cả hai nhóm tổ hợp. | Các pattern môn chưa đầy đủ cần metadata để diễn giải. |
+| Validity (Tính hiệu lực)| **5/5** | Chín cột điểm có 0 giá trị ngoài [0,10] hoặc vô hạn; 0 mã ngoại ngữ ngoài N1–N7; 0 Student ID có dữ liệu sai định dạng tám chữ số. | Tập mã N1–N7 dựa trên tài liệu/mapping của dataset, chưa đối chiếu văn bản quy chế chính thức. |
+| Uniqueness (Tính duy nhất)| **5/5** | 0 Student ID trùng, 0 toàn dòng trùng trong 1.022.060 bản ghi. | Kết luận dựa trên giả định Student ID là định danh thí sinh trong CSV này. |
+| Timeliness (Sự phù hợp thời điểm) | **4/5** | File không có thời điểm thu thập hoặc sửa theo từng thí sinh; không đại diện trực tiếp cho kỳ thi năm khác. |
 
 **Completeness theo mục đích sử dụng.** Tỷ lệ thiếu trên toàn bảng là 67,987% ở Vật lý, 67,896% ở Hóa, 68,238% ở Sinh; 33,130% ở Sử, 33,259% ở Địa và 44,675% ở GDCD. Đây không phải tỷ lệ “hỏng dữ liệu”: kỳ thi có hai bài tổ hợp khác nhau. Có 329.430 thí sinh có ít nhất một điểm tự nhiên và không có điểm xã hội; 683.813 có ít nhất một điểm xã hội và không có điểm tự nhiên; 8.817 không thấy điểm ở cả hai nhóm; 0 có điểm ở cả hai. Do đó, không dòng nào đủ cả **9** điểm, nhưng trong 1.013.243 dòng có thể suy ra một nhóm từ điểm quan sát, **872.976** dòng đủ cả **6** môn liên quan theo nhóm đó. Một điểm trong nhóm **không chứng minh** thí sinh đã đăng ký cả ba môn nhóm đó. Nhóm 8.817 cần điều tra riêng; 4.476 dòng chỉ còn Student ID, chưa thể suy ra nguyên nhân.
 
