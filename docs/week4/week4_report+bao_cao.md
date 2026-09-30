@@ -13,7 +13,7 @@ Notebook xây lại pipeline trên toàn bộ dữ liệu, không cần mạng. 
 [nhật ký nguồn](week4_source_checks.json), không đổi thành ngày chạy lại.
 Hạn: **23:59 ngày trước buổi Week 5**; chưa có ngày học cụ thể.
 
-## EX4.1 — Hai phương pháp phát hiện ngoại lệ
+## Hai phương pháp phát hiện ngoại lệ
 
 Mỗi môn sử dụng toàn bộ điểm không thiếu. IQR = Q3 − Q1; Q1/Q3 nội suy tuyến tính.
 Ngoại lệ khi x < Q1 − 1,5×IQR hoặc x > Q3 + 1,5×IQR, dùng bất đẳng thức nghiêm ngặt.
