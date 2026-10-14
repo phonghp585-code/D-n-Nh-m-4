@@ -1,0 +1,2 @@
+*.csv filter=lfs diff=lfs merge=lfs -text
+data/dataset_diem_thi_thpt_2025.csv filter=lfs diff=lfs merge=lfs -text
