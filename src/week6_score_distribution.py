@@ -179,9 +179,48 @@ def write_docx(stats, figures, output_path, row_count, source23, source25):
         for path in paths:
             doc.add_picture(str(path), width=Inches(5.8))
             doc.add_paragraph(path.name)
-    doc.add_heading("5. Kết luận và giới hạn", level=1)
-    doc.add_paragraph("Để kết luận phổ điểm có dịch chuyển hay không, đối chiếu trung bình và trung vị cùng các đường phân phối, sau đó kiểm tra độ phân tán và tỷ lệ ngưỡng. Chỉ số tổng hợp đơn lẻ không đủ để mô tả toàn bộ hình dạng phân phối.")
-    doc.add_paragraph("Đây là phân tích mô tả, không chứng minh nguyên nhân của khác biệt. Độ khó đề thi, cấu trúc kỳ thi, quy chế và thành phần thí sinh có thể khác giữa hai năm; do đó không diễn giải dịch chuyển điểm như thay đổi trực tiếp về năng lực.")
+    doc.add_heading("5. Nhận xét kết quả theo từng môn", level=1)
+    doc.add_paragraph("Phần này được tạo tự động từ số liệu thực tế. Khi thuyết trình, hãy đọc nhận xét, chỉ vào bảng/biểu đồ tương ứng và nêu rõ đây là so sánh mô tả.")
+    for subject in sorted(stats["subject"].unique()):
+        doc.add_heading(subject, level=2)
+        part = stats[stats["subject"] == subject].set_index("year")
+        if 2023 not in part.index or 2025 not in part.index:
+            doc.add_paragraph("Chỉ có dữ liệu hợp lệ của một trong hai năm; chưa đủ cơ sở so sánh trực tiếp.")
+            continue
+        a, b = part.loc[2023], part.loc[2025]
+        dmean = b["mean"] - a["mean"]
+        dmedian = b["median"] - a["median"]
+        dstd = b["std"] - a["std"]
+        direction = "tăng" if dmean > 0 else ("giảm" if dmean < 0 else "không đổi")
+        med_direction = "tăng" if dmedian > 0 else ("giảm" if dmedian < 0 else "không đổi")
+        spread = "phân tán hơn" if dstd > 0 else ("ít phân tán hơn" if dstd < 0 else "độ phân tán gần như không đổi")
+        doc.add_paragraph(
+            f"Số điểm hợp lệ: {int(a['n']):,} năm 2023 và {int(b['n']):,} năm 2025. "
+            f"Điểm trung bình {direction} {abs(dmean):.3f} điểm (2023: {a['mean']:.3f}; 2025: {b['mean']:.3f}); "
+            f"trung vị {med_direction} {abs(dmedian):.3f} điểm (2023: {a['median']:.3f}; 2025: {b['median']:.3f}). "
+            f"Độ lệch chuẩn thay đổi {dstd:+.3f}, gợi ý phân phối {spread} theo chỉ số này."
+        )
+        doc.add_paragraph(
+            f"Tỷ lệ điểm liệt (≤1) thay đổi {b['pct_le_1']-a['pct_le_1']:+.2f} điểm phần trăm; "
+            f"dưới trung bình (<5) {b['pct_lt_5']-a['pct_lt_5']:+.2f}; "
+            f"đạt từ 8 trở lên {b['pct_ge_8']-a['pct_ge_8']:+.2f}; "
+            f"đạt từ 9 trở lên {b['pct_ge_9']-a['pct_ge_9']:+.2f} điểm phần trăm."
+        )
+        doc.add_paragraph(
+            "Lời gợi ý khi trình bày: “Ở môn " + subject + ", khi so sánh 2023 với 2025, "
+            f"điểm trung bình {direction}, còn trung vị {med_direction}. "
+            "Tôi sẽ đối chiếu histogram/KDE để xem thay đổi này có xuất hiện trên toàn phân phối hay chỉ ở một số vùng điểm; "
+            "boxplot và violin plot giúp kiểm tra thêm trung vị, độ phân tán và hình dạng. "
+            "Các số liệu này mô tả khác biệt, chưa giải thích nguyên nhân.”"
+        )
+    doc.add_heading("6. Kịch bản trình bày gợi ý", level=1)
+    doc.add_paragraph("Mở đầu: “Nhóm em phân tích mô tả và so sánh phân phối điểm thi THPT năm 2023 và 2025, dựa trên dữ liệu đã hợp mã tỉnh. Mục tiêu là xem vị trí, độ phân tán, hình dạng và tỷ lệ theo các ngưỡng điểm thay đổi như thế nào.”")
+    doc.add_paragraph("Phương pháp: “Nhóm sử dụng mean, median, độ lệch chuẩn, skewness và excess kurtosis. Sau đó trực quan hóa bằng histogram, KDE, boxplot và violin plot. Các tỷ lệ được tính trên số điểm hợp lệ của từng môn-năm; không điền điểm thiếu và chỉ dùng điểm trong khoảng 0 đến 10.”")
+    doc.add_paragraph("Khi trình bày kết quả: “Với mỗi môn, nhóm đọc bảng thống kê trước, sau đó kiểm tra các biểu đồ và đối chiếu tỷ lệ ≤1, <5, ≥8 và ≥9. Nhận xét cụ thể cho từng môn nằm trong mục 5 của báo cáo và được sinh từ dữ liệu thực tế khi chạy chương trình.”")
+    doc.add_paragraph("Kết luận: “Phân tích cho biết phân phối điểm có khác biệt mô tả giữa hai năm hay không, nhưng không chứng minh nguyên nhân. Cần thận trọng vì đề thi, quy chế và thành phần thí sinh có thể khác nhau.”")
+    doc.add_heading("7. Kết luận và giới hạn", level=1)
+    doc.add_paragraph("Kết luận về dịch chuyển phổ điểm phải dựa đồng thời vào mean, median, độ phân tán, tỷ lệ ngưỡng và các biểu đồ. Không sử dụng riêng một chỉ số để đại diện toàn bộ phân phối.")
+    doc.add_paragraph("Đây là phân tích mô tả, không chứng minh nguyên nhân của khác biệt và không nên diễn giải điểm số tăng/giảm như thay đổi trực tiếp về năng lực.")
     doc.save(output_path)
 
 def run(file23, file25, output_dir):
