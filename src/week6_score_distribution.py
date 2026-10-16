@@ -172,6 +172,25 @@ def write_docx(stats, figures, output_path, row_count, source23, source25):
         values = [int(row.year), row.subject, f"{row.pct_le_1:.2f}", f"{row.pct_lt_5:.2f}", f"{row.pct_ge_8:.2f}", f"{row.pct_ge_9:.2f}"]
         for cell, value in zip(cells, values): cell.text = str(value)
     doc.add_paragraph("Mỗi tỷ lệ dùng số điểm hợp lệ của chính môn và năm đó làm mẫu số. Vì vậy, cần đọc kèm cột N để nhận biết chênh lệch về số quan sát.")
+    doc.add_heading("3.1. Bảng chênh lệch 2025 so với 2023", level=2)
+    doc.add_paragraph("Các chênh lệch dưới đây được tính bằng giá trị năm 2025 trừ giá trị năm 2023. Với tỷ lệ, đơn vị là điểm phần trăm; với thống kê điểm, đơn vị là điểm trừ khi chỉ số không có đơn vị.")
+    table = doc.add_table(rows=1, cols=10); table.style = "Light Shading Accent 1"
+    delta_headers = ["Môn", "Δ TB", "Δ Trung vị", "Δ ĐLC", "Δ Skewness", "Δ Kurtosis", "Δ ≤1 (đpt)", "Δ <5 (đpt)", "Δ ≥8 (đpt)", "Δ ≥9 (đpt)"]
+    for cell, value in zip(table.rows[0].cells, delta_headers): cell.text = value
+    for subject in sorted(stats["subject"].unique()):
+        part = stats[stats["subject"] == subject].set_index("year")
+        if 2023 not in part.index or 2025 not in part.index:
+            cells = table.add_row().cells; cells[0].text = subject
+            for cell in cells[1:]: cell.text = "N/A"
+            continue
+        a, b = part.loc[2023], part.loc[2025]
+        values = [subject, f"{b['mean']-a['mean']:+.3f}", f"{b['median']-a['median']:+.3f}",
+                  f"{b['std']-a['std']:+.3f}", f"{b['skewness']-a['skewness']:+.3f}",
+                  f"{b['kurtosis_excess']-a['kurtosis_excess']:+.3f}",
+                  f"{b['pct_le_1']-a['pct_le_1']:+.2f}", f"{b['pct_lt_5']-a['pct_lt_5']:+.2f}",
+                  f"{b['pct_ge_8']-a['pct_ge_8']:+.2f}", f"{b['pct_ge_9']-a['pct_ge_9']:+.2f}"]
+        cells = table.add_row().cells
+        for cell, value in zip(cells, values): cell.text = str(value)
     doc.add_heading("4. Biểu đồ và cách đọc", level=1)
     doc.add_paragraph("Histogram cho thấy tần suất tương đối theo các khoảng điểm; KDE làm mượt hình dạng và có thể che khuất các đỉnh nhỏ; boxplot so sánh trung vị và khoảng tứ phân vị; violin plot bổ sung hình dạng mật độ. Các biểu đồ dùng cùng thang điểm 0–10. Tiêu đề mô tả nội dung biểu đồ, không khẳng định trước kết quả.")
     for subject, paths in figures.items():
@@ -206,12 +225,32 @@ def write_docx(stats, figures, output_path, row_count, source23, source25):
             f"đạt từ 8 trở lên {b['pct_ge_8']-a['pct_ge_8']:+.2f}; "
             f"đạt từ 9 trở lên {b['pct_ge_9']-a['pct_ge_9']:+.2f} điểm phần trăm."
         )
+        dskew = b["skewness"] - a["skewness"]
+        dkurt = b["kurtosis_excess"] - a["kurtosis_excess"]
+        center_note = ("cả trung bình và trung vị đều tăng" if dmean > 0 and dmedian > 0 else
+                       "cả trung bình và trung vị đều giảm" if dmean < 0 and dmedian < 0 else
+                       "trung bình và trung vị thay đổi không cùng chiều" if dmean * dmedian < 0 else
+                       "trung tâm phân phối thay đổi không đồng nhất hoặc rất nhỏ")
+        doc.add_paragraph(
+            f"Về hình dạng, skewness thay đổi {dskew:+.3f} (2023: {a['skewness']:.3f}; 2025: {b['skewness']:.3f}); "
+            f"excess kurtosis thay đổi {dkurt:+.3f} (2023: {a['kurtosis_excess']:.3f}; 2025: {b['kurtosis_excess']:.3f}). "
+            "Skewness dương thường gợi ý đuôi phải dài hơn, âm gợi ý đuôi trái dài hơn; excess kurtosis dương/âm cần được đọc thận trọng "
+            "như dấu hiệu về đuôi/độ nhọn, không dùng riêng để kết luận phân phối chuẩn."
+        )
+        doc.add_paragraph(
+            f"Kết luận mô tả sơ bộ: {center_note}. "
+            f"Chênh lệch tỷ lệ 2025–2023 lần lượt là ≤1: {b['pct_le_1']-a['pct_le_1']:+.2f}, "
+            f"<5: {b['pct_lt_5']-a['pct_lt_5']:+.2f}, ≥8: {b['pct_ge_8']-a['pct_ge_8']:+.2f}, "
+            f"≥9: {b['pct_ge_9']-a['pct_ge_9']:+.2f} điểm phần trăm. "
+            "Để trả lời câu hỏi phổ điểm có dịch chuyển hay không, cần kiểm tra đồng thời histogram và KDE (vị trí các đỉnh/mật độ), "
+            "boxplot (trung vị và IQR) và violin plot (hình dạng mật độ). Nếu các biểu đồ không cùng hướng, báo cáo phải nêu rõ sự khác biệt thay vì kết luận một chiều."
+        )
         doc.add_paragraph(
             "Lời gợi ý khi trình bày: “Ở môn " + subject + ", khi so sánh 2023 với 2025, "
-            f"điểm trung bình {direction}, còn trung vị {med_direction}. "
-            "Tôi sẽ đối chiếu histogram/KDE để xem thay đổi này có xuất hiện trên toàn phân phối hay chỉ ở một số vùng điểm; "
-            "boxplot và violin plot giúp kiểm tra thêm trung vị, độ phân tán và hình dạng. "
-            "Các số liệu này mô tả khác biệt, chưa giải thích nguyên nhân.”"
+            f"điểm trung bình {direction}, còn trung vị {med_direction}; độ lệch chuẩn thay đổi {dstd:+.3f}. "
+            f"{center_note.capitalize()}. "
+            "Em đối chiếu histogram/KDE để xác định vùng điểm có mật độ dịch chuyển, rồi kiểm tra trung vị và IQR qua boxplot/violin. "
+            "Các kết quả là khác biệt mô tả, chưa giải thích nguyên nhân.”"
         )
     doc.add_heading("6. Kịch bản trình bày gợi ý", level=1)
     doc.add_paragraph("Mở đầu: “Nhóm em phân tích mô tả và so sánh phân phối điểm thi THPT năm 2023 và 2025, dựa trên dữ liệu đã hợp mã tỉnh. Mục tiêu là xem vị trí, độ phân tán, hình dạng và tỷ lệ theo các ngưỡng điểm thay đổi như thế nào.”")
