@@ -1,23 +1,23 @@
-# Kiểm tra bài Week 6: So sánh phổ điểm THPT 2023–2025
+# Kiểm tra bài Week 6–7: So sánh phổ điểm THPT 2023–2025
 
-## Phạm vi
-- [x] Có mã nguồn tách riêng trong `src/`.
-- [x] Có notebook chạy pipeline và xem bảng thống kê.
-- [x] Có unit test kiểm tra ánh xạ cột, miền điểm, thống kê và các ngưỡng.
-- [x] Có file requirements riêng.
-- [x] Có thư mục output và README giải thích các đầu ra.
-- [x] Pipeline tạo báo cáo Word `.docx`, CSV thống kê, CSV dạng dài và biểu đồ PNG.
-- [x] So sánh histogram, KDE, boxplot, violin plot cho các môn được nhận diện ở cả hai năm.
-- [x] Tính mean, median, standard deviation, skewness, excess kurtosis, tỷ lệ ≤1, <5, ≥8, ≥9.
-- [x] Không tự điền điểm thiếu; không thay đổi dataset gốc.
-- [ ] Chưa xác nhận thực thi end-to-end trong môi trường sạch ở thời điểm commit.
-- [ ] Chưa có báo cáo DOCX/PNG/CSV sinh từ dữ liệu thật được commit sẵn; cần chạy pipeline sau khi tải đủ Git LFS và cài dependencies.
+## Phạm vi triển khai
+- [x] Dataset 2023 từ branch `thanh`, dataset 2025 đã hợp mã tỉnh từ branch `nhan`.
+- [x] Mã nguồn riêng trong `src/week6_score_distribution.py`.
+- [x] Notebook chạy pipeline và đọc bảng kết quả.
+- [x] Unit test ánh xạ môn, miền điểm và tỷ lệ ngưỡng.
+- [x] Requirements riêng.
+- [x] Pipeline sinh báo cáo Word, CSV thống kê, CSV dạng dài, PNG và metadata.
+- [x] Histogram, KDE, boxplot, violin plot cho từng môn chung.
+- [x] Mean, median, standard deviation, skewness, excess kurtosis.
+- [x] Tỷ lệ điểm ≤1, <5, ≥8, ≥9.
+- [ ] Chưa chạy end-to-end trên môi trường sạch có đủ dữ liệu Git LFS; output thật cần sinh và kiểm tra sau khi tải dataset.
 
-## Kiểm tra dữ liệu trước khi chạy
-1. Kiểm tra file 2023 tồn tại: `data/processed/week3/exam_2023.parquet`.
-2. Dataset 2025 đang được quản lý bằng Git LFS. Chạy `git lfs pull` và xác nhận file không còn là con trỏ văn bản LFS.
-3. Nếu tên cột môn khác alias trong mã, cập nhật `SUBJECT_ALIASES` và thêm unit test trước khi chạy.
-4. Xác nhận số dòng, cột môn nhận diện, số điểm hợp lệ và file đầu ra trong `run_metadata.json`.
+## Kiểm tra dữ liệu
+1. Xác nhận `data/processed/week3/exam_2023.parquet` tồn tại.
+2. Chạy `git lfs pull`; dataset 2025 không được còn là con trỏ LFS.
+3. Kiểm tra `outputs/score_distribution/run_metadata.json` để xác nhận môn và số điểm hợp lệ.
+4. Nếu cần, bổ sung alias cột và unit test.
+5. Mở DOCX, kiểm tra bảng, nhãn biểu đồ và số môn khớp CSV.
 
 ## Lệnh kiểm tra
 ```bash
@@ -27,12 +27,12 @@ python -m src.week6_score_distribution
 ```
 
 ## Tiêu chí chấp nhận
-- Lệnh chạy kết thúc với mã thoát 0.
-- Có một dòng thống kê cho mỗi cặp năm–môn có điểm hợp lệ.
-- Tỷ lệ phần trăm nằm trong [0,100].
-- Mỗi môn có tối đa bốn biểu đồ, đặt trong `outputs/score_distribution/figures/`.
-- Báo cáo Word mở được và chứa bảng thống kê cùng hình minh họa.
-- Các kết quả có thể tái lập khi dùng cùng dữ liệu và cùng phiên bản thư viện.
+- Unit tests pass.
+- Có thống kê cho mỗi môn-năm có điểm hợp lệ.
+- Tỷ lệ thuộc [0, 100].
+- Mỗi môn chung có 4 biểu đồ.
+- Báo cáo Word mở được, có bảng và hình.
+- Chạy lại cùng dữ liệu tái tạo được kết quả.
 
-## Giới hạn cần nêu trong báo cáo
-Đây là phân tích mô tả, không kết luận nguyên nhân làm điểm thay đổi. Tỷ lệ tính trên điểm hợp lệ của từng môn. Thay đổi cấu trúc đề thi, quy chế và thành phần thí sinh có thể ảnh hưởng khả năng so sánh giữa năm.
+## Giới hạn
+Không điền điểm thiếu; điểm ngoài [0, 10] bị loại. Mẫu số tỷ lệ là điểm hợp lệ của từng môn-năm. Đây là phân tích mô tả, không chứng minh nhân quả; không nên quy đổi trực tiếp điểm giữa hai cấu trúc đề thi.
