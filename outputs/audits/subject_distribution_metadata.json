@@ -1,0 +1,112 @@
+{
+  "inputs": [
+    {
+      "source": "C:\\Users\\aawm8\\Downloads\\D-n-Nh-m-4\\data\\raw\\original.csv",
+      "sha256": "cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5",
+      "year": 2023,
+      "cohort": "2023 — CT2006",
+      "rows": 1022060,
+      "rows_with_any_score": 1017584,
+      "rows_without_scores": 4476,
+      "invalid_scores": {
+        "math": 0,
+        "literature": 0,
+        "physics": 0,
+        "chemistry": 0,
+        "biology": 0,
+        "history": 0,
+        "geography": 0,
+        "civics": 0,
+        "economics_law": 0,
+        "informatics": 0,
+        "technology": 0,
+        "foreign_language": 0
+      },
+      "duplicate_ids": 0,
+      "malformed_ids": 0,
+      "curriculum_confirmation": "2023 — CT2006",
+      "score_policy": "finite [0,10], zero retained, invalid -> missing with counts; no imputation",
+      "participation_policy": "observed scores, not confirmed exam registration/admission preferences",
+      "available_combination_codes": []
+    },
+    {
+      "source": "C:\\Users\\aawm8\\Downloads\\D-n-Nh-m-4\\data\\dataset_diem_thi_thpt_2025.csv",
+      "sha256": "0db00925d51bcb14dfb6c92efeee9926524aba8938288987a95c38d34484e6ed",
+      "year": 2025,
+      "cohort": "2025 — CT2018",
+      "rows": 1131136,
+      "rows_with_any_score": 1130984,
+      "rows_without_scores": 152,
+      "invalid_scores": {
+        "math": 0,
+        "literature": 0,
+        "physics": 0,
+        "chemistry": 0,
+        "biology": 0,
+        "history": 0,
+        "geography": 0,
+        "civics": 0,
+        "economics_law": 0,
+        "informatics": 0,
+        "technology": 0,
+        "foreign_language": 0
+      },
+      "duplicate_ids": 0,
+      "malformed_ids": 0,
+      "curriculum_confirmation": "user-confirmed CT2018-only",
+      "score_policy": "finite [0,10], zero retained, invalid -> missing with counts; no imputation",
+      "participation_policy": "observed scores, not confirmed exam registration/admission preferences",
+      "available_combination_codes": [
+        "A00",
+        "A01",
+        "A02",
+        "A08",
+        "A09",
+        "B00",
+        "B08",
+        "C00",
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C14",
+        "C19",
+        "C20",
+        "D01",
+        "D07",
+        "D08",
+        "D09",
+        "D10",
+        "D14",
+        "D15",
+        "D66",
+        "D84"
+      ]
+    }
+  ],
+  "subjects": [
+    "math",
+    "literature",
+    "physics",
+    "chemistry",
+    "biology",
+    "history",
+    "geography",
+    "english",
+    "foreign_language"
+  ],
+  "extra_subjects_by_year": {
+    "2023": [
+      "civics"
+    ],
+    "2025": [
+      "economics_law",
+      "informatics",
+      "technology"
+    ]
+  },
+  "score_policy": "Observed valid scores; no imputation",
+  "denominator": "All valid scores of the particular subject and year",
+  "bin_policy": "0.5-point intervals, left closed/right open except last includes 10",
+  "claim_scope": "Descriptive evidence; not a causal estimate of curriculum or self-selection"
+}

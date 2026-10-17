@@ -1,0 +1,83 @@
+{
+  "definition": "All three observed finite scores in [0,10]: Mathematics/Chemistry/Biology. Not registration or admissions preference counts.",
+  "curriculum_2025": "CT2018 only, confirmed by user on 2026-10-17",
+  "records": [
+    {
+      "file": "data/raw/original.csv",
+      "rows": 1022060,
+      "math_n": 1003373,
+      "chemistry_n": 328118,
+      "biology_n": 324625,
+      "chemistry_biology_n": 324571,
+      "b00_complete_n": 324554,
+      "b00_valid_n": 324554,
+      "chemistry_biology_missing_math_n": 17,
+      "b00_sum_total": 6687348.450000001,
+      "b00_sum_min": 4.5,
+      "b00_sum_max": 29.8
+    },
+    {
+      "file": "data/processed/week3/exam_2023.parquet",
+      "rows": 1022060,
+      "math_n": 1003373,
+      "chemistry_n": 328118,
+      "biology_n": 324625,
+      "chemistry_biology_n": 324571,
+      "b00_complete_n": 324554,
+      "b00_valid_n": 324554,
+      "chemistry_biology_missing_math_n": 17,
+      "b00_sum_total": 6687348.45,
+      "b00_sum_min": 4.5,
+      "b00_sum_max": 29.8
+    },
+    {
+      "file": "data/processed/week4/week4_cleaned.csv",
+      "rows": 1022060,
+      "math_n": 1003373,
+      "chemistry_n": 328118,
+      "biology_n": 324625,
+      "chemistry_biology_n": 324571,
+      "b00_complete_n": 324554,
+      "b00_valid_n": 324554,
+      "chemistry_biology_missing_math_n": 17,
+      "b00_sum_total": 6687348.450000001,
+      "b00_sum_min": 4.5,
+      "b00_sum_max": 29.8
+    },
+    {
+      "file": "data/processed/week5/week5_final+du_lieu_cuoi.csv",
+      "rows": 1022060,
+      "math_n": 1003373,
+      "chemistry_n": 328118,
+      "biology_n": 324625,
+      "chemistry_biology_n": 324571,
+      "b00_complete_n": 324554,
+      "b00_valid_n": 324554,
+      "chemistry_biology_missing_math_n": 17,
+      "b00_sum_total": 6687348.450000001,
+      "b00_sum_min": 4.5,
+      "b00_sum_max": 29.8
+    },
+    {
+      "file": "data/dataset_diem_thi_thpt_2025.csv",
+      "rows": 1131136,
+      "math_n": 1126172,
+      "chemistry_n": 240135,
+      "biology_n": 69895,
+      "chemistry_biology_n": 44964,
+      "b00_complete_n": 44964,
+      "b00_valid_n": 44964,
+      "chemistry_biology_missing_math_n": 0,
+      "b00_sum_total": 822365.5,
+      "b00_sum_min": 4.05,
+      "b00_sum_max": 30.0,
+      "stored_b00_n": 44964,
+      "stored_availability_mismatch": 0,
+      "stored_sum_mismatch": 0
+    }
+  ],
+  "sha256": {
+    "data/raw/original.csv": "cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5",
+    "data/dataset_diem_thi_thpt_2025.csv": "0db00925d51bcb14dfb6c92efeee9926524aba8938288987a95c38d34484e6ed"
+  }
+}

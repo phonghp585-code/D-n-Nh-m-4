@@ -1,0 +1,621 @@
+{
+  "shape": [
+    1131136,
+    41
+  ],
+  "columns": [
+    "sbd",
+    "ma_tinh",
+    "ten_tinh",
+    "toan",
+    "ngu_van",
+    "ngoai_ngu",
+    "ma_ngoai_ngu",
+    "tieng_anh",
+    "vat_li",
+    "hoa_hoc",
+    "sinh_hoc",
+    "lich_su",
+    "dia_li",
+    "gdktpl",
+    "tin_hoc",
+    "cong_nghe",
+    "diem_A00",
+    "diem_A01",
+    "diem_A02",
+    "diem_A08",
+    "diem_A09",
+    "diem_B00",
+    "diem_B08",
+    "diem_C00",
+    "diem_C01",
+    "diem_C02",
+    "diem_C03",
+    "diem_C04",
+    "diem_C14",
+    "diem_C19",
+    "diem_C20",
+    "diem_D01",
+    "diem_D07",
+    "diem_D08",
+    "diem_D09",
+    "diem_D10",
+    "diem_D14",
+    "diem_D15",
+    "diem_D66",
+    "diem_D84",
+    "to_hop_du_thi"
+  ],
+  "duplicate_sbd": 0,
+  "duplicate_rows": 0,
+  "missing_sbd": 0,
+  "malformed_sbd": 0,
+  "province_code_prefix_mismatch": 0,
+  "province_missing": 0,
+  "province_codes": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "36",
+    "37",
+    "38",
+    "39",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50",
+    "51",
+    "52",
+    "53",
+    "54",
+    "55",
+    "56",
+    "57",
+    "58",
+    "59",
+    "60",
+    "61",
+    "62",
+    "63",
+    "64"
+  ],
+  "province_names_per_code_max": 1,
+  "language_counts": {
+    "nan": 773413,
+    "N1": 351848,
+    "N4": 4225,
+    "N7": 541,
+    "N6": 491,
+    "N3": 408,
+    "N5": 150,
+    "N2": 60
+  },
+  "language_score_code_mismatch": 0,
+  "english_mismatch": 0,
+  "profile": {
+    "toan": {
+      "n": 1126172,
+      "missing": 4964,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 6,
+      "min": 0.0,
+      "max": 10.0
+    },
+    "ngu_van": {
+      "n": 1126726,
+      "missing": 4410,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 7,
+      "min": 0.0,
+      "max": 9.75
+    },
+    "ngoai_ngu": {
+      "n": 357723,
+      "missing": 773413,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 2,
+      "min": 0.0,
+      "max": 10.0
+    },
+    "vat_li": {
+      "n": 347599,
+      "missing": 783537,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 1,
+      "min": 0.0,
+      "max": 10.0
+    },
+    "hoa_hoc": {
+      "n": 240135,
+      "missing": 891001,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 0,
+      "min": 0.75,
+      "max": 10.0
+    },
+    "sinh_hoc": {
+      "n": 69895,
+      "missing": 1061241,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 0,
+      "min": 0.85,
+      "max": 10.0
+    },
+    "lich_su": {
+      "n": 481293,
+      "missing": 649843,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 2,
+      "min": 0.0,
+      "max": 10.0
+    },
+    "dia_li": {
+      "n": 476472,
+      "missing": 654664,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 3,
+      "min": 0.0,
+      "max": 10.0
+    },
+    "gdktpl": {
+      "n": 246401,
+      "missing": 884735,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 0,
+      "min": 1.25,
+      "max": 10.0
+    },
+    "tin_hoc": {
+      "n": 7602,
+      "missing": 1123534,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 0,
+      "min": 1.35,
+      "max": 10.0
+    },
+    "cong_nghe": {
+      "n": 24338,
+      "missing": 1106798,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 0,
+      "min": 1.55,
+      "max": 10.0
+    },
+    "tieng_anh": {
+      "n": 351848,
+      "missing": 779288,
+      "invalid_numeric": 0,
+      "outside_0_10": 0,
+      "zero": 2,
+      "min": 0.0,
+      "max": 10.0
+    }
+  },
+  "score_count_distribution": {
+    "0": 152,
+    "1": 265,
+    "2": 244,
+    "3": 18297,
+    "4": 1112178
+  },
+  "optional_score_count_distribution": {
+    "0": 557,
+    "1": 9700,
+    "2": 1120879
+  },
+  "combo_checks": {
+    "A00": {
+      "expected_n": 162200,
+      "stored_n": 162200,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "A01": {
+      "expected_n": 146960,
+      "stored_n": 146960,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 679
+    },
+    "A02": {
+      "expected_n": 4795,
+      "stored_n": 4795,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "A08": {
+      "expected_n": 68313,
+      "stored_n": 68313,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "A09": {
+      "expected_n": 109404,
+      "stored_n": 109404,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "B00": {
+      "expected_n": 44964,
+      "stored_n": 44964,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "B08": {
+      "expected_n": 4227,
+      "stored_n": 4227,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 63
+    },
+    "C00": {
+      "expected_n": 297377,
+      "stored_n": 297377,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "C01": {
+      "expected_n": 345014,
+      "stored_n": 345014,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "C02": {
+      "expected_n": 237064,
+      "stored_n": 237064,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "C03": {
+      "expected_n": 476660,
+      "stored_n": 476660,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "C04": {
+      "expected_n": 472025,
+      "stored_n": 472025,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "C14": {
+      "expected_n": 246298,
+      "stored_n": 246298,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "C19": {
+      "expected_n": 68351,
+      "stored_n": 68351,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "C20": {
+      "expected_n": 109423,
+      "stored_n": 109423,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0
+    },
+    "D01": {
+      "expected_n": 350654,
+      "stored_n": 350654,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 5871
+    },
+    "D07": {
+      "expected_n": 24478,
+      "stored_n": 24478,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 232
+    },
+    "D08": {
+      "expected_n": 4227,
+      "stored_n": 4227,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 63
+    },
+    "D09": {
+      "expected_n": 69904,
+      "stored_n": 69904,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 1967
+    },
+    "D10": {
+      "expected_n": 53567,
+      "stored_n": 53567,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 1537
+    },
+    "D14": {
+      "expected_n": 69989,
+      "stored_n": 69989,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 1968
+    },
+    "D15": {
+      "expected_n": 53592,
+      "stored_n": 53592,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 1537
+    },
+    "D66": {
+      "expected_n": 47905,
+      "stored_n": 47905,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 1317
+    },
+    "D84": {
+      "expected_n": 47902,
+      "stored_n": 47902,
+      "availability_mismatch": 0,
+      "sum_mismatch": 0,
+      "matches_any_foreign_language_instead": 1317
+    }
+  },
+  "label_mismatch": 0,
+  "label_mismatch_examples": [],
+  "old_rows": 1022060,
+  "old_profile": {
+    "toan": 1003373,
+    "ngu_van": 1008239,
+    "ngoai_ngu": 880997,
+    "vat_li": 327189,
+    "hoa_hoc": 328118,
+    "sinh_hoc": 324625,
+    "lich_su": 683447,
+    "dia_li": 682134,
+    "gdcd": 565452
+  },
+  "eligible_core": {
+    "A00": {
+      "2023": 325902,
+      "2025": 162200
+    },
+    "A01": {
+      "2023": 314412,
+      "2025": 146960
+    },
+    "B00": {
+      "2023": 324554,
+      "2025": 44964
+    },
+    "C00": {
+      "2023": 681723,
+      "2025": 297377
+    },
+    "D01": {
+      "2023": 873126,
+      "2025": 350654
+    }
+  },
+  "catalog": [
+    {
+      "ma_to_hop": "A00",
+      "mon_1": "Toán",
+      "mon_2": "Vật lí",
+      "mon_3": "Hoá học",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Khối A truyền thống (Toán - Lí - Hoá)"
+    },
+    {
+      "ma_to_hop": "A01",
+      "mon_1": "Toán",
+      "mon_2": "Vật lí",
+      "mon_3": "Ngoại ngữ",
+      "co_mon_ngoai_ngu": 1,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Khối A1 (Toán - Lí - Ngoại ngữ); còn gọi D90"
+    },
+    {
+      "ma_to_hop": "A02",
+      "mon_1": "Toán",
+      "mon_2": "Vật lí",
+      "mon_3": "Sinh học",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Toán - Lí - Sinh"
+    },
+    {
+      "ma_to_hop": "B00",
+      "mon_1": "Toán",
+      "mon_2": "Hoá học",
+      "mon_3": "Sinh học",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Khối B truyền thống (Toán - Hoá - Sinh)"
+    },
+    {
+      "ma_to_hop": "B08",
+      "mon_1": "Toán",
+      "mon_2": "Sinh học",
+      "mon_3": "Ngoại ngữ",
+      "co_mon_ngoai_ngu": 1,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Toán - Sinh - Ngoại ngữ; còn gọi D99"
+    },
+    {
+      "ma_to_hop": "C00",
+      "mon_1": "Ngữ văn",
+      "mon_2": "Lịch sử",
+      "mon_3": "Địa lí",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Khối C truyền thống (Văn - Sử - Địa)"
+    },
+    {
+      "ma_to_hop": "C01",
+      "mon_1": "Toán",
+      "mon_2": "Ngữ văn",
+      "mon_3": "Vật lí",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Toán - Văn - Lí"
+    },
+    {
+      "ma_to_hop": "C03",
+      "mon_1": "Ngữ văn",
+      "mon_2": "Toán",
+      "mon_3": "Lịch sử",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Văn - Toán - Sử"
+    },
+    {
+      "ma_to_hop": "C04",
+      "mon_1": "Ngữ văn",
+      "mon_2": "Toán",
+      "mon_3": "Địa lí",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Văn - Toán - Địa"
+    },
+    {
+      "ma_to_hop": "C19",
+      "mon_1": "Ngữ văn",
+      "mon_2": "Lịch sử",
+      "mon_3": "GDCD",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 1,
+      "ghi_chu": "2023: Văn-Sử-GDCD  |  2025: Văn-Sử-GD Kinh tế & Pháp luật"
+    },
+    {
+      "ma_to_hop": "C20",
+      "mon_1": "Ngữ văn",
+      "mon_2": "Địa lí",
+      "mon_3": "GDCD",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 1,
+      "ghi_chu": "2023: Văn-Địa-GDCD |  2025: Văn-Địa-GD Kinh tế & Pháp luật"
+    },
+    {
+      "ma_to_hop": "D01",
+      "mon_1": "Toán",
+      "mon_2": "Ngữ văn",
+      "mon_3": "Ngoại ngữ",
+      "co_mon_ngoai_ngu": 1,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Khối D1 truyền thống (Toán - Văn - Ngoại ngữ)"
+    },
+    {
+      "ma_to_hop": "D04",
+      "mon_1": "Toán",
+      "mon_2": "Ngữ văn",
+      "mon_3": "Hoá học",
+      "co_mon_ngoai_ngu": 0,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Toán - Văn - Hoá"
+    },
+    {
+      "ma_to_hop": "D07",
+      "mon_1": "Toán",
+      "mon_2": "Hoá học",
+      "mon_3": "Ngoại ngữ",
+      "co_mon_ngoai_ngu": 1,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Toán - Hoá - Ngoại ngữ"
+    },
+    {
+      "ma_to_hop": "D09",
+      "mon_1": "Toán",
+      "mon_2": "Địa lí",
+      "mon_3": "Ngoại ngữ",
+      "co_mon_ngoai_ngu": 1,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Toán - Địa - Ngoại ngữ; còn gọi D10"
+    },
+    {
+      "ma_to_hop": "D14",
+      "mon_1": "Ngữ văn",
+      "mon_2": "Ngoại ngữ",
+      "mon_3": "Lịch sử",
+      "co_mon_ngoai_ngu": 1,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Văn - Ngoại ngữ - Sử"
+    },
+    {
+      "ma_to_hop": "D15",
+      "mon_1": "Ngữ văn",
+      "mon_2": "Ngoại ngữ",
+      "mon_3": "Địa lí",
+      "co_mon_ngoai_ngu": 1,
+      "co_mon_doi_theo_chuong_trinh": 0,
+      "ghi_chu": "Văn - Ngoại ngữ - Địa"
+    },
+    {
+      "ma_to_hop": "D66",
+      "mon_1": "Ngữ văn",
+      "mon_2": "GDCD",
+      "mon_3": "Ngoại ngữ",
+      "co_mon_ngoai_ngu": 1,
+      "co_mon_doi_theo_chuong_trinh": 1,
+      "ghi_chu": "2023: Văn-GDCD-Ngoại ngữ | 2025: Văn-KTPL-Ngoại ngữ"
+    },
+    {
+      "ma_to_hop": "D96",
+      "mon_1": "Toán",
+      "mon_2": "Ngoại ngữ",
+      "mon_3": "GDCD",
+      "co_mon_ngoai_ngu": 1,
+      "co_mon_doi_theo_chuong_trinh": 1,
+      "ghi_chu": "2023: Toán-Ngoại ngữ-GDCD | 2025: Toán-Ngoại ngữ-KTPL"
+    }
+  ]
+}

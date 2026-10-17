@@ -1,0 +1,20 @@
+ma_to_hop,mon_1,mon_2,mon_3,co_mon_ngoai_ngu,co_mon_doi_theo_chuong_trinh,ghi_chu
+A00,Toán,Vật lí,Hoá học,0,0,Khối A truyền thống (Toán - Lí - Hoá)
+A01,Toán,Vật lí,Ngoại ngữ,1,0,Khối A1 (Toán - Lí - Ngoại ngữ); còn gọi D90
+A02,Toán,Vật lí,Sinh học,0,0,Toán - Lí - Sinh
+B00,Toán,Hoá học,Sinh học,0,0,Khối B truyền thống (Toán - Hoá - Sinh)
+B08,Toán,Sinh học,Ngoại ngữ,1,0,Toán - Sinh - Ngoại ngữ; còn gọi D99
+C00,Ngữ văn,Lịch sử,Địa lí,0,0,Khối C truyền thống (Văn - Sử - Địa)
+C01,Toán,Ngữ văn,Vật lí,0,0,Toán - Văn - Lí
+C03,Ngữ văn,Toán,Lịch sử,0,0,Văn - Toán - Sử
+C04,Ngữ văn,Toán,Địa lí,0,0,Văn - Toán - Địa
+C19,Ngữ văn,Lịch sử,GDCD,0,1,2023: Văn-Sử-GDCD  |  2025: Văn-Sử-GD Kinh tế & Pháp luật
+C20,Ngữ văn,Địa lí,GDCD,0,1,2023: Văn-Địa-GDCD |  2025: Văn-Địa-GD Kinh tế & Pháp luật
+D01,Toán,Ngữ văn,Ngoại ngữ,1,0,Khối D1 truyền thống (Toán - Văn - Ngoại ngữ)
+D04,Toán,Ngữ văn,Hoá học,0,0,Toán - Văn - Hoá
+D07,Toán,Hoá học,Ngoại ngữ,1,0,Toán - Hoá - Ngoại ngữ
+D09,Toán,Địa lí,Ngoại ngữ,1,0,Toán - Địa - Ngoại ngữ; còn gọi D10
+D14,Ngữ văn,Ngoại ngữ,Lịch sử,1,0,Văn - Ngoại ngữ - Sử
+D15,Ngữ văn,Ngoại ngữ,Địa lí,1,0,Văn - Ngoại ngữ - Địa
+D66,Ngữ văn,GDCD,Ngoại ngữ,1,1,2023: Văn-GDCD-Ngoại ngữ | 2025: Văn-KTPL-Ngoại ngữ
+D96,Toán,Ngoại ngữ,GDCD,1,1,2023: Toán-Ngoại ngữ-GDCD | 2025: Toán-Ngoại ngữ-KTPL

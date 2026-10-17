@@ -1,0 +1,223 @@
+{
+  "retrieved_at": "2026-10-17",
+  "reference_sha256": "4219024288e47dc9bb9ff230246ed7616640809d4a8838f27b8e25d50571abe1",
+  "inputs": [
+    {
+      "year": 2023,
+      "source": "C:\\Users\\aawm8\\Downloads\\D-n-Nh-m-4\\data\\raw\\original.csv",
+      "sha256": "cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5"
+    },
+    {
+      "year": 2025,
+      "source": "C:\\Users\\aawm8\\Downloads\\D-n-Nh-m-4\\data\\dataset_diem_thi_thpt_2025.csv",
+      "sha256": "0db00925d51bcb14dfb6c92efeee9926524aba8938288987a95c38d34484e6ed"
+    }
+  ],
+  "reference_files": [
+    {
+      "path": "data\\external\\verification\\official_reference.json",
+      "sha256": "4219024288e47dc9bb9ff230246ed7616640809d4a8838f27b8e25d50571abe1"
+    },
+    {
+      "path": "data\\external\\verification\\pho_diem_2023.html",
+      "sha256": "d3c802d39eed057938cc4aa2fb01cea20075ce5d1b14d52ee6fc73fa3beaf797"
+    },
+    {
+      "path": "data\\external\\verification\\pho_diem_2025_bo_gddt.pdf",
+      "sha256": "e042b526d7bb51af5cdee51edc0a6fbd300fc3cf3963c34b2569604db8de40c7"
+    }
+  ],
+  "statistic_checks": 160,
+  "statistic_mismatches": [
+    {
+      "year": 2023,
+      "subject": "math",
+      "metric": "n",
+      "local": 1003373.0,
+      "published": 1003372.0,
+      "difference": 1.0,
+      "status": "mismatch",
+      "tolerance": 1e-08,
+      "source_url": "https://dbndnghean.vn/cong-bo-diem-thi-tot-nghiep-trung-hoc-pho-thong-nam-2023-9656.htm",
+      "source_page": NaN
+    },
+    {
+      "year": 2023,
+      "subject": "math",
+      "metric": "n_lt5",
+      "local": 217094.0,
+      "published": 217093.0,
+      "difference": 1.0,
+      "status": "mismatch",
+      "tolerance": 1e-08,
+      "source_url": "https://dbndnghean.vn/cong-bo-diem-thi-tot-nghiep-trung-hoc-pho-thong-nam-2023-9656.htm",
+      "source_page": NaN
+    },
+    {
+      "year": 2023,
+      "subject": "literature",
+      "metric": "n_lt5",
+      "local": 73656.0,
+      "published": 73622.0,
+      "difference": 34.0,
+      "status": "mismatch",
+      "tolerance": 1e-08,
+      "source_url": "https://dbndnghean.vn/cong-bo-diem-thi-tot-nghiep-trung-hoc-pho-thong-nam-2023-9656.htm",
+      "source_page": NaN
+    },
+    {
+      "year": 2023,
+      "subject": "physics",
+      "metric": "n",
+      "local": 327189.0,
+      "published": 327188.0,
+      "difference": 1.0,
+      "status": "mismatch",
+      "tolerance": 1e-08,
+      "source_url": "https://dbndnghean.vn/cong-bo-diem-thi-tot-nghiep-trung-hoc-pho-thong-nam-2023-9656.htm",
+      "source_page": NaN
+    },
+    {
+      "year": 2023,
+      "subject": "physics",
+      "metric": "n_lt5",
+      "local": 48380.0,
+      "published": 48379.0,
+      "difference": 1.0,
+      "status": "mismatch",
+      "tolerance": 1e-08,
+      "source_url": "https://dbndnghean.vn/cong-bo-diem-thi-tot-nghiep-trung-hoc-pho-thong-nam-2023-9656.htm",
+      "source_page": NaN
+    },
+    {
+      "year": 2023,
+      "subject": "chemistry",
+      "metric": "n",
+      "local": 328118.0,
+      "published": 328117.0,
+      "difference": 1.0,
+      "status": "mismatch",
+      "tolerance": 1e-08,
+      "source_url": "https://dbndnghean.vn/cong-bo-diem-thi-tot-nghiep-trung-hoc-pho-thong-nam-2023-9656.htm",
+      "source_page": NaN
+    },
+    {
+      "year": 2023,
+      "subject": "chemistry",
+      "metric": "n_lt5",
+      "local": 38376.0,
+      "published": 38375.0,
+      "difference": 1.0,
+      "status": "mismatch",
+      "tolerance": 1e-08,
+      "source_url": "https://dbndnghean.vn/cong-bo-diem-thi-tot-nghiep-trung-hoc-pho-thong-nam-2023-9656.htm",
+      "source_page": NaN
+    }
+  ],
+  "frequency_checks": 809,
+  "frequency_mismatches": [
+    {
+      "year": 2023,
+      "subject": "math",
+      "kind": "exact_score",
+      "lower": 4.4,
+      "upper": 4.4,
+      "local": 21769,
+      "published": 21768,
+      "difference": 1
+    },
+    {
+      "year": 2023,
+      "subject": "physics",
+      "kind": "exact_score",
+      "lower": 2.0,
+      "upper": 2.0,
+      "local": 254,
+      "published": 253,
+      "difference": 1
+    },
+    {
+      "year": 2023,
+      "subject": "chemistry",
+      "kind": "exact_score",
+      "lower": 4.0,
+      "upper": 4.0,
+      "local": 4750,
+      "published": 4749,
+      "difference": 1
+    }
+  ],
+  "conditions": [
+    {
+      "year": 2023,
+      "check": "off_score_grid_math",
+      "n": 0
+    },
+    {
+      "year": 2023,
+      "check": "off_score_grid_physics",
+      "n": 0
+    },
+    {
+      "year": 2023,
+      "check": "off_score_grid_chemistry",
+      "n": 0
+    },
+    {
+      "year": 2023,
+      "check": "off_score_grid_biology",
+      "n": 0
+    },
+    {
+      "year": 2023,
+      "check": "off_score_grid_history",
+      "n": 0
+    },
+    {
+      "year": 2023,
+      "check": "off_score_grid_geography",
+      "n": 0
+    },
+    {
+      "year": 2023,
+      "check": "off_score_grid_civics",
+      "n": 0
+    },
+    {
+      "year": 2023,
+      "check": "off_score_grid_english",
+      "n": 0
+    },
+    {
+      "year": 2023,
+      "check": "literature_off_quarter_grid",
+      "n": 3962
+    },
+    {
+      "year": 2023,
+      "check": "literature_below5_after_nearest_quarter_display",
+      "n": 73622
+    },
+    {
+      "year": 2025,
+      "check": "more_than_two_optional_scores",
+      "n": 0
+    },
+    {
+      "year": 2025,
+      "check": "optional_score_count_0",
+      "n": 557
+    },
+    {
+      "year": 2025,
+      "check": "optional_score_count_1",
+      "n": 9700
+    },
+    {
+      "year": 2025,
+      "check": "optional_score_count_2",
+      "n": 1120879
+    }
+  ],
+  "scope_limit": "Aggregate agreement does not authenticate every student record or cross-subject pairing."
+}
