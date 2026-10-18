@@ -7,23 +7,23 @@
   "status": "coverage, counts, ties, stored totals and symmetric correlations verified",
   "input_hashes_unchanged": true,
   "hashed_artifacts": 39,
-  "valid_report_links": 43,
+  "valid_report_links": 49,
   "notebooks_executed_without_errors": 2,
   "tests": {
-    "total": 74,
-    "passed": 73,
+    "total": 75,
+    "passed": 74,
     "errors": [
       "test_week6_score_distribution.TestScoreDistribution.test_alias_mapping_and_range"
     ],
     "failures": [],
     "skipped": 0,
-    "scope": "Full suite rerun before GitHub push on 2026-10-17; all 47 new-scope tests passed"
+    "scope": "Historical result before removal on 2026-10-18; test suite removed afterward at explicit user request"
   },
   "visual_qa": [
     "top_threshold_comparison.png",
     "pearson_r_2025.png"
   ],
-  "scope": "part3 combinations/participation/top thresholds; part5 correlations only",
+  "scope": "Main report: part 3 only; previous correlation code and outputs retained separately",
   "notebook_execution": [
     {
       "notebook": "notebooks\\combinations\\analysis.ipynb",
@@ -153,12 +153,12 @@
         "bytes": 181
       }
     ],
-    "report": "docs/bao_cao_phan_3_5.md"
+    "report": "docs/phan_3_to_hop_mon_2023_2025.md"
   },
-  "report_verified_at_utc": "2026-10-16T20:58:48.593512+00:00",
-  "report_sha256": "c8f8a4bdc35910e2fe2a30af2d6a5e657d20a20584262337091ed53561692a99",
-  "tables_with_immediate_explanations": 26,
-  "figures_with_immediate_explanations": 25,
+  "report_verified_at_utc": "2026-10-18T09:34:37.798326+00:00",
+  "report_sha256": "206e2bb9dbc67b1218b14005b434a3f05a737d5a65691bb9ff4b2d5deab56421",
+  "tables_with_immediate_explanations": 21,
+  "figures_with_immediate_explanations": 13,
   "external_verification": "outputs/audits/external_verification.json",
   "external_artifacts": [
     {
@@ -296,5 +296,31 @@
     "new_scope_tests_passed": 47,
     "summary_document": "docs/TOM_TAT_CONG_VIEC_TU_DAU.md",
     "dataset_2025_storage": "Git LFS; same content as origin/nhan"
+  },
+  "part3_report_revision": {
+    "report": "docs/phan_3_to_hop_mon_2023_2025.md",
+    "guide": "docs/HUONG_DAN_PHAN_3.md",
+    "existing_directory": "docs",
+    "new_directory_created": false,
+    "removed_correlation_tables": 5,
+    "removed_correlation_figures": 12,
+    "root_readme_updated": true,
+    "combination_notebook_report_updated": true,
+    "correlation_notebook_shared_report_removed": true,
+    "numerical_results_recomputed": false,
+    "correlation_sources_and_outputs_preserved": true,
+    "test_suite_removed_at_user_request": true,
+    "removed_python_test_files": 11,
+    "test_cache_removed": true,
+    "post_removal_verification": {
+      "checked_csv_files": 13,
+      "cohorts": [
+        "2023 — CT2006",
+        "2025 — CT2018"
+      ],
+      "status": "coverage, counts, ties, stored totals and symmetric correlations verified"
+    },
+    "source_files_and_notebook_code_compile": true,
+    "notebooks_reexecuted_this_revision": false
   }
 }

@@ -31,8 +31,8 @@ def overview(root, table):
     participation=read(root,'combinations','participation_deltas')
     current=read(root,'combinations','participation')
     lines=['## Kết quả chính — đọc phần này trước',
-           'Báo cáo trả lời đủ ba yêu cầu: **xu hướng môn thi**, **điểm tổ hợp và ngưỡng top 10%/20%**, '
-           '**tương quan giữa các môn**. Các bảng chi tiết và hình ở phía sau đều có diễn giải ngay bên dưới. '
+           'Báo cáo phần 3 trả lời ba yêu cầu: **xu hướng môn thi**, **so sánh điểm đủ 24 tổ hợp**, '
+           '**ngưỡng top 10%/20%**. Các bảng chi tiết và hình ở phía sau đều có diễn giải ngay bên dưới. '
            'Dùng 2023 so với 2025 xuyên suốt; không thay năm gốc bằng 2024.',
            '### 3.1. Xu hướng môn thi: môn nào có tỷ lệ tăng hoặc giảm?',
            'Trong dữ liệu điểm, chỉ quan sát được người có bài thi/điểm. Vì vậy, “xu hướng chọn môn” dưới đây '
@@ -104,23 +104,11 @@ def overview(root, table):
               'bảng chi tiết phía sau ghi riêng tỷ lệ lớn hơn và lớn hơn hoặc bằng ngưỡng.',
               '**Kết luận từ hai bảng tổ hợp:** điểm trung bình giảm không kéo theo mọi ngưỡng top đều giảm. '
               'Ở A00/B00, phần giữa và đuôi cao dịch chuyển khác hướng. Thay đổi lựa chọn môn làm tập người '
-              'được so sánh khác nhau, nên không đồng nhất kết quả này với mức thay đổi năng lực của cùng một nhóm học sinh.',
-              '### 5. Tương quan: môn nào thường đạt cao cùng nhau?']
-    pairs=read(root,'correlations','correlation_deltas')
-    selected=pairs[pairs.apply(lambda r: {r.subject_x,r.subject_y} in [
-        {'math','physics'},{'physics','chemistry'},{'chemistry','biology'},
-        {'history','geography'},{'math','literature'},{'math','english'}],axis=1)]
-    lines += [table(pd.DataFrame([{'Cặp môn':SUBJECT_LABELS[r.subject_x]+' – '+SUBJECT_LABELS[r.subject_y],
-                                  'r 2023':r.pearson_r_from,'r 2025':r.pearson_r_to,'Thay đổi r':r.delta_pearson_r,
-                                  'Số cặp 2023':int(r.n_pair_from),'Số cặp 2025':int(r.n_pair_to)} for r in selected.itertuples()])),
-              '**Diễn giải bảng:** r nằm trong [−1;1]. r dương lớn nghĩa là điểm hai môn có xu hướng tăng cùng nhau; '
-              'gần 0 nghĩa là liên hệ tuyến tính yếu trong đúng nhóm có đủ hai điểm. '
-              'Sử–Địa tăng khoảng **0,608 → 0,759**, còn Toán–Anh giảm **0,592 → 0,497**. '
-              'Đây là hệ số của các nhóm người có điểm khác nhau giữa hai năm; không kết luận việc học một môn '
-              'làm tăng điểm môn kia. Pearson, Spearman, cỡ mẫu và hình mật độ được trình bày chi tiết phía sau.',
+              'được so sánh khác nhau, nên không đồng nhất kết quả này với mức thay đổi năng lực của cùng một nhóm học sinh.']
+    lines += [
               '**Giới hạn của mục tiêu nghiên cứu:** dữ liệu cho thấy thay đổi điểm trong bối cảnh đổi chương trình '
               'và cách thi. Hai năm quan sát không tách được phần tác động riêng của chương trình 2018, dạng đề, '
-              'cách chấm, lựa chọn môn và thành phần thí sinh. Không dùng tương quan để khẳng định độ phân biệt câu hỏi.']
+              'cách chấm, lựa chọn môn và thành phần thí sinh.']
     return lines
 
 

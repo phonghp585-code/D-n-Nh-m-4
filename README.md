@@ -1,4 +1,18 @@
-# Điểm thi THPT 2023 — bài tập tuần 3–5
+# Phân tích điểm thi THPT 2023 và 2025
+
+## Báo cáo phần 3 — tổ hợp môn thi
+
+**Đọc báo cáo:** [Phần 3 — Phân tích tổ hợp môn thi THPT 2023 và 2025](docs/phan_3_to_hop_mon_2023_2025.md).
+
+File nằm trong thư mục `docs` có sẵn: **`docs/phan_3_to_hop_mon_2023_2025.md`**. Báo cáo chỉ gồm phần 3: đủ 24 tổ hợp, so sánh tổng điểm, ngưỡng top 10%/20%, xu hướng môn có điểm và các bằng chứng/giả thuyết giải thích biến động. Mỗi bảng và hình có diễn giải ngay bên dưới.
+
+- [Hướng dẫn chạy lại và quy tắc phân tích phần 3](docs/HUONG_DAN_PHAN_3.md).
+- [Tóm tắt toàn bộ công việc và cập nhật phạm vi báo cáo](docs/TOM_TAT_CONG_VIEC_TU_DAU.md).
+- [Notebook tổ hợp môn](notebooks/combinations/analysis.ipynb).
+
+Mã, notebook và kết quả tương quan đã làm trước đây được giữ riêng trong `src/analyze_correlations.py`, `notebooks/correlations/` và `outputs/correlations/`; phần 5 không nằm trong báo cáo cần đọc ở trên.
+
+## Bài tập tuần 3–5
 
 Mỗi tuần có một thư mục trong `src/`, `docs/`, `notebooks/`, `data/processed/` và `outputs/`. Hai tệp nguồn bất biến nằm ở `data/raw/`. Mở báo cáo để đọc kết quả; mở notebook để xem phép tính và đầu ra.
 
@@ -27,7 +41,6 @@ Chạy các tuần theo thứ tự; tuần 4 dùng Parquet do tuần 3 tạo. Tu
 & ./.venv/Scripts/python.exe -m src.week4.analyze_week4
 & ./.venv/Scripts/python.exe -m src.week4.build_week4_notebook
 & ./.venv/Scripts/python.exe src/main.py
-& ./.venv/Scripts/python.exe -m unittest discover -s tests -v
 & ./.venv/Scripts/python.exe -m src.week5.verify_week5
 ```
 

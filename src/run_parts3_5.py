@@ -14,7 +14,7 @@ import pandas as pd
 from src.score_data import COHORT_LABELS, COMBINATIONS, ALL_COMBINATIONS, COMMON_SUBJECTS, SUBJECT_LABELS, file_sha256, load_scores
 
 ROOT=Path(__file__).resolve().parents[1]
-REPORT_PATH=Path('docs/bao_cao_phan_3_5.md')
+REPORT_PATH=Path('docs/phan_3_to_hop_mon_2023_2025.md')
 REQUIRED_TABLES={
     'combinations':['combination_summary.csv','combination_deltas.csv','top_thresholds.csv',
                     'participation.csv','cooccurrence.csv','combination_validation.csv','combination_mapping.csv',
@@ -77,7 +77,8 @@ def write_notebooks(root: Path=ROOT) -> list[Path]:
                       'priority = {"top_threshold_comparison.png": 0, "participation.png": 1}\n'
                       'preview = sorted(figures, key=lambda p: (priority.get(p.name, 2 if "hist_ecdf" in p.name else 3), p.name))\n'
                       'for figure in preview[:6]:\n    display(Image(filename=str(figure), width=900))\n'
-                      f'display(Markdown((ROOT / "{REPORT_PATH.as_posix()}").read_text(encoding="utf-8")))')]
+                      +(f'display(Markdown((ROOT / "{REPORT_PATH.as_posix()}").read_text(encoding="utf-8")))'
+                        if part==3 else ''))]
         notebook=nbformat.v4.new_notebook(cells=cells,metadata={
             'kernelspec':{'display_name':'Python 3 (project .venv)','language':'python','name':'python3'},
             'language_info':{'name':'python','version':platform.python_version()}})
@@ -259,11 +260,11 @@ def _correlation_findings(root: Path) -> list[str]:
 
 
 def write_reports(root: Path=ROOT) -> None:
-    """Build one report from generated tables, never hand-enter result values."""
+    """Build the part 3 report; correlation artifacts remain independent."""
     from src.report_explanations import overview, external_review, explain_table, explain_figure, participation_comparison
-    sections=['# Báo cáo phân tích điểm thi THPT — Phần 3 và 5',
+    sections=['# Phần 3 — Phân tích tổ hợp môn thi THPT 2023 và 2025',
               '**2023 — CT2006** so với **2025 — CT2018**. '
-              'Phạm vi: đủ 24 tổ hợp, cơ cấu môn có điểm, ngưỡng top 10%/20% và tương quan giữa các môn.']
+              'Phạm vi: đủ 24 tổ hợp, cơ cấu môn có điểm, ngưỡng top 10%/20% và bằng chứng giải thích biến động điểm.']
     sections += overview(root,markdown_table)
     from src.subject_distribution_evidence import report_section, research_section
     sections += report_section(root,markdown_table)
@@ -285,89 +286,70 @@ def write_reports(root: Path=ROOT) -> None:
               'kết quả 2025 khớp cột diem_B00, không sai khác tổng hay điều kiện có điểm. '
               'Đây là số người đủ điểm tổ hợp, không phải số đăng ký xét tuyển. '
               '[Bằng chứng kiểm chứng B00](../outputs/audits/b00_verification.json).']
-    for folder,title in [('combinations','Phần 3 — Tổ hợp môn, cơ cấu môn và ngưỡng top'),
-                         ('correlations','Phần 5 — Tương quan điểm giữa các môn')]:
-        lines=[f'## {title}', '', '**2023 — CT2006** so với **2025 — CT2018**.', '',
-               'Dataset 2025 đã được người dùng xác nhận chỉ gồm CT2018. '
-               'Đơn vị phân tích là điểm cùng một thí sinh trong từng năm; không ghép SBD qua hai năm.', '']
-        if folder=='combinations':
-            lines += ['## Câu hỏi và phương pháp',
-                'So sánh đủ **24 mã tổ hợp** theo 24 cột diem_* của dataset nhan: '
-                + ', '.join(ALL_COMBINATIONS) + '. Anh chỉ lấy mã N1. '
-                'Tổng chỉ có khi đủ ba điểm hợp lệ; không điền thiếu, không cộng ưu tiên/nhân hệ số. '
-                'Một người có thể thuộc nhiều tổ hợp.', '',
-                '**Quy tắc gán đa nhãn đã chốt với người dùng:** mỗi người nằm trong mọi tổ hợp có đủ ba điểm, '
-                'giống nhãn của dataset nhan; không chọn tổ hợp cao nhất và không ép thành nhóm độc quyền. '
-                'Ví dụ đủ Toán/Văn/Lý/Hóa có thể đồng thời tính A00, C01 và C02. '
-                'Số n của một tổ hợp là số người đủ điểm của tổ hợp đó, không phải nguyện vọng đăng ký.', '',
-                'Các mã A08/A09/C14/C19/C20/D66/D84 dùng GDCD ở **2023 — CT2006** '
-                'và GDKT&PL ở **2025 — CT2018**: so sánh mô tả theo mã được cung cấp, '
-                'không khẳng định nội dung môn tương đương. B08 và D08 cùng bộ Toán/Sinh/Anh trong dataset; '
-                'giữ cả hai mã để khớp nguồn, nhưng không coi là hai tập người độc lập. '
-                'Đây là bộ mã của file nguồn, không phải xác nhận mã tuyển sinh dùng thống nhất tại mọi trường.', '',
-                '## Phạm vi và công thức cả 24 tổ hợp',_combination_mapping_table(root),'',
-                'P80/P90 theo inverse empirical CDF: sắp tăng dần, lấy phần tử ceil(p×n), chỉ số từ 1. '
-                'Top 20% dùng P80, top 10% dùng P90. Đồng hạng làm tỷ lệ đạt ngưỡng có thể lớn hơn mức mục tiêu.', '',
-                '## Phát hiện chính',*_combination_findings(root),'',
-                '## Tổng điểm: đủ 24 tổ hợp × 2 cohort',
-                markdown_table(_csv(root,folder,'combination_summary.csv')[['cohort','combination','n','mean','median','sd','iqr','p80','p90']]), '',
-                '## Chênh lệch 2025 — CT2018 trừ 2023 — CT2006',
-                markdown_table(_csv(root,folder,'combination_deltas.csv')[['combination','delta_n','delta_mean','delta_median','delta_p80','delta_p90','comparison_class']]), '',
-                '## Ngưỡng nhóm cao nhất và đồng hạng',
-                markdown_table(_csv(root,folder,'top_thresholds.csv')[['cohort','combination','target_top_percent','n','threshold','n_at','pct_gt','pct_ge']]), '',
-                '## Cơ cấu môn có điểm',
-                'Mẫu số chính là số bản ghi có ít nhất một điểm thi quan sát được. '
-                'Mẫu số phụ là toàn bộ dòng dataset. Ngoại ngữ mọi mã và Anh được phân biệt; '
-                'Anh không được đếm như môn thi thứ hai cạnh Ngoại ngữ. '
-                'Bảng mô tả có điểm; thiếu điểm chưa xác định riêng nguyên nhân không đăng ký, miễn, vắng hoặc thiếu nguồn.',
-                markdown_table(_csv(root,folder,'participation.csv')[['cohort','subject_label','n','denominator','percent','comparability','counts_as_separate_exam']]), '',
-                '### Tăng/giảm số người và tỷ lệ có điểm theo từng môn',
-                markdown_table(participation_comparison(root)),'',
-                '## Kiểm chứng tổng điểm có sẵn',markdown_table(_csv(root,folder,'combination_validation.csv')[['cohort','combination','n_recomputed','n_stored','n_missingness_mismatch','n_sum_mismatch','status']]), '',
-                '## Kiểm chứng cách gán nhiều tổ hợp giống nhan',
-                markdown_table(_csv(root,folder,'combination_membership_validation.csv')[['cohort','combination','n_eligible','n_source_label','n_disagreement','status']]), '',
-                'Phân bố số tổ hợp hợp lệ trên mỗi người (kể cả người không đủ tổ hợp nào):',
-                markdown_table(_csv(root,folder,'membership_count_distribution.csv')[['cohort','n_eligible_combinations','n_students']]),'',
-                'Bảng cooccurrence.csv đếm các cặp môn tự chọn cùng có điểm. '
-                'GDCD của 2023 — CT2006 và GDKT&PL của 2025 — CT2018 không coi là môn bất biến; '
-                'Tin/Công nghệ không có mốc tương ứng ở 2023 — CT2006.']
-        else:
-            lines += ['## Phương pháp',
-                'Pearson mô tả quan hệ tuyến tính; Spearman mô tả thứ hạng với average ranks khi đồng hạng. '
-                'Lọc đủ điểm riêng từng cặp rồi mới xếp hạng. Chỉ báo hệ số khi n_pair≥100 và hai môn có phương sai. '
-                'Không có dữ liệu hoặc hệ số không xác định được để trống, không gán 0.', '',
-                'Tám môn so sánh trực tiếp: Toán, Văn, Anh=N1, Lý, Hóa, Sinh, Sử, Địa. '
-                'Các môn đổi nội dung/môn mới không gộp vào cùng một môn cho hai chương trình.', '',
-                'Phần 3 mở rộng đủ 24 mã tổ hợp. Kiểm tra độ nhạy tương quan trong báo cáo này '
-                'vẫn dùng 5 nhóm tham chiếu A00/A01/B00/C00/D01, có cùng ba tên môn qua hai chương trình; '
-                'không coi đây là giới hạn phạm vi so sánh tổ hợp của phần 3.', '',
-                '## Phát hiện chính',*_correlation_findings(root),'',
-                '## Tương quan từng năm',markdown_table(_csv(root,folder,'pairwise_correlations.csv').query('subject_x < subject_y')[['cohort','subject_x','subject_y','n_pair','pearson_r','spearman_rho','status']]), '',
-                '## Chênh lệch hệ số',markdown_table(_csv(root,folder,'correlation_deltas.csv')[['subject_x','subject_y','pearson_r_from','pearson_r_to','delta_pearson_r','spearman_rho_from','spearman_rho_to','delta_spearman_rho']]), '',
-                '## Kiểm tra trong nhóm đủ điểm tổ hợp',markdown_table(_csv(root,folder,'group_sensitivity.csv')[['combination','cohort','subject_x','subject_y','n_pair','pearson_r','spearman_rho','status']]), '',
-                '## Người điểm cao có đi cùng nhau?',
-                'Ngưỡng P80 được xác định cho từng môn trên đúng tập người đủ hai điểm, từng năm. '
-                'Đọc xác suất Y cao khi X cao cùng tỷ lệ nền và số người đạt ngưỡng; đồng hạng được giữ.',
-                markdown_table(_csv(root,folder,'high_score_concordance.csv')[['cohort','subject_x','subject_y','n_pair','p80_x','p80_y','n_x_high','baseline_probability','conditional_probability']])]
-        lines=[explain_table(root,folder,line) if line.startswith('| ') else line for line in lines]
-        lines += ['', '## Biểu đồ và diễn giải từng hình', '']
-        for image in sorted((root/'outputs'/folder).rglob('*.png')):
-            relative=image.relative_to(root).as_posix()
-            title,explanation=explain_figure(root,folder,image)
-            lines += [f'### {title}', f'![{title}](../../{relative})', '**Diễn giải hình:** '+explanation, '']
-        lines += ['## Giới hạn diễn giải',
-            'Kết quả mô tả thay đổi trong bối cảnh chuyển chương trình, định dạng đề và cơ chế chọn môn. '
-            'Không tách được tác động riêng của chương trình/cách chấm/độ khó đề/nhóm thí sinh chỉ từ hai năm. '
-            'Ngưỡng phân vị không phải điểm chuẩn trúng tuyển. Tương quan không tự đo độ phân biệt câu hỏi. '
-            'Nguồn xác nhận CT2018 là người dùng; phổ từng môn 2025 đã đối chiếu thống kê công bố nếu có mục kiểm chứng ở trên. '
-            'Sự khớp ở mức tổng hợp chưa xác thực mọi điểm và mọi ghép môn theo thí sinh.', '',
-            '## Tái lập',
-            'Chạy từ gốc dự án: `python -m src.run_parts3_5 --rerun`. '
-            'Metadata và hash nguồn: `outputs/parts3_5_run.json`. '
-            'Notebook tương ứng: `notebooks/'+folder+'/analysis.ipynb`.']
-        # The single report lives directly under docs, one level above the old reports.
-        sections.extend(('#'+line if index>0 and line.startswith('#') else line).replace('../../outputs/','../outputs/')
-                        for index,line in enumerate(lines))
+    folder='combinations'
+    title='Phần 3 — Tổ hợp môn, cơ cấu môn và ngưỡng top'
+    lines=[f'## {title}', '', '**2023 — CT2006** so với **2025 — CT2018**.', '',
+           'Dataset 2025 đã được người dùng xác nhận chỉ gồm CT2018. '
+           'Đơn vị phân tích là điểm cùng một thí sinh trong từng năm; không ghép SBD qua hai năm.', '']
+    lines += ['## Câu hỏi và phương pháp',
+        'So sánh đủ **24 mã tổ hợp** theo 24 cột diem_* của dataset nhan: '
+        + ', '.join(ALL_COMBINATIONS) + '. Anh chỉ lấy mã N1. '
+        'Tổng chỉ có khi đủ ba điểm hợp lệ; không điền thiếu, không cộng ưu tiên/nhân hệ số. '
+        'Một người có thể thuộc nhiều tổ hợp.', '',
+        '**Quy tắc gán đa nhãn đã chốt với người dùng:** mỗi người nằm trong mọi tổ hợp có đủ ba điểm, '
+        'giống nhãn của dataset nhan; không chọn tổ hợp cao nhất và không ép thành nhóm độc quyền. '
+        'Ví dụ đủ Toán/Văn/Lý/Hóa có thể đồng thời tính A00, C01 và C02. '
+        'Số n của một tổ hợp là số người đủ điểm của tổ hợp đó, không phải nguyện vọng đăng ký.', '',
+        'Các mã A08/A09/C14/C19/C20/D66/D84 dùng GDCD ở **2023 — CT2006** '
+        'và GDKT&PL ở **2025 — CT2018**: so sánh mô tả theo mã được cung cấp, '
+        'không khẳng định nội dung môn tương đương. B08 và D08 cùng bộ Toán/Sinh/Anh trong dataset; '
+        'giữ cả hai mã để khớp nguồn, nhưng không coi là hai tập người độc lập. '
+        'Đây là bộ mã của file nguồn, không phải xác nhận mã tuyển sinh dùng thống nhất tại mọi trường.', '',
+        '## Phạm vi và công thức cả 24 tổ hợp',_combination_mapping_table(root),'',
+        'P80/P90 theo inverse empirical CDF: sắp tăng dần, lấy phần tử ceil(p×n), chỉ số từ 1. '
+        'Top 20% dùng P80, top 10% dùng P90. Đồng hạng làm tỷ lệ đạt ngưỡng có thể lớn hơn mức mục tiêu.', '',
+        '## Phát hiện chính',*_combination_findings(root),'',
+        '## Tổng điểm: đủ 24 tổ hợp × 2 cohort',
+        markdown_table(_csv(root,folder,'combination_summary.csv')[['cohort','combination','n','mean','median','sd','iqr','p80','p90']]), '',
+        '## Chênh lệch 2025 — CT2018 trừ 2023 — CT2006',
+        markdown_table(_csv(root,folder,'combination_deltas.csv')[['combination','delta_n','delta_mean','delta_median','delta_p80','delta_p90','comparison_class']]), '',
+        '## Ngưỡng nhóm cao nhất và đồng hạng',
+        markdown_table(_csv(root,folder,'top_thresholds.csv')[['cohort','combination','target_top_percent','n','threshold','n_at','pct_gt','pct_ge']]), '',
+        '## Cơ cấu môn có điểm',
+        'Mẫu số chính là số bản ghi có ít nhất một điểm thi quan sát được. '
+        'Mẫu số phụ là toàn bộ dòng dataset. Ngoại ngữ mọi mã và Anh được phân biệt; '
+        'Anh không được đếm như môn thi thứ hai cạnh Ngoại ngữ. '
+        'Bảng mô tả có điểm; thiếu điểm chưa xác định riêng nguyên nhân không đăng ký, miễn, vắng hoặc thiếu nguồn.',
+        markdown_table(_csv(root,folder,'participation.csv')[['cohort','subject_label','n','denominator','percent','comparability','counts_as_separate_exam']]), '',
+        '### Tăng/giảm số người và tỷ lệ có điểm theo từng môn',
+        markdown_table(participation_comparison(root)),'',
+        '## Kiểm chứng tổng điểm có sẵn',markdown_table(_csv(root,folder,'combination_validation.csv')[['cohort','combination','n_recomputed','n_stored','n_missingness_mismatch','n_sum_mismatch','status']]), '',
+        '## Kiểm chứng cách gán nhiều tổ hợp giống nhan',
+        markdown_table(_csv(root,folder,'combination_membership_validation.csv')[['cohort','combination','n_eligible','n_source_label','n_disagreement','status']]), '',
+        'Phân bố số tổ hợp hợp lệ trên mỗi người (kể cả người không đủ tổ hợp nào):',
+        markdown_table(_csv(root,folder,'membership_count_distribution.csv')[['cohort','n_eligible_combinations','n_students']]),'',
+        'Bảng cooccurrence.csv đếm các cặp môn tự chọn cùng có điểm. '
+        'GDCD của 2023 — CT2006 và GDKT&PL của 2025 — CT2018 không coi là môn bất biến; '
+        'Tin/Công nghệ không có mốc tương ứng ở 2023 — CT2006.']
+    lines=[explain_table(root,folder,line) if line.startswith('| ') else line for line in lines]
+    lines += ['', '## Biểu đồ và diễn giải từng hình', '']
+    for image in sorted((root/'outputs'/folder).rglob('*.png')):
+        relative=image.relative_to(root).as_posix()
+        title,explanation=explain_figure(root,folder,image)
+        lines += [f'### {title}', f'![{title}](../../{relative})', '**Diễn giải hình:** '+explanation, '']
+    lines += ['## Giới hạn diễn giải',
+        'Kết quả mô tả thay đổi trong bối cảnh chuyển chương trình, định dạng đề và cơ chế chọn môn. '
+        'Không tách được tác động riêng của chương trình/cách chấm/độ khó đề/nhóm thí sinh chỉ từ hai năm. '
+        'Ngưỡng phân vị không phải điểm chuẩn trúng tuyển. '
+        'Nguồn xác nhận CT2018 là người dùng; phổ từng môn 2025 đã đối chiếu thống kê công bố nếu có mục kiểm chứng ở trên. '
+        'Sự khớp ở mức tổng hợp chưa xác thực mọi điểm và mọi ghép môn theo thí sinh.', '',
+        '## Tái lập',
+        'Chạy từ gốc dự án: `python -m src.run_parts3_5 --rerun`. '
+        'Metadata và hash nguồn: `outputs/parts3_5_run.json`. '
+        'Notebook tương ứng: `notebooks/'+folder+'/analysis.ipynb`.']
+    # The main report lives one directory below the repository root.
+    sections.extend(('#'+line if index>0 and line.startswith('#') else line).replace('../../outputs/','../outputs/')
+                    for index,line in enumerate(lines))
     target=root/REPORT_PATH
     target.parent.mkdir(parents=True,exist_ok=True)
     target.write_text('\n\n'.join(sections)+'\n',encoding='utf-8')
@@ -392,7 +374,7 @@ def run(data2023: Path,data2025: Path,root: Path=ROOT) -> dict:
         'inputs':audits,'versions':{'python':platform.python_version(),'numpy':np.__version__,'pandas':pd.__version__},
         'cohort_labels':COHORT_LABELS,'seed':42,'min_pair_n':100,
         'combination_result':combination_result,'correlation_result':correlation_result,
-        'baseline_failure':'pre-existing test_week6_score_distribution.test_alias_mapping_and_range: scalar DataFrame without index',
+        'known_legacy_issue':'week6_score_distribution.tidy_year: scalar DataFrame without index; unrelated to the part 3 report',
     }
     (root/'outputs').mkdir(exist_ok=True)
     (root/'outputs/parts3_5_run.json').write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')

@@ -1,6 +1,9 @@
 # Tóm tắt công việc từ đầu — Phân tích điểm thi THPT 2023 và 2025
 
-Ngày cập nhật: **17/10/2026**. Nhánh đưa lên GitHub: **thanh**.
+Ngày cập nhật: **18/10/2026**. Nhánh đưa lên GitHub: **thanh**.
+
+
+**Phạm vi báo cáo hiện tại:** Theo yêu cầu ngày 18/10/2026, báo cáo chỉ chứa phần 3 và nằm tại [docs/phan_3_to_hop_mon_2023_2025.md](phan_3_to_hop_mon_2023_2025.md), trong thư mục `docs` đã có. Các mục về phần 5 dưới đây ghi lại công việc từng thực hiện; mã/kết quả tương quan được giữ riêng và không nằm trong báo cáo chính.
 
 ## 1. Mục tiêu và phạm vi đã chốt
 
@@ -117,8 +120,8 @@ Phân nhóm theo trường/địa phương và phát hiện bất thường chư
 
 | Sản phẩm | Đường dẫn |
 |---|---|
-| Báo cáo phân tích chính — 26 bảng, 25 hình, đều có diễn giải ngay bên dưới | [bao_cao_phan_3_5.md](bao_cao_phan_3_5.md) |
-| Hướng dẫn kỹ thuật và quy tắc | [parts3_5_README.md](parts3_5_README.md) |
+| Báo cáo phân tích chính — 21 bảng, 13 hình, đều có diễn giải ngay bên dưới | [Phần 3 — Tổ hợp môn 2023/2025](phan_3_to_hop_mon_2023_2025.md) |
+| Hướng dẫn kỹ thuật và quy tắc | [HUONG_DAN_PHAN_3.md](HUONG_DAN_PHAN_3.md) |
 | Notebook tổ hợp | [analysis.ipynb](../notebooks/combinations/analysis.ipynb) |
 | Notebook tương quan | [analysis.ipynb](../notebooks/correlations/analysis.ipynb) |
 | Bảng/hình tổ hợp, tương quan | `outputs/combinations/`, `outputs/correlations/` |
@@ -133,14 +136,25 @@ python -m pip install -r requirements-parts3-5.txt
 python -X utf8 -m src.run_parts3_5 --rerun
 python -X utf8 -m src.verify_external_scores
 python -X utf8 -m src.run_parts3_5 --verify-only
-python -X utf8 -m unittest discover -s tests -v
 ```
 
 Các notebook đã được thực thi thành công ở bước trước. Sau các lần bổ sung phần diễn giải/phân nhóm, phần hiển thị báo cáo trong notebook được đồng bộ; không tuyên bố đã thực thi lại toàn notebook ở mỗi lần sửa.
 
-## 10. Xác minh trước khi push
+## 10. Lịch sử xác minh
 
 - Chạy lại toàn bộ suite ngày 17/10/2026: **74 test, 73 đạt, 1 lỗi nền, không có failure**. Toàn bộ **47 test liên quan phần mới** đều đạt.
+- Trước khi xoá bộ test theo yêu cầu ngày 18/10/2026, đã chạy lại **75 test: 74 đạt, 1 lỗi nền cũ**; có thêm kiểm thử đường dẫn và phạm vi báo cáo phần 3. Đây là kết quả lịch sử; các file kiểm thử sau đó đã được xoá, không coi việc xoá là sửa lỗi nền.
 - Lỗi nền: `test_week6_score_distribution.TestScoreDistribution.test_alias_mapping_and_range`; `src/week6_score_distribution.py` tạo DataFrame từ scalar không có index. Lỗi đã tồn tại trước phần việc này và không được sửa trong lần push này. Không ghi toàn bộ suite xanh.
 - Kiểm tra lại hash dữ liệu gốc, tính đầy đủ của 24 tổ hợp, tổng/nhãn nhan, đồng hạng, tính đối xứng tương quan, đóng góp vùng điểm, nhóm tham chiếu và đường dẫn trong báo cáo.
 - Git LFS được cấu hình cho dataset 2025. Đưa toàn bộ file mới của dự án lên nhánh thanh, bao gồm dữ liệu, mã nguồn, test, notebook, bảng, hình, nguồn đối chiếu, báo cáo và bản tóm tắt này.
+
+## 11. Đổi tên và tách báo cáo theo yêu cầu ngày 18/10/2026
+
+- Báo cáo chính chỉ còn phần 3: đủ 24 tổ hợp, ngưỡng P80/P90, cơ cấu môn, phổ điểm, phân nhóm hồ sơ và giả thuyết giải thích đã yêu cầu.
+- Đặt tên rõ nội dung: `docs/phan_3_to_hop_mon_2023_2025.md`; dùng thư mục `docs` sẵn có, không tạo thư mục báo cáo mới.
+- Loại khỏi báo cáo phần đọc nhanh tương quan và toàn bộ phần 5: tổng cộng 5 bảng và 12 hình. Báo cáo phần 3 còn 21 bảng và 13 hình, đều có diễn giải ngay bên dưới.
+- Đổi hướng dẫn kỹ thuật thành `docs/HUONG_DAN_PHAN_3.md`; cập nhật README ở gốc dự án bằng liên kết báo cáo và vị trí file nổi bật.
+- Cập nhật bộ sinh báo cáo để không ghép lại phần 5 khi chạy lại; cập nhật đường dẫn trong notebook tổ hợp và bỏ việc chèn báo cáo chung vào notebook tương quan.
+- Giữ nguyên dữ liệu gốc, các bảng/hình đã tính và mã phân tích tương quan; không xóa sản phẩm phần 5 đã làm.
+- Cập nhật metadata xác minh; đã kiểm tra báo cáo phần 3 không cần đọc đầu ra tương quan.
+- Theo yêu cầu tiếp theo, xoá toàn bộ **11 file kiểm thử Python** trong thư mục `tests` và cache kiểm thử; bỏ lệnh chạy test khỏi README/hướng dẫn. Giữ mã phân tích trong `src` và lệnh xác minh đầu ra `--verify-only`.
