@@ -1,0 +1,95 @@
+{
+  "checked_at_utc": "2026-10-18T09:52:01.152074+00:00",
+  "scope": "part 3 only; legacy part 5, week 6 and combined files ignored and untracked",
+  "verification": {
+    "checked_csv_files": 9,
+    "cohorts": [
+      "2023 — CT2006",
+      "2025 — CT2018"
+    ],
+    "status": "part 3 coverage, counts, ties and stored totals verified"
+  },
+  "full_part3_pipeline_rerun": true,
+  "unchanged_combination_artifacts_after_rerun": 22,
+  "hashed_artifacts": 38,
+  "report": "docs/phan_3_to_hop_mon_2023_2025.md",
+  "report_sha256": "1d025e3db6fd85aaeb0806c5c48876c4c6d28c3e928de75815fc987730774579",
+  "tables_with_immediate_explanations": 21,
+  "figures_with_immediate_explanations": 13,
+  "valid_local_doc_links": 41,
+  "notebook_execution": {
+    "notebook": "notebooks/combinations/analysis.ipynb",
+    "executed_code_cells": 11,
+    "errors": 0
+  },
+  "clean_export_without_legacy_modules": "validation and report regeneration passed; report text identical",
+  "ignore_cleanup": {
+    "untracked_file_count": 32,
+    "local_copies_preserved_with_identical_sha256": true,
+    "files": [
+      "docs/week6/README_score_distribution.md",
+      "docs/week6/week6_review+kiem_tra_bai.md",
+      "notebooks/correlations/analysis.ipynb",
+      "notebooks/week6/phan_tich_pho_diem_2023_2025.ipynb",
+      "outputs/correlations/correlation_deltas.csv",
+      "outputs/correlations/correlation_metadata.json",
+      "outputs/correlations/figures/hexbin_chemistry_biology.png",
+      "outputs/correlations/figures/hexbin_history_geography.png",
+      "outputs/correlations/figures/hexbin_math_english.png",
+      "outputs/correlations/figures/hexbin_math_physics.png",
+      "outputs/correlations/figures/hexbin_physics_chemistry.png",
+      "outputs/correlations/figures/high_score_concordance.png",
+      "outputs/correlations/figures/n_pair_2023.png",
+      "outputs/correlations/figures/n_pair_2025.png",
+      "outputs/correlations/figures/pearson_r_2023.png",
+      "outputs/correlations/figures/pearson_r_2025.png",
+      "outputs/correlations/figures/spearman_rho_2023.png",
+      "outputs/correlations/figures/spearman_rho_2025.png",
+      "outputs/correlations/group_sensitivity.csv",
+      "outputs/correlations/high_score_concordance.csv",
+      "outputs/correlations/pairwise_correlations.csv",
+      "outputs/parts3_5_completion_audit.json",
+      "outputs/parts3_5_manifest.json",
+      "outputs/parts3_5_run.json",
+      "outputs/score_distribution/README.md",
+      "requirements-parts3-5.txt",
+      "requirements-score-distribution.txt",
+      "src/analyze_correlations.py",
+      "src/run_parts3_5.py",
+      "src/week6_score_distribution.py",
+      "docs/HUONG_DAN_PHAN_3.md",
+      "docs/TOM_TAT_CONG_VIEC_TU_DAU.md"
+    ],
+    "weeks_3_to_5_retained": true,
+    "raw_data_and_report_evidence_retained": true,
+    "new_permanent_directories": 0,
+    "runner": "src.run_part3",
+    "requirements": "requirements-part3.txt",
+    "readme_ignore_rule_removed": true,
+    "preserved_remote_document_deletions": [
+      "8684885",
+      "f7b5e3d"
+    ],
+    "local_only_documents_explicitly_confirmed_by_user": true,
+    "local_only_document_sha256": {
+      "docs/HUONG_DAN_PHAN_3.md": "c510830389b0d5d7c30060f44e7fb7f15a5399f8fb6d15af5e9d862779d8730f",
+      "docs/TOM_TAT_CONG_VIEC_TU_DAU.md": "b94988d77ad8026814f27ca4f5d5d4c19364115591930b138a2f1890970a2a4f"
+    }
+  },
+  "test_suite_removed_at_explicit_user_request": true,
+  "historical_tests_before_removal": {
+    "total": 75,
+    "passed": 74,
+    "errors": [
+      "test_week6_score_distribution.TestScoreDistribution.test_alias_mapping_and_range"
+    ],
+    "failures": [],
+    "skipped": 0,
+    "scope": "Historical result before removal on 2026-10-18; test suite removed afterward at explicit user request"
+  },
+  "input_hashes_unchanged": true,
+  "doc_link_validation_scope": [
+    "README.md",
+    "docs/phan_3_to_hop_mon_2023_2025.md"
+  ]
+}

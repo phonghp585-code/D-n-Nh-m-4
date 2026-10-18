@@ -982,4 +982,4 @@ Kết quả mô tả thay đổi trong bối cảnh chuyển chương trình, đ
 
 ### Tái lập
 
-Chạy từ gốc dự án: `python -m src.run_parts3_5 --rerun`. Metadata và hash nguồn: `outputs/parts3_5_run.json`. Notebook tương ứng: `notebooks/combinations/analysis.ipynb`.
+Chạy từ gốc dự án: `python -m src.run_part3 --rerun`. Metadata và hash nguồn: `outputs/part3_run.json`. Notebook tương ứng: `notebooks/combinations/analysis.ipynb`.

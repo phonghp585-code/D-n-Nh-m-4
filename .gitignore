@@ -14,7 +14,6 @@ htmlcov/
 Thumbs.db
 docs/PLAN_WEEK3_GPT56_SOL.md
 outputs/_review/
-README.md
 mujctieu.md
 # Weekly lecture PDFs (also matches non-breaking spaces in filenames).
 /docs/slides/W[0-9]*.pdf
@@ -22,3 +21,27 @@ mujctieu.md
 # Temporary files and local caches.
 /tmp/
 .cache/
+
+# Only part 3 is published from the current analysis; retain these legacy files locally.
+/src/analyze_correlations.py
+/notebooks/correlations/
+/outputs/correlations/
+/src/week6_score_distribution.py
+/docs/week6/
+/notebooks/week6/
+/outputs/score_distribution/
+/requirements-score-distribution.txt
+
+# Superseded combined part 3/5 runner, dependencies and metadata.
+/src/run_parts3_5.py
+/requirements-parts3-5.txt
+/outputs/parts3_5_*.json
+/docs/bao_cao_phan_3_5.md
+/docs/parts3_5_README.md
+
+# Test suite removed at the user's request; do not add generated replacements.
+/tests/
+
+# User confirmed local-only copies of these documents on 2026-10-18.
+/docs/HUONG_DAN_PHAN_3.md
+/docs/TOM_TAT_CONG_VIEC_TU_DAU.md

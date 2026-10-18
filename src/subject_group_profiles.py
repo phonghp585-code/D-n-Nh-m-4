@@ -160,7 +160,7 @@ def report_section(root, table):
     if not (out/'subject_group_metadata.json').exists():
         return []
     metadata=json.loads((out/'subject_group_metadata.json').read_text(encoding='utf-8'))
-    run=json.loads((Path(root)/'outputs/parts3_5_run.json').read_text(encoding='utf-8'))
+    run=json.loads((Path(root)/'outputs/part3_run.json').read_text(encoding='utf-8'))
     if {r['sha256'] for r in metadata['inputs']}!={r['sha256'] for r in run['inputs']}:
         raise ValueError('Reference-score profile evidence is stale')
     profiles=pd.read_csv(out/'subject_group_profiles.csv')

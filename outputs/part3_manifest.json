@@ -1,0 +1,192 @@
+[
+  {
+    "path": "outputs/combinations/combination_deltas.csv",
+    "bytes": 13850,
+    "sha256": "f17159f61f77b7a972a7bb2d2f713c2a755ba84d1698cd19240dfe84867da8ab"
+  },
+  {
+    "path": "outputs/combinations/combination_mapping.csv",
+    "bytes": 7542,
+    "sha256": "b44aed822d1d8820cfd04d4ae876b9144bd70b5d0e8c967e3032ca4cf2fd340a"
+  },
+  {
+    "path": "outputs/combinations/combination_membership_validation.csv",
+    "bytes": 2756,
+    "sha256": "bf182aa8e957ab2a0a78406de3f9010aa3c2d2cf4e6812f716248f7fa1cb5ee1"
+  },
+  {
+    "path": "outputs/combinations/combination_summary.csv",
+    "bytes": 19193,
+    "sha256": "345acb9c721417b610d8410ee30faaa8edb6e22a58eb4ceadc2b0962b0a43502"
+  },
+  {
+    "path": "outputs/combinations/combination_validation.csv",
+    "bytes": 4081,
+    "sha256": "61ef0e7df64436848115de5b0b0890c3c4869cf9d1d8b7f66bf5417400bde4c3"
+  },
+  {
+    "path": "outputs/combinations/cooccurrence.csv",
+    "bytes": 7104,
+    "sha256": "f148c4cea5ef6b7016a5c077cf76cdef69b96a7274bc83925f315a6d87930907"
+  },
+  {
+    "path": "outputs/combinations/figures/combination_boxplots.png",
+    "bytes": 126808,
+    "sha256": "731abcaf08ef3fc753147c323a31db35b2963d9e5350cf674a7f8504eaa19256"
+  },
+  {
+    "path": "outputs/combinations/figures/combination_boxplots_page_02.png",
+    "bytes": 126186,
+    "sha256": "960e932f4a8d23b6773ccb7b8d9d41cb64d8c663756e662a83556ec8914578ff"
+  },
+  {
+    "path": "outputs/combinations/figures/combination_boxplots_page_03.png",
+    "bytes": 126551,
+    "sha256": "c98b3379e8763a7e53e35c48e2da39102a228aeb56511b3b0a04fba826b8ad65"
+  },
+  {
+    "path": "outputs/combinations/figures/combination_boxplots_page_04.png",
+    "bytes": 126058,
+    "sha256": "6f2e0aad8285b5a96661dce6d175a424d9dfb1b6f2015445b9053a92d9eae5fc"
+  },
+  {
+    "path": "outputs/combinations/figures/combination_hist_ecdf.png",
+    "bytes": 449706,
+    "sha256": "32b849c298bea4fe03fa4738e4eee4801b0cd454a11a31f9420980ae1a37bf98"
+  },
+  {
+    "path": "outputs/combinations/figures/combination_hist_ecdf_page_02.png",
+    "bytes": 468849,
+    "sha256": "2fec36d9b2979b648f3e72abc1d84f8b96f96f2669591dc5ed9e10a29b591627"
+  },
+  {
+    "path": "outputs/combinations/figures/combination_hist_ecdf_page_03.png",
+    "bytes": 460065,
+    "sha256": "945e9f328f8215d97b2dee98dfcab5fb86f586e8ebf3e9576d9035025c034d9d"
+  },
+  {
+    "path": "outputs/combinations/figures/combination_hist_ecdf_page_04.png",
+    "bytes": 451352,
+    "sha256": "5bc630228e8e549cdda122591c003d3269580f66c3fb581929776b50a4bf9566"
+  },
+  {
+    "path": "outputs/combinations/figures/optional_cooccurrence.png",
+    "bytes": 166876,
+    "sha256": "54f8a6b807cdd770bf8987cb4929c23fbf455e16bbccd23f472e389e2ca8912c"
+  },
+  {
+    "path": "outputs/combinations/figures/participation.png",
+    "bytes": 87233,
+    "sha256": "2979e4d2dd0a33f3ccff471a0ffc1cab2186173f9d4a528edc38746b11728612"
+  },
+  {
+    "path": "outputs/combinations/figures/top_threshold_comparison.png",
+    "bytes": 101195,
+    "sha256": "a6cbab5101747712b0b8a489d291ba09317e2a271b22f35fc0d884fd0056d856"
+  },
+  {
+    "path": "outputs/combinations/membership_count_distribution.csv",
+    "bytes": 709,
+    "sha256": "ddc0ad051725cf929d13b3b4cf262eb984b4531413d4a21b3a8a5d01ae7e6bae"
+  },
+  {
+    "path": "outputs/combinations/participation.csv",
+    "bytes": 2719,
+    "sha256": "94c3b7785f8bac2c5e52c8270316b6f85f8096c9031cc5dd7f208fd394d334f1"
+  },
+  {
+    "path": "outputs/combinations/participation_deltas.csv",
+    "bytes": 2144,
+    "sha256": "c9706e4e5662dcff3c770221a243ba67265b5dc8469fb3f1c415f5d5e2d40f98"
+  },
+  {
+    "path": "outputs/combinations/score_count_distribution.csv",
+    "bytes": 1993,
+    "sha256": "96fd0f321f4ea4f1f713409f2354d42b2adf1d397344122561949d02df74be4d"
+  },
+  {
+    "path": "outputs/combinations/top_thresholds.csv",
+    "bytes": 26617,
+    "sha256": "13ee069f03eb769ee048b2719b0f538cae06dbb78cadc2be583b3d0c3979419b"
+  },
+  {
+    "path": "outputs/audits/b00_verification.json",
+    "bytes": 2670,
+    "sha256": "e2a35e7321da56c99972fb59f1c00288307fce757d390207321f3c676dde1c3a"
+  },
+  {
+    "path": "outputs/audits/external_exam_conditions.csv",
+    "bytes": 503,
+    "sha256": "a562c274cb755a6cf56e9eb7bd76e9e6f87f1a8746859ebe36455f15ba4bd35f"
+  },
+  {
+    "path": "outputs/audits/external_score_frequencies.csv",
+    "bytes": 43588,
+    "sha256": "0a1ae069bfcea91f5c13e985e131d9e8f695f53907b6e9f4d9c9beb8f632ceaa"
+  },
+  {
+    "path": "outputs/audits/external_score_statistics.csv",
+    "bytes": 26048,
+    "sha256": "bae106309c040f4623dbfbbf12818f60eec62c22ce9e7b5fc5322af167ce14ec"
+  },
+  {
+    "path": "outputs/audits/external_verification.json",
+    "bytes": 5888,
+    "sha256": "df967b2dc13d6ab80f6ace594c379fbfd322712f04ab7e83d2838b0d6b13e7df"
+  },
+  {
+    "path": "outputs/audits/nhan_2025_audit.json",
+    "bytes": 13916,
+    "sha256": "14484ef0eba3776dcdf299977a5c5de85adf242f6237bd792743bb30b55c36ac"
+  },
+  {
+    "path": "outputs/audits/subject_distribution_bins.csv",
+    "bytes": 19332,
+    "sha256": "1be064d0091fa2317c05d0b6d9efb8ac5fbc66a8de8e6d54a2cd44abd7620699"
+  },
+  {
+    "path": "outputs/audits/subject_distribution_evidence.csv",
+    "bytes": 2918,
+    "sha256": "5f2e3c7d48f12fe0868c521ae5be1cd7f5387d768f08c53f1e7e007c2044d32c"
+  },
+  {
+    "path": "outputs/audits/subject_distribution_metadata.json",
+    "bytes": 3165,
+    "sha256": "8ee029d549ee65d0d471d652d314d28863959396d3fac490c16c5edb4d4b582c"
+  },
+  {
+    "path": "outputs/audits/subject_distributions.png",
+    "bytes": 229014,
+    "sha256": "de2a1f5193652dff7eae0932f655d099ec8e98cb9f4f8c52b785a9f397dc9534"
+  },
+  {
+    "path": "outputs/audits/subject_group_changes.csv",
+    "bytes": 2099,
+    "sha256": "90fcfa32c169a399c2a79ed9e538083b92510a025bc651f5894b97f6637e1c92"
+  },
+  {
+    "path": "outputs/audits/subject_group_contributions.png",
+    "bytes": 143548,
+    "sha256": "7a145a6f8cf26030c9d91eeb9208343341f038fd91667729b04d8a35a4fba7ee"
+  },
+  {
+    "path": "outputs/audits/subject_group_decomposition.csv",
+    "bytes": 9475,
+    "sha256": "dbe2bcc3bc242f7f3b55d4703040250a18785a12487ed5fc8edc86f5901f5a38"
+  },
+  {
+    "path": "outputs/audits/subject_group_metadata.json",
+    "bytes": 3313,
+    "sha256": "48c8f593c93ea6b76c67b41d0711b5cfc9848d8ea3a96488b7d9cea3f5c18e1c"
+  },
+  {
+    "path": "outputs/audits/subject_group_profiles.csv",
+    "bytes": 18094,
+    "sha256": "c39f5960cd9c8ada6ad74b74c6070f0519ec1cfb6708fb8943e8dd1fc8d170cf"
+  },
+  {
+    "path": "outputs/audits/subject_score_band_contributions.csv",
+    "bytes": 7566,
+    "sha256": "d648c468c835075fdede940abf393409e1e7cd5513c5b221fef4f96783d57733"
+  }
+]

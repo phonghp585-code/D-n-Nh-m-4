@@ -1,4 +1,4 @@
-"""Reproducible parts 3/5 deliverables for 2023 — CT2006 / 2025 — CT2018."""
+"""Reproducible part 3 deliverables for 2023 — CT2006 / 2025 — CT2018."""
 from __future__ import annotations
 
 import argparse
@@ -11,7 +11,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from src.score_data import COHORT_LABELS, COMBINATIONS, ALL_COMBINATIONS, COMMON_SUBJECTS, SUBJECT_LABELS, file_sha256, load_scores
+from src.score_data import COHORT_LABELS, ALL_COMBINATIONS, file_sha256, load_scores
 
 ROOT=Path(__file__).resolve().parents[1]
 REPORT_PATH=Path('docs/phan_3_to_hop_mon_2023_2025.md')
@@ -19,8 +19,6 @@ REQUIRED_TABLES={
     'combinations':['combination_summary.csv','combination_deltas.csv','top_thresholds.csv',
                     'participation.csv','cooccurrence.csv','combination_validation.csv','combination_mapping.csv',
                     'combination_membership_validation.csv','membership_count_distribution.csv'],
-    'correlations':['pairwise_correlations.csv','correlation_deltas.csv',
-                    'group_sensitivity.csv','high_score_concordance.csv'],
 }
 
 
@@ -41,29 +39,28 @@ def markdown_table(frame: pd.DataFrame, limit: int | None=None) -> str:
 
 
 def write_notebooks(root: Path=ROOT) -> list[Path]:
-    """Two readable notebooks, with an explicit opt-in to rerun the pipeline."""
+    """One part 3 notebook, with an explicit opt-in to rerun the pipeline."""
     import nbformat
     outputs=[]
     for part,folder,title,tables in [
         (3,'combinations','Tổ hợp môn, cơ cấu môn và ngưỡng top',REQUIRED_TABLES['combinations']),
-        (5,'correlations','Tương quan giữa các môn',REQUIRED_TABLES['correlations']),
     ]:
         cells=[nbformat.v4.new_markdown_cell(
             f'# Phần {part}: {title}\n\n**2023 — CT2006** so với **2025 — CT2018**. '
             'Dataset 2025 chỉ gồm CT2018 theo xác nhận của người dùng. '
             'Điểm thiếu không được điền; điểm 0 giữ nguyên.\n\n'
             'Notebook đọc đầu ra đã kiểm chứng. Đặt `RERUN=True` để chạy lại bằng `--rerun`. '
-            'Mỗi lần chạy lại thực hiện cả hai phần để metadata thống nhất.'),
+            'Chạy lại chỉ thực hiện phần 3 và các bằng chứng bổ trợ.'),
             nbformat.v4.new_code_cell(
                 'from pathlib import Path\nimport sys, subprocess, json\nimport pandas as pd\n'
                 'from IPython.display import display, Image, Markdown\n'
                 'ROOT = next(p for p in [Path.cwd(), *Path.cwd().parents] if (p / "src/score_data.py").exists())\n'
                 'if str(ROOT) not in sys.path: sys.path.insert(0, str(ROOT))\n'
                 'RERUN = False\n'
-                'if RERUN:\n    subprocess.run([sys.executable, "-m", "src.run_parts3_5", "--rerun"], cwd=ROOT, check=True)\n'
-                'from src.run_parts3_5 import validate_outputs\n'
+                'if RERUN:\n    subprocess.run([sys.executable, "-m", "src.run_part3", "--rerun"], cwd=ROOT, check=True)\n'
+                'from src.run_part3 import validate_outputs\n'
                 'print(validate_outputs(ROOT))\n'
-                'metadata = json.loads((ROOT / "outputs/parts3_5_run.json").read_text(encoding="utf-8"))\n'
+                'metadata = json.loads((ROOT / "outputs/part3_run.json").read_text(encoding="utf-8"))\n'
                 'display(pd.DataFrame(metadata["inputs"])[["cohort", "rows", "rows_with_any_score", "sha256"]])')]
         for table in tables:
             cells += [nbformat.v4.new_markdown_cell('## '+table),
@@ -89,22 +86,8 @@ def write_notebooks(root: Path=ROOT) -> list[Path]:
     return outputs
 
 
-def validate_pair_support(table: pd.DataFrame,min_pair_n: int=100) -> None:
-    """Finite coefficients are valid only for sufficiently supported pairs."""
-    ok=table.status.eq('ok')
-    if (ok & table.n_pair.lt(max(2,min_pair_n))).any():
-        raise ValueError('Correlation marked ok with insufficient support')
-    if not np.isfinite(table.loc[ok,['pearson_r','spearman_rho']].to_numpy()).all():
-        raise ValueError('Correlation marked ok must have finite coefficients')
-    invalid=table.n_pair.lt(max(2,min_pair_n))
-    if not table.loc[invalid,'status'].eq('insufficient_n').all():
-        raise ValueError('Low support must be marked insufficient_n')
-    if table.loc[~ok,['pearson_r','spearman_rho']].notna().any().any():
-        raise ValueError('Undefined correlations must remain missing')
-
-
 def validate_outputs(root: Path=ROOT) -> dict:
-    """Validate cross-table counts, cutoffs and pairwise correlation support."""
+    """Validate part 3 cross-table counts, cutoffs and stored totals."""
     count=0
     for folder,names in REQUIRED_TABLES.items():
         for name in names:
@@ -157,32 +140,8 @@ def validate_outputs(root: Path=ROOT) -> dict:
     participation=_csv(root,'combinations','participation.csv')
     require((participation.n<=participation.denominator).all(),'Participation count exceeds denominator')
     require(np.allclose(participation.percent,100*participation.n/participation.denominator),'Participation percent mismatch')
-    pairs=_csv(root,'correlations','pairwise_correlations.csv')
-    validate_pair_support(pairs)
-    require(len(pairs)==2*len(COMMON_SUBJECTS)**2,'Incomplete correlation matrix')
-    require(not pairs.duplicated(['year','subject_x','subject_y']).any(),'Duplicate pairwise entries')
-    support=pairs.set_index(['year','subject_x','subject_y'])
-    for row in pairs.itertuples():
-        mirror=support.loc[(row.year,row.subject_y,row.subject_x)]
-        require(row.n_pair==mirror.n_pair,'Asymmetric pair support')
-        for metric in ['pearson_r','spearman_rho']:
-            value=getattr(row,metric)
-            require(np.isclose(value,mirror[metric],equal_nan=True),'Asymmetric coefficient')
-            require(pd.isna(value) or -1<=value<=1,'Coefficient outside [-1,1]')
-            require(row.status=='ok' or pd.isna(value),'Invalid pair has finite coefficient')
-    sensitivity=_csv(root,'correlations','group_sensitivity.csv')
-    validate_pair_support(sensitivity)
-    require(len(sensitivity)==30,'Incomplete group sensitivity')
-    for row in sensitivity.itertuples():
-        require(row.n_pair==indexed.loc[(row.year,row.combination),'n'],'Group support differs from combination n')
-    high=_csv(root,'correlations','high_score_concordance.csv')
-    for row in high.itertuples():
-        if row.status!='ok': continue
-        require(0<=row.n_both_high<=min(row.n_x_high,row.n_y_high)<=row.n_pair,'Invalid high-score counts')
-        require(np.isclose(row.conditional_probability,row.n_both_high/row.n_x_high),'Invalid conditional probability')
-        require(np.isclose(row.baseline_probability,row.n_y_high/row.n_pair),'Invalid baseline probability')
     return {'checked_csv_files':count,'cohorts':list(COHORT_LABELS.values()),
-            'status':'coverage, counts, ties, stored totals and symmetric correlations verified'}
+            'status':'part 3 coverage, counts, ties and stored totals verified'}
 
 
 def _csv(root: Path,folder: str,name: str) -> pd.DataFrame:
@@ -224,38 +183,6 @@ def _combination_findings(root: Path) -> list[str]:
         f'{biology.delta_percent:+.2f} điểm phần trăm trên mẫu số có ít nhất một điểm. '
         'Đọc giảm số người đủ B00 cùng biến động này; chưa coi đây là số nguyện vọng hoặc tác động riêng của chương trình. '
         '[Bằng chứng: bảng tỷ lệ](../../outputs/combinations/participation_deltas.csv).')
-    return findings
-
-
-def _correlation_findings(root: Path) -> list[str]:
-    pairs=_csv(root,'correlations','pairwise_correlations.csv')
-    findings=[]
-    for year in COHORT_LABELS:
-        unique=pairs[(pairs.year==year)&(pairs.subject_x<pairs.subject_y)&pairs.status.eq('ok')]
-        top=unique.loc[unique.pearson_r.abs().idxmax()]
-        findings.append(
-            f'- **{COHORT_LABELS[year]}:** cặp có |Pearson r| lớn nhất trong tám môn chung là '
-            f'{SUBJECT_LABELS[top.subject_x]}–{SUBJECT_LABELS[top.subject_y]}, '
-            f'r={top.pearson_r:.3f}, Spearman rho={top.spearman_rho:.3f}, n={int(top.n_pair):,}. '
-            f'[Bằng chứng: heatmap](../../outputs/correlations/figures/pearson_r_{year}.png).')
-    delta=_csv(root,'correlations','correlation_deltas.csv').dropna(subset=['delta_pearson_r'])
-    largest=delta.loc[delta.delta_pearson_r.abs().idxmax()]
-    findings.append(
-        f'- **Thay đổi hệ số:** {SUBJECT_LABELS[largest.subject_x]}–{SUBJECT_LABELS[largest.subject_y]} '
-        f'có delta r={largest.delta_pearson_r:+.3f}, từ {largest.pearson_r_from:.3f} '
-        f'(2023 — CT2006; n={int(largest.n_pair_from):,}) sang {largest.pearson_r_to:.3f} '
-        f'(2025 — CT2018; n={int(largest.n_pair_to):,}). Đây là cặp đổi nhiều nhất về |delta r| '
-        'trong những cặp xác định được ở cả hai năm; thay đổi tập người cùng có điểm là một phần ngữ cảnh. '
-        '[Bằng chứng: bảng delta](../../outputs/correlations/correlation_deltas.csv).')
-    high=_csv(root,'correlations','high_score_concordance.csv')
-    parts=[]
-    for year in COHORT_LABELS:
-        row=high[(high.year==year)&high.subject_x.eq('math')&high.subject_y.eq('physics')].iloc[0]
-        parts.append(f'{COHORT_LABELS[year]}: {100*row.conditional_probability:.2f}% '
-                     f'(nền {100*row.baseline_probability:.2f}%, nhóm Toán cao n={int(row.n_x_high):,})')
-    findings.append('- **Nhóm Toán cao và Lý cao:** trong người có đủ hai điểm, xác suất Lý đạt P80 khi Toán đạt P80: '
-                    + '; '.join(parts)+'. Ngưỡng tính riêng từng môn/năm trên cùng tập cặp, giữ đồng hạng. '
-                    '[Bằng chứng](../../outputs/correlations/high_score_concordance.csv).')
     return findings
 
 
@@ -344,8 +271,8 @@ def write_reports(root: Path=ROOT) -> None:
         'Nguồn xác nhận CT2018 là người dùng; phổ từng môn 2025 đã đối chiếu thống kê công bố nếu có mục kiểm chứng ở trên. '
         'Sự khớp ở mức tổng hợp chưa xác thực mọi điểm và mọi ghép môn theo thí sinh.', '',
         '## Tái lập',
-        'Chạy từ gốc dự án: `python -m src.run_parts3_5 --rerun`. '
-        'Metadata và hash nguồn: `outputs/parts3_5_run.json`. '
+        'Chạy từ gốc dự án: `python -m src.run_part3 --rerun`. '
+        'Metadata và hash nguồn: `outputs/part3_run.json`. '
         'Notebook tương ứng: `notebooks/'+folder+'/analysis.ipynb`.']
     # The main report lives one directory below the repository root.
     sections.extend(('#'+line if index>0 and line.startswith('#') else line).replace('../../outputs/','../outputs/')
@@ -357,7 +284,6 @@ def write_reports(root: Path=ROOT) -> None:
 
 def run(data2023: Path,data2025: Path,root: Path=ROOT) -> dict:
     from src.analyze_combinations import analyze_combinations
-    from src.analyze_correlations import analyze_correlations
     root.mkdir(parents=True,exist_ok=True)
     cohorts={}; audits=[]
     for year,path in [(2023,data2023),(2025,data2025)]:
@@ -365,34 +291,31 @@ def run(data2023: Path,data2025: Path,root: Path=ROOT) -> dict:
         cohorts[year],audit=load_scores(path,year); audits.append(audit)
     print('Part 3: combinations, observed participation, empirical top thresholds',flush=True)
     combination_result=analyze_combinations(cohorts,root/'outputs/combinations')
-    print('Part 5: pairwise correlations and support',flush=True)
-    correlation_result=analyze_correlations(cohorts,root/'outputs/correlations')
     from src.subject_distribution_evidence import generate
     generate(cohorts,root,audits)
     result={
-        'generated_at_utc':datetime.now(timezone.utc).isoformat(),'scope':'parts 3 and 5 only',
+        'generated_at_utc':datetime.now(timezone.utc).isoformat(),'scope':'part 3 only',
         'inputs':audits,'versions':{'python':platform.python_version(),'numpy':np.__version__,'pandas':pd.__version__},
-        'cohort_labels':COHORT_LABELS,'seed':42,'min_pair_n':100,
-        'combination_result':combination_result,'correlation_result':correlation_result,
-        'known_legacy_issue':'week6_score_distribution.tidy_year: scalar DataFrame without index; unrelated to the part 3 report',
+        'cohort_labels':COHORT_LABELS,'seed':42,
+        'combination_result':combination_result,
     }
     (root/'outputs').mkdir(exist_ok=True)
-    (root/'outputs/parts3_5_run.json').write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+    (root/'outputs/part3_run.json').write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
     write_reports(root); write_notebooks(root)
     result['verification']=validate_outputs(root)
     files=[]
-    for folder in ['outputs/combinations','outputs/correlations']:
+    for folder in ['outputs/combinations','outputs/audits']:
         for path in sorted((root/folder).rglob('*')):
             if path.is_file(): files.append({'path':path.relative_to(root).as_posix(),'bytes':path.stat().st_size,'sha256':file_sha256(path)})
-    (root/'outputs/parts3_5_manifest.json').write_text(json.dumps(files,ensure_ascii=False,indent=2),encoding='utf-8')
-    (root/'outputs/parts3_5_run.json').write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
+    (root/'outputs/part3_manifest.json').write_text(json.dumps(files,ensure_ascii=False,indent=2),encoding='utf-8')
+    (root/'outputs/part3_run.json').write_text(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
     print(json.dumps(result['verification'],ensure_ascii=False),flush=True)
     return result
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--rerun',action='store_true',help='Recompute parts 3 and 5 from immutable inputs')
+    parser.add_argument('--rerun',action='store_true',help='Recompute part 3 from immutable inputs')
     parser.add_argument('--verify-only',action='store_true')
     parser.add_argument('--data2023',type=Path,default=ROOT/'data/raw/original.csv')
     parser.add_argument('--data2025',type=Path,default=ROOT/'data/dataset_diem_thi_thpt_2025.csv')
@@ -400,7 +323,7 @@ def main():
     args=parser.parse_args()
     if args.verify_only:
         print(validate_outputs(args.output_root)); return
-    if args.rerun or not (args.output_root/'outputs/parts3_5_run.json').exists():
+    if args.rerun or not (args.output_root/'outputs/part3_run.json').exists():
         run(args.data2023,args.data2025,args.output_root)
     else:
         print(validate_outputs(args.output_root))

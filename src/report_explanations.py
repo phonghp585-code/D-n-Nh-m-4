@@ -116,7 +116,7 @@ def external_review(root, table):
     path=root/'outputs/audits/external_verification.json'
     if not path.exists(): return []
     audit=json.loads(path.read_text(encoding='utf-8'))
-    run=json.loads((root/'outputs/parts3_5_run.json').read_text(encoding='utf-8'))
+    run=json.loads((root/'outputs/part3_run.json').read_text(encoding='utf-8'))
     if audit.get('inputs') and {r['sha256'] for r in audit['inputs']}!={r['sha256'] for r in run['inputs']}:
         raise ValueError('External verification belongs to different input files; rerun src.verify_external_scores')
     stats=read(root,'audits','external_score_statistics')

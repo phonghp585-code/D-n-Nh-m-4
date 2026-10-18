@@ -6,11 +6,9 @@
 
 File nằm trong thư mục `docs` có sẵn: **`docs/phan_3_to_hop_mon_2023_2025.md`**. Báo cáo chỉ gồm phần 3: đủ 24 tổ hợp, so sánh tổng điểm, ngưỡng top 10%/20%, xu hướng môn có điểm và các bằng chứng/giả thuyết giải thích biến động. Mỗi bảng và hình có diễn giải ngay bên dưới.
 
-- [Hướng dẫn chạy lại và quy tắc phân tích phần 3](docs/HUONG_DAN_PHAN_3.md).
-- [Tóm tắt toàn bộ công việc và cập nhật phạm vi báo cáo](docs/TOM_TAT_CONG_VIEC_TU_DAU.md).
 - [Notebook tổ hợp môn](notebooks/combinations/analysis.ipynb).
 
-Mã, notebook và kết quả tương quan đã làm trước đây được giữ riêng trong `src/analyze_correlations.py`, `notebooks/correlations/` và `outputs/correlations/`; phần 5 không nằm trong báo cáo cần đọc ở trên.
+Chạy lại phần 3 bằng `python -m src.run_part3 --rerun`; cài môi trường với `requirements-part3.txt`. Các file phần 5, tuần 6 và các file gộp cũ được ignore, bỏ theo dõi trên Git nhưng giữ bản local/lịch sử Git. Các bài tuần 3–5 và dữ liệu nền vẫn được giữ.
 
 ## Bài tập tuần 3–5
 

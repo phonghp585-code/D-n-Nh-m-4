@@ -96,7 +96,7 @@ def report_section(root, table):
     if not (out/'subject_distribution_evidence.csv').exists():
         return []
     metadata=json.loads((out/'subject_distribution_metadata.json').read_text(encoding='utf-8'))
-    run=json.loads((Path(root)/'outputs/parts3_5_run.json').read_text(encoding='utf-8'))
+    run=json.loads((Path(root)/'outputs/part3_run.json').read_text(encoding='utf-8'))
     if {x['sha256'] for x in metadata['inputs']}!={x['sha256'] for x in run['inputs']}:
         raise ValueError('Subject distribution evidence is stale for current inputs')
     data=pd.read_csv(out/'subject_distribution_evidence.csv').set_index(['year','subject'])
