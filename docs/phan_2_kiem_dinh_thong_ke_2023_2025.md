@@ -7,7 +7,7 @@
 ## Kết quả chính — đọc phần này trước
 
 
-Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai năm và 4 nhóm chỉ có một năm. Các khác biệt |d| lớn nhất trong tập so được là: Tiếng Đức (N5): Δ=1,838 điểm, d=1,035; Toán: Δ=-1,467 điểm, d=-0,886; Tiếng Pháp (N3): Δ=1,194 điểm, d=0,630. Đây là chênh điểm quan sát, không phải tác động nhân quả.
+Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai năm và 4 nhóm chỉ có một năm. Các khác biệt |d| lớn nhất trong tập so được là: Tiếng Đức (N5): Δ=1,838 điểm, d=1,035, n2023/n2025=86/150; Toán: Δ=-1,467 điểm, d=-0,886, n2023/n2025=1,003,373/1,126,172; Tiếng Pháp (N3): Δ=1,194 điểm, d=0,630, n2023/n2025=716/408. Riêng Tiếng Đức (N5) chỉ có86/150 người, cần đọc CI và giới hạn mẫu nhỏ; thứ hạng này không đại diện cho mọi thí sinh. Đây là chênh điểm quan sát, không phải tác động nhân quả.
 
 
 ## 2.1. Phạm vi: mỗi con số dùng mẫu nào?
@@ -681,6 +681,17 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 | D84 | Toán + GDCD + Tiếng Anh (N1) | Toán + GDKT&PL + Tiếng Anh (N1) | 556.034 | 47.902 | Đổi môn: chỉ mô tả |
 
 **Diễn giải bảng:** Đủ 24 mã có điểm trong nguồn; B08/D08 cùng Toán–Sinh–Anh nên chỉ tính một bộ. Bảy khối A08/A09/C14/C19/C20/D66/D84 đổi GDCD sang GDKT&PL: PCA riêng từng năm và mô tả điểm, không đưa vào family kiểm định chính liên năm. N1 là Tiếng Anh; đây là các mã nguồn có sẵn, không là mọi tổ hợp ba môn có thể tưởng tượng. Tin học/Công nghệ và N2–N7 đã phân tích ở từng môn nhưng chưa có mã khối tương ứng trong nguồn. Tổng n của các khối không phải số người vì một người có thể thuộc nhiều khối.
+
+
+| Bất đồng | data/danh_muc_to_hop.csv cũ | Quy tắc thực dùng |
+| --- | --- | --- |
+| D04 trong danh mục | Toán–Văn–Hóa | Nguồn dùng C02; không tạo khối D04 mới |
+| D09/D10 | Danh mục ghi D09 là Toán–Địa–Ngoại ngữ | Nguồn: D09=Toán–Sử–N1; D10=Toán–Địa–N1 |
+| D96/D84 | Danh mục ghi D96 là Toán–GDCD–Ngoại ngữ | Nguồn có D84; 2023 dùng GDCD,2025 dùng GDKT&PL |
+| A01/D90; B08/D99 | Ghi chú danh mục coi là alias | Không sử dụng các alias này; chỉ B08/D08 cùng bộ trong nguồn |
+| Ngoại ngữ | Danh mục ghi chung, không chỉ mã | Tổng đã lưu khớp Tiếng Anh N1; không gộp N2–N7 |
+
+**Diễn giải bảng:** Đây là bất đồng đã biết giữa danh mục cũ và các cột diem_* trong tệp điểm, không phải mapping_issues trống nghĩa mọi tài liệu đều thống nhất. Ưu tiên mapping đã kiểm chứng bằng tổng ba môn và số mẫu phần3; không sửa danh mục gốc, không tự thêm/đổi mã theo ghi chú cũ. Phạm vi24 mã là theo bộ dữ liệu này, không là xác nhận danh mục tuyển sinh chính thức.
 
 
 **Quy tắc tính:** Chỉ cộng khi có đủ ba môn cùng người/cùng năm, giữ điểm0, tổng trong0–30. Không cộng hai điểm rồi bỏ qua môn thiếu. Chỉ chuẩn hóa sai số cộng dấu phẩy động ở mức 10⁻¹⁰ điểm, không làm tròn về bước điểm bài thi. Bandwidth KDE tổng là0,35 điểm, phản xạ ở0/30. Phép thử dùng tổng gốc sau chuẩn hóa sai số này.

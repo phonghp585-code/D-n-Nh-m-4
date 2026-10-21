@@ -16,7 +16,15 @@ def lookup(cat):
         a=g.loc[g.year.eq(2023)].iloc[0];b=g.loc[g.year.eq(2025)].iloc[0]
         names=lambda year:' + '.join(label('foreign_language:N1' if s=='english' else s) for s in combination_subjects(code,year))
         rows.append([code,names(2023),names(2025),a.n_complete,b.n_complete,'Dùng chung B08' if code=='D08' else 'Đổi môn: chỉ mô tả' if a.comparison_class=='changed_subject_content' else 'So được điểm quan sát'])
-    return md_table(pd.DataFrame(rows,columns=['Khối','Môn 2023','Môn 2025','n2023','n2025','Phạm vi']))+'\n\n**Diễn giải bảng:** Đủ 24 mã có điểm trong nguồn; B08/D08 cùng Toán–Sinh–Anh nên chỉ tính một bộ. Bảy khối A08/A09/C14/C19/C20/D66/D84 đổi GDCD sang GDKT&PL: PCA riêng từng năm và mô tả điểm, không đưa vào family kiểm định chính liên năm. N1 là Tiếng Anh; đây là các mã nguồn có sẵn, không là mọi tổ hợp ba môn có thể tưởng tượng. Tin học/Công nghệ và N2–N7 đã phân tích ở từng môn nhưng chưa có mã khối tương ứng trong nguồn. Tổng n của các khối không phải số người vì một người có thể thuộc nhiều khối.\n'
+    text=md_table(pd.DataFrame(rows,columns=['Khối','Môn 2023','Môn 2025','n2023','n2025','Phạm vi']))+'\n\n**Diễn giải bảng:** Đủ 24 mã có điểm trong nguồn; B08/D08 cùng Toán–Sinh–Anh nên chỉ tính một bộ. Bảy khối A08/A09/C14/C19/C20/D66/D84 đổi GDCD sang GDKT&PL: PCA riêng từng năm và mô tả điểm, không đưa vào family kiểm định chính liên năm. N1 là Tiếng Anh; đây là các mã nguồn có sẵn, không là mọi tổ hợp ba môn có thể tưởng tượng. Tin học/Công nghệ và N2–N7 đã phân tích ở từng môn nhưng chưa có mã khối tương ứng trong nguồn. Tổng n của các khối không phải số người vì một người có thể thuộc nhiều khối.\n'
+    conflicts=pd.DataFrame([
+        ['D04 trong danh mục','Toán–Văn–Hóa','Nguồn dùng C02; không tạo khối D04 mới'],
+        ['D09/D10','Danh mục ghi D09 là Toán–Địa–Ngoại ngữ','Nguồn: D09=Toán–Sử–N1; D10=Toán–Địa–N1'],
+        ['D96/D84','Danh mục ghi D96 là Toán–GDCD–Ngoại ngữ','Nguồn có D84; 2023 dùng GDCD,2025 dùng GDKT&PL'],
+        ['A01/D90; B08/D99','Ghi chú danh mục coi là alias','Không sử dụng các alias này; chỉ B08/D08 cùng bộ trong nguồn'],
+        ['Ngoại ngữ','Danh mục ghi chung, không chỉ mã','Tổng đã lưu khớp Tiếng Anh N1; không gộp N2–N7']
+    ],columns=['Bất đồng','data/danh_muc_to_hop.csv cũ','Quy tắc thực dùng'])
+    return text+'\n\n'+md_table(conflicts)+'\n\n**Diễn giải bảng:** Đây là bất đồng đã biết giữa danh mục cũ và các cột diem_* trong tệp điểm, không phải mapping_issues trống nghĩa mọi tài liệu đều thống nhất. Ưu tiên mapping đã kiểm chứng bằng tổng ba môn và số mẫu phần3; không sửa danh mục gốc, không tự thêm/đổi mã theo ghi chú cũ. Phạm vi24 mã là theo bộ dữ liệu này, không là xác nhận danh mục tuyển sinh chính thức.\n'
 
 def part2_sections(root):
     from src.report_part2 import _entity_section

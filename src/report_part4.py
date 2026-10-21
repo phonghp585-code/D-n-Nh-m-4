@@ -40,9 +40,9 @@ def render_report(root:Path,*,include_combinations=False):
         '**Diễn giải bảng:** Xếp hạng dương theo Pearson trong tập n≥100, không là bảng chất lượng môn học. Nên đọc rho và n cùng r; các ngôn ngữ/nhóm ít người có thành phần chọn mẫu riêng. Đây không phải quan hệ nhân quả. Bảng đầy đủ tất cả cặp ở cuối báo cáo.\n',
         '## 4.4. Cấu trúc tương quan thay đổi ra sao?\n',
         image_block('outputs/subject_relations/figures/delta_r.png','Chênh tương quan 2025 trừ 2023','Dương nghĩa r2025 cao hơn r2023 trong hai tập cặp tương ứng; âm là thấp hơn. Ô xám gồm cặp thiếu ở một năm hoặc không đủ mẫu, không phải delta0. Môn chỉ một năm không bị tạo một r giả ở năm còn lại.')]
-    change=delta.loc[delta.delta_r.notna()].copy();change=change.loc[change.delta_r.abs().sort_values(ascending=False).index]
+    change=delta.loc[delta.delta_r.notna()&delta.n_2023.ge(100)&delta.n_2025.ge(100)].copy();change=change.loc[change.delta_r.abs().sort_values(ascending=False).index]
     sections += [md_table(_labels(change.head(15)[['subject_x','subject_y','n_2023','n_2025','r_2023','r_2025','delta_r','delta_rho']]),['Môn X','Môn Y','n2023','n2025','r2023','r2025','Δr','Δrho'],3),
-        '**Diễn giải bảng:** Đây là thay đổi lớn nhất về trị tuyệt đối trong các cặp so được, không là phép so cùng người. Fisher z và q BH được lưu ở bảng đầy đủ; CI chênh z dùng thang z, không gọi là CI Δr. Ba cặp minh họa có thêm CI Δr bootstrap theo cùng dòng/cặp điểm, độc lập giữa hai năm.\n',
+        '**Diễn giải bảng:** Xếp hạng chính chỉ lấy cặp có n≥100 ở cả hai năm. Đây là thay đổi lớn nhất về trị tuyệt đối trong các cặp đủ tiêu chí này, không là phép so cùng người. Phụ lục đầy đủ vẫn giữ cặp 30≤n<100, có số mẫu và cờ mẫu nhỏ. Fisher z và q BH ở phụ lục; CI chênh z dùng thang z, không gọi là CI Δr. Ba cặp minh họa có thêm CI Δr bootstrap theo cùng dòng/cặp điểm, độc lập giữa hai năm.\n',
         '**Ý nghĩa và giới hạn:** Cách chọn môn và quy mô các tập cặp khác nhau giữa 2023/2025. Vì vậy r tăng không tự chứng minh chương trình làm kiến thức gắn kết hơn. Không lấy trung bình mọi ô ma trận như một kiểm định cấu trúc toàn cục; các ô có thể dùng người khác nhau.\n',
         '## 4.5. Toán cao có thường đạt Lý cao?\n']
     for i,(x,y) in enumerate([('math','physics'),('literature','history'),('history','geography')],1):
