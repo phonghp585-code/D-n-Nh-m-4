@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from scipy.stats import gaussian_kde
+from scipy.ndimage import gaussian_filter1d
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA23 = ROOT / "data/processed/week5/week5_final+du_lieu_cuoi.csv"
@@ -72,15 +72,13 @@ def values_for(d23, d25, code, spec):
     return s23, s25
 
 def density_curve(values, grid, rng):
+    # Approximate Gaussian KDE efficiently by smoothing a fine-grained density histogram.
     values = np.asarray(values, dtype=float)
-    if len(values) > 120_000:
-        values = rng.choice(values, 120_000, replace=False)
-    sd = np.std(values, ddof=1)
-    if len(values) < 2 or not np.isfinite(sd) or sd == 0:
-        return np.zeros_like(grid)
-    # Fixed bandwidth in score points, implemented as an equivalent KDE factor.
-    kde = gaussian_kde(values, bw_method=0.35 / sd)
-    return kde(grid)
+    bins = np.linspace(-1, 31, 641)  # 0.05-point grid
+    hist, edges = np.histogram(values, bins=bins, density=True)
+    smoothed = gaussian_filter1d(hist, sigma=0.35 / 0.05, mode="constant")
+    centers = (edges[:-1] + edges[1:]) / 2
+    return np.interp(grid, centers, smoothed, left=0, right=0)
 
 def main():
     d23, d25 = load_data()
