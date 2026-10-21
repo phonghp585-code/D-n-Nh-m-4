@@ -1,0 +1,38 @@
+name: Generate combination KDE plots
+on:
+  push:
+    branches: [thanh]
+    paths:
+      - "scripts/analysis/plot_combinations_kde.py"
+      - ".github/workflows/combination-kde.yml"
+      - "data/processed/week5/week5_final+du_lieu_cuoi.csv"
+      - "data/dataset_diem_thi_thpt_2025.csv"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  plots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+          ref: thanh
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install pandas numpy matplotlib scipy
+      - name: Generate 24 combination KDE plots
+        run: python scripts/analysis/plot_combinations_kde.py
+      - name: Commit generated plots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add outputs/combinations/figures/
+          if git diff --cached --quiet; then
+            echo "No generated figure changes."
+          else
+            git commit -m "Generate 2023 vs 2025 KDE plots for 24 combinations"
+            git push origin HEAD:thanh
+          fi
