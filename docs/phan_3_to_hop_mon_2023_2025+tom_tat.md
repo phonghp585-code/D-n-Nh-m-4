@@ -2,6 +2,8 @@
 
 So sánh năm **2023 và 2025** theo đủ **24 mã tổ hợp**: điểm tổ hợp, xu hướng chọn môn và ngưỡng điểm vào nhóm cao nhất. Mọi mũi tên trong bảng đều chỉ **2023 → 2025**.
 
+**Tệp tạo biểu đồ:** [scripts/analysis/plot_combinations_kde.py](../scripts/analysis/plot_combinations_kde.py). Workflow [Generate combination KDE plots](../.github/workflows/combination-kde.yml) được cấu hình để chạy khi script hoặc dữ liệu liên quan thay đổi trên nhánh `thanh`, sau đó lưu 4 hình PNG vào `outputs/combinations/figures/`. Mỗi hình gồm 6 tổ hợp, tổng cộng đủ 24 mã. Nếu vừa cập nhật dữ liệu, kiểm tra tab **Actions** của GitHub để xác nhận workflow chạy thành công trước khi sử dụng hình.
+
 ## 3.1 So sánh điểm của 24 tổ hợp
 
 Điểm tổ hợp là tổng ba môn, thang 30, chưa cộng ưu tiên hay nhân hệ số. Chỉ tính người có đủ điểm cả ba môn; một người có thể thuộc nhiều tổ hợp.
