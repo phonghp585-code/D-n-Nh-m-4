@@ -1,0 +1,44 @@
+name: Generate subject score distribution plots
+on:
+  push:
+    branches: [thanh]
+    paths:
+      - "scripts/analysis/plot_subject_score_distributions.py"
+      - ".github/workflows/subject-score-plots.yml"
+      - "data/processed/week5/week5_final+du_lieu_cuoi.csv"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  plots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout analysis branch
+        uses: actions/checkout@v4
+        with:
+          ref: thanh
+          lfs: true
+      - name: Checkout 2025 dataset from nhan branch
+        uses: actions/checkout@v4
+        with:
+          ref: nhan
+          path: data2025
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install pandas numpy matplotlib
+      - name: Generate eight subject figures
+        run: python scripts/analysis/plot_subject_score_distributions.py
+      - name: Commit generated figures
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add outputs/week6/figures/pho_diem_*_2023_2025.svg outputs/week6/figures/manifest.csv
+          if git diff --cached --quiet; then
+            echo "No figure changes."
+          else
+            git commit -m "Generate actual 2023 vs 2025 subject score distribution plots"
+            git push origin HEAD:thanh
+          fi
