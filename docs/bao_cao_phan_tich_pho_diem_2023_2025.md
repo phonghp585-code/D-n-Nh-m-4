@@ -293,49 +293,49 @@ Mỗi hình bên dưới gồm bốn biểu đồ đối chiếu cùng môn gi�
 
 #### Toán
 
-![So sánh histogram, KDE, boxplot và violin plot môn Toán năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_toan_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Toán năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_toan_2023_2025.svg)
 
 [Mở hình SVG của môn Toán](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_toan_2023_2025.svg)
 
 #### Ngữ văn
 
-![So sánh histogram, KDE, boxplot và violin plot môn Ngữ văn năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_ngu_van_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Ngữ văn năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_ngu_van_2023_2025.svg)
 
 [Mở hình SVG của môn Ngữ văn](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_ngu_van_2023_2025.svg)
 
 #### Ngoại ngữ
 
-![So sánh histogram, KDE, boxplot và violin plot môn Ngoại ngữ năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_ngoai_ngu_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Ngoại ngữ năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_ngoai_ngu_2023_2025.svg)
 
 [Mở hình SVG của môn Ngoại ngữ](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_ngoai_ngu_2023_2025.svg)
 
 #### Vật lí
 
-![So sánh histogram, KDE, boxplot và violin plot môn Vật lí năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_vat_li_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Vật lí năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_vat_li_2023_2025.svg)
 
 [Mở hình SVG của môn Vật lí](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_vat_li_2023_2025.svg)
 
 #### Hóa học
 
-![So sánh histogram, KDE, boxplot và violin plot môn Hóa học năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_hoa_hoc_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Hóa học năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_hoa_hoc_2023_2025.svg)
 
 [Mở hình SVG của môn Hóa học](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_hoa_hoc_2023_2025.svg)
 
 #### Sinh học
 
-![So sánh histogram, KDE, boxplot và violin plot môn Sinh học năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_sinh_hoc_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Sinh học năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_sinh_hoc_2023_2025.svg)
 
 [Mở hình SVG của môn Sinh học](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_sinh_hoc_2023_2025.svg)
 
 #### Lịch sử
 
-![So sánh histogram, KDE, boxplot và violin plot môn Lịch sử năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_lich_su_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Lịch sử năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_lich_su_2023_2025.svg)
 
 [Mở hình SVG của môn Lịch sử](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_lich_su_2023_2025.svg)
 
 #### Địa lí
 
-![So sánh histogram, KDE, boxplot và violin plot môn Địa lí năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_dia_li_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Địa lí năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_dia_li_2023_2025.svg)
 
 [Mở hình SVG của môn Địa lí](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_dia_li_2023_2025.svg)
 
