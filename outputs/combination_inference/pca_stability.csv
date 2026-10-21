@@ -1,0 +1,24 @@
+﻿canonical_id,status,reason,near_eigenvalues,pc1_abs_cosine,pc12_max_angle_deg
+biology|chemistry|math,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9992673669937078,3.6095339432409053
+biology|foreign_language:N1|math,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.998593312714448,54.838035387570756
+biology|math|physics,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9885759686018553,14.017005630038831
+chemistry|foreign_language:N1|math,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9939475196315162,23.88054285074324
+chemistry|literature|math,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9923302557282836,3.239718004417865
+chemistry|math|physics,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9981055415016614,79.19266107672031
+economics_law|foreign_language:N1|literature,not_comparable,Thiếu mô hình hoặc đổi môn,False,,
+economics_law|foreign_language:N1|math,not_comparable,Thiếu mô hình hoặc đổi môn,False,,
+economics_law|geography|literature,not_comparable,Thiếu mô hình hoặc đổi môn,False,,
+economics_law|geography|math,not_comparable,Thiếu mô hình hoặc đổi môn,False,,
+economics_law|history|literature,not_comparable,Thiếu mô hình hoặc đổi môn,False,,
+economics_law|history|math,not_comparable,Thiếu mô hình hoặc đổi môn,False,,
+economics_law|literature|math,not_comparable,Thiếu mô hình hoặc đổi môn,False,,
+foreign_language:N1|geography|literature,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9959655824670773,85.01695202775235
+foreign_language:N1|geography|math,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.997104716696721,12.439067683801118
+foreign_language:N1|history|literature,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9981208138935538,86.11525891920391
+foreign_language:N1|history|math,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9987023093830427,7.351564244437369
+foreign_language:N1|literature|math,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9940477296596402,0.44215660633176873
+foreign_language:N1|math|physics,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9992314302751549,2.0909957567268314
+geography|history|literature,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9999656374092485,5.188140016913021
+geography|literature|math,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9976641591134716,80.09049922514232
+history|literature|math,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9987764215240449,88.98486358097415
+literature|math|physics,compared,Các PC được căn dấu theo cùng vector 2023 khi trình bày; góc không gian con bất biến dấu.,False,0.9993758188667812,2.430910082407513

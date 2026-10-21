@@ -63,6 +63,9 @@ def ptext(x):
 def md_table(table,headers=None,digits=2):
     table=table.copy()
     if headers:table.columns=headers
+    for column in table:
+        if str(column).lower() in ('year','năm'):
+            table[column]=table[column].map(lambda x:str(int(x)) if pd.notna(x) else '—')
     rows=['| '+' | '.join(map(str,table.columns))+' |','| '+' | '.join(['---']*len(table.columns))+' |']
     rows += ['| '+' | '.join(number(x,digits) for x in row)+' |' for row in table.itertuples(index=False,name=None)]
     return '\n'.join(rows)

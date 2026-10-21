@@ -136,3 +136,22 @@ def analyze_subjects(frames,*,seed=SEED,progress=None):
         if missing:issues=pd.concat([issues,pd.DataFrame([dict(year=year,subject_id='foreign_language:missing',status=f'{missing} điểm thiếu mã')])],ignore_index=True)
     return dict(catalog=catalog,descriptives=pd.DataFrame(descriptions),tests=table,
                 effects=table.reindex(columns=effect_cols),mapping_issues=issues)
+
+def analyze_combination_totals(frames,catalog,*,seed=SEED,progress=None):
+    import json
+    from src.analysis_catalog import combination_scores
+    rows=[];descs=[]
+    for i,(key,group) in enumerate(catalog.groupby('canonical_id',sort=True)):
+        arrays={r.year:combination_scores(frames[r.year],json.loads(r.subjects)).to_numpy(float) for r in group.drop_duplicates('year').itertuples()}
+        aliases='/'.join(group.code.unique());changed=group.comparison_class.eq('changed_subject_content').any()
+        if progress:progress(f'Tổ hợp {aliases}')
+        if changed:
+            # Only descriptions, never infer equivalence between GDCD and economics/law.
+            record=compare_values([],[],entity_id=key,seed=seed+10000+i,domain=(0,30));record.update(status='changed_subject_content',reason='GDCD 2023 được thay bằng GDKT&PL 2025; chỉ mô tả riêng, không kiểm định chính liên năm.')
+            for year,x in arrays.items():record.update({f'{k}_{year}':v for k,v in describe_values(x,(0,30)).items()})
+            record['delta_mean']=record['mean_2025']-record['mean_2023']
+        else:record=compare_values(arrays.get(2023,[]),arrays.get(2025,[]),entity_id=key,seed=seed+10000+i,domain=(0,30))
+        record.update(label=aliases,canonical_id=key);rows.append(record)
+        for year,x in arrays.items():descs.append(dict(year=year,entity_id=key,label=aliases,**describe_values(x,(0,30))))
+    table=apply_families(pd.DataFrame(rows),'combination')
+    return dict(tests=table,descriptives=pd.DataFrame(descs))
