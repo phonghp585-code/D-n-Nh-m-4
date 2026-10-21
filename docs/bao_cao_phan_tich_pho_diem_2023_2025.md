@@ -1,6 +1,6 @@
 # Báo cáo phân tích mô tả và so sánh phổ điểm thi THPT năm 2023 và 2025
 
-> **Trạng thái số liệu:** Bản báo cáo này là bản phân tích tham chiếu dựa trên bảng phân phối điểm công khai của [NhanAZ-Data/diem-thi-thpt-cac-nam](https://github.com/NhanAZ-Data/diem-thi-thpt-cac-nam), tệp `data/summary/subject_score_distribution.csv`. Các con số dưới đây **chưa được xác nhận là tính trực tiếp từ hai tệp dữ liệu gốc đã hợp mã tỉnh của Nhóm 4**. Cần chạy lại pipeline trên dữ liệu của dự án trước khi dùng làm kết quả chính thức.
+> **Lưu ý quan trọng về nguồn:** Các bảng thống kê ở mục 3–6 vẫn là số liệu tham chiếu từ bảng phân phối công khai [NhanAZ-Data/diem-thi-thpt-cac-nam](https://github.com/NhanAZ-Data/diem-thi-thpt-cac-nam), chưa được xác nhận là tính trực tiếp từ hai tệp gốc của Nhóm 4. Các hình ở mục 7.4 trở đi đã được vẽ riêng từ tệp dữ liệu 2023 `week5_final+du_lieu_cuoi.csv` trong snapshot nhánh `thanh` và tệp `dataset_diem_thi_thpt_2025.txt` người dùng cung cấp. Không được coi các bảng tham chiếu và các hình từ dữ liệu dự án là cùng một lần tính toán; trước khi nộp cần chạy lại toàn bộ bảng thống kê từ chính hai tệp này.
 
 ## 1. Mục tiêu và câu hỏi phân tích
 
@@ -200,7 +200,7 @@ Khi bổ sung biểu đồ vào bản báo cáo cuối cùng, nên dùng cùng t
 - **Violin plot:** xem các vùng điểm có mật độ cao/thấp và khả năng phân phối nhiều đỉnh.
 - **Đọc kết hợp:** không kết luận từ một hình riêng lẻ; đối chiếu với N, trung bình, trung vị, ĐLC và tỷ lệ theo ngưỡng.
 
-**Ghi chú về hiện trạng:** Bản Markdown này chưa nhúng các biểu đồ được tính trực tiếp từ dữ liệu gốc của Nhóm 4. Không nên gắn đường dẫn biểu đồ giả định; cần thêm hình sau khi pipeline tạo và kiểm tra file đầu ra thực tế.
+**Biểu đồ thực tế đã được tạo:** Tám hình SVG nằm trong thư mục [`outputs/week6/figures/`](../../tree/thanh/outputs/week6/figures). Mỗi hình chứa bốn ô: histogram chồng lớp, KDE, boxplot và violin plot; mỗi hình so sánh dữ liệu điểm 2023 và 2025 cho một môn. Các hình dùng điểm hợp lệ [0,10], giữ nguyên giá trị thiếu và ghi N hợp lệ. Lưu ý: KDE/violin được ước lượng bằng mẫu xác định tối đa 8.000 điểm mỗi năm để giảm chi phí tính; histogram và tóm tắt tứ phân vị dùng toàn bộ điểm hợp lệ. Các boxplot hiển thị min, Q1, trung vị, Q3, max; không hiển thị riêng từng điểm ngoại lệ.
 
 ### 7.1. Thiết kế biểu đồ so sánh chồng hai năm
 
@@ -240,7 +240,7 @@ Khi bổ sung biểu đồ vào bản báo cáo cuối cùng, nên dùng cùng t
 5. Dùng cùng giới hạn trục X (0–10), cùng bin histogram, cùng quy ước màu/nhãn và cùng cách tính KDE cho cả hai năm.
 6. Báo cáo N hợp lệ của mỗi năm cạnh hình; nếu N khác biệt lớn, nêu rõ đây là so sánh phân phối các điểm quan sát được, không phải so sánh cùng một nhóm thí sinh.
 7. Nếu dữ liệu quá lớn, có thể lấy mẫu ngẫu nhiên có kiểm soát để dựng KDE/violin nhằm giảm thời gian tính; phải ghi rõ phương pháp, cỡ mẫu và seed. Các thống kê mô tả và tỷ lệ theo ngưỡng vẫn nên tính trên toàn bộ điểm hợp lệ.
-8. Lưu từng hình với tên có thể truy vết, ví dụ `outputs/week6/figures/pho_diem_toan_2023_2025.png`; ghi nguồn dữ liệu, thời điểm chạy và cấu hình biểu đồ trong manifest.
+8. Lưu từng hình với tên có thể truy vết, ví dụ `outputs/week6/figures/pho_diem_toan_2023_2025.svg`; ghi nguồn dữ liệu, thời điểm chạy và cấu hình biểu đồ trong manifest.
 
 ### 7.3. Mẫu diễn giải kết quả từ hình
 
@@ -285,3 +285,57 @@ Kết quả này mô tả sự khác biệt quan sát được, không xác đ�
 - Bảng phân phối điểm công khai: [NhanAZ-Data/diem-thi-thpt-cac-nam](https://github.com/NhanAZ-Data/diem-thi-thpt-cac-nam).
 - Tài liệu so sánh tổ hợp môn của dự án: [Phần 3 – Phân tích theo khối thi và tổ hợp môn](./phan_3_to_hop_mon_2023_2025%2Btom_tat.md).
 - Dữ liệu và mã phân tích của Nhóm 4: cần cập nhật liên kết chính xác tới tệp/pipeline sau khi xác nhận đường dẫn trên nhánh làm việc.
+
+
+### 7.4. Các hình đã vẽ từ dữ liệu của dự án
+
+Mỗi hình bên dưới gồm bốn biểu đồ đối chiếu cùng môn giữa năm 2023 và 2025. Nhấn vào hình/tên tệp để mở bản SVG có độ phân giải vector.
+
+#### Toán
+
+![So sánh histogram, KDE, boxplot và violin plot môn Toán năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_toan_2023_2025.svg)
+
+[Mở hình SVG của môn Toán](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_toan_2023_2025.svg)
+
+#### Ngữ văn
+
+![So sánh histogram, KDE, boxplot và violin plot môn Ngữ văn năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_ngu_van_2023_2025.svg)
+
+[Mở hình SVG của môn Ngữ văn](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_ngu_van_2023_2025.svg)
+
+#### Ngoại ngữ
+
+![So sánh histogram, KDE, boxplot và violin plot môn Ngoại ngữ năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_ngoai_ngu_2023_2025.svg)
+
+[Mở hình SVG của môn Ngoại ngữ](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_ngoai_ngu_2023_2025.svg)
+
+#### Vật lí
+
+![So sánh histogram, KDE, boxplot và violin plot môn Vật lí năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_vat_li_2023_2025.svg)
+
+[Mở hình SVG của môn Vật lí](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_vat_li_2023_2025.svg)
+
+#### Hóa học
+
+![So sánh histogram, KDE, boxplot và violin plot môn Hóa học năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_hoa_hoc_2023_2025.svg)
+
+[Mở hình SVG của môn Hóa học](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_hoa_hoc_2023_2025.svg)
+
+#### Sinh học
+
+![So sánh histogram, KDE, boxplot và violin plot môn Sinh học năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_sinh_hoc_2023_2025.svg)
+
+[Mở hình SVG của môn Sinh học](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_sinh_hoc_2023_2025.svg)
+
+#### Lịch sử
+
+![So sánh histogram, KDE, boxplot và violin plot môn Lịch sử năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_lich_su_2023_2025.svg)
+
+[Mở hình SVG của môn Lịch sử](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_lich_su_2023_2025.svg)
+
+#### Địa lí
+
+![So sánh histogram, KDE, boxplot và violin plot môn Địa lí năm 2023 và 2025](../../raw/branch/thanh/outputs/week6/figures/pho_diem_dia_li_2023_2025.svg)
+
+[Mở hình SVG của môn Địa lí](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_dia_li_2023_2025.svg)
+
