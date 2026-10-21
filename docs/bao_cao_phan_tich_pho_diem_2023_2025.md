@@ -202,6 +202,58 @@ Khi bổ sung biểu đồ vào bản báo cáo cuối cùng, nên dùng cùng t
 
 **Ghi chú về hiện trạng:** Bản Markdown này chưa nhúng các biểu đồ được tính trực tiếp từ dữ liệu gốc của Nhóm 4. Không nên gắn đường dẫn biểu đồ giả định; cần thêm hình sau khi pipeline tạo và kiểm tra file đầu ra thực tế.
 
+### 7.1. Thiết kế biểu đồ so sánh chồng hai năm
+
+Để so sánh trực quan phổ điểm, mỗi môn cần có một hình tổng hợp gồm bốn ô biểu đồ. Trong từng ô, dữ liệu năm 2023 và 2025 được đặt trên cùng hệ trục hoặc đặt cạnh nhau theo cùng thang điểm để việc so sánh không bị sai lệch bởi cách trình bày. **Không chồng cả bốn loại biểu đồ lên cùng một trục**, vì histogram/KDE biểu diễn mật độ còn boxplot/violin có cách mã hóa khác nhau; cách đó sẽ làm hình khó đọc. Thay vào đó, chồng hai năm trong từng loại biểu đồ và bố trí bốn loại trong một hình 2×2.
+
+**Ô A — Histogram chồng histogram**
+
+- Trục hoành: điểm thi từ 0 đến 10; trục tung: mật độ hoặc tỷ lệ, không dùng số lượng thô khi cỡ mẫu hai năm khác nhau.
+- Dùng cùng độ rộng bin cho cả hai năm (khuyến nghị 0,25 hoặc 0,5 điểm) và độ trong suốt để nhìn thấy vùng giao nhau.
+- Chú giải phân biệt năm 2023 và 2025; ghi số điểm hợp lệ (N) của từng năm.
+- Cách đọc: vùng cột của năm 2025 lệch sang phải gợi ý nhiều điểm hơn ở vùng điểm cao; lệch sang trái gợi ý ngược lại. Cần xem cùng các chỉ số và các ngưỡng điểm.
+
+**Ô B — KDE chồng KDE**
+
+- Ước lượng đường mật độ cho hai năm trên cùng trục điểm 0–10, sử dụng cùng phương pháp và quy tắc làm mượt (bandwidth) để bảo đảm so sánh công bằng.
+- Đường KDE là đường làm mượt, không phải tần suất quan sát thực tế; kết quả có thể nhạy với bandwidth, đặc biệt ở gần 0 và 10.
+- Cách đọc: vị trí đỉnh, độ rộng và nhiều đỉnh (nếu có) cho biết hình dạng tương đối của phân phối. Không suy luận số thí sinh chỉ từ chiều cao đường mật độ.
+
+**Ô C — Boxplot so sánh hai năm**
+
+- Đặt hai boxplot 2023 và 2025 cạnh nhau, dùng chung trục điểm 0–10.
+- Đường giữa hộp là trung vị; cạnh hộp là Q1 và Q3; chiều cao hộp phản ánh khoảng tứ phân vị (IQR); các điểm ngoài râu là quan sát được quy tắc boxplot đánh dấu là ngoại lệ.
+- Cách đọc: so sánh trung vị, IQR và độ dài râu. Điểm bị đánh dấu là ngoại lệ thống kê không tự động là lỗi nhập liệu hoặc dấu hiệu bất thường trong thi cử.
+
+**Ô D — Violin plot so sánh hai năm**
+
+- Vẽ hai violin cho năm 2023 và 2025, cùng thang điểm 0–10 và cùng quy tắc ước lượng mật độ.
+- Có thể hiển thị thêm đường trung vị và tứ phân vị bên trong violin nếu thư viện hỗ trợ.
+- Cách đọc: phần phình rộng thể hiện vùng có mật độ điểm cao; hình nhiều chỗ phình có thể gợi ý phân phối nhiều đỉnh, nhưng cần đối chiếu histogram/KDE.
+
+### 7.2. Quy tắc xử lý dữ liệu trước khi vẽ
+
+1. Chỉ giữ điểm môn cá nhân hợp lệ trong khoảng 0–10; chuyển chuỗi rỗng hoặc giá trị không đọc được thành thiếu, không đổi thành 0.
+2. So sánh các môn có trường điểm tương ứng ở cả hai năm. Không ghép điểm tổ hợp với điểm một môn.
+3. Vẽ riêng từng môn; không gộp các môn có phân phối khác nhau vào một KDE chung.
+4. Chuẩn hóa histogram theo mật độ hoặc tỷ lệ để khác biệt cỡ mẫu không làm một năm lấn át năm còn lại.
+5. Dùng cùng giới hạn trục X (0–10), cùng bin histogram, cùng quy ước màu/nhãn và cùng cách tính KDE cho cả hai năm.
+6. Báo cáo N hợp lệ của mỗi năm cạnh hình; nếu N khác biệt lớn, nêu rõ đây là so sánh phân phối các điểm quan sát được, không phải so sánh cùng một nhóm thí sinh.
+7. Nếu dữ liệu quá lớn, có thể lấy mẫu ngẫu nhiên có kiểm soát để dựng KDE/violin nhằm giảm thời gian tính; phải ghi rõ phương pháp, cỡ mẫu và seed. Các thống kê mô tả và tỷ lệ theo ngưỡng vẫn nên tính trên toàn bộ điểm hợp lệ.
+8. Lưu từng hình với tên có thể truy vết, ví dụ `outputs/week6/figures/pho_diem_toan_2023_2025.png`; ghi nguồn dữ liệu, thời điểm chạy và cấu hình biểu đồ trong manifest.
+
+### 7.3. Mẫu diễn giải kết quả từ hình
+
+Với mỗi môn, phần nhận xét nên theo cấu trúc thống nhất:
+
+- **Vị trí:** đường KDE/đỉnh histogram và trung vị năm nào nằm cao hơn trên trục điểm?
+- **Độ phân tán:** histogram/KDE rộng hơn hay hẹp hơn; IQR và ĐLC tăng hay giảm?
+- **Hình dạng:** phân phối lệch trái/phải, có nhiều đỉnh hay tập trung mạnh ở một vùng điểm không?
+- **Các vùng điểm:** hình có phù hợp với tỷ lệ ≤1, <5, ≥8 và ≥9 đã tính trong bảng không?
+- **Mức độ chắc chắn:** số quan sát hợp lệ, tỷ lệ thiếu, khác biệt cơ cấu dự thi và hạn chế dữ liệu nào có thể ảnh hưởng cách diễn giải?
+
+Không nên kết luận “phổ điểm dịch chuyển” chỉ dựa vào một đường hoặc một biểu đồ. Kết luận cần nhất quán với trung bình, trung vị, độ lệch chuẩn, skewness, kurtosis và tỷ lệ theo ngưỡng.
+
 ## 8. Giới hạn và nguy cơ diễn giải sai
 
 - Các con số trong các bảng đến từ bảng tần số tổng hợp công khai, không phải kết quả đã được xác nhận từ hai tệp nội bộ của Nhóm 4.
