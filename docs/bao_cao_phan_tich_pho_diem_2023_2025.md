@@ -12,6 +12,8 @@
 
 ## 2. Dữ liệu và phương pháp
 
+**Nhận xét sau bước chuẩn bị dữ liệu.** Số lượng điểm hợp lệ không đồng đều giữa các môn, rõ nhất ở Ngoại ngữ và Sinh học. Vì vậy, không nên so sánh số lượng thí sinh giữa môn như thể tất cả cùng thi một nhóm môn; các tỷ lệ phải dùng số điểm hợp lệ của từng môn làm mẫu số.
+
 - Dữ liệu 2023: 1.022.060 dòng; dữ liệu 2025: 1.131.136 dòng.
 - Các môn so sánh: Toán, Ngữ văn, Ngoại ngữ, Vật lý, Hóa học, Sinh học, Lịch sử và Địa lý.
 - Ánh xạ cột: `Mathematics/toan`, `Literature/ngu_van`, `Foreign language/ngoai_ngu`, `Physics/vat_li`, `Chemistry/hoa_hoc`, `Biology/sinh_hoc`, `History/lich_su`, `Geography/dia_li`.
@@ -20,6 +22,8 @@
 - Skewness âm thường gợi ý đuôi trái dài hơn; skewness dương gợi ý đuôi phải dài hơn. Excess kurtosis mô tả hình dạng/đuôi so với phân phối chuẩn; cần đọc cùng biểu đồ.
 
 ## 3. Thống kê mô tả theo môn
+
+**Nhận xét sau thống kê mô tả.** Toán giảm mạnh về trung bình và trung vị; Hóa học và Sinh học cũng giảm. Ngược lại, Ngữ văn, Vật lý, Lịch sử và Địa lý tăng về trung bình. Độ lệch chuẩn tăng ở một số môn cho thấy điểm phân tán rộng hơn, nhưng bản thân thống kê này chưa giải thích nguyên nhân.
 
 | Môn | N 2023 | N 2025 | TB 2023 | TB 2025 | Trung vị 2023 | Trung vị 2025 | ĐLC 2023 | ĐLC 2025 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -34,6 +38,8 @@
 
 ## 4. Hình dạng phân phối: skewness và excess kurtosis
 
+**Nhận xét sau phân tích hình dạng.** Skewness của Toán, Hóa học và Sinh học chuyển từ âm sang dương, gợi ý hình dạng lệch của phân phối đã thay đổi giữa hai năm. Ngữ văn có skewness âm hơn trong năm 2025. Kurtosis cần được đọc cùng histogram/KDE, không nên kết luận chỉ dựa vào một chỉ số.
+
 | Môn | Skewness 2023 | Skewness 2025 | Excess kurtosis 2023 | Excess kurtosis 2025 |
 |---|---:|---:|---:|---:|
 | Toán | -0,596 | 0,400 | -0,402 | -0,276 |
@@ -46,6 +52,8 @@
 | Địa lý | -0,153 | -0,144 | 0,252 | -0,698 |
 
 ## 5. Tỷ lệ điểm theo ngưỡng
+
+**Nhận xét sau phân tích ngưỡng điểm.** Toán có tỷ lệ dưới 5 tăng rất mạnh; Hóa học và Sinh học cũng tăng. Vật lý và Lịch sử có tỷ lệ dưới 5 giảm, trong khi tỷ lệ từ 8 trở lên tăng. Địa lý tăng ở cả tỷ lệ dưới 5 lẫn tỷ lệ điểm cao, gợi ý phân phối có thể trải rộng hơn. Các ngưỡng này chỉ mô tả dữ liệu, không tự xác định nguyên nhân.
 
 | Môn | Năm | ≤ 1 | < 5 | ≥ 8 | ≥ 9 |
 |---|---:|---:|---:|---:|---:|
@@ -67,6 +75,8 @@
 | Địa lý | 2025 | 0,00% | 18,69% | 26,68% | 11,26% |
 
 ## 6. Phân tích và so sánh xu hướng
+
+**Nhận xét tổng hợp sau phân tích từng môn.** Không có một xu hướng chung cho cả tám môn: các môn có thể thay đổi theo hướng khác nhau về trung tâm, độ phân tán và đuôi phân phối. Do cơ cấu thí sinh và việc lựa chọn môn có thể khác nhau giữa 2023 và 2025, đây là so sánh mô tả giữa hai tập dữ liệu độc lập, không phải so sánh cùng một nhóm học sinh.
 
 ### 6.1. Toán
 
@@ -126,59 +136,63 @@
 
 ## 7. Biểu đồ phổ điểm theo môn
 
+**Cách đọc biểu đồ.** Histogram cho thấy tần suất tương đối theo khoảng điểm; KDE làm rõ hình dạng tổng thể; boxplot so sánh trung vị và tứ phân vị; violin plot cho thấy vùng tập trung điểm. Hãy đối chiếu cả bốn loại với bảng thống kê, vì bandwidth KDE và việc lấy mẫu cho violin có thể ảnh hưởng hình dạng nhìn thấy.
+
 Mỗi hình gồm bốn biểu đồ so sánh cùng môn giữa 2023 và 2025: histogram chồng lớp, KDE, boxplot và violin plot. Các hình được tạo bởi script [`scripts/analysis/plot_subject_score_distributions.py`](../scripts/analysis/plot_subject_score_distributions.py). File ảnh được lưu trong `outputs/week6/figures/`.
 
 ### 7.1. Toán
 
-![So sánh histogram, KDE, boxplot và violin plot môn Toán năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Toán năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_toan_2023_2025.svg)
 
-[Mở hình SVG — Toán](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+[Mở hình SVG — Toán](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_toan_2023_2025.svg)
 
 ### 7.2. Ngữ văn
 
-![So sánh histogram, KDE, boxplot và violin plot môn Ngữ văn năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Ngữ văn năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_ngu_van_2023_2025.svg)
 
-[Mở hình SVG — Ngữ văn](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+[Mở hình SVG — Ngữ văn](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_ngu_van_2023_2025.svg)
 
 ### 7.3. Ngoại ngữ
 
-![So sánh histogram, KDE, boxplot và violin plot môn Ngoại ngữ năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Ngoại ngữ năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_ngoai_ngu_2023_2025.svg)
 
-[Mở hình SVG — Ngoại ngữ](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+[Mở hình SVG — Ngoại ngữ](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_ngoai_ngu_2023_2025.svg)
 
 ### 7.4. Vật lý
 
-![So sánh histogram, KDE, boxplot và violin plot môn Vật lý năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Vật lý năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_vat_li_2023_2025.svg)
 
-[Mở hình SVG — Vật lý](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+[Mở hình SVG — Vật lý](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_vat_li_2023_2025.svg)
 
 ### 7.5. Hóa học
 
-![So sánh histogram, KDE, boxplot và violin plot môn Hóa học năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Hóa học năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_hoa_hoc_2023_2025.svg)
 
-[Mở hình SVG — Hóa học](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+[Mở hình SVG — Hóa học](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_hoa_hoc_2023_2025.svg)
 
 ### 7.6. Sinh học
 
-![So sánh histogram, KDE, boxplot và violin plot môn Sinh học năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Sinh học năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_sinh_hoc_2023_2025.svg)
 
-[Mở hình SVG — Sinh học](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+[Mở hình SVG — Sinh học](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_sinh_hoc_2023_2025.svg)
 
 ### 7.7. Lịch sử
 
-![So sánh histogram, KDE, boxplot và violin plot môn Lịch sử năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Lịch sử năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_lich_su_2023_2025.svg)
 
-[Mở hình SVG — Lịch sử](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+[Mở hình SVG — Lịch sử](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_lich_su_2023_2025.svg)
 
 ### 7.8. Địa lý
 
-![So sánh histogram, KDE, boxplot và violin plot môn Địa lý năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+![So sánh histogram, KDE, boxplot và violin plot môn Địa lý năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_dia_li_2023_2025.svg)
 
-[Mở hình SVG — Địa lý](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
+[Mở hình SVG — Địa lý](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_dia_li_2023_2025.svg)
 
 ## 8. Kết luận chung
 
-- **Toán** có mức giảm trung tâm rõ nhất: trung bình giảm khoảng 1,47 điểm, tỷ lệ dưới 5 tăng khoảng 34,76 điểm phần trăm, còn tỷ lệ ≥8 giảm khoảng 9,71 điểm phần trăm.
+**Nhận xét sau kết luận.** Kết quả phù hợp để xác định những môn cần phân tích sâu hơn, nhưng không đủ để khẳng định đề thi dễ/khó hơn hoặc có gian lận. Muốn giải thích nguyên nhân cần bổ sung thông tin về quy chế thi, cơ cấu dự thi, dữ liệu đăng ký môn và nguồn dữ liệu độc lập.
+
+- **Toán** có mức giảm trung tâm rõ nhất: trung bình giảm khoảng 1,47 điểm, tỷ lệ dưới 5 tăng khoảng 34,75 điểm phần trăm, còn tỷ lệ ≥8 giảm khoảng 9,71 điểm phần trăm.
 - **Hóa học và Sinh học** có trung bình giảm và tỷ lệ dưới 5 tăng; N của Sinh học năm 2025 nhỏ hơn đáng kể, cần lưu ý khác biệt cơ cấu thí sinh.
 - **Vật lý, Lịch sử và Địa lý** có trung bình tăng và tỷ lệ ≥8 tăng. Với Địa lý, tỷ lệ dưới 5 cũng tăng, nên phân phối có vẻ rộng hơn thay vì dịch chuyển đồng đều.
 - **Ngữ văn** tăng nhẹ ở trung bình, trung vị và tỷ lệ ≥8, nhưng tỷ lệ ≥9 giảm nhẹ.
