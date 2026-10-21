@@ -17,7 +17,7 @@ So sánh **2023 → 2025**: môn nào đi cùng nhau, cấu trúc liên hệ tha
 
 **Diễn giải bảng:** Pearson r đo liên hệ tuyến tính; Spearman rho đo liên hệ thứ hạng. Hai hệ số nằm trong [−1; 1], càng gần 1 càng đồng biến mạnh. r=0,7 không có nghĩa 70% học sinh giỏi cả hai môn. Mỗi cặp chỉ dùng người có đủ đúng hai điểm; không cộng các số n thành tổng người.
 
-**Nhận xét:** Sử–Địa là cặp mạnh nhất trong mọi môn đủ tiêu chí xếp hạng n≥100: **r=0,608 → 0,759**. Toán–Lý tăng **0,568 → 0,709**; Văn–Sử tăng **0,453 → 0,527**. Các cặp tự nhiên tăng rõ hơn, như Toán–Sinh **0,313 → 0,739**, Hóa–Lý **0,378 → 0,745**. Chiều ngược lại, Toán–Anh giảm **0,592 → 0,496**. Không phải mọi liên hệ đều tăng.
+**Nhận xét:** Sử–Địa là cặp mạnh nhất trong mọi môn đủ tiêu chí xếp hạng n≥100: **r=0,608 → 0,759**. Toán–Lý tăng **0,568 → 0,709**; Văn–Sử tăng **0,453 → 0,527**. Các cặp tự nhiên tăng rõ hơn, như Toán–Sinh **0,313 → 0,739**, Hóa–Lý **0,378 → 0,745**. Chiều ngược lại, Toán–Anh giảm **0,592 → 0,497**. Không phải mọi liên hệ đều tăng.
 
 ![Ma trận Pearson mọi môn năm 2023](figures/phan_2_4/phan4_mon_pearson_2023.png)
 
