@@ -218,3 +218,16 @@ Chạy `python scripts/analysis/plot_subject_score_distributions.py` trong môi 
 - Script biểu đồ: [`plot_subject_score_distributions.py`](../scripts/analysis/plot_subject_score_distributions.py).
 - Hình: `outputs/week6/figures/pho_diem_*_2023_2025.svg`.
 - Báo cáo theo tổ hợp: [Phần 3 – Phân tích theo khối thi và tổ hợp môn](./phan_3_to_hop_mon_2023_2025%2Btom_tat.md).
+
+
+## 12. Trả lời câu hỏi: “Phổ điểm môn X năm 2025 có dịch chuyển so với năm 2024 không?”
+
+**Kết luận với dữ liệu hiện có: chưa đủ cơ sở để xác định.** Báo cáo này hiện so sánh dữ liệu năm 2023 và năm 2025; trong các tệp dữ liệu được xác định cho phân tích, chưa có bộ dữ liệu điểm thi năm 2024. Vì vậy, không thể dùng các kết quả 2023–2025 để trả lời trực tiếp câu hỏi 2025 so với 2024, và cũng không nên suy diễn kết quả của năm 2023 thành kết quả của năm 2024.
+
+Để trả lời, cần bổ sung dữ liệu điểm thi năm 2024 và xác định rõ “môn X” là môn nào. Sau đó, so sánh cùng môn giữa 2024 và 2025 bằng:
+- Trung bình, trung vị và độ lệch chuẩn;
+- Histogram/KDE và boxplot với cùng thang điểm, cùng cách chia khoảng;
+- Tỷ lệ điểm ≤1, dưới 5, từ 8 trở lên và từ 9 trở lên;
+- Số lượng điểm hợp lệ và tỷ lệ thiếu của từng năm.
+
+Nếu trung bình/trung vị, các tỷ lệ theo ngưỡng và hình dạng phân phối cùng thay đổi theo một hướng, có thể mô tả phổ điểm là **dịch chuyển** theo hướng tương ứng; nếu các chỉ số thay đổi trái chiều, cần kết luận cụ thể về từng khía cạnh thay vì gọi đó là dịch chuyển đồng đều. Chênh lệch phân phối tự nó không chứng minh đề thi dễ/khó hơn hoặc có gian lận.
