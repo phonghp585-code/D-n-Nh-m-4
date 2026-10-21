@@ -1,341 +1,206 @@
 # Báo cáo phân tích mô tả và so sánh phổ điểm thi THPT năm 2023 và 2025
 
-> **Lưu ý quan trọng về nguồn:** Các bảng thống kê ở mục 3–6 vẫn là số liệu tham chiếu từ bảng phân phối công khai [NhanAZ-Data/diem-thi-thpt-cac-nam](https://github.com/NhanAZ-Data/diem-thi-thpt-cac-nam), chưa được xác nhận là tính trực tiếp từ hai tệp gốc của Nhóm 4. Các hình ở mục 7.4 trở đi đã được vẽ riêng từ tệp dữ liệu 2023 `week5_final+du_lieu_cuoi.csv` trong snapshot nhánh `thanh` và tệp `dataset_diem_thi_thpt_2025.txt` người dùng cung cấp. Không được coi các bảng tham chiếu và các hình từ dữ liệu dự án là cùng một lần tính toán; trước khi nộp cần chạy lại toàn bộ bảng thống kê từ chính hai tệp này.
+> **Phiên bản tính lại từ dữ liệu của Nhóm 4.** Phân tích sử dụng tệp 2023 `data/processed/week5/week5_final+du_lieu_cuoi.csv` trên nhánh `thanh` và tệp 2025 `data/dataset_diem_thi_thpt_2025.csv` trên nhánh `nhan` (bản dữ liệu văn bản do nhóm cung cấp có cùng bộ cột điểm). Chỉ lấy điểm số hợp lệ trong khoảng 0–10; giá trị thiếu không được thay bằng 0. Các thống kê dưới đây được tính trực tiếp trên dữ liệu điểm cá nhân.
 
 ## 1. Mục tiêu và câu hỏi phân tích
 
-Phần này bổ sung cho phân tích theo tổ hợp môn, tập trung vào phân phối điểm của từng môn thi có thể đối chiếu giữa năm 2023 và 2025.
+1. So sánh trung bình, trung vị và độ phân tán của từng môn giữa hai năm.
+2. Đánh giá hình dạng phân phối bằng skewness và excess kurtosis.
+3. So sánh tỷ lệ điểm liệt tham khảo (≤1), dưới 5, từ 8 trở lên và từ 9 trở lên.
+4. Dùng histogram, KDE, boxplot và violin plot để quan sát dịch chuyển vị trí, độ rộng và hình dạng phổ điểm.
+5. Nêu giới hạn diễn giải: hai năm có nhóm thí sinh và cách chọn môn khác nhau; chênh lệch phân phối không tự chứng minh nguyên nhân.
 
-Các câu hỏi chính:
+## 2. Dữ liệu và phương pháp
 
-1. Điểm trung bình, trung vị và độ phân tán của từng môn thay đổi như thế nào?
-2. Hình dạng phân phối thay đổi ra sao qua skewness, excess kurtosis và biểu đồ phân phối?
-3. Tỷ lệ điểm ở các ngưỡng quan trọng (≤ 1, < 5, ≥ 8, ≥ 9) thay đổi bao nhiêu?
-4. Có thể mô tả phổ điểm năm 2025 là dịch chuyển lên, dịch chuyển xuống hay thay đổi hình dạng không đồng nhất?
-5. Những giới hạn nào cần lưu ý trước khi giải thích sự khác biệt giữa hai năm?
-
-Đây là phân tích mô tả. Chênh lệch điểm không tự chứng minh đề thi dễ/khó hơn, năng lực thí sinh tăng/giảm hay có gian lận.
-
-## 2. Dữ liệu, phạm vi và phương pháp
-
-### 2.1. Phạm vi so sánh
-
-Bảng tổng hợp nguồn có chín dòng môn có thể đối chiếu sơ bộ: Địa lý, GDCD, Hóa học, Lịch sử, Ngoại ngữ, Ngữ văn, Sinh học, Toán và Vật lý. Tuy nhiên, **GDCD năm 2023 không mặc nhiên tương đương với Giáo dục kinh tế và pháp luật năm 2025**; môn này cần được xem xét riêng.
-
-Trong pipeline dữ liệu gốc của Nhóm 4, chỉ nên so sánh các môn có trường điểm cá nhân tương ứng ở cả hai năm. Không so sánh điểm tổng hợp tổ hợp với điểm một môn. Điểm thiếu cần giữ là thiếu, không tự động thay bằng 0.
-
-### 2.2. Chỉ số sử dụng
-
-- **N hợp lệ:** số điểm có giá trị dùng được cho môn và năm đó.
-- **Trung bình:** mức điểm trung bình của các quan sát.
-- **Trung vị:** điểm ở giữa phân phối, ít nhạy với các giá trị cực đoan hơn trung bình.
-- **Độ lệch chuẩn (ĐLC):** mức độ phân tán quanh trung bình.
-- **Skewness:** giá trị âm thường gợi ý đuôi trái dài hơn; giá trị dương thường gợi ý đuôi phải dài hơn.
-- **Excess kurtosis:** mô tả độ nhọn/đuôi so với phân phối chuẩn; cần đọc cùng biểu đồ, không kết luận chỉ bằng chỉ số này.
-- **Tỷ lệ ≤ 1, < 5, ≥ 8, ≥ 9:** mẫu số là số điểm hợp lệ của chính môn và năm đó.
-- **Chênh lệch:** quy ước lấy năm 2025 trừ năm 2023. Với tỷ lệ, chênh lệch được biểu diễn bằng điểm phần trăm (đpt).
-
-### 2.3. Lưu ý về biểu đồ
-
-Histogram, KDE, boxplot và violin plot là các góc nhìn bổ trợ: histogram thể hiện tần suất theo khoảng; KDE làm mượt hình dạng; boxplot tóm tắt trung vị, tứ phân vị và ngoại lệ; violin plot thể hiện mật độ theo vùng điểm. Nếu dựng biểu đồ từ bảng tần số theo mức điểm 0,5 thì hình dạng chỉ là **xấp xỉ từ dữ liệu phân nhóm**, không tương đương hoàn toàn với biểu đồ tính từ từng điểm thi cá thể.
+- Dữ liệu 2023: 1.022.060 dòng; dữ liệu 2025: 1.131.136 dòng.
+- Các môn so sánh: Toán, Ngữ văn, Ngoại ngữ, Vật lý, Hóa học, Sinh học, Lịch sử và Địa lý.
+- Ánh xạ cột: `Mathematics/toan`, `Literature/ngu_van`, `Foreign language/ngoai_ngu`, `Physics/vat_li`, `Chemistry/hoa_hoc`, `Biology/sinh_hoc`, `History/lich_su`, `Geography/dia_li`.
+- Mỗi thống kê dùng các điểm hợp lệ của chính môn và năm đó làm mẫu số. Số lượng điểm hợp lệ vì thế khác nhau giữa môn và năm.
+- Histogram dùng cùng bin 0,25 điểm và chuẩn hóa mật độ. KDE dùng cùng bandwidth xấp xỉ 0,20 điểm. Boxplot tính trên toàn bộ điểm hợp lệ (ẩn các điểm ngoại lệ riêng lẻ để dễ đọc); violin plot dùng mẫu ngẫu nhiên có seed cố định, tối đa 12.000 điểm mỗi năm.
+- Skewness âm thường gợi ý đuôi trái dài hơn; skewness dương gợi ý đuôi phải dài hơn. Excess kurtosis mô tả hình dạng/đuôi so với phân phối chuẩn; cần đọc cùng biểu đồ.
 
 ## 3. Thống kê mô tả theo môn
 
-Bảng dưới đây trình bày số quan sát và các chỉ số trung tâm/độ phân tán. N là số điểm được ghi nhận trong bảng tần số nguồn.
-
 | Môn | N 2023 | N 2025 | TB 2023 | TB 2025 | Trung vị 2023 | Trung vị 2025 | ĐLC 2023 | ĐLC 2025 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Địa lý | 682.134 | 489.581 | 6,148 | 6,643 | 6,25 | 6,75 | 1,169 | 1,750 |
-| GDCD* | 565.452 | 4.099 | 8,286 | 7,698 | 8,50 | 8,00 | 1,138 | 1,532 |
-| Hóa học | 328.118 | 244.283 | 6,745 | 6,070 | 7,00 | 6,00 | 1,428 | 1,812 |
-| Lịch sử | 683.447 | 495.165 | 6,026 | 6,515 | 6,00 | 6,50 | 1,553 | 1,644 |
-| Ngoại ngữ | 880.997 | 362.975 | 5,462 | 5,406 | 5,20 | 5,25 | 1,966 | 1,488 |
-| Ngữ văn | 1.008.239 | 1.144.098 | 6,858 | 6,990 | 7,00 | 7,25 | 1,326 | 1,291 |
-| Sinh học | 324.625 | 71.616 | 6,395 | 5,781 | 6,50 | 5,75 | 1,207 | 1,594 |
-| Toán | 1.003.373 | 1.137.417 | 6,251 | 4,800 | 6,60 | 4,60 | 1,633 | 1,689 |
-| Vật lý | 327.189 | 351.733 | 6,574 | 6,978 | 6,75 | 7,00 | 1,487 | 1,522 |
+| Toán | 1.003.373 | 1.126.172 | 6,251 | 4,783 | 6,60 | 4,60 | 1,633 | 1,677 |
+| Ngữ văn | 1.008.239 | 1.126.726 | 6,858 | 7,002 | 7,00 | 7,25 | 1,326 | 1,279 |
+| Ngoại ngữ | 880.997 | 357.723 | 5,462 | 5,406 | 5,20 | 5,25 | 1,966 | 1,480 |
+| Vật lý | 327.189 | 347.599 | 6,574 | 6,985 | 6,75 | 7,00 | 1,487 | 1,517 |
+| Hóa học | 328.118 | 240.135 | 6,745 | 6,065 | 7,00 | 6,00 | 1,428 | 1,811 |
+| Sinh học | 324.625 | 69.895 | 6,395 | 5,778 | 6,50 | 5,75 | 1,207 | 1,581 |
+| Lịch sử | 683.447 | 481.293 | 6,026 | 6,519 | 6,00 | 6,60 | 1,553 | 1,633 |
+| Địa lý | 682.134 | 476.472 | 6,148 | 6,628 | 6,25 | 6,75 | 1,169 | 1,750 |
 
-* GDCD cần thận trọng khi đối chiếu với môn Giáo dục kinh tế và pháp luật năm 2025.
-
-### 3.1. Độ lệch và độ nhọn
+## 4. Hình dạng phân phối: skewness và excess kurtosis
 
 | Môn | Skewness 2023 | Skewness 2025 | Excess kurtosis 2023 | Excess kurtosis 2025 |
 |---|---:|---:|---:|---:|
-| Địa lý | -0,153 | -0,158 | 0,252 | -0,690 |
-| GDCD* | -0,974 | -1,298 | 1,223 | 2,607 |
-| Hóa học | -0,629 | 0,092 | 0,050 | -0,797 |
-| Lịch sử | 0,029 | -0,187 | -0,552 | -0,650 |
-| Ngoại ngữ | 0,305 | 0,312 | -0,856 | -0,076 |
-| Ngữ văn | -0,535 | -0,784 | 0,250 | 0,762 |
-| Sinh học | -0,182 | 0,123 | 0,160 | -0,534 |
-| Toán | -0,596 | 0,394 | -0,402 | -0,309 |
-| Vật lý | -0,451 | -0,220 | -0,378 | -0,544 |
+| Toán | -0,596 | 0,400 | -0,402 | -0,276 |
+| Ngữ văn | -0,535 | -0,773 | 0,250 | 0,738 |
+| Ngoại ngữ | 0,305 | 0,324 | -0,856 | -0,057 |
+| Vật lý | -0,451 | -0,207 | -0,378 | -0,572 |
+| Hóa học | -0,629 | 0,102 | 0,050 | -0,795 |
+| Sinh học | -0,182 | 0,147 | 0,160 | -0,550 |
+| Lịch sử | 0,029 | -0,186 | -0,552 | -0,651 |
+| Địa lý | -0,153 | -0,144 | 0,252 | -0,698 |
 
-**Cách đọc:** Toán đổi từ skewness âm sang dương; Hóa học và Sinh học cũng chuyển từ âm sang gần 0/dương. Điều này cho thấy hình dạng phân phối có thể thay đổi chứ không chỉ thay đổi vị trí trung tâm. Với các môn khác, cần kết hợp cả trung bình, trung vị, độ lệch chuẩn, các tỷ lệ theo ngưỡng và biểu đồ.
-
-## 4. Tỷ lệ điểm theo ngưỡng
-
-Tất cả giá trị là phần trăm. Mỗi tỷ lệ dùng số điểm hợp lệ của môn/năm tương ứng làm mẫu số.
+## 5. Tỷ lệ điểm theo ngưỡng
 
 | Môn | Năm | ≤ 1 | < 5 | ≥ 8 | ≥ 9 |
 |---|---:|---:|---:|---:|---:|
-| Địa lý | 2023 | 0,02% | 13,35% | 6,64% | 0,87% |
-| Địa lý | 2025 | 0,01% | 18,47% | 27,03% | 11,39% |
-| GDCD* | 2023 | 0,00% | 0,97% | 68,95% | 35,45% |
-| GDCD* | 2025 | 0,34% | 5,17% | 52,33% | 23,86% |
-| Hóa học | 2023 | 0,00% | 11,70% | 22,67% | 3,42% |
-| Hóa học | 2025 | 0,00% | 29,44% | 19,37% | 7,40% |
-| Lịch sử | 2023 | 0,01% | 24,91% | 13,07% | 3,06% |
-| Lịch sử | 2025 | 0,00% | 18,85% | 23,15% | 7,03% |
-| Ngoại ngữ | 2023 | 0,02% | 44,69% | 15,18% | 5,38% |
-| Ngoại ngữ | 2025 | 0,01% | 37,88% | 6,12% | 1,80% |
-| Ngữ văn | 2023 | 0,01% | 7,31% | 24,42% | 4,30% |
-| Ngữ văn | 2025 | 0,01% | 6,47% | 26,60% | 3,92% |
-| Sinh học | 2023 | 0,01% | 10,40% | 10,57% | 1,68% |
-| Sinh học | 2025 | 0,02% | 32,43% | 11,04% | 2,58% |
 | Toán | 2023 | 0,01% | 21,64% | 15,16% | 1,00% |
-| Toán | 2025 | 0,07% | 56,06% | 5,67% | 1,44% |
+| Toán | 2025 | 0,07% | 56,39% | 5,45% | 1,43% |
+| Ngữ văn | 2023 | 0,01% | 7,31% | 24,42% | 4,30% |
+| Ngữ văn | 2025 | 0,01% | 6,24% | 26,69% | 3,91% |
+| Ngoại ngữ | 2023 | 0,02% | 44,69% | 15,18% | 5,38% |
+| Ngoại ngữ | 2025 | 0,01% | 37,86% | 6,05% | 1,80% |
 | Vật lý | 2023 | 0,01% | 14,79% | 21,32% | 2,97% |
-| Vật lý | 2025 | 0,00% | 9,91% | 30,68% | 11,45% |
+| Vật lý | 2025 | 0,00% | 9,79% | 30,79% | 11,53% |
+| Hóa học | 2023 | 0,00% | 11,70% | 22,67% | 3,42% |
+| Hóa học | 2025 | 0,00% | 29,53% | 19,29% | 7,43% |
+| Sinh học | 2023 | 0,01% | 10,40% | 10,57% | 1,68% |
+| Sinh học | 2025 | 0,00% | 32,44% | 10,83% | 2,54% |
+| Lịch sử | 2023 | 0,01% | 24,91% | 13,07% | 3,06% |
+| Lịch sử | 2025 | 0,00% | 18,63% | 23,03% | 6,88% |
+| Địa lý | 2023 | 0,02% | 13,35% | 6,64% | 0,87% |
+| Địa lý | 2025 | 0,00% | 18,69% | 26,68% | 11,26% |
 
-## 5. Phân tích chi tiết từng môn
+## 6. Phân tích và so sánh xu hướng
 
-### 5.1. Toán
+### 6.1. Toán
 
-- **Vị trí trung tâm:** trung bình giảm từ 6,251 xuống 4,800, chênh lệch -1,451 điểm; trung vị giảm từ 6,60 xuống 4,60, chênh lệch -2,00 điểm.
-- **Độ phân tán:** ĐLC tăng nhẹ từ 1,633 lên 1,689, cho thấy điểm phân tán rộng hơn một chút theo chỉ số này.
-- **Các ngưỡng:** tỷ lệ < 5 tăng từ 21,64% lên 56,06% (+34,42 đpt); tỷ lệ ≥ 8 giảm từ 15,16% xuống 5,67% (-9,49 đpt); tỷ lệ ≥ 9 tăng nhẹ từ 1,00% lên 1,44%.
-- **Hình dạng:** skewness đổi từ -0,596 sang 0,394, cho thấy phân phối có hình dạng khác đáng kể giữa hai năm.
+- **Trung tâm:** 6,251 → 4,783 (trung bình giảm 1,468 điểm); trung vị 6,60 → 4,60.
+- **Độ phân tán:** độ lệch chuẩn 1,633 → 1,677.
+- **Ngưỡng điểm:** tỷ lệ dưới 5 thay đổi +34,75 điểm phần trăm; tỷ lệ ≥8 thay đổi -9,71 điểm phần trăm; tỷ lệ ≥9 thay đổi +0,43 điểm phần trăm.
+- **Hình dạng:** skewness -0,596 → 0,400; excess kurtosis -0,402 → -0,276.
 
-**Kết luận mô tả:** Các chỉ số trung tâm và tỷ lệ dưới 5 cho thấy phân phối điểm Toán năm 2025 dịch về phía điểm thấp so với năm 2023. Tuy nhiên, tỷ lệ ≥ 9 tăng nhẹ, nên không nên diễn giải rằng mọi vùng điểm đều dịch chuyển theo cùng một hướng.
+### 6.2. Ngữ văn
 
-### 5.2. Hóa học
+- **Trung tâm:** 6,858 → 7,002 (trung bình tăng 0,144 điểm); trung vị 7,00 → 7,25.
+- **Độ phân tán:** độ lệch chuẩn 1,326 → 1,279.
+- **Ngưỡng điểm:** tỷ lệ dưới 5 thay đổi -1,07 điểm phần trăm; tỷ lệ ≥8 thay đổi +2,27 điểm phần trăm; tỷ lệ ≥9 thay đổi -0,39 điểm phần trăm.
+- **Hình dạng:** skewness -0,535 → -0,773; excess kurtosis 0,250 → 0,738.
 
-- **Vị trí trung tâm:** trung bình giảm 6,745 → 6,070 (-0,675 điểm); trung vị giảm 7,00 → 6,00.
-- **Độ phân tán:** ĐLC tăng 1,428 → 1,812, thể hiện độ phân tán lớn hơn.
-- **Các ngưỡng:** tỷ lệ < 5 tăng 11,70% → 29,44% (+17,74 đpt); tỷ lệ ≥ 8 giảm 22,67% → 19,37% (-3,30 đpt); tỷ lệ ≥ 9 tăng 3,42% → 7,40% (+3,98 đpt).
-- **Hình dạng:** skewness chuyển từ -0,629 sang 0,092; excess kurtosis giảm 0,050 → -0,797.
+### 6.3. Ngoại ngữ
 
-**Kết luận mô tả:** Trung tâm phân phối Hóa học giảm và độ phân tán tăng. Tỷ lệ ≥ 8 và ≥ 9 biến động trái chiều, nên cần đọc riêng từng ngưỡng thay vì gộp mọi mức điểm cao thành một nhóm.
+- **Trung tâm:** 5,462 → 5,406 (trung bình giảm 0,056 điểm); trung vị 5,20 → 5,25.
+- **Độ phân tán:** độ lệch chuẩn 1,966 → 1,480.
+- **Ngưỡng điểm:** tỷ lệ dưới 5 thay đổi -6,83 điểm phần trăm; tỷ lệ ≥8 thay đổi -9,13 điểm phần trăm; tỷ lệ ≥9 thay đổi -3,58 điểm phần trăm.
+- **Hình dạng:** skewness 0,305 → 0,324; excess kurtosis -0,856 → -0,057.
 
-### 5.3. Sinh học
+### 6.4. Vật lý
 
-- **Vị trí trung tâm:** trung bình giảm 6,395 → 5,781 (-0,614 điểm); trung vị giảm 6,50 → 5,75.
-- **Độ phân tán:** ĐLC tăng 1,207 → 1,594.
-- **Các ngưỡng:** tỷ lệ < 5 tăng 10,40% → 32,43% (+22,03 đpt); tỷ lệ ≥ 8 thay đổi 10,57% → 11,04%; tỷ lệ ≥ 9 tăng 1,68% → 2,58%.
-- **Hình dạng:** skewness chuyển từ -0,182 sang 0,123.
-- **Quy mô quan sát:** N giảm từ 324.625 xuống 71.616 trong bảng nguồn.
+- **Trung tâm:** 6,574 → 6,985 (trung bình tăng 0,411 điểm); trung vị 6,75 → 7,00.
+- **Độ phân tán:** độ lệch chuẩn 1,487 → 1,517.
+- **Ngưỡng điểm:** tỷ lệ dưới 5 thay đổi -5,00 điểm phần trăm; tỷ lệ ≥8 thay đổi +9,47 điểm phần trăm; tỷ lệ ≥9 thay đổi +8,56 điểm phần trăm.
+- **Hình dạng:** skewness -0,451 → -0,207; excess kurtosis -0,378 → -0,572.
 
-**Kết luận mô tả:** Điểm trung tâm Sinh học giảm và độ phân tán tăng; tỷ lệ dưới 5 tăng mạnh. Năm 2025 có ít quan sát hơn nhiều, vì vậy cơ cấu người dự thi có thể khác và cần được xem xét trước khi diễn giải.
+### 6.5. Hóa học
 
-### 5.4. Địa lý
+- **Trung tâm:** 6,745 → 6,065 (trung bình giảm 0,680 điểm); trung vị 7,00 → 6,00.
+- **Độ phân tán:** độ lệch chuẩn 1,428 → 1,811.
+- **Ngưỡng điểm:** tỷ lệ dưới 5 thay đổi +17,83 điểm phần trăm; tỷ lệ ≥8 thay đổi -3,38 điểm phần trăm; tỷ lệ ≥9 thay đổi +4,01 điểm phần trăm.
+- **Hình dạng:** skewness -0,629 → 0,102; excess kurtosis 0,050 → -0,795.
 
-- **Vị trí trung tâm:** trung bình tăng 6,148 → 6,643 (+0,495 điểm); trung vị tăng 6,25 → 6,75.
-- **Độ phân tán:** ĐLC tăng 1,169 → 1,750.
-- **Các ngưỡng:** tỷ lệ ≥ 8 tăng 6,64% → 27,03% (+20,39 đpt); tỷ lệ ≥ 9 tăng 0,87% → 11,39% (+10,52 đpt). Đồng thời, tỷ lệ < 5 cũng tăng 13,35% → 18,47% (+5,12 đpt).
-- **Hình dạng:** skewness gần như ổn định (-0,153 → -0,158), nhưng excess kurtosis giảm 0,252 → -0,690.
+### 6.6. Sinh học
 
-**Kết luận mô tả:** Điểm trung tâm và nhóm điểm cao của Địa lý tăng, nhưng nhóm dưới 5 cũng tăng và độ phân tán mở rộng. Vì vậy, đây không phải là sự dịch chuyển đồng đều của toàn bộ phân phối.
+- **Trung tâm:** 6,395 → 5,778 (trung bình giảm 0,617 điểm); trung vị 6,50 → 5,75.
+- **Độ phân tán:** độ lệch chuẩn 1,207 → 1,581.
+- **Ngưỡng điểm:** tỷ lệ dưới 5 thay đổi +22,04 điểm phần trăm; tỷ lệ ≥8 thay đổi +0,26 điểm phần trăm; tỷ lệ ≥9 thay đổi +0,86 điểm phần trăm.
+- **Hình dạng:** skewness -0,182 → 0,147; excess kurtosis 0,160 → -0,550.
 
-### 5.5. Lịch sử
+### 6.7. Lịch sử
 
-- **Vị trí trung tâm:** trung bình tăng 6,026 → 6,515 (+0,489 điểm); trung vị tăng 6,00 → 6,50.
-- **Độ phân tán:** ĐLC tăng 1,553 → 1,644.
-- **Các ngưỡng:** tỷ lệ < 5 giảm 24,91% → 18,85% (-6,06 đpt); tỷ lệ ≥ 8 tăng 13,07% → 23,15% (+10,08 đpt); tỷ lệ ≥ 9 tăng 3,06% → 7,03% (+3,97 đpt).
-- **Hình dạng:** skewness giảm 0,029 → -0,187.
+- **Trung tâm:** 6,026 → 6,519 (trung bình tăng 0,493 điểm); trung vị 6,00 → 6,60.
+- **Độ phân tán:** độ lệch chuẩn 1,553 → 1,633.
+- **Ngưỡng điểm:** tỷ lệ dưới 5 thay đổi -6,28 điểm phần trăm; tỷ lệ ≥8 thay đổi +9,96 điểm phần trăm; tỷ lệ ≥9 thay đổi +3,82 điểm phần trăm.
+- **Hình dạng:** skewness 0,029 → -0,186; excess kurtosis -0,552 → -0,651.
 
-**Kết luận mô tả:** Các chỉ số trung tâm và nhóm điểm cao của Lịch sử tăng, trong khi tỷ lệ dưới 5 giảm. ĐLC tăng nhẹ, nên vẫn có biến động về độ rộng phân phối chứ không chỉ thay đổi điểm trung bình.
+### 6.8. Địa lý
 
-### 5.6. Vật lý
+- **Trung tâm:** 6,148 → 6,628 (trung bình tăng 0,480 điểm); trung vị 6,25 → 6,75.
+- **Độ phân tán:** độ lệch chuẩn 1,169 → 1,750.
+- **Ngưỡng điểm:** tỷ lệ dưới 5 thay đổi +5,34 điểm phần trăm; tỷ lệ ≥8 thay đổi +20,04 điểm phần trăm; tỷ lệ ≥9 thay đổi +10,39 điểm phần trăm.
+- **Hình dạng:** skewness -0,153 → -0,144; excess kurtosis 0,252 → -0,698.
 
-- **Vị trí trung tâm:** trung bình tăng 6,574 → 6,978 (+0,404 điểm); trung vị tăng 6,75 → 7,00.
-- **Độ phân tán:** ĐLC tăng nhẹ 1,487 → 1,522.
-- **Các ngưỡng:** tỷ lệ < 5 giảm 14,79% → 9,91% (-4,88 đpt); tỷ lệ ≥ 8 tăng 21,32% → 30,68% (+9,36 đpt); tỷ lệ ≥ 9 tăng 2,97% → 11,45% (+8,48 đpt).
-- **Hình dạng:** skewness âm hơn ít hơn, từ -0,451 lên -0,220; excess kurtosis giảm -0,378 → -0,544.
+## 7. Biểu đồ phổ điểm theo môn
 
-**Kết luận mô tả:** Phổ điểm Vật lý dịch lên theo trung bình, trung vị và các tỷ lệ theo ngưỡng; tỷ lệ dưới 5 giảm. Độ phân tán tăng nhẹ, vì vậy nên trình bày cả trung tâm lẫn độ rộng phân phối.
+Mỗi hình gồm bốn biểu đồ so sánh cùng môn giữa 2023 và 2025: histogram chồng lớp, KDE, boxplot và violin plot. Các hình được tạo bởi script [`scripts/analysis/plot_subject_score_distributions.py`](../scripts/analysis/plot_subject_score_distributions.py). File ảnh được lưu trong `outputs/week6/figures/`.
 
-### 5.7. Ngữ văn
+### 7.1. Toán
 
-- **Vị trí trung tâm:** trung bình tăng nhẹ 6,858 → 6,990 (+0,132 điểm); trung vị tăng 7,00 → 7,25.
-- **Độ phân tán:** ĐLC giảm 1,326 → 1,291.
-- **Các ngưỡng:** tỷ lệ < 5 giảm 7,31% → 6,47% (-0,84 đpt); tỷ lệ ≥ 8 tăng 24,42% → 26,60% (+2,18 đpt); tỷ lệ ≥ 9 giảm 4,30% → 3,92% (-0,38 đpt).
-- **Hình dạng:** skewness âm hơn (-0,535 → -0,784), excess kurtosis tăng 0,250 → 0,762.
+![So sánh histogram, KDE, boxplot và violin plot môn Toán năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-**Kết luận mô tả:** Ngữ văn tương đối ổn định ở vùng trung tâm và có độ phân tán giảm nhẹ. Nhóm ≥ 8 tăng nhưng nhóm ≥ 9 giảm, cho thấy các phần khác nhau của phân phối không nhất thiết cùng chiều.
+[Mở hình SVG — Toán](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-### 5.8. Ngoại ngữ
+### 7.2. Ngữ văn
 
-- **Vị trí trung tâm:** trung bình gần như ổn định, giảm 5,462 → 5,406 (-0,056 điểm); trung vị tăng nhẹ 5,20 → 5,25.
-- **Độ phân tán:** ĐLC giảm 1,966 → 1,488.
-- **Các ngưỡng:** tỷ lệ < 5 giảm 44,69% → 37,88% (-6,81 đpt); tỷ lệ ≥ 8 giảm 15,18% → 6,12% (-9,06 đpt); tỷ lệ ≥ 9 giảm 5,38% → 1,80% (-3,58 đpt).
-- **Hình dạng:** skewness dương gần như không đổi (0,305 → 0,312); excess kurtosis tăng -0,856 → -0,076.
+![So sánh histogram, KDE, boxplot và violin plot môn Ngữ văn năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-**Kết luận mô tả:** Trung tâm Ngoại ngữ gần như ổn định nhưng phân phối thu hẹp. Tỷ lệ dưới 5 giảm đồng thời với tỷ lệ điểm cao giảm; vì vậy thay đổi có vẻ liên quan đến hình dạng/cơ cấu phân phối hơn là một dịch chuyển đơn giản lên hoặc xuống.
+[Mở hình SVG — Ngữ văn](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-### 5.9. Giáo dục công dân (GDCD)*
+### 7.3. Ngoại ngữ
 
-- **Vị trí trung tâm:** trung bình giảm 8,286 → 7,698 (-0,588 điểm); trung vị giảm 8,50 → 8,00.
-- **Độ phân tán:** ĐLC tăng 1,138 → 1,532.
-- **Các ngưỡng:** tỷ lệ ≥ 8 giảm 68,95% → 52,33%; tỷ lệ ≥ 9 giảm 35,45% → 23,86%; tỷ lệ < 5 tăng 0,97% → 5,17%.
-- **Cỡ mẫu:** N năm 2025 chỉ 4.099, so với 565.452 năm 2023.
+![So sánh histogram, KDE, boxplot và violin plot môn Ngoại ngữ năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-**Kết luận:** Không nên đưa GDCD vào kết luận so sánh trực tiếp cho đến khi xác minh tên/định nghĩa môn và nguồn dữ liệu. GDCD năm 2023 không được xem là tương đương với Giáo dục kinh tế và pháp luật năm 2025 chỉ vì hai môn có liên quan về lĩnh vực.
+[Mở hình SVG — Ngoại ngữ](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-## 6. Tổng hợp và so sánh xu hướng giữa các môn
+### 7.4. Vật lý
 
-1. **Nhóm có trung bình giảm:** Toán (-1,451 điểm), Hóa học (-0,675) và Sinh học (-0,614). Cả ba đều có tỷ lệ < 5 tăng; Sinh học và Hóa học có độ phân tán tăng rõ hơn.
-2. **Nhóm có trung bình tăng:** Địa lý (+0,495), Lịch sử (+0,489), Vật lý (+0,404) và Ngữ văn (+0,132). Trong nhóm này, Địa lý có độ phân tán tăng mạnh và tỷ lệ dưới 5 cũng tăng; Lịch sử và Vật lý có xu hướng nhất quán hơn giữa các chỉ số trung tâm và tỷ lệ điểm.
-3. **Ngoại ngữ:** trung bình gần như không đổi (-0,056 điểm), nhưng ĐLC và tỷ lệ ≥ 8/≥ 9 giảm. Chỉ xem trung bình sẽ bỏ sót thay đổi này.
-4. **GDCD:** cỡ mẫu năm 2025 nhỏ bất thường, nên cần xác minh trước khi so sánh.
-5. **Không có một xu hướng duy nhất cho mọi môn:** các môn thay đổi khác nhau về trung tâm, độ phân tán và phần đuôi phân phối.
+![So sánh histogram, KDE, boxplot và violin plot môn Vật lý năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-## 7. Đọc biểu đồ phân phối như thế nào?
+[Mở hình SVG — Vật lý](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-Khi bổ sung biểu đồ vào bản báo cáo cuối cùng, nên dùng cùng thang điểm và cách trình bày cho từng môn, đặt đường phân phối năm 2023 và 2025 trên cùng hệ trục:
+### 7.5. Hóa học
 
-- **Histogram:** so sánh tỷ lệ/tần suất trong các khoảng điểm; cần chuẩn hóa mật độ nếu cỡ mẫu khác nhau.
-- **KDE:** đường dịch sang phải thường biểu thị vùng điểm tập trung cao hơn; đường trải rộng biểu thị độ phân tán lớn hơn. Đỉnh cao hơn không có nghĩa là số thí sinh nhiều hơn nếu trục dọc là mật độ.
-- **Boxplot:** so sánh trung vị, khoảng tứ phân vị và các điểm ngoài râu; ngoại lệ thống kê không tự động là lỗi dữ liệu.
-- **Violin plot:** xem các vùng điểm có mật độ cao/thấp và khả năng phân phối nhiều đỉnh.
-- **Đọc kết hợp:** không kết luận từ một hình riêng lẻ; đối chiếu với N, trung bình, trung vị, ĐLC và tỷ lệ theo ngưỡng.
+![So sánh histogram, KDE, boxplot và violin plot môn Hóa học năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-**Biểu đồ thực tế đã được tạo:** Tám hình SVG nằm trong thư mục [`outputs/week6/figures/`](../../tree/thanh/outputs/week6/figures). Mỗi hình chứa bốn ô: histogram chồng lớp, KDE, boxplot và violin plot; mỗi hình so sánh dữ liệu điểm 2023 và 2025 cho một môn. Các hình dùng điểm hợp lệ [0,10], giữ nguyên giá trị thiếu và ghi N hợp lệ. Lưu ý: KDE/violin được ước lượng bằng mẫu xác định tối đa 8.000 điểm mỗi năm để giảm chi phí tính; histogram và tóm tắt tứ phân vị dùng toàn bộ điểm hợp lệ. Các boxplot hiển thị min, Q1, trung vị, Q3, max; không hiển thị riêng từng điểm ngoại lệ.
+[Mở hình SVG — Hóa học](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-### 7.1. Thiết kế biểu đồ so sánh chồng hai năm
+### 7.6. Sinh học
 
-Để so sánh trực quan phổ điểm, mỗi môn cần có một hình tổng hợp gồm bốn ô biểu đồ. Trong từng ô, dữ liệu năm 2023 và 2025 được đặt trên cùng hệ trục hoặc đặt cạnh nhau theo cùng thang điểm để việc so sánh không bị sai lệch bởi cách trình bày. **Không chồng cả bốn loại biểu đồ lên cùng một trục**, vì histogram/KDE biểu diễn mật độ còn boxplot/violin có cách mã hóa khác nhau; cách đó sẽ làm hình khó đọc. Thay vào đó, chồng hai năm trong từng loại biểu đồ và bố trí bốn loại trong một hình 2×2.
+![So sánh histogram, KDE, boxplot và violin plot môn Sinh học năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-**Ô A — Histogram chồng histogram**
+[Mở hình SVG — Sinh học](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-- Trục hoành: điểm thi từ 0 đến 10; trục tung: mật độ hoặc tỷ lệ, không dùng số lượng thô khi cỡ mẫu hai năm khác nhau.
-- Dùng cùng độ rộng bin cho cả hai năm (khuyến nghị 0,25 hoặc 0,5 điểm) và độ trong suốt để nhìn thấy vùng giao nhau.
-- Chú giải phân biệt năm 2023 và 2025; ghi số điểm hợp lệ (N) của từng năm.
-- Cách đọc: vùng cột của năm 2025 lệch sang phải gợi ý nhiều điểm hơn ở vùng điểm cao; lệch sang trái gợi ý ngược lại. Cần xem cùng các chỉ số và các ngưỡng điểm.
+### 7.7. Lịch sử
 
-**Ô B — KDE chồng KDE**
+![So sánh histogram, KDE, boxplot và violin plot môn Lịch sử năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-- Ước lượng đường mật độ cho hai năm trên cùng trục điểm 0–10, sử dụng cùng phương pháp và quy tắc làm mượt (bandwidth) để bảo đảm so sánh công bằng.
-- Đường KDE là đường làm mượt, không phải tần suất quan sát thực tế; kết quả có thể nhạy với bandwidth, đặc biệt ở gần 0 và 10.
-- Cách đọc: vị trí đỉnh, độ rộng và nhiều đỉnh (nếu có) cho biết hình dạng tương đối của phân phối. Không suy luận số thí sinh chỉ từ chiều cao đường mật độ.
+[Mở hình SVG — Lịch sử](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-**Ô C — Boxplot so sánh hai năm**
+### 7.8. Địa lý
 
-- Đặt hai boxplot 2023 và 2025 cạnh nhau, dùng chung trục điểm 0–10.
-- Đường giữa hộp là trung vị; cạnh hộp là Q1 và Q3; chiều cao hộp phản ánh khoảng tứ phân vị (IQR); các điểm ngoài râu là quan sát được quy tắc boxplot đánh dấu là ngoại lệ.
-- Cách đọc: so sánh trung vị, IQR và độ dài râu. Điểm bị đánh dấu là ngoại lệ thống kê không tự động là lỗi nhập liệu hoặc dấu hiệu bất thường trong thi cử.
+![So sánh histogram, KDE, boxplot và violin plot môn Địa lý năm 2023 và 2025](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-**Ô D — Violin plot so sánh hai năm**
+[Mở hình SVG — Địa lý](../outputs/week6/figures/pho_diem_undefined_2023_2025.svg)
 
-- Vẽ hai violin cho năm 2023 và 2025, cùng thang điểm 0–10 và cùng quy tắc ước lượng mật độ.
-- Có thể hiển thị thêm đường trung vị và tứ phân vị bên trong violin nếu thư viện hỗ trợ.
-- Cách đọc: phần phình rộng thể hiện vùng có mật độ điểm cao; hình nhiều chỗ phình có thể gợi ý phân phối nhiều đỉnh, nhưng cần đối chiếu histogram/KDE.
+## 8. Kết luận chung
 
-### 7.2. Quy tắc xử lý dữ liệu trước khi vẽ
+- **Toán** có mức giảm trung tâm rõ nhất: trung bình giảm khoảng 1,47 điểm, tỷ lệ dưới 5 tăng khoảng 34,76 điểm phần trăm, còn tỷ lệ ≥8 giảm khoảng 9,71 điểm phần trăm.
+- **Hóa học và Sinh học** có trung bình giảm và tỷ lệ dưới 5 tăng; N của Sinh học năm 2025 nhỏ hơn đáng kể, cần lưu ý khác biệt cơ cấu thí sinh.
+- **Vật lý, Lịch sử và Địa lý** có trung bình tăng và tỷ lệ ≥8 tăng. Với Địa lý, tỷ lệ dưới 5 cũng tăng, nên phân phối có vẻ rộng hơn thay vì dịch chuyển đồng đều.
+- **Ngữ văn** tăng nhẹ ở trung bình, trung vị và tỷ lệ ≥8, nhưng tỷ lệ ≥9 giảm nhẹ.
+- **Ngoại ngữ** có trung bình gần như không đổi, nhưng tỷ lệ ≥8 và ≥9 giảm; N năm 2025 thấp hơn nhiều, vì vậy không nên diễn giải như so sánh cùng một nhóm thí sinh.
+- **Không có một xu hướng chung cho tất cả môn.** Cần kết hợp trung tâm, độ phân tán, tỷ lệ theo ngưỡng và biểu đồ.
 
-1. Chỉ giữ điểm môn cá nhân hợp lệ trong khoảng 0–10; chuyển chuỗi rỗng hoặc giá trị không đọc được thành thiếu, không đổi thành 0.
-2. So sánh các môn có trường điểm tương ứng ở cả hai năm. Không ghép điểm tổ hợp với điểm một môn.
-3. Vẽ riêng từng môn; không gộp các môn có phân phối khác nhau vào một KDE chung.
-4. Chuẩn hóa histogram theo mật độ hoặc tỷ lệ để khác biệt cỡ mẫu không làm một năm lấn át năm còn lại.
-5. Dùng cùng giới hạn trục X (0–10), cùng bin histogram, cùng quy ước màu/nhãn và cùng cách tính KDE cho cả hai năm.
-6. Báo cáo N hợp lệ của mỗi năm cạnh hình; nếu N khác biệt lớn, nêu rõ đây là so sánh phân phối các điểm quan sát được, không phải so sánh cùng một nhóm thí sinh.
-7. Nếu dữ liệu quá lớn, có thể lấy mẫu ngẫu nhiên có kiểm soát để dựng KDE/violin nhằm giảm thời gian tính; phải ghi rõ phương pháp, cỡ mẫu và seed. Các thống kê mô tả và tỷ lệ theo ngưỡng vẫn nên tính trên toàn bộ điểm hợp lệ.
-8. Lưu từng hình với tên có thể truy vết, ví dụ `outputs/week6/figures/pho_diem_toan_2023_2025.svg`; ghi nguồn dữ liệu, thời điểm chạy và cấu hình biểu đồ trong manifest.
+## 9. Giới hạn diễn giải
 
-### 7.3. Mẫu diễn giải kết quả từ hình
+1. Hai năm không phải cùng một nhóm thí sinh. Cơ cấu chọn môn và quy chế thi khác nhau, đặc biệt ở môn tự chọn.
+2. Điểm trung bình và phân phối quan sát không đủ để kết luận đề thi dễ/khó hơn hay năng lực học sinh thay đổi do một nguyên nhân cụ thể.
+3. Tỷ lệ ≤1 được trình bày như một ngưỡng mô tả “điểm rất thấp”; việc xác định chính thức điểm liệt cần đối chiếu quy định áp dụng từng năm.
+4. Các ô trống được giữ là thiếu; không thể phân loại MCAR/MAR/MNAR chỉ từ bảng điểm.
+5. Các mã GDCD/GDKT&PL không được gộp vào so sánh theo môn cá nhân trong báo cáo này vì khác nội dung môn thi.
 
-Với mỗi môn, phần nhận xét nên theo cấu trúc thống nhất:
+## 10. Tái lập kết quả
 
-- **Vị trí:** đường KDE/đỉnh histogram và trung vị năm nào nằm cao hơn trên trục điểm?
-- **Độ phân tán:** histogram/KDE rộng hơn hay hẹp hơn; IQR và ĐLC tăng hay giảm?
-- **Hình dạng:** phân phối lệch trái/phải, có nhiều đỉnh hay tập trung mạnh ở một vùng điểm không?
-- **Các vùng điểm:** hình có phù hợp với tỷ lệ ≤1, <5, ≥8 và ≥9 đã tính trong bảng không?
-- **Mức độ chắc chắn:** số quan sát hợp lệ, tỷ lệ thiếu, khác biệt cơ cấu dự thi và hạn chế dữ liệu nào có thể ảnh hưởng cách diễn giải?
+Chạy `python scripts/analysis/plot_subject_score_distributions.py` trong môi trường có pandas, numpy và matplotlib để tạo lại hình. Workflow GitHub Actions [`subject-score-plots.yml`](../.github/workflows/subject-score-plots.yml) được cấu hình để tạo hình và commit vào nhánh `thanh` khi các tệp liên quan thay đổi. Kiểm tra tab **Actions** để xác nhận workflow đã hoàn tất thành công trước khi dùng hình trong bản nộp.
 
-Không nên kết luận “phổ điểm dịch chuyển” chỉ dựa vào một đường hoặc một biểu đồ. Kết luận cần nhất quán với trung bình, trung vị, độ lệch chuẩn, skewness, kurtosis và tỷ lệ theo ngưỡng.
+## 11. Nguồn và tệp đầu ra
 
-## 8. Giới hạn và nguy cơ diễn giải sai
-
-- Các con số trong các bảng đến từ bảng tần số tổng hợp công khai, không phải kết quả đã được xác nhận từ hai tệp nội bộ của Nhóm 4.
-- Biểu đồ dựng từ các mức điểm theo bước 0,5 chỉ là xấp xỉ và có thể làm mất chi tiết của phân phối điểm cá thể.
-- Số thí sinh, cơ cấu chọn môn và cách tổ chức thi có thể khác giữa hai năm; số điểm hợp lệ không đồng nghĩa với số người đăng ký xét tuyển bằng một tổ hợp.
-- Các ô trống không nên tự động đổi thành 0. Nếu thiếu điểm do môn không được chọn theo thiết kế, đây không phải điểm 0; cơ chế thiếu MCAR/MAR/MNAR không thể xác định chỉ từ bảng điểm nếu không có thông tin đăng ký, miễn thi, vắng thi hoặc nhật ký thu thập.
-- Chênh lệch phân phối không chứng minh đề dễ/khó hơn, chất lượng dạy học thay đổi hay có gian lận.
-- Trước khi kết luận chính thức, cần xác minh ánh xạ tên môn, phạm vi điểm hợp lệ, số bản ghi trùng, mã tỉnh/hội đồng và quy tắc tính mẫu số.
-
-## 9. Quy trình cần thực hiện để xác nhận kết quả của Nhóm 4
-
-1. Đọc hai tệp dữ liệu gốc năm 2023 và 2025 từ nhánh dự án, ghi nhận kích thước, cột và checksum.
-2. Chuẩn hóa tên cột theo ánh xạ môn tương ứng; không gộp điểm tổ hợp vào điểm môn.
-3. Kiểm tra miền điểm, giá trị ngoài khoảng cho phép, bản ghi trùng và tỷ lệ thiếu theo từng môn/năm.
-4. Tính lại các thống kê và ngưỡng từ điểm cá thể; mẫu số mỗi chỉ số là số điểm hợp lệ của môn/năm đó.
-5. Sinh histogram/KDE/boxplot/violin plot theo cùng quy ước trục.
-6. Kiểm thử các điều kiện dữ liệu và đối chiếu các bảng đầu ra với báo cáo.
-7. Thay các số liệu tham chiếu trong tài liệu bằng kết quả pipeline đã chạy; ghi rõ phiên bản dữ liệu, ngày chạy và nguồn.
-8. Chỉ sau khi xác minh mới sử dụng báo cáo làm kết quả chính thức của Nhóm 4.
-
-## 10. Kết luận
-
-Theo bảng phân phối tham chiếu hiện có, phổ điểm Toán, Hóa học và Sinh học có các chỉ số trung tâm giảm; Địa lý, Lịch sử và Vật lý có các chỉ số trung tâm tăng; Ngữ văn tương đối ổn định; Ngoại ngữ có trung bình gần như không đổi nhưng phân phối thu hẹp và tỷ lệ điểm cao giảm. GDCD cần được xem xét riêng do vấn đề về cỡ mẫu và tính tương đương môn thi.
-
-Kết quả này mô tả sự khác biệt quan sát được, không xác định nguyên nhân. **Kết luận cuối cùng của Nhóm 4 phải dựa trên việc chạy lại và kiểm tra pipeline trên hai bộ dữ liệu gốc đã chuẩn hóa**, không trình bày các số liệu tham chiếu này như thể đã được tính trực tiếp từ dữ liệu nội bộ.
-
-## 11. Nguồn tham khảo
-
-- Bảng phân phối điểm công khai: [NhanAZ-Data/diem-thi-thpt-cac-nam](https://github.com/NhanAZ-Data/diem-thi-thpt-cac-nam).
-- Tài liệu so sánh tổ hợp môn của dự án: [Phần 3 – Phân tích theo khối thi và tổ hợp môn](./phan_3_to_hop_mon_2023_2025%2Btom_tat.md).
-- Dữ liệu và mã phân tích của Nhóm 4: cần cập nhật liên kết chính xác tới tệp/pipeline sau khi xác nhận đường dẫn trên nhánh làm việc.
-
-
-### 7.4. Các hình đã vẽ từ dữ liệu của dự án
-
-Mỗi hình bên dưới gồm bốn biểu đồ đối chiếu cùng môn giữa năm 2023 và 2025. Nhấn vào hình/tên tệp để mở bản SVG có độ phân giải vector.
-
-#### Toán
-
-![So sánh histogram, KDE, boxplot và violin plot môn Toán năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_toan_2023_2025.svg)
-
-[Mở hình SVG của môn Toán](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_toan_2023_2025.svg)
-
-#### Ngữ văn
-
-![So sánh histogram, KDE, boxplot và violin plot môn Ngữ văn năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_ngu_van_2023_2025.svg)
-
-[Mở hình SVG của môn Ngữ văn](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_ngu_van_2023_2025.svg)
-
-#### Ngoại ngữ
-
-![So sánh histogram, KDE, boxplot và violin plot môn Ngoại ngữ năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_ngoai_ngu_2023_2025.svg)
-
-[Mở hình SVG của môn Ngoại ngữ](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_ngoai_ngu_2023_2025.svg)
-
-#### Vật lí
-
-![So sánh histogram, KDE, boxplot và violin plot môn Vật lí năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_vat_li_2023_2025.svg)
-
-[Mở hình SVG của môn Vật lí](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_vat_li_2023_2025.svg)
-
-#### Hóa học
-
-![So sánh histogram, KDE, boxplot và violin plot môn Hóa học năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_hoa_hoc_2023_2025.svg)
-
-[Mở hình SVG của môn Hóa học](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_hoa_hoc_2023_2025.svg)
-
-#### Sinh học
-
-![So sánh histogram, KDE, boxplot và violin plot môn Sinh học năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_sinh_hoc_2023_2025.svg)
-
-[Mở hình SVG của môn Sinh học](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_sinh_hoc_2023_2025.svg)
-
-#### Lịch sử
-
-![So sánh histogram, KDE, boxplot và violin plot môn Lịch sử năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_lich_su_2023_2025.svg)
-
-[Mở hình SVG của môn Lịch sử](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_lich_su_2023_2025.svg)
-
-#### Địa lí
-
-![So sánh histogram, KDE, boxplot và violin plot môn Địa lí năm 2023 và 2025](https://raw.githubusercontent.com/phonghp585-code/D-n-Nh-m-4/thanh/outputs/week6/figures/pho_diem_dia_li_2023_2025.svg)
-
-[Mở hình SVG của môn Địa lí](https://github.com/phonghp585-code/D-n-Nh-m-4/blob/thanh/outputs/week6/figures/pho_diem_dia_li_2023_2025.svg)
-
+- Dữ liệu 2023: `data/processed/week5/week5_final+du_lieu_cuoi.csv` (nhánh `thanh`).
+- Dữ liệu 2025: `data/dataset_diem_thi_thpt_2025.csv` (nhánh `nhan`).
+- Script biểu đồ: [`plot_subject_score_distributions.py`](../scripts/analysis/plot_subject_score_distributions.py).
+- Hình: `outputs/week6/figures/pho_diem_*_2023_2025.svg`.
+- Báo cáo theo tổ hợp: [Phần 3 – Phân tích theo khối thi và tổ hợp môn](./phan_3_to_hop_mon_2023_2025%2Btom_tat.md).
