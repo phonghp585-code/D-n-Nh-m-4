@@ -105,7 +105,7 @@ def main():
             manifest.append({"combination":code,"n_2023":len(s23),"n_2025":len(s25)})
         fig.suptitle(f"Phổ điểm tổ hợp 2023 và 2025 — Nhóm {gi} (6/24 tổ hợp)", fontsize=15)
         fig.tight_layout(rect=[0,0,1,.96])
-        out = OUT / f"combination_kde_tom_tat_{gi:02d}.png"
+        out = OUT / f"combination_kde+tom_tat_{gi:02d}.png"
         fig.savefig(out, dpi=180, bbox_inches="tight")
         plt.close(fig)
         print(f"Created {out}")
