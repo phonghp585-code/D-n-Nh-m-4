@@ -1,2 +1,0 @@
--r requirements-part3.txt
-scipy>=1.11

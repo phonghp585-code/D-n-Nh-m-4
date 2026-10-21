@@ -1,17 +1,12 @@
 # Phần 2 — Kiểm định thống kê điểm thi THPT 2023 và 2025
 
-
 **2023 — CT2006** so với **2025 — CT2018**. Giữ điểm 0, không điền thiếu. Báo cáo bao phủ mọi môn có điểm, tách N1–N7; không ghép GDCD với GDKT&PL thành một môn bất biến.
-
 
 ## Kết quả chính — đọc phần này trước
 
-
-Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai năm và 4 nhóm chỉ có một năm. Các khác biệt |d| lớn nhất trong tập so được là: Tiếng Đức (N5): Δ=1,838 điểm, d=1,035, n2023/n2025=86/150; Toán: Δ=-1,467 điểm, d=-0,886, n2023/n2025=1,003,373/1,126,172; Tiếng Pháp (N3): Δ=1,194 điểm, d=0,630, n2023/n2025=716/408. Riêng Tiếng Đức (N5) chỉ có86/150 người, cần đọc CI và giới hạn mẫu nhỏ; thứ hạng này không đại diện cho mọi thí sinh. Đây là chênh điểm quan sát, không phải tác động nhân quả.
-
+Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai năm và 4 nhóm chỉ có một năm. Các khác biệt |d| lớn nhất trong tập so được là: Tiếng Đức (N5): Δ=1,838 điểm, d=1,035, n2023/n2025=86/150; Toán: Δ=-1,467 điểm, d=-0,886, n2023/n2025=1,003,373/1,126,172; Tiếng Pháp (N3): Δ=1,194 điểm, d=0,630, n2023/n2025=716/408. Riêng Tiếng Đức (N5) chỉ có 86/150 người, cần đọc CI và giới hạn mẫu nhỏ; thứ hạng này không đại diện cho mọi thí sinh. Đây là chênh điểm quan sát, không phải tác động nhân quả.
 
 ## 2.1. Phạm vi: mỗi con số dùng mẫu nào?
-
 
 | Năm | Nhóm môn/ngôn ngữ | Tổng lượt điểm trong các nhóm |
 | --- | --- | --- |
@@ -20,9 +15,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Lượt điểm không phải số người duy nhất: một người có thể có nhiều môn. Ngoại ngữ đã tách theo mã, N1 và cột Tiếng Anh dẫn xuất chỉ tính một lần. Năm 2023 có GDCD; năm 2025 có GDKT&PL, Tin học, Công nghệ. Môn chỉ một năm vẫn hiện trong báo cáo nhưng không bị gán điểm năm còn thiếu.
 
-
 ## 2.2. Trung bình và mức khác biệt của mọi môn
-
 
 | Môn | n 2023 | n 2025 | TB 2023 | TB 2025 | Δ điểm | d |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -47,37 +40,27 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Δ là 2025 trừ 2023, âm là giảm. n=0 chỉ biểu thị không có điểm trong nguồn năm đó, không phải mean=0. d đo chênh tương đối bằng SD gộp, không là phần trăm. Phải đọc cả điểm gốc và d vì cùng p nhỏ có thể đi kèm mức khác biệt rất khác.
 
-
-![So sánh mọi môn có đủ hai năm](../outputs/statistics/figures/subject_overview.png)
+![So sánh mọi môn có đủ hai năm](figures/phan_2_4/phan2_mon_subject_overview.png)
 
 **Diễn giải hình:** Mỗi hàng là một môn có đủ hai năm. Trái là mean, giữa là Δ/CI theo điểm, phải là d/CI bootstrap theo SD. Thanh CI hẹp ở mẫu lớn không làm một mức đổi nhỏ trở thành ảnh hưởng lớn; các ngôn ngữ ít người có CI rộng hơn.
 
-
 ## 2.3. Cách tính và đọc trước khi đi vào từng môn
-
 
 **Welch t-test** hỏi trung bình hai nhóm có khác không, không giả định phương sai bằng nhau. H0: hai trung bình bằng nhau; H1 hai phía: khác nhau. **p-value** đo độ bất tương thích với mô hình H0, không là xác suất H0 đúng, không đo độ lớn thay đổi. P rất nhỏ ở mẫu lớn phải đi kèm Δ và d.
 
-
 **Cohen’s d** = (mean2025−mean2023)/SD gộp. Dấu chỉ hướng; |d| 0,2/0,5/0,8 là mốc tham khảo, không ranh giới phổ quát. **Hedges’ g** hiệu chỉnh mẫu nhỏ; ở mẫu lớn g gần d. CI d bootstrap 999 lần theo tần số điểm, CI percentile; CI mean từ Welch. CI không là khoảng chứa 95% học sinh.
 
-
 **Mann–Whitney U** đối chiếu thứ hạng/phân phối, không mặc định kiểm định mean hay median. **A**=P(X2025>X2023)+0,5P(bằng điểm); **rank-biserial**=2A−1. Điểm trùng đã được hiệu chỉnh khi tính p MWU.
-
 
 **Phổ điểm mượt KDE:** dùng toàn bộ điểm, histogram mịn được làm mượt bằng kernel Gaussian, bandwidth 0,20 điểm và phản xạ ở biên 0/10; diện tích chuẩn hóa bằng 1. Cách này ước lượng hình dạng thực, không ép điểm theo phân phối chuẩn. Thống kê/kiểm định vẫn tính trên điểm gốc, không trên đường đã làm mượt.
 
 **KS D** là khoảng cách lớn nhất giữa hai ECDF. P tiêu chuẩn giả thiết liên tục chỉ để tham khảo; p chính dùng hoán vị nhãn theo tần số điểm giữ đúng n hai năm (1.999 lần, seed cố định). **Brown–Forsythe** là Levene quanh median; đọc cùng SD/IQR/tỷ số phương sai, không đồng nhất với chất lượng phân hóa của đề. Levene quanh mean được đối chiếu ở phụ lục bổ sung.
 
-
 **Đa kiểm định:** Holm cho family Welch; BH chung cho MWU/KS/Brown–Forsythe. Môn một năm không thêm phép thử. Dữ liệu gần toàn bộ thí sinh quan sát mỗi năm nên Δ mô tả trực tiếp tập đó; p/CI chỉ có nghĩa dưới mô hình suy luận/độc lập rộng hơn. Có thể có người thi lại, số báo danh không nhận diện người liên năm.
-
 
 ## 2.4. Bảng, hình và diễn giải từng môn
 
-
 ### 2.4.1. Sinh học
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -86,9 +69,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 6,39 → 5,78, giảm 0,62 điểm; trung vị 6,50 → 5,75. Cohen’s d=-0,481 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,716. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -99,20 +80,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-0,629; -0,604] **điểm**. d có CI bootstrap 95% [-0,492; -0,472] **SD gộp**; Hedges’ g=-0,481. A=0,375 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Sinh học — phổ điểm và ECDF](../outputs/statistics/figures/dist_biology.png)
+![Sinh học — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_biology.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,243, gần mốc 5,45; đây là 24,3 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -0,617 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.2. Hóa học
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -121,9 +97,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 6,74 → 6,06, giảm 0,68 điểm; trung vị 7,00 → 6,00. Cohen’s d=-0,425 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,607. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -134,20 +108,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-0,689; -0,671] **điểm**. d có CI bootstrap 95% [-0,430; -0,419] **SD gộp**; Hedges’ g=-0,425. A=0,380 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Hóa học — phổ điểm và ECDF](../outputs/statistics/figures/dist_chemistry.png)
+![Hóa học — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_chemistry.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,239, gần mốc 6,20; đây là 23,9 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -0,680 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.3. GDCD
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -155,20 +124,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** Không có điểm ở một năm; không tạo mẫu bằng 0. Có thống kê và hình cho năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![GDCD — phổ điểm và ECDF](../outputs/statistics/figures/dist_civics.png)
+![GDCD — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_civics.png)
 
 **Diễn giải hình:** Chỉ vẽ các năm có điểm thực. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.4.4. GDKT&PL
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -176,20 +140,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** Không có điểm ở một năm; không tạo mẫu bằng 0. Có thống kê và hình cho năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![GDKT&PL — phổ điểm và ECDF](../outputs/statistics/figures/dist_economics_law.png)
+![GDKT&PL — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_economics_law.png)
 
 **Diễn giải hình:** Chỉ vẽ các năm có điểm thực. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.4.5. Tiếng Anh (N1)
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -198,9 +157,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 5,45 → 5,38, giảm 0,08 điểm; trung vị 5,20 → 5,25. Cohen’s d=-0,043 (dưới mốc 0,2 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,545. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -211,20 +168,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-0,085; -0,072] **điểm**. d có CI bootstrap 95% [-0,047; -0,040] **SD gộp**; Hedges’ g=-0,043. A=0,505 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Tiếng Anh (N1) — phổ điểm và ECDF](../outputs/statistics/figures/dist_foreign_language_N1.png)
+![Tiếng Anh (N1) — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_foreign_language_N1.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,130, gần mốc 4,20; đây là 13,0 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -0,079 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.6. Tiếng Nga (N2)
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -233,9 +185,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 8,26 → 8,94, tăng 0,68 điểm; trung vị 9,00 → 9,25. Cohen’s d=0,422 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,390. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -246,20 +196,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [0,186; 1,168] **điểm**. d có CI bootstrap 95% [0,133; 0,691] **SD gộp**; Hedges’ g=0,420. A=0,605 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Tiếng Nga (N2) — phổ điểm và ECDF](../outputs/statistics/figures/dist_foreign_language_N2.png)
+![Tiếng Nga (N2) — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_foreign_language_N2.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,219, gần mốc 9,40; đây là 21,9 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 0,677 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.7. Tiếng Pháp (N3)
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -268,9 +213,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 7,18 → 8,38, tăng 1,19 điểm; trung vị 7,60 → 8,75. Cohen’s d=0,630 (trong khoảng 0,5–0,8 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,489. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -281,20 +224,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [0,984; 1,404] **điểm**. d có CI bootstrap 95% [0,516; 0,739] **SD gộp**; Hedges’ g=0,630. A=0,666 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Tiếng Pháp (N3) — phổ điểm và ECDF](../outputs/statistics/figures/dist_foreign_language_N3.png)
+![Tiếng Pháp (N3) — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_foreign_language_N3.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,281, gần mốc 7,20; đây là 28,1 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 1,194 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.8. Tiếng Trung (N4)
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -303,9 +241,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 7,08 → 7,36, tăng 0,28 điểm; trung vị 7,60 → 7,75. Cohen’s d=0,137 (dưới mốc 0,2 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,031. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -316,20 +252,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [0,183; 0,373] **điểm**. d có CI bootstrap 95% [0,090; 0,183] **SD gộp**; Hedges’ g=0,137. A=0,547 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Tiếng Trung (N4) — phổ điểm và ECDF](../outputs/statistics/figures/dist_foreign_language_N4.png)
+![Tiếng Trung (N4) — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_foreign_language_N4.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,146, gần mốc 9,20; đây là 14,6 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 0,278 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.9. Tiếng Đức (N5)
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -338,9 +269,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 5,98 → 7,82, tăng 1,84 điểm; trung vị 6,00 → 8,25. Cohen’s d=1,035 (từ 0,8 trở lên về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,681. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -351,20 +280,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [1,338; 2,337] **điểm**. d có CI bootstrap 95% [0,770; 1,377] **SD gộp**; Hedges’ g=1,032. A=0,762 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Tiếng Đức (N5) — phổ điểm và ECDF](../outputs/statistics/figures/dist_foreign_language_N5.png)
+![Tiếng Đức (N5) — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_foreign_language_N5.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,428, gần mốc 7,20; đây là 42,8 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 1,838 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.10. Tiếng Nhật (N6)
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -373,9 +297,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 7,01 → 6,29, giảm 0,72 điểm; trung vị 7,40 → 6,50. Cohen’s d=-0,335 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,911. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -386,20 +308,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-0,967; -0,469] **điểm**. d có CI bootstrap 95% [-0,466; -0,223] **SD gộp**; Hedges’ g=-0,335. A=0,399 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Tiếng Nhật (N6) — phổ điểm và ECDF](../outputs/statistics/figures/dist_foreign_language_N6.png)
+![Tiếng Nhật (N6) — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_foreign_language_N6.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,212, gần mốc 7,75; đây là 21,2 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -0,718 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.11. Tiếng Hàn (N7)
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -408,9 +325,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 6,29 → 5,90, giảm 0,39 điểm; trung vị 6,40 → 5,75. Cohen’s d=-0,203 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,005. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -421,20 +336,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-0,638; -0,143] **điểm**. d có CI bootstrap 95% [-0,334; -0,070] **SD gộp**; Hedges’ g=-0,203. A=0,441 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Tiếng Hàn (N7) — phổ điểm và ECDF](../outputs/statistics/figures/dist_foreign_language_N7.png)
+![Tiếng Hàn (N7) — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_foreign_language_N7.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,122, gần mốc 5,75; đây là 12,2 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -0,390 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.12. Địa lý
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -443,9 +353,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 6,15 → 6,63, tăng 0,48 điểm; trung vị 6,25 → 6,75. Cohen’s d=0,334 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=2,242. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -456,20 +364,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [0,475; 0,486] **điểm**. d có CI bootstrap 95% [0,331; 0,338] **SD gộp**; Hedges’ g=0,334. A=0,590 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Địa lý — phổ điểm và ECDF](../outputs/statistics/figures/dist_geography.png)
+![Địa lý — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_geography.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,226, gần mốc 7,25; đây là 22,6 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 0,480 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.13. Lịch sử
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -478,9 +381,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 6,03 → 6,52, tăng 0,49 điểm; trung vị 6,00 → 6,60. Cohen’s d=0,311 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,106. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -491,20 +392,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [0,488; 0,500] **điểm**. d có CI bootstrap 95% [0,308; 0,315] **SD gộp**; Hedges’ g=0,311. A=0,589 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Lịch sử — phổ điểm và ECDF](../outputs/statistics/figures/dist_history.png)
+![Lịch sử — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_history.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,141, gần mốc 6,50; đây là 14,1 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 0,494 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.14. Tin học
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -512,20 +408,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** Không có điểm ở một năm; không tạo mẫu bằng 0. Có thống kê và hình cho năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![Tin học — phổ điểm và ECDF](../outputs/statistics/figures/dist_informatics.png)
+![Tin học — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_informatics.png)
 
 **Diễn giải hình:** Chỉ vẽ các năm có điểm thực. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.4.15. Ngữ văn
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -534,9 +425,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 6,86 → 7,00, tăng 0,14 điểm; trung vị 7,00 → 7,25. Cohen’s d=0,111 (dưới mốc 0,2 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,929. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -547,20 +436,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [0,140; 0,147] **điểm**. d có CI bootstrap 95% [0,108; 0,113] **SD gộp**; Hedges’ g=0,111. A=0,535 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Ngữ văn — phổ điểm và ECDF](../outputs/statistics/figures/dist_literature.png)
+![Ngữ văn — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_literature.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,070, gần mốc 6,91; đây là 7,0 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 0,144 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.16. Toán
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -569,9 +453,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 6,25 → 4,78, giảm 1,47 điểm; trung vị 6,60 → 4,60. Cohen’s d=-0,886 (từ 0,8 trở lên về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,054. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -582,20 +464,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-1,472; -1,463] **điểm**. d có CI bootstrap 95% [-0,889; -0,883] **SD gộp**; Hedges’ g=-0,886. A=0,261 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Toán — phổ điểm và ECDF](../outputs/statistics/figures/dist_math.png)
+![Toán — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,414, gần mốc 5,75; đây là 41,4 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -1,467 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.17. Vật lý
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -604,9 +481,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 6,57 → 6,99, tăng 0,41 điểm; trung vị 6,75 → 7,00. Cohen’s d=0,274 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,041. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -617,20 +492,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 14 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 42 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [0,404; 0,418] **điểm**. d có CI bootstrap 95% [0,269; 0,279] **SD gộp**; Hedges’ g=0,274. A=0,570 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![Vật lý — phổ điểm và ECDF](../outputs/statistics/figures/dist_physics.png)
+![Vật lý — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_physics.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,106, gần mốc 8,25; đây là 10,6 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 0,411 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.4.18. Công nghệ
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <5 (%) | ≥8 (%) | ≥9 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -638,20 +508,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** Không có điểm ở một năm; không tạo mẫu bằng 0. Có thống kê và hình cho năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![Công nghệ — phổ điểm và ECDF](../outputs/statistics/figures/dist_technology.png)
+![Công nghệ — phổ điểm và ECDF](figures/phan_2_4/phan2_mon_dist_technology.png)
 
 **Diễn giải hình:** Chỉ vẽ các năm có điểm thực. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ## 2.5. Tổng điểm mọi khối có điểm — sau phần từng môn
-
 
 | Khối | Môn 2023 | Môn 2025 | n2023 | n2025 | Phạm vi |
 | --- | --- | --- | --- | --- | --- |
@@ -682,7 +547,6 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Đủ 24 mã có điểm trong nguồn; B08/D08 cùng Toán–Sinh–Anh nên chỉ tính một bộ. Bảy khối A08/A09/C14/C19/C20/D66/D84 đổi GDCD sang GDKT&PL: PCA riêng từng năm và mô tả điểm, không đưa vào family kiểm định chính liên năm. N1 là Tiếng Anh; đây là các mã nguồn có sẵn, không là mọi tổ hợp ba môn có thể tưởng tượng. Tin học/Công nghệ và N2–N7 đã phân tích ở từng môn nhưng chưa có mã khối tương ứng trong nguồn. Tổng n của các khối không phải số người vì một người có thể thuộc nhiều khối.
 
-
 | Bất đồng | data/danh_muc_to_hop.csv cũ | Quy tắc thực dùng |
 | --- | --- | --- |
 | D04 trong danh mục | Toán–Văn–Hóa | Nguồn dùng C02; không tạo khối D04 mới |
@@ -691,11 +555,9 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 | A01/D90; B08/D99 | Ghi chú danh mục coi là alias | Không sử dụng các alias này; chỉ B08/D08 cùng bộ trong nguồn |
 | Ngoại ngữ | Danh mục ghi chung, không chỉ mã | Tổng đã lưu khớp Tiếng Anh N1; không gộp N2–N7 |
 
-**Diễn giải bảng:** Đây là bất đồng đã biết giữa danh mục cũ và các cột diem_* trong tệp điểm, không phải mapping_issues trống nghĩa mọi tài liệu đều thống nhất. Ưu tiên mapping đã kiểm chứng bằng tổng ba môn và số mẫu phần3; không sửa danh mục gốc, không tự thêm/đổi mã theo ghi chú cũ. Phạm vi24 mã là theo bộ dữ liệu này, không là xác nhận danh mục tuyển sinh chính thức.
-
+**Diễn giải bảng:** Đây là bất đồng đã biết giữa danh mục cũ và các cột diem_* trong tệp điểm, việc tổng đã lưu khớp không có nghĩa mọi tài liệu đều thống nhất. Ưu tiên mapping đã kiểm chứng bằng tổng ba môn và số mẫu phần 3; không sửa danh mục gốc, không tự thêm/đổi mã theo ghi chú cũ. Phạm vi24 mã là theo bộ dữ liệu này, không là xác nhận danh mục tuyển sinh chính thức.
 
 **Quy tắc tính:** Chỉ cộng khi có đủ ba môn cùng người/cùng năm, giữ điểm0, tổng trong0–30. Không cộng hai điểm rồi bỏ qua môn thiếu. Chỉ chuẩn hóa sai số cộng dấu phẩy động ở mức 10⁻¹⁰ điểm, không làm tròn về bước điểm bài thi. Bandwidth KDE tổng là0,35 điểm, phản xạ ở0/30. Phép thử dùng tổng gốc sau chuẩn hóa sai số này.
-
 
 | Khối | n2023 | n2025 | TB2023 | TB2025 | Δ tổng | d |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -725,14 +587,11 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Δ cùng chiều2025−2023, đơn vị điểm trên thang 30. Family Welch chỉ gồm 16 bộ không đổi môn (Holm); MWU/KS/BF gồm 48 p hữu hạn (BH chung). Khối đổi môn vẫn có Δ mô tả, d/p chính bỏ trống để tránh trình bày như cùng nội dung. Tổng lớn hơn không đồng nghĩa năng lực cao hơn.
 
-
-![Tổng điểm và effect size các khối so được](../outputs/combination_inference/figures/total_overview.png)
+![Tổng điểm và effect size các khối so được](figures/phan_2_4/phan2_khoi_total_overview.png)
 
 **Diễn giải hình:** Đọc mean/Δ trên thang 30 và d theo SD gộp. Chỉ16 bộ cùng tên môn có kiểm định chính; B08/D08 hiện một lần.
 
-
 ### 2.5.1. B00
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -741,9 +600,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 20,60 → 18,29, giảm 2,32 điểm; trung vị 20,85 → 18,00. Cohen’s d=-0,762 (trong khoảng 0,5–0,8 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=2,635. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -754,20 +611,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-2,358; -2,273] **điểm**. d có CI bootstrap 95% [-0,775; -0,748] **SD gộp**; Hedges’ g=-0,762. A=0,334 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![B00 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_biology_chemistry_math.png)
+![B00 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_biology_chemistry_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,331, gần mốc 18,10; đây là 33,1 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -2,315 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.2. B08/D08
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -776,9 +628,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 20,07 → 15,66, giảm 4,41 điểm; trung vị 20,20 → 15,45. Cohen’s d=-1,465 (từ 0,8 trở lên về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,278. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -789,20 +639,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-4,512; -4,306] **điểm**. d có CI bootstrap 95% [-1,498; -1,430] **SD gộp**; Hedges’ g=-1,465. A=0,168 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![B08/D08 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_biology_foreign_language_N1_math.png)
+![B08/D08 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_biology_foreign_language_N1_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,519, gần mốc 17,35; đây là 51,9 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -4,409 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.3. A02
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -811,9 +656,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 20,43 → 15,32, giảm 5,11 điểm; trung vị 20,70 → 15,10. Cohen’s d=-1,870 (từ 0,8 trở lên về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,265. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -824,20 +667,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-5,194; -5,020] **điểm**. d có CI bootstrap 95% [-1,902; -1,836] **SD gộp**; Hedges’ g=-1,870. A=0,111 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![A02 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_biology_math_physics.png)
+![A02 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_biology_math_physics.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,640, gần mốc 17,85; đây là 64,0 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -5,107 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.4. D07
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -846,9 +684,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 20,42 → 17,51, giảm 2,91 điểm; trung vị 20,65 → 17,35. Cohen’s d=-0,936 (từ 0,8 trở lên về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,467. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -859,20 +695,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-2,962; -2,866] **điểm**. d có CI bootstrap 95% [-0,951; -0,920] **SD gộp**; Hedges’ g=-0,936. A=0,270 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![D07 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_chemistry_foreign_language_N1_math.png)
+![D07 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_chemistry_foreign_language_N1_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,372, gần mốc 18,50; đây là 37,2 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -2,914 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.5. C02
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -881,9 +712,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 21,17 → 19,11, giảm 2,06 điểm; trung vị 21,45 → 19,00. Cohen’s d=-0,691 (trong khoảng 0,5–0,8 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,909. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -894,20 +723,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-2,076; -2,042] **điểm**. d có CI bootstrap 95% [-0,697; -0,686] **SD gộp**; Hedges’ g=-0,691. A=0,316 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![C02 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_chemistry_literature_math.png)
+![C02 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_chemistry_literature_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,322, gần mốc 19,50; đây là 32,2 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -2,059 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.6. A00
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -916,9 +740,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 20,77 → 19,37, giảm 1,41 điểm; trung vị 21,15 → 19,25. Cohen’s d=-0,395 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,965. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -929,20 +751,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-1,429; -1,382] **điểm**. d có CI bootstrap 95% [-0,402; -0,388] **SD gộp**; Hedges’ g=-0,395. A=0,394 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![A00 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_chemistry_math_physics.png)
+![A00 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_chemistry_math_physics.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,227, gần mốc 18,50; đây là 22,7 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -1,405 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.7. D66
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -951,20 +768,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** GDCD 2023 được thay bằng GDKT&PL 2025; chỉ mô tả riêng, không kiểm định chính liên năm. Có thống kê và hình riêng cho cả hai năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![D66 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_economics_law_foreign_language_N1_literature.png)
+![D66 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_economics_law_foreign_language_N1_literature.png)
 
 **Diễn giải hình:** Hai đường mô tả hai bộ môn khác nội dung, không là cùng thang đã quy đổi. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.5.8. D84
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -973,20 +785,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** GDCD 2023 được thay bằng GDKT&PL 2025; chỉ mô tả riêng, không kiểm định chính liên năm. Có thống kê và hình riêng cho cả hai năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![D84 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_economics_law_foreign_language_N1_math.png)
+![D84 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_economics_law_foreign_language_N1_math.png)
 
 **Diễn giải hình:** Hai đường mô tả hai bộ môn khác nội dung, không là cùng thang đã quy đổi. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.5.9. C20
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -995,20 +802,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** GDCD 2023 được thay bằng GDKT&PL 2025; chỉ mô tả riêng, không kiểm định chính liên năm. Có thống kê và hình riêng cho cả hai năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![C20 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_economics_law_geography_literature.png)
+![C20 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_economics_law_geography_literature.png)
 
 **Diễn giải hình:** Hai đường mô tả hai bộ môn khác nội dung, không là cùng thang đã quy đổi. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.5.10. A09
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1017,20 +819,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** GDCD 2023 được thay bằng GDKT&PL 2025; chỉ mô tả riêng, không kiểm định chính liên năm. Có thống kê và hình riêng cho cả hai năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![A09 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_economics_law_geography_math.png)
+![A09 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_economics_law_geography_math.png)
 
 **Diễn giải hình:** Hai đường mô tả hai bộ môn khác nội dung, không là cùng thang đã quy đổi. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.5.11. C19
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1039,20 +836,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** GDCD 2023 được thay bằng GDKT&PL 2025; chỉ mô tả riêng, không kiểm định chính liên năm. Có thống kê và hình riêng cho cả hai năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![C19 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_economics_law_history_literature.png)
+![C19 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_economics_law_history_literature.png)
 
 **Diễn giải hình:** Hai đường mô tả hai bộ môn khác nội dung, không là cùng thang đã quy đổi. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.5.12. A08
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1061,20 +853,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** GDCD 2023 được thay bằng GDKT&PL 2025; chỉ mô tả riêng, không kiểm định chính liên năm. Có thống kê và hình riêng cho cả hai năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![A08 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_economics_law_history_math.png)
+![A08 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_economics_law_history_math.png)
 
 **Diễn giải hình:** Hai đường mô tả hai bộ môn khác nội dung, không là cùng thang đã quy đổi. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.5.13. C14
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1083,20 +870,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Phạm vi so sánh:** GDCD 2023 được thay bằng GDKT&PL 2025; chỉ mô tả riêng, không kiểm định chính liên năm. Có thống kê và hình riêng cho cả hai năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.
 
-
-![C14 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_economics_law_literature_math.png)
+![C14 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_economics_law_literature_math.png)
 
 **Diễn giải hình:** Hai đường mô tả hai bộ môn khác nội dung, không là cùng thang đã quy đổi. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.
 
-
 **Ý nghĩa và giới hạn:** Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.
 
-
 ### 2.5.14. D15
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1105,9 +887,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 18,25 → 20,63, tăng 2,38 điểm; trung vị 18,10 → 20,75. Cohen’s d=0,715 (trong khoảng 0,5–0,8 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,657. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1118,20 +898,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [2,357; 2,407] **điểm**. d có CI bootstrap 95% [0,707; 0,722] **SD gộp**; Hedges’ g=0,715. A=0,709 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![D15 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_foreign_language_N1_geography_literature.png)
+![D15 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_foreign_language_N1_geography_literature.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,336, gần mốc 18,73; đây là 33,6 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 2,382 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.15. D10
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1140,9 +915,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 17,09 → 18,19, tăng 1,10 điểm; trung vị 16,95 → 18,25. Cohen’s d=0,306 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,728. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1153,20 +926,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [1,067; 1,123] **điểm**. d có CI bootstrap 95% [0,298; 0,313] **SD gộp**; Hedges’ g=0,306. A=0,592 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![D10 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_foreign_language_N1_geography_math.png)
+![D10 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_foreign_language_N1_geography_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,161, gần mốc 16,20; đây là 16,1 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 1,095 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.16. D14
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1175,9 +943,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 18,15 → 20,45, tăng 2,29 điểm; trung vị 18,00 → 20,75. Cohen’s d=0,634 (trong khoảng 0,5–0,8 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,577. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1188,20 +954,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [2,271; 2,317] **điểm**. d có CI bootstrap 95% [0,627; 0,641] **SD gộp**; Hedges’ g=0,634. A=0,690 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![D14 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_foreign_language_N1_history_literature.png)
+![D14 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_foreign_language_N1_history_literature.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,320, gần mốc 18,73; đây là 32,0 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 2,294 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.17. D09
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1210,9 +971,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 17,00 → 17,86, tăng 0,86 điểm; trung vị 16,90 → 18,00. Cohen’s d=0,223 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,626. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1223,20 +982,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [0,833; 0,884] **điểm**. d có CI bootstrap 95% [0,216; 0,230] **SD gộp**; Hedges’ g=0,223. A=0,571 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![D09 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_foreign_language_N1_history_math.png)
+![D09 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_foreign_language_N1_history_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,148, gần mốc 15,70; đây là 14,8 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 0,858 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.18. D01
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1245,9 +999,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 18,89 → 18,58, giảm 0,31 điểm; trung vị 19,05 → 18,50. Cohen’s d=-0,086 (dưới mốc 0,2 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,584. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1258,20 +1010,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-0,319; -0,294] **điểm**. d có CI bootstrap 95% [-0,089; -0,082] **SD gộp**; Hedges’ g=-0,086. A=0,467 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![D01 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_foreign_language_N1_literature_math.png)
+![D01 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_foreign_language_N1_literature_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,114, gần mốc 21,25; đây là 11,4 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -0,307 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.19. A01
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1280,9 +1027,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 20,27 → 18,87, giảm 1,41 điểm; trung vị 20,45 → 18,75. Cohen’s d=-0,410 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,176. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1293,20 +1038,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-1,428; -1,384] **điểm**. d có CI bootstrap 95% [-0,417; -0,403] **SD gộp**; Hedges’ g=-0,410. A=0,384 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![A01 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_foreign_language_N1_math_physics.png)
+![A01 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_foreign_language_N1_math_physics.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,185, gần mốc 19,00; đây là 18,5 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -1,406 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.20. C00
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1315,9 +1055,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 18,97 → 19,72, tăng 0,75 điểm; trung vị 19,00 → 19,85. Cohen’s d=0,203 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,596. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1328,20 +1066,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [0,729; 0,763] **điểm**. d có CI bootstrap 95% [0,198; 0,208] **SD gộp**; Hedges’ g=0,203. A=0,558 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![C00 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_geography_history_literature.png)
+![C00 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_geography_history_literature.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,142, gần mốc 22,00; đây là 14,2 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi 0,746 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.21. C04
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1350,9 +1083,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 18,61 → 17,29, giảm 1,32 điểm; trung vị 18,85 → 17,45. Cohen’s d=-0,379 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,165. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1363,20 +1094,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-1,334; -1,308] **điểm**. d có CI bootstrap 95% [-0,383; -0,376] **SD gộp**; Hedges’ g=-0,379. A=0,394 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![C04 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_geography_literature_math.png)
+![C04 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_geography_literature_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,157, gần mốc 17,60; đây là 15,7 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -1,321 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.22. C03
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1385,9 +1111,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 18,48 → 17,28, giảm 1,20 điểm; trung vị 18,70 → 17,45. Cohen’s d=-0,330 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=0,924. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1398,20 +1122,15 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-1,211; -1,185] **điểm**. d có CI bootstrap 95% [-0,334; -0,326] **SD gộp**; Hedges’ g=-0,330. A=0,407 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![C03 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_history_literature_math.png)
+![C03 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_history_literature_math.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,136, gần mốc 19,27; đây là 13,6 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -1,198 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
 
-
 ### 2.5.23. C01
-
 
 | Năm | Số có điểm | Trung bình | Trung vị | SD | IQR | <15 (%) | ≥24 (%) | ≥27 (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1420,9 +1139,7 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** n là số có điểm hợp lệ của riêng mục này, không phải mọi dòng trong năm. SD đo độ trải rộng; IQR là độ rộng vùng 50% ở giữa. Các tỷ lệ chia cho n của đúng hàng; nhóm ≥90% thang điểm đã nằm trong nhóm ≥80%, không cộng hai tỷ lệ.
 
-
 **Nhận xét bằng số:** Trung bình 21,01 → 20,09, giảm 0,92 điểm; trung vị 21,25 → 20,20. Cohen’s d=-0,312 (trong khoảng 0,2–0,5 về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023=1,530. Không dùng nhãn độ lớn như kết luận hai năm tương đương.
-
 
 | Câu hỏi/phép thử | Thống kê | p gốc | p Holm / q BH |
 | --- | --- | --- | --- |
@@ -1433,32 +1150,21 @@ Trong 18 nhóm môn thuộc hợp hai năm, 14 nhóm có dữ liệu cả hai n�
 
 **Diễn giải bảng:** Welch dùng Holm trong family 16 phép thử trung bình; ba phép thăm dò dùng BH chung trong family 48 p hữu hạn. KS dùng hoán vị 1,999 lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.
 
-
 **Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [-0,937; -0,909] **điểm**. d có CI bootstrap 95% [-0,317; -0,307] **SD gộp**; Hedges’ g=-0,312. A=0,411 là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).
 
-
-![C01 — phổ điểm và ECDF](../outputs/combination_inference/figures/dist_literature_math_physics.png)
+![C01 — phổ điểm và ECDF](figures/phan_2_4/phan2_khoi_dist_literature_math_physics.png)
 
 **Diễn giải hình:** Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D=0,166, gần mốc 19,52; đây là 16,6 điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.
 
-
 **Ý nghĩa và giới hạn:** Kết quả có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm. Điều này cần đọc cùng mức đổi -0,923 điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.
-
 
 ## Nguồn, khả năng tái lập và giới hạn
 
-
-
-
-
 Mọi so sánh dùng nguồn điểm của riêng môn, không ép các môn về một tập thí sinh chung. Không suy rằng tăng/giảm do riêng chương trình hoặc đề thi. Muốn đánh giá độ phân biệt câu hỏi cần dữ liệu theo câu, không thay bằng p hoặc SD tổng điểm.
-
 
 Tài liệu phương pháp: [Welch/CI](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html), [MWU và ties](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html), [KS](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ks_2samp.html), [Levene](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levene.html), [nguyên tắc p-value của ASA](https://www.amstat.org/asa/files/pdfs/P-ValueStatement.pdf).
 
-
 ## Phụ lục — Levene gốc và kiểm tra độ phân tán
-
 
 ### Từng môn
 
@@ -1480,7 +1186,6 @@ Tài liệu phương pháp: [Welch/CI](https://docs.scipy.org/doc/scipy/referenc
 | Vật lý | 1,487 | 1,517 | 1,041 | 2.82e-45 | 1.93e-76 | 5.78e-76 |
 
 **Diễn giải bảng:** Levene gốc lấy độ lệch tuyệt đối quanh mean; Brown–Forsythe lấy quanh median, bền hơn khi lệch phân phối. p Levene mean là đối chiếu chưa hiệu chỉnh, không thêm vào family chính đã định trước. BF dùng BH cùng MWU và KS. Tỷ số phương sai>1 cho biết2025 trải rộng hơn trong mẫu; đây chưa phải độ phân biệt câu hỏi.
-
 
 ### Tổng các khối không đổi môn
 
@@ -1505,28 +1210,23 @@ Tài liệu phương pháp: [Welch/CI](https://docs.scipy.org/doc/scipy/referenc
 
 **Diễn giải bảng:** Levene gốc lấy độ lệch tuyệt đối quanh mean; Brown–Forsythe lấy quanh median, bền hơn khi lệch phân phối. p Levene mean là đối chiếu chưa hiệu chỉnh, không thêm vào family chính đã định trước. BF dùng BH cùng MWU và KS. Tỷ số phương sai>1 cho biết2025 trải rộng hơn trong mẫu; đây chưa phải độ phân biệt câu hỏi.
 
-
 **Kế thừa Sơn:** Bản Sơn có Welch/MWU/KS/Levene/BF và effect size; bổ sung ở đây là phạm vi mọi môn/ngôn ngữ, giải nghĩa bên cạnh số, đồ thị KDE/ECDF, hiệu chỉnh đa kiểm định, KS có xử lý đồng hạng và phần mọi khối đủ điểm. Không ghép GDCD và GDKT&PL thành một môn.
 
-
 ## Hồ sơ tính toán và đối chiếu
-
 
 | Năm | Số dòng nguồn | Tệp gốc | SHA-256 |
 | --- | --- | --- | --- |
 | 2023 | 1.022.060 | original.csv | cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5 |
 | 2025 | 1.131.136 | dataset_diem_thi_thpt_2025.csv | 0db00925d51bcb14dfb6c92efeee9926524aba8938288987a95c38d34484e6ed |
 
-**Diễn giải bảng:** Hash khóa đúng hai phiên bản dữ liệu đã tính. Số dòng nguồn gồm cả người không có điểm; n trong từng phép tính chỉ đếm điểm hợp lệ/đủ cặp/đủ khối. Dữ liệu gốc và kết quả phần3 được giữ nguyên. Không sao chép lại bộ dữ liệu cho báo cáo này.
+**Diễn giải bảng:** Hash khóa đúng hai phiên bản dữ liệu đã tính. Số dòng nguồn gồm cả người không có điểm; n trong từng phép tính chỉ đếm điểm hợp lệ/đủ cặp/đủ khối. Dữ liệu gốc và kết quả phần 3 được giữ nguyên. Không sao chép lại bộ dữ liệu cho báo cáo này.
 
-
-**Cấu hình tái lập:** Seed gốc20261021; thứ tự môn theo ID sắp xếp, seed riêng mỗi mục bằng seed gốc cộng chỉ số từ0; khối cộng thêm10000, d bootstrap cộng tiếp100. KS hoán vị1999 lần theo phân bổ hypergeometric trên tần số điểm, p=(1+số D hoán vị≥D quan sát)/(1999+1). CI d percentile từ999 mẫu bootstrap multinomial độc lập từng năm. Tương quan ba cặp minh họa bootstrap999 lần trên tần số cặp điểm cùng người; seed theo thứ tự cặp. Mọi CI95%, các phép thử hai phía. P80 dùng quantile method=higher, tính cả đồng hạng ở ngưỡng; không ép nhóm cao đúng20%.
-
+**Cấu hình tái lập:** Seed gốc 20261021; thứ tự môn theo ID sắp xếp, seed riêng mỗi mục bằng seed gốc cộng chỉ số từ 0; khối cộng thêm 10000, d bootstrap cộng tiếp 100. KS hoán vị 1999 lần theo phân bổ hypergeometric trên tần số điểm, p=(1+số D hoán vị≥D quan sát)/(1999+1). CI d percentile từ 999 mẫu bootstrap multinomial độc lập từng năm. Tương quan ba cặp minh họa bootstrap 999 lần trên tần số cặp điểm cùng người; seed theo thứ tự cặp. Mọi CI 95%, các phép thử hai phía. P80 dùng quantile method=higher, tính cả đồng hạng ở ngưỡng; không ép nhóm cao đúng 20%.
 
 **Môi trường thực thi:** python 3.12.14, numpy 2.5.3, pandas 3.0.1, scipy 1.18.1, matplotlib 3.11.2. PCA dùng NumPy SVD trên z có SD mẫu ddof1, eigenvalue=s²/(n−1), loading=v√λ. Thư viện và phương pháp đã tra tài liệu chính thức SciPy cùng Context7.
 
-
-**Kiểm chứng số:** 8 môn chung khớp n/mean/d với Sơn (sai số tuyệt đối<10⁻¹⁰); 56 dòng cặp của Duy khớp n/r/rho, kể cả ô không đồng quan sát; 10 mô hình của5 khối Duy khớp n và EVR (sai số<10⁻⁸ điểm phần trăm). 48 số đếm mã–năm khớp phần3; mọi tổng2025 đã lưu được so với tổng đủ ba môn và không có sai lệch trên ngưỡng10⁻⁸ điểm. B08/D08 dùng chung,23 bộ/năm. Các quy tắc thiếu/zero/alias/biến hằng và bất biến dấu PCA đã được kiểm tra trên dữ liệu thử riêng.
-
+**Kiểm chứng số:** 8 môn chung khớp n/mean/d với Sơn (sai số tuyệt đối<10⁻¹⁰); 56 dòng cặp của Duy khớp n/r/rho, kể cả ô không đồng quan sát; 10 mô hình của 5 khối Duy khớp n và EVR (sai số<10⁻⁸ điểm phần trăm). 48 số đếm mã–năm khớp phần 3; mọi tổng 2025 đã lưu được so với tổng đủ ba môn và không có sai lệch trên ngưỡng10⁻⁸ điểm. B08/D08 dùng chung, 23 bộ/năm. Các quy tắc thiếu/zero/alias/biến hằng và bất biến dấu PCA đã được kiểm tra trên dữ liệu thử riêng.
 
 **Nguồn phương pháp:** [Welch](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html), [MWU](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html), [KS hai mẫu](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ks_2samp.html), [Levene/Brown–Forsythe](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levene.html), [PCA](https://scikit-learn.org/stable/modules/decomposition.html#pca). Các nguồn định nghĩa phương pháp; số liệu trong bài được tính từ hai tệp điểm trên.
+
+**Kiểm tra trước bàn giao:** 15 trường hợp QA đều đạt; hai notebook kiểm chứng chạy hết 13 ô code, không lỗi. Tính lại cùng seed cho các bảng kiểm định, tương quan, xác suất điểm cao và PCA cho kết quả khớp. Rà soát độc lập từ bảng xác nhận Welch/d/CI và loading PCA phù hợp; các điểm cần ghi rõ mẫu nhỏ và mapping đã được bổ sung. Bộ bàn giao chỉ giữ hai Markdown và ảnh được dùng trong bài; mã/CSV/notebook/kế hoạch trung gian do phiên này tạo được dọn theo yêu cầu. Dữ liệu và phần3 được bảo toàn.

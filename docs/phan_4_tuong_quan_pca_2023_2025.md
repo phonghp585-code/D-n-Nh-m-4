@@ -1,35 +1,24 @@
 # Phần 4 — Tương quan giữa các môn và PCA tổ hợp THPT 2023–2025
 
-
 **2023 — CT2006** so với **2025 — CT2018**. Mỗi hệ số dùng người có đủ cả hai điểm. Không điền thiếu, không tạo mẫu thi đủ mọi môn. Ngoại ngữ tách N1–N7, GDCD và GDKT&PL giữ riêng.
-
 
 ## Kết quả chính — đọc phần này trước
 
-
 - **2023:** cặp mạnh nhất trong mọi môn được xếp hạng (n ≥ 100) là Địa lý–Lịch sử, r=0,608, n=681.846. Trong riêng 8 môn chung để đối chiếu Duy, cặp cao nhất là Địa lý–Lịch sử, r=0,608.
-
 
 - **2025:** cặp mạnh nhất trong mọi môn được xếp hạng (n ≥ 100) là Địa lý–Lịch sử, r=0,759, n=297.403. Trong riêng 8 môn chung để đối chiếu Duy, cặp cao nhất là Địa lý–Lịch sử, r=0,759.
 
-
 ## 4.1. Cách đọc r, rho, ma trận và số mẫu
-
 
 **Pearson r** đo liên hệ tuyến tính trong [−1,1]; dương là xu hướng cùng tăng, âm là ngược chiều. r=0,7 không nghĩa 70% học sinh giỏi cả hai môn; r gần0 cũng không loại mọi quan hệ phi tuyến. **Spearman rho** đo liên hệ thứ hạng/đơn điệu, được rank lại sau khi lọc đúng cặp.
 
-
 **n_pair** là người có đủ cả hai điểm, không phải số người cả năm. Một người có thể thuộc nhiều cặp; không cộng n các cặp thành số người. Các cặp Ngoại ngữ khác mã thường không có điểm đồng thời; ô trống là không ước lượng được, không phải r=0. Đường chéo tự tương quan được bỏ qua để tập trung cặp khác môn.
 
-
-**Chính sách mẫu:** n < 30 hoặc một biến hằng thì không báo r/rho; 30≤n<100 có cờ mẫu nhỏ, không xếp hạng chính. Mốc100 đồng bộ tiêu chí chất lượng của phần3, không là định luật thống kê. CI Fisher là xấp xỉ, không loại được sai lệch chọn mẫu.
-
+**Chính sách mẫu:** n < 30 hoặc một biến hằng thì không báo r/rho; 30≤n<100 có cờ mẫu nhỏ, không xếp hạng chính. Mốc100 đồng bộ tiêu chí chất lượng của phần 3, không là định luật thống kê. CI Fisher là xấp xỉ, không loại được sai lệch chọn mẫu.
 
 ## 4.2. Ma trận mỗi năm — mọi môn có điểm
 
-
 ### 4.2.1. Năm 2023
-
 
 | Tổng cặp | Ước lượng được | Không người đủ cặp | Có mẫu nhưng n < 30 |
 | --- | --- | --- | --- |
@@ -37,24 +26,19 @@
 
 **Diễn giải bảng:** Tổng cặp là mọi cặp môn/ngôn ngữ trong năm đó, kể cả cặp không thể ước lượng. Thiếu theo cấu trúc thi không được lấp bằng 0 để tạo ma trận đầy.
 
-
-![Pearson mọi môn 2023](../outputs/subject_relations/figures/pearson_2023.png)
+![Pearson mọi môn 2023](figures/phan_2_4/phan4_mon_pearson_2023.png)
 
 **Diễn giải hình:** Số trong ô là Pearson r; thang màu chung −1 đến1, ô xám không có ước lượng. Đọc cùng heatmap n phía dưới; không so độ đậm mà bỏ qua khác biệt tập mẫu.
 
-
-![Spearman mọi môn 2023](../outputs/subject_relations/figures/spearman_2023.png)
+![Spearman mọi môn 2023](figures/phan_2_4/phan4_mon_spearman_2023.png)
 
 **Diễn giải hình:** Spearman đối chiếu theo thứ hạng. Khi r và rho khác nhiều, cần xem hình cặp điểm, các điểm tập trung và quan hệ phi tuyến; không chọn chỉ hệ số lớn hơn để kết luận.
 
-
-![Số mẫu từng cặp 2023](../outputs/subject_relations/figures/n_pair_2023.png)
+![Số mẫu từng cặp 2023](figures/phan_2_4/phan4_mon_n_pair_2023.png)
 
 **Diễn giải hình:** Số trong ô là n (k=nghìn, làm tròn để đọc); màu dùng log10(n+1) để thấy cả mẫu nhỏ/lớn. Bảng phụ lục giữ số đếm chính xác. n=0 ở cặp không đồng quan sát không có nghĩa tương quan bằng0.
 
-
 ### 4.2.2. Năm 2025
-
 
 | Tổng cặp | Ước lượng được | Không người đủ cặp | Có mẫu nhưng n < 30 |
 | --- | --- | --- | --- |
@@ -62,24 +46,19 @@
 
 **Diễn giải bảng:** Tổng cặp là mọi cặp môn/ngôn ngữ trong năm đó, kể cả cặp không thể ước lượng. Thiếu theo cấu trúc thi không được lấp bằng 0 để tạo ma trận đầy.
 
-
-![Pearson mọi môn 2025](../outputs/subject_relations/figures/pearson_2025.png)
+![Pearson mọi môn 2025](figures/phan_2_4/phan4_mon_pearson_2025.png)
 
 **Diễn giải hình:** Số trong ô là Pearson r; thang màu chung −1 đến1, ô xám không có ước lượng. Đọc cùng heatmap n phía dưới; không so độ đậm mà bỏ qua khác biệt tập mẫu.
 
-
-![Spearman mọi môn 2025](../outputs/subject_relations/figures/spearman_2025.png)
+![Spearman mọi môn 2025](figures/phan_2_4/phan4_mon_spearman_2025.png)
 
 **Diễn giải hình:** Spearman đối chiếu theo thứ hạng. Khi r và rho khác nhiều, cần xem hình cặp điểm, các điểm tập trung và quan hệ phi tuyến; không chọn chỉ hệ số lớn hơn để kết luận.
 
-
-![Số mẫu từng cặp 2025](../outputs/subject_relations/figures/n_pair_2025.png)
+![Số mẫu từng cặp 2025](figures/phan_2_4/phan4_mon_n_pair_2025.png)
 
 **Diễn giải hình:** Số trong ô là n (k=nghìn, làm tròn để đọc); màu dùng log10(n+1) để thấy cả mẫu nhỏ/lớn. Bảng phụ lục giữ số đếm chính xác. n=0 ở cặp không đồng quan sát không có nghĩa tương quan bằng0.
 
-
 ## 4.3. Cặp môn nào đi cùng nhau nhất?
-
 
 | Năm | Môn X | Môn Y | n cặp | Pearson r | Spearman rho |
 | --- | --- | --- | --- | --- | --- |
@@ -106,14 +85,11 @@
 
 **Diễn giải bảng:** Xếp hạng dương theo Pearson trong tập n ≥ 100, không là bảng chất lượng môn học. Nên đọc rho và n cùng r; các ngôn ngữ/nhóm ít người có thành phần chọn mẫu riêng. Đây không phải quan hệ nhân quả. Bảng đầy đủ tất cả cặp ở cuối báo cáo.
 
-
 ## 4.4. Cấu trúc tương quan thay đổi ra sao?
 
-
-![Chênh tương quan 2025 trừ 2023](../outputs/subject_relations/figures/delta_r.png)
+![Chênh tương quan 2025 trừ 2023](figures/phan_2_4/phan4_mon_delta_r.png)
 
 **Diễn giải hình:** Dương nghĩa r2025 cao hơn r2023 trong hai tập cặp tương ứng; âm là thấp hơn. Ô xám gồm cặp thiếu ở một năm hoặc không đủ mẫu, không phải delta0. Môn chỉ một năm không bị tạo một r giả ở năm còn lại.
-
 
 | Môn X | Môn Y | n2023 | n2025 | r2023 | r2025 | Δr | Δrho |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -135,80 +111,60 @@
 
 **Diễn giải bảng:** Xếp hạng chính chỉ lấy cặp có n ≥ 100 ở cả hai năm. Đây là thay đổi lớn nhất về trị tuyệt đối trong các cặp đủ tiêu chí này, không là phép so cùng người. Phụ lục đầy đủ vẫn giữ cặp 30≤n<100, có số mẫu và cờ mẫu nhỏ. Fisher z và q BH ở phụ lục; CI chênh z dùng thang z, không gọi là CI Δr. Ba cặp minh họa có thêm CI Δr bootstrap theo cùng dòng/cặp điểm, độc lập giữa hai năm.
 
-
 **Ý nghĩa và giới hạn:** Cách chọn môn và quy mô các tập cặp khác nhau giữa 2023/2025. Vì vậy r tăng không tự chứng minh chương trình làm kiến thức gắn kết hơn. Không lấy trung bình mọi ô ma trận như một kiểm định cấu trúc toàn cục; các ô có thể dùng người khác nhau.
-
 
 ## 4.5. Toán cao có thường đạt Lý cao?
 
-
 ### 4.5.1. Toán → Vật lý
-
 
 | Năm | n cặp | Ngưỡng X | Ngưỡng Y | n X cao | Nền Y cao (%) | Y cao khi X cao (%) | Lift | CI thấp (%) | CI cao (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2023 | 327.173 | 8,20 | 8,00 | 80.963 | 21,32 | 47,13 | 2,21 | 46,78 | 47,47 |
 | 2025 | 347.591 | 7,50 | 8,50 | 70.919 | 20,35 | 60,29 | 2,96 | 59,93 | 60,65 |
 
-**Diễn giải bảng:** Cao là từ P80 trở lên trong đúng tập cặp, tính cả bằng ngưỡng. “Nền” dùng toàn tập cặp; xác suất có điều kiện chỉ chia cho n X cao; lift là tỷ số hai xác suất. Đồng hạng khiến nhóm cao có thể hơn20%. CI Wilson coi ngưỡng thực nghiệm cố định, nên là xấp xỉ có điều kiện.
+**Diễn giải bảng:** Cao là từ P80 trở lên trong đúng tập cặp, tính cả bằng ngưỡng. “Nền” dùng toàn tập cặp; xác suất có điều kiện chỉ chia cho n X cao; lift là tỷ số hai xác suất. Đồng hạng khiến nhóm cao có thể hơn 20%. CI Wilson coi ngưỡng thực nghiệm cố định, nên là xấp xỉ có điều kiện.
 
-
-![Cặp Toán–Vật lý](../outputs/subject_relations/figures/hexbin_math_physics.png)
+![Cặp Toán–Vật lý](figures/phan_2_4/phan4_mon_hexbin_math_physics.png)
 
 **Diễn giải hình:** Mỗi ô lục giác gom những người có cặp điểm gần nhau; màu theo số người/ô trên thang log. Cụm nghiêng lên phù hợp đồng biến; không hiểu đây là mật độ Gaussian hoặc tỷ lệ đạt cả hai môn.
 
-
-
 **Nhận xét bằng số:** Năm2025, tỷ lệ Vật lý cao từ mức nền 20,35% lên 60,29% trong nhóm Toán cao, lift=2,96. Đây là đồng xuất hiện trong mẫu, không chứng minh giỏi X gây ra giỏi Y; ngưỡng riêng từng năm không là thang năng lực chung.
 
-
 ### 4.5.2. Ngữ văn → Lịch sử
-
 
 | Năm | n cặp | Ngưỡng X | Ngưỡng Y | n X cao | Nền Y cao (%) | Y cao khi X cao (%) | Lift | CI thấp (%) | CI cao (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2023 | 683.263 | 8,00 | 7,50 | 173.525 | 21,19 | 40,11 | 1,89 | 39,88 | 40,34 |
 | 2025 | 481.156 | 8,00 | 8,00 | 119.627 | 23,03 | 46,34 | 2,01 | 46,06 | 46,63 |
 
-**Diễn giải bảng:** Cao là từ P80 trở lên trong đúng tập cặp, tính cả bằng ngưỡng. “Nền” dùng toàn tập cặp; xác suất có điều kiện chỉ chia cho n X cao; lift là tỷ số hai xác suất. Đồng hạng khiến nhóm cao có thể hơn20%. CI Wilson coi ngưỡng thực nghiệm cố định, nên là xấp xỉ có điều kiện.
+**Diễn giải bảng:** Cao là từ P80 trở lên trong đúng tập cặp, tính cả bằng ngưỡng. “Nền” dùng toàn tập cặp; xác suất có điều kiện chỉ chia cho n X cao; lift là tỷ số hai xác suất. Đồng hạng khiến nhóm cao có thể hơn 20%. CI Wilson coi ngưỡng thực nghiệm cố định, nên là xấp xỉ có điều kiện.
 
-
-![Cặp Ngữ văn–Lịch sử](../outputs/subject_relations/figures/hexbin_literature_history.png)
+![Cặp Ngữ văn–Lịch sử](figures/phan_2_4/phan4_mon_hexbin_literature_history.png)
 
 **Diễn giải hình:** Mỗi ô lục giác gom những người có cặp điểm gần nhau; màu theo số người/ô trên thang log. Cụm nghiêng lên phù hợp đồng biến; không hiểu đây là mật độ Gaussian hoặc tỷ lệ đạt cả hai môn.
 
-
-
 **Nhận xét bằng số:** Năm2025, tỷ lệ Lịch sử cao từ mức nền 23,03% lên 46,34% trong nhóm Ngữ văn cao, lift=2,01. Đây là đồng xuất hiện trong mẫu, không chứng minh giỏi X gây ra giỏi Y; ngưỡng riêng từng năm không là thang năng lực chung.
 
-
 ### 4.5.3. Lịch sử → Địa lý
-
 
 | Năm | n cặp | Ngưỡng X | Ngưỡng Y | n X cao | Nền Y cao (%) | Y cao khi X cao (%) | Lift | CI thấp (%) | CI cao (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2023 | 681.846 | 7,50 | 7,00 | 144.142 | 26,35 | 62,72 | 2,38 | 62,47 | 62,97 |
 | 2025 | 297.403 | 8,00 | 8,25 | 67.653 | 23,34 | 66,38 | 2,84 | 66,02 | 66,73 |
 
-**Diễn giải bảng:** Cao là từ P80 trở lên trong đúng tập cặp, tính cả bằng ngưỡng. “Nền” dùng toàn tập cặp; xác suất có điều kiện chỉ chia cho n X cao; lift là tỷ số hai xác suất. Đồng hạng khiến nhóm cao có thể hơn20%. CI Wilson coi ngưỡng thực nghiệm cố định, nên là xấp xỉ có điều kiện.
+**Diễn giải bảng:** Cao là từ P80 trở lên trong đúng tập cặp, tính cả bằng ngưỡng. “Nền” dùng toàn tập cặp; xác suất có điều kiện chỉ chia cho n X cao; lift là tỷ số hai xác suất. Đồng hạng khiến nhóm cao có thể hơn 20%. CI Wilson coi ngưỡng thực nghiệm cố định, nên là xấp xỉ có điều kiện.
 
-
-![Cặp Lịch sử–Địa lý](../outputs/subject_relations/figures/hexbin_history_geography.png)
+![Cặp Lịch sử–Địa lý](figures/phan_2_4/phan4_mon_hexbin_history_geography.png)
 
 **Diễn giải hình:** Mỗi ô lục giác gom những người có cặp điểm gần nhau; màu theo số người/ô trên thang log. Cụm nghiêng lên phù hợp đồng biến; không hiểu đây là mật độ Gaussian hoặc tỷ lệ đạt cả hai môn.
 
-
-
 **Nhận xét bằng số:** Năm2025, tỷ lệ Địa lý cao từ mức nền 23,34% lên 66,38% trong nhóm Lịch sử cao, lift=2,84. Đây là đồng xuất hiện trong mẫu, không chứng minh giỏi X gây ra giỏi Y; ngưỡng riêng từng năm không là thang năng lực chung.
 
-
-![So mức nền và xác suất có điều kiện](../outputs/subject_relations/figures/high_score_examples.png)
+![So mức nền và xác suất có điều kiện](figures/phan_2_4/phan4_mon_high_score_examples.png)
 
 **Diễn giải hình:** Cột xám là nền, cột màu là điều kiện X cao, thanh đen là CI Wilson. Các cặp đều được tính trong phụ lục đầy đủ, kể cả chiều ngược và sensitivity ngưỡng8 điểm; trang chính minh họa ba cặp để dễ đọc.
 
-
 ## 4.6. PCA mọi khối có điểm — sau tương quan từng môn
-
 
 | Khối | Môn 2023 | Môn 2025 | n2023 | n2025 | Phạm vi |
 | --- | --- | --- | --- | --- | --- |
@@ -239,7 +195,6 @@
 
 **Diễn giải bảng:** Đủ 24 mã có điểm trong nguồn; B08/D08 cùng Toán–Sinh–Anh nên chỉ tính một bộ. Bảy khối A08/A09/C14/C19/C20/D66/D84 đổi GDCD sang GDKT&PL: PCA riêng từng năm và mô tả điểm, không đưa vào family kiểm định chính liên năm. N1 là Tiếng Anh; đây là các mã nguồn có sẵn, không là mọi tổ hợp ba môn có thể tưởng tượng. Tin học/Công nghệ và N2–N7 đã phân tích ở từng môn nhưng chưa có mã khối tương ứng trong nguồn. Tổng n của các khối không phải số người vì một người có thể thuộc nhiều khối.
 
-
 | Bất đồng | data/danh_muc_to_hop.csv cũ | Quy tắc thực dùng |
 | --- | --- | --- |
 | D04 trong danh mục | Toán–Văn–Hóa | Nguồn dùng C02; không tạo khối D04 mới |
@@ -248,20 +203,15 @@
 | A01/D90; B08/D99 | Ghi chú danh mục coi là alias | Không sử dụng các alias này; chỉ B08/D08 cùng bộ trong nguồn |
 | Ngoại ngữ | Danh mục ghi chung, không chỉ mã | Tổng đã lưu khớp Tiếng Anh N1; không gộp N2–N7 |
 
-**Diễn giải bảng:** Đây là bất đồng đã biết giữa danh mục cũ và các cột diem_* trong tệp điểm, không phải mapping_issues trống nghĩa mọi tài liệu đều thống nhất. Ưu tiên mapping đã kiểm chứng bằng tổng ba môn và số mẫu phần3; không sửa danh mục gốc, không tự thêm/đổi mã theo ghi chú cũ. Phạm vi24 mã là theo bộ dữ liệu này, không là xác nhận danh mục tuyển sinh chính thức.
-
+**Diễn giải bảng:** Đây là bất đồng đã biết giữa danh mục cũ và các cột diem_* trong tệp điểm, việc tổng đã lưu khớp không có nghĩa mọi tài liệu đều thống nhất. Ưu tiên mapping đã kiểm chứng bằng tổng ba môn và số mẫu phần 3; không sửa danh mục gốc, không tự thêm/đổi mã theo ghi chú cũ. Phạm vi24 mã là theo bộ dữ liệu này, không là xác nhận danh mục tuyển sinh chính thức.
 
 **Vì sao không PCA một ma trận mọi môn?** Không có người đủ cả 8 môn chung ở hai năm. Điền thiếu sẽ tạo tương quan phụ thuộc mô hình điền; vì vậy tương quan mọi môn dùng pairwise ở trên, còn PCA dùng người đủ ba môn trong từng khối. Bao phủ23 bộ ×2 năm =46 mô hình (24 nhãn ×2 =48 dòng tra cứu).
 
-
 **PCA là gì?** PCA tìm các trục tổ hợp tuyến tính không tương quan của điểm chuẩn hóa. Trong từng năm/khối, z=(điểm−mean)/SD mẫu (ddof=1); không ghép hai năm để chuẩn hóa. SVD của z cho eigenvalue λ=s²/(n−1), EVR=λ/Σλ. Ba EVR cộng100%; PC1 giữ nhiều biến thiên nhất, không là tổng điểm thi, không phải điểm IQ hay bằng chứng về một năng lực bẩm sinh.
-
 
 **Loading khác hệ số tính PC:** PC=z×v (v là eigenvector đơn vị); loading=v√λ là tương quan môn với PC trên chính tập chuẩn hóa. Ví dụ loading0,8 là tương quan0,8, không là “môn đóng góp80%”. Bình phương loading là phần phương sai của môn gắn với PC đó trong mô hình PCA. Dấu toàn bộ một PC có thể đảo mà kết quả không đổi; PC1 căn dương theo Toán hoặc Văn, PC2/3 căn theo2023 khi hai năm cùng bộ môn.
 
-
 **Đọc các trục:** PC1 có loading dương tương tự cả ba môn thường là trục thành tích cùng tăng trong khối; loading trái dấu ở PC2/3 mô tả tương phản tương đối giữa các môn sau chuẩn hóa. Chỉ gọi là trục quan sát; muốn gắn nhãn “năng lực ngôn ngữ/tư duy” cần lý thuyết và kiểm chứng đo lường độc lập. Ba môn và mẫu tự chọn không đủ xác nhận cấu trúc năng lực chung.
-
 
 | Năm | Khối chuẩn | n đủ 3 | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -314,9 +264,7 @@
 
 **Diễn giải bảng:** Có46 mô hình thực, mỗi dòng đúng tập người đủ ba điểm. Alias D08 tra B08. EVR cao nghĩa điểm tập trung quanh ít trục hơn trong chính mẫu khối/năm, không tự chứng minh năng lực đồng đều hơn hay đề tốt hơn. Các bộ đổi môn không so loading trực tiếp.
 
-
 ### 4.6.1. B00
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -324,7 +272,6 @@
 | 2025 | 44.964 | 0,040 | 82,742 | 9,864 | 7,394 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -337,20 +284,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA B00](../outputs/combination_inference/figures/pca_biology_chemistry_math.png)
+![PCA B00](figures/phan_2_4/phan4_khoi_pca_biology_chemistry_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 59,64% năm 2023 và 82,74% năm 2025; PC1+PC2 năm 2025 là 92,61%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Hóa học (0,923). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Sinh học (loading 0,427) ở một phía và Toán (-0,322) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,999 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=3,61°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -363,9 +305,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.2. B08/D08
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -373,7 +313,6 @@
 | 2025 | 4.227 | 0,004 | 67,348 | 17,200 | 15,452 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -386,20 +325,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA B08/D08](../outputs/combination_inference/figures/pca_biology_foreign_language_N1_math.png)
+![PCA B08/D08](figures/phan_2_4/phan4_khoi_pca_biology_foreign_language_N1_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 55,34% năm 2023 và 67,35% năm 2025; PC1+PC2 năm 2025 là 84,55%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Sinh học (0,829). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Toán (loading 0,304) ở một phía và Tiếng Anh (N1) (-0,591) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,999 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=54,84°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -412,9 +346,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.3. A02
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -422,7 +354,6 @@
 | 2025 | 4.795 | 0,004 | 68,132 | 17,502 | 14,366 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -435,20 +366,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA A02](../outputs/combination_inference/figures/pca_biology_math_physics.png)
+![PCA A02](figures/phan_2_4/phan4_khoi_pca_biology_math_physics.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 57,64% năm 2023 và 68,13% năm 2025; PC1+PC2 năm 2025 là 85,63%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Vật lý (0,840). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Sinh học (loading 0,600) ở một phía và Toán (-0,307) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,989 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=14,02°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -461,9 +387,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.4. D07
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -471,7 +395,6 @@
 | 2025 | 24.478 | 0,022 | 70,655 | 17,616 | 11,729 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -484,20 +407,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA D07](../outputs/combination_inference/figures/pca_chemistry_foreign_language_N1_math.png)
+![PCA D07](figures/phan_2_4/phan4_khoi_pca_chemistry_foreign_language_N1_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 54,78% năm 2023 và 70,65% năm 2025; PC1+PC2 năm 2025 là 88,27%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Toán (0,867). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Tiếng Anh (N1) (loading 0,609) ở một phía và Hóa học (-0,308) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,994 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=23,88°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -510,9 +428,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.5. C02
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -520,7 +436,6 @@
 | 2025 | 237.064 | 0,210 | 61,022 | 29,940 | 9,039 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -533,20 +448,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA C02](../outputs/combination_inference/figures/pca_chemistry_literature_math.png)
+![PCA C02](figures/phan_2_4/phan4_khoi_pca_chemistry_literature_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 53,61% năm 2023 và 61,02% năm 2025; PC1+PC2 năm 2025 là 90,96%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Hóa học (0,903). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Ngữ văn (loading 0,894) ở một phía và Toán (-0,223) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,992 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=3,24°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -559,9 +469,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.6. A00
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -569,7 +477,6 @@
 | 2025 | 162.200 | 0,143 | 81,807 | 9,722 | 8,471 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -582,20 +489,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA A00](../outputs/combination_inference/figures/pca_chemistry_math_physics.png)
+![PCA A00](figures/phan_2_4/phan4_khoi_pca_chemistry_math_physics.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 64,73% năm 2023 và 81,81% năm 2025; PC1+PC2 năm 2025 là 91,53%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Hóa học (0,910). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Vật lý (loading 0,254) ở một phía và Toán (-0,441) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,998 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=79,19°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -608,9 +510,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.7. D66
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -618,7 +518,6 @@
 | 2025 | 47.905 | 0,042 | 51,663 | 24,840 | 23,497 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -631,20 +530,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA D66](../outputs/combination_inference/figures/pca_economics_law_foreign_language_N1_literature.png)
+![PCA D66](figures/phan_2_4/phan4_khoi_pca_economics_law_foreign_language_N1_literature.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 63,37% năm 2023 và 51,66% năm 2025; PC1+PC2 năm 2025 là 76,50%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Tiếng Anh (N1) (0,734). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Ngữ văn (loading 0,676) ở một phía và GDKT&PL (-0,518) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Giới hạn so sánh:** GDCD và GDKT&PL khác nội dung; hai PCA riêng mô tả hai bộ môn, không so loading/cosine như cùng một cấu trúc.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -657,9 +551,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.8. D84
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -667,7 +559,6 @@
 | 2025 | 47.902 | 0,042 | 57,095 | 24,828 | 18,077 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -680,20 +571,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA D84](../outputs/combination_inference/figures/pca_economics_law_foreign_language_N1_math.png)
+![PCA D84](figures/phan_2_4/phan4_khoi_pca_economics_law_foreign_language_N1_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 66,79% năm 2023 và 57,09% năm 2025; PC1+PC2 năm 2025 là 81,92%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Toán (0,800). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt GDKT&PL (loading 0,738) ở một phía và Tiếng Anh (N1) (-0,353) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Giới hạn so sánh:** GDCD và GDKT&PL khác nội dung; hai PCA riêng mô tả hai bộ môn, không so loading/cosine như cùng một cấu trúc.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -706,9 +592,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.9. C20
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -716,7 +600,6 @@
 | 2025 | 109.423 | 0,097 | 63,395 | 21,925 | 14,680 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -729,20 +612,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA C20](../outputs/combination_inference/figures/pca_economics_law_geography_literature.png)
+![PCA C20](figures/phan_2_4/phan4_khoi_pca_economics_law_geography_literature.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 65,62% năm 2023 và 63,40% năm 2025; PC1+PC2 năm 2025 là 85,32%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Địa lý (0,837). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Ngữ văn (loading 0,687) ở một phía và GDKT&PL (-0,351) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Giới hạn so sánh:** GDCD và GDKT&PL khác nội dung; hai PCA riêng mô tả hai bộ môn, không so loading/cosine như cùng một cấu trúc.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -755,9 +633,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.10. A09
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -765,7 +641,6 @@
 | 2025 | 109.404 | 0,097 | 64,624 | 21,646 | 13,730 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -778,20 +653,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA A09](../outputs/combination_inference/figures/pca_economics_law_geography_math.png)
+![PCA A09](figures/phan_2_4/phan4_khoi_pca_economics_law_geography_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 66,31% năm 2023 và 64,62% năm 2025; PC1+PC2 năm 2025 là 86,27%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Địa lý (0,862). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Toán (loading 0,632) ở một phía và GDKT&PL (-0,491) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Giới hạn so sánh:** GDCD và GDKT&PL khác nội dung; hai PCA riêng mô tả hai bộ môn, không so loading/cosine như cùng một cấu trúc.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -804,9 +674,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.11. C19
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -814,7 +682,6 @@
 | 2025 | 68.351 | 0,060 | 64,691 | 21,129 | 14,180 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -827,20 +694,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA C19](../outputs/combination_inference/figures/pca_economics_law_history_literature.png)
+![PCA C19](figures/phan_2_4/phan4_khoi_pca_economics_law_history_literature.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 66,43% năm 2023 và 64,69% năm 2025; PC1+PC2 năm 2025 là 85,82%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Lịch sử (0,838). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Ngữ văn (loading 0,675) ở một phía và GDKT&PL (-0,315) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Giới hạn so sánh:** GDCD và GDKT&PL khác nội dung; hai PCA riêng mô tả hai bộ môn, không so loading/cosine như cùng một cấu trúc.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -853,9 +715,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.12. A08
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -863,7 +723,6 @@
 | 2025 | 68.313 | 0,060 | 64,416 | 21,699 | 13,886 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -876,20 +735,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA A08](../outputs/combination_inference/figures/pca_economics_law_history_math.png)
+![PCA A08](figures/phan_2_4/phan4_khoi_pca_economics_law_history_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 67,03% năm 2023 và 64,42% năm 2025; PC1+PC2 năm 2025 là 86,11%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Lịch sử (0,853). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Toán (loading 0,672) ở một phía và GDKT&PL (-0,406) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Giới hạn so sánh:** GDCD và GDKT&PL khác nội dung; hai PCA riêng mô tả hai bộ môn, không so loading/cosine như cùng một cấu trúc.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -902,9 +756,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.13. C14
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -912,7 +764,6 @@
 | 2025 | 246.298 | 0,218 | 61,867 | 19,965 | 18,168 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -925,20 +776,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA C14](../outputs/combination_inference/figures/pca_economics_law_literature_math.png)
+![PCA C14](figures/phan_2_4/phan4_khoi_pca_economics_law_literature_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 66,91% năm 2023 và 61,87% năm 2025; PC1+PC2 năm 2025 là 81,83%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Ngữ văn (0,797). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt GDKT&PL (loading 0,637) ở một phía và Toán (-0,350) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Giới hạn so sánh:** GDCD và GDKT&PL khác nội dung; hai PCA riêng mô tả hai bộ môn, không so loading/cosine như cùng một cấu trúc.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -951,9 +797,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.14. D15
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -961,7 +805,6 @@
 | 2025 | 53.592 | 0,047 | 53,677 | 24,485 | 21,838 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -974,20 +817,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA D15](../outputs/combination_inference/figures/pca_foreign_language_N1_geography_literature.png)
+![PCA D15](figures/phan_2_4/phan4_khoi_pca_foreign_language_N1_geography_literature.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 59,68% năm 2023 và 53,68% năm 2025; PC1+PC2 năm 2025 là 78,16%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Địa lý (0,754). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Tiếng Anh (N1) (loading 0,405) ở một phía và Ngữ văn (-0,709) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,996 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=85,02°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1000,9 +838,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.15. D10
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -1010,7 +846,6 @@
 | 2025 | 53.567 | 0,047 | 59,845 | 21,915 | 18,239 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -1023,20 +858,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA D10](../outputs/combination_inference/figures/pca_foreign_language_N1_geography_math.png)
+![PCA D10](figures/phan_2_4/phan4_khoi_pca_foreign_language_N1_geography_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 62,97% năm 2023 và 59,85% năm 2025; PC1+PC2 năm 2025 là 81,76%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Toán (0,806). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Địa lý (loading 0,613) ở một phía và Tiếng Anh (N1) (-0,527) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,997 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=12,44°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1049,9 +879,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.16. D14
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -1059,7 +887,6 @@
 | 2025 | 69.989 | 0,062 | 56,207 | 23,168 | 20,624 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -1072,20 +899,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA D14](../outputs/combination_inference/figures/pca_foreign_language_N1_history_literature.png)
+![PCA D14](figures/phan_2_4/phan4_khoi_pca_foreign_language_N1_history_literature.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 61,51% năm 2023 và 56,21% năm 2025; PC1+PC2 năm 2025 là 79,38%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Lịch sử (0,774). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Ngữ văn (loading 0,660) ở một phía và Tiếng Anh (N1) (-0,488) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,998 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=86,12°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1098,9 +920,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.17. D09
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -1108,7 +928,6 @@
 | 2025 | 69.904 | 0,062 | 59,902 | 21,516 | 18,582 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -1121,20 +940,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA D09](../outputs/combination_inference/figures/pca_foreign_language_N1_history_math.png)
+![PCA D09](figures/phan_2_4/phan4_khoi_pca_foreign_language_N1_history_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 64,62% năm 2023 và 59,90% năm 2025; PC1+PC2 năm 2025 là 81,42%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Toán (0,789). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Lịch sử (loading 0,668) ở một phía và Tiếng Anh (N1) (-0,323) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,999 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=7,35°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1147,9 +961,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.18. D01
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -1157,7 +969,6 @@
 | 2025 | 350.654 | 0,310 | 54,127 | 29,144 | 16,729 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -1170,20 +981,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA D01](../outputs/combination_inference/figures/pca_foreign_language_N1_literature_math.png)
+![PCA D01](figures/phan_2_4/phan4_khoi_pca_foreign_language_N1_literature_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 63,54% năm 2023 và 54,13% năm 2025; PC1+PC2 năm 2025 là 83,27%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Toán (0,828). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Ngữ văn (loading 0,851) ở một phía và Tiếng Anh (N1) (-0,306) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,994 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=0,44°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1196,9 +1002,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.19. A01
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -1206,7 +1010,6 @@
 | 2025 | 146.960 | 0,130 | 70,353 | 18,481 | 11,167 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -1219,20 +1022,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA A01](../outputs/combination_inference/figures/pca_foreign_language_N1_math_physics.png)
+![PCA A01](figures/phan_2_4/phan4_khoi_pca_foreign_language_N1_math_physics.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 61,98% năm 2023 và 70,35% năm 2025; PC1+PC2 năm 2025 là 88,83%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Toán (0,876). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Tiếng Anh (N1) (loading 0,623) ở một phía và Vật lý (-0,344) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,999 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=2,09°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1245,9 +1043,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.20. C00
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -1255,7 +1051,6 @@
 | 2025 | 297.377 | 0,263 | 74,586 | 17,388 | 8,027 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -1268,20 +1063,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA C00](../outputs/combination_inference/figures/pca_geography_history_literature.png)
+![PCA C00](figures/phan_2_4/phan4_khoi_pca_geography_history_literature.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 66,68% năm 2023 và 74,59% năm 2025; PC1+PC2 năm 2025 là 91,97%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Địa lý (0,901). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Ngữ văn (loading 0,613) ở một phía và Lịch sử (-0,287) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=1,000 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=5,19°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1294,9 +1084,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.21. C04
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -1304,7 +1092,6 @@
 | 2025 | 472.025 | 0,417 | 67,641 | 18,096 | 14,263 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -1317,20 +1104,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA C04](../outputs/combination_inference/figures/pca_geography_literature_math.png)
+![PCA C04](figures/phan_2_4/phan4_khoi_pca_geography_literature_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 65,50% năm 2023 và 67,64% năm 2025; PC1+PC2 năm 2025 là 85,74%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Địa lý (0,851). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Toán (loading 0,474) ở một phía và Ngữ văn (-0,559) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,998 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=80,09°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1343,9 +1125,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.22. C03
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -1353,7 +1133,6 @@
 | 2025 | 476.660 | 0,421 | 67,082 | 17,559 | 15,358 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -1366,20 +1145,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA C03](../outputs/combination_inference/figures/pca_history_literature_math.png)
+![PCA C03](figures/phan_2_4/phan4_khoi_pca_history_literature_math.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 66,49% năm 2023 và 67,08% năm 2025; PC1+PC2 năm 2025 là 84,64%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Lịch sử (0,836). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Ngữ văn (loading 0,488) ở một phía và Toán (-0,535) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,999 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=88,98°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1392,9 +1166,7 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 ### 4.6.23. C01
-
 
 | Năm | n đủ 3 | Tỷ lệ đủ 3 trên mọi dòng | PC1 (%) | PC2 (%) | PC3 (%) |
 | --- | --- | --- | --- | --- | --- |
@@ -1402,7 +1174,6 @@
 | 2025 | 345.014 | 0,305 | 60,933 | 29,394 | 9,673 |
 
 **Diễn giải bảng:** Tỷ lệ là n đủ ba điểm chia số dòng nguồn cùng năm, không là tỷ lệ đăng ký/nguyện vọng. Mỗi năm chuẩn hóa riêng; dùng EVR để mô tả hình dạng biến thiên của chính nhóm đó.
-
 
 | Năm | Môn | Loading PC1 | Loading PC2 | Loading PC3 |
 | --- | --- | --- | --- | --- |
@@ -1415,20 +1186,15 @@
 
 **Diễn giải bảng:** Giá trị tuyệt đối gần1 là môn gắn chặt với PC; dấu cùng chiều cho biết xu hướng cùng tăng theo trục. So độ lớn và mô hình dấu chung; không diễn giải một đảo dấu toàn PC thành đổi bản chất môn.
 
-
-![PCA C01](../outputs/combination_inference/figures/pca_literature_math_physics.png)
+![PCA C01](figures/phan_2_4/phan4_khoi_pca_literature_math_physics.png)
 
 **Diễn giải hình:** Trái là scree/EVR của ba PC và n thực; giữa/phải là loading cùng thang −1..1. Tổng EVR bằng100%. Hai màu đường là hai năm, không là cùng người.
 
-
 **Nhận xét bằng số:** PC1 giải thích 56,27% năm 2023 và 60,93% năm 2025; PC1+PC2 năm 2025 là 90,33%. Môn gắn mạnh nhất với PC1 năm 2025 theo |loading| là Toán (0,898). Trục này mô tả thành tích đồng biến/tương phản trong đúng ba môn đã chọn, không quy đổi được thành chênh năng lực tuyệt đối.
-
 
 **Giải nghĩa trục bằng chính loading:** Năm2025, cả ba loading PC1 cùng dương, nên PC1 là trục thành tích cùng tăng trong khối này. PC2 đặt Ngữ văn (loading 0,878) ở một phía và Vật lý (-0,251) ở phía kia. Đây là tương phản sau chuẩn hóa: điểm nghiêng về môn phía dương so với phía âm làm PC2 tăng; không phải một môn gây giảm môn kia hoặc một “năng lực thứ hai” đã được xác nhận.
 
-
 **Ổn định cấu trúc:** |cosine| PC1=0,999 (gần1 là cùng hướng sau căn dấu); góc lớn nhất giữa hai không gian PC1–PC2=2,43°. Không phát hiện cặp eigenvalues liền kề cách nhau dưới5% theo quy tắc kiểm tra này; vẫn chưa là kiểm định bất biến đo lường.
-
 
 | Năm | Cặp | n đủ khối | r trong khối | r tập đủ cặp | Chênh r |
 | --- | --- | --- | --- | --- | --- |
@@ -1441,21 +1207,15 @@
 
 **Diễn giải bảng:** Đây là kiểm tra nhạy với cách chọn mẫu: r trong khối dùng cùng nhóm đủ cả 3 môn; r toàn cặp chỉ cần đủ2. Chênh r cho thấy điều kiện có thêm môn thứ ba có thể thay đổi liên hệ. Hai ước lượng dùng mẫu lồng nhau, không coi là hai mẫu độc lập; bảng không chứng minh đã kiểm soát mọi khác biệt thành phần thí sinh.
 
-
 **Đối chiếu Duy và phạm vi bổ sung:** Năm khối A00/A01/B00/C00/D01 được đối chiếu n và EVR với bản Duy; phần này mở rộng lên đủ24 mã/23 bộ mỗi năm, bổ sung loading, ý nghĩa trục và kiểm tra chọn mẫu. Không tạo mô hình trùng B08/D08. [PCA/SVD](https://scikit-learn.org/stable/modules/decomposition.html#pca), [góc không gian con](https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.subspace_angles.html).
-
 
 ## Độ trải rộng điểm và độ phân biệt của đề
 
-
 SD/IQR mô tả độ trải rộng tổng điểm, r mô tả quan hệ giữa hai môn. Chúng không đo trực tiếp độ phân biệt của từng câu hỏi. Cần dữ liệu theo câu và mô hình đo lường phù hợp để kết luận về chất lượng phân hóa đề; không thay bằng phát biểu “Toán–Lý tương quan cao nên đề phân hóa tốt”.
-
 
 ## Phụ lục — mọi cặp môn, số mẫu và hệ số
 
-
 ### Mọi cặp năm 2023
-
 
 | Môn X | Môn Y | n cặp | r | rho | Trạng thái |
 | --- | --- | --- | --- | --- | --- |
@@ -1567,9 +1327,7 @@ SD/IQR mô tả độ trải rộng tổng điểm, r mô tả quan hệ giữa 
 
 **Diễn giải bảng:** Hàng thiếu r/rho vẫn được giữ để thể hiện phạm vi. estimated: đủ n ≥ 100; limited_sample: 30≤n<100; insufficient_sample: n < 30; constant_input: một biến hằng. Không cộng số người giữa các hàng.
 
-
 ### Mọi cặp năm 2025
-
 
 | Môn X | Môn Y | n cặp | r | rho | Trạng thái |
 | --- | --- | --- | --- | --- | --- |
@@ -1712,17 +1470,11 @@ SD/IQR mô tả độ trải rộng tổng điểm, r mô tả quan hệ giữa 
 
 **Diễn giải bảng:** Hàng thiếu r/rho vẫn được giữ để thể hiện phạm vi. estimated: đủ n ≥ 100; limited_sample: 30≤n<100; insufficient_sample: n < 30; constant_input: một biến hằng. Không cộng số người giữa các hàng.
 
-
-
-
 Phương pháp: [Pearson/CI](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html), [Spearman](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html).
-
 
 ## Phụ lục — thay đổi tương quan, CI và đa kiểm định
 
-
 **Fisher z:** Biến đổi atanh(r) giúp xấp xỉ chuẩn; kiểm định H0 hai tương quan tổng thể bằng nhau giữa hai nhóm độc lập. SE chênh z=√(1/(n2023−3)+1/(n2025−3)); q BH hiệu chỉnh trên48 cặp có p hữu hạn. CI chênh z giữ trên thang z, không tráo thành CI chênh r. Đây là xấp xỉ dựa trên mô hình, chưa điều chỉnh chọn môn/thí sinh và không phải kiểm định ma trận tương quan toàn cục. Với dữ liệu phi chuẩn, nên ưu tiên độ lớn chênh r và đối chiếu bootstrap ba ví dụ.
-
 
 | X | Y | n2023 | n2025 | Cờ mẫu | r2023 | r2025 | Δr | Δrho | p Fisher | q BH | CI Δz thấp | CI Δz cao |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1777,7 +1529,6 @@ Phương pháp: [Pearson/CI](https://docs.scipy.org/doc/scipy/reference/generate
 
 **Diễn giải bảng:** Đủ48 cặp ước lượng được cả hai năm; thiếu một năm không tạo phép thử. Δr dương là hệ số mẫu2025 cao hơn; p nhỏ không tách được tác động chương trình hay cơ cấu chọn môn. “≈0” là giới hạn số học. CI Δz đo trên thang biến đổi, không là khoảng điểm hay tỷ lệ học sinh.
 
-
 | X | Y | Δr | CI Δr thấp | CI Δr cao |
 | --- | --- | --- | --- | --- |
 | Địa lý | Lịch sử | 0,151 | 0,149 | 0,153 |
@@ -1786,12 +1537,9 @@ Phương pháp: [Pearson/CI](https://docs.scipy.org/doc/scipy/reference/generate
 
 **Diễn giải bảng:** Bootstrap giữ cùng cặp điểm của từng người, lấy mẫu độc lập giữa hai năm. CI thể hiện bất định theo mô hình lấy mẫu, không sửa được thiên lệch thành phần thí sinh. Chỉ ba ví dụ được bootstrap theo kế hoạch; các cặp khác không được gắn CI bootstrap giả.
 
-
 ## Phụ lục — điểm cao của mọi cặp quan sát được, hai chiều
 
-
 **Cách đọc:** Mỗi hàng là một chiều X→Y; P80 và8 điểm là hai định nghĩa cao riêng. Nền Y và xác suất Y cao khi X cao khác mẫu số. Ngưỡng P80, n nhóm X cao và lift đều tính trong tập đủ cả hai điểm. Hàng n < 30 đã hiện trong phụ lục mọi cặp với trạng thái thiếu; không đưa một xác suất không đủ dữ liệu vào bảng dưới. Không tính thêm p cho bảng thăm dò này.
-
 
 ### Ngưỡng P80 — 2023
 
@@ -1936,8 +1684,7 @@ Phương pháp: [Pearson/CI](https://docs.scipy.org/doc/scipy/reference/generate
 | Toán | Vật lý | 327.173 | 8,20 | 8,00 | 80.963 | 21,32 | 47,13 | 46,78 | 47,47 | 2,21 |
 | Vật lý | Toán | 327.173 | 8,00 | 8,20 | 69.746 | 24,75 | 54,70 | 54,33 | 55,07 | 2,21 |
 
-**Diễn giải bảng:** Mẫu số của tỷ lệ có điều kiện là n nhóm X cao, không phải n cặp. Đọc CI Wilson cùng tỷ lệ:100% với1/1 người có CI20,65–100%, không là bằng chứng gần chắc chắn. Chiều ngược có cùng n cặp nhưng mẫu số nhóm cao khác. Đồng hạng làm nhóm P80 có thể hơn20%; lift gần1 nghĩa X cao ít làm đổi xác suất Y cao so với nền. Ô thiếu khi n X cao=0 không bị gán xác suất0. CI P80 coi ngưỡng thực nghiệm cố định; các CI là xấp xỉ theo mô hình độc lập.
-
+**Diễn giải bảng:** Mẫu số của tỷ lệ có điều kiện là n nhóm X cao, không phải n cặp. Đọc CI Wilson cùng tỷ lệ:100% với1/1 người có CI20,65–100%, không là bằng chứng gần chắc chắn. Chiều ngược có cùng n cặp nhưng mẫu số nhóm cao khác. Đồng hạng làm nhóm P80 có thể hơn 20%; lift gần1 nghĩa X cao ít làm đổi xác suất Y cao so với nền. Ô thiếu khi n X cao=0 không bị gán xác suất0. CI P80 coi ngưỡng thực nghiệm cố định; các CI là xấp xỉ theo mô hình độc lập.
 
 ### Ngưỡng 8 điểm — 2023
 
@@ -2082,8 +1829,7 @@ Phương pháp: [Pearson/CI](https://docs.scipy.org/doc/scipy/reference/generate
 | Toán | Vật lý | 327.173 | 112.809 | 21,32 | 41,92 | 41,63 | 42,20 | 1,97 |
 | Vật lý | Toán | 327.173 | 69.746 | 34,48 | 67,79 | 67,45 | 68,14 | 1,97 |
 
-**Diễn giải bảng:** Mẫu số của tỷ lệ có điều kiện là n nhóm X cao, không phải n cặp. Đọc CI Wilson cùng tỷ lệ:100% với1/1 người có CI20,65–100%, không là bằng chứng gần chắc chắn. Chiều ngược có cùng n cặp nhưng mẫu số nhóm cao khác. Đồng hạng làm nhóm P80 có thể hơn20%; lift gần1 nghĩa X cao ít làm đổi xác suất Y cao so với nền. Ô thiếu khi n X cao=0 không bị gán xác suất0. CI P80 coi ngưỡng thực nghiệm cố định; các CI là xấp xỉ theo mô hình độc lập.
-
+**Diễn giải bảng:** Mẫu số của tỷ lệ có điều kiện là n nhóm X cao, không phải n cặp. Đọc CI Wilson cùng tỷ lệ:100% với1/1 người có CI20,65–100%, không là bằng chứng gần chắc chắn. Chiều ngược có cùng n cặp nhưng mẫu số nhóm cao khác. Đồng hạng làm nhóm P80 có thể hơn 20%; lift gần1 nghĩa X cao ít làm đổi xác suất Y cao so với nền. Ô thiếu khi n X cao=0 không bị gán xác suất0. CI P80 coi ngưỡng thực nghiệm cố định; các CI là xấp xỉ theo mô hình độc lập.
 
 ### Ngưỡng P80 — 2025
 
@@ -2266,8 +2012,7 @@ Phương pháp: [Pearson/CI](https://docs.scipy.org/doc/scipy/reference/generate
 | Vật lý | Công nghệ | 1.121 | 6,50 | 8,75 | 268 | 21,14 | 29,10 | 23,99 | 34,81 | 1,38 |
 | Công nghệ | Vật lý | 1.121 | 8,75 | 6,50 | 237 | 23,91 | 32,91 | 27,24 | 39,12 | 1,38 |
 
-**Diễn giải bảng:** Mẫu số của tỷ lệ có điều kiện là n nhóm X cao, không phải n cặp. Đọc CI Wilson cùng tỷ lệ:100% với1/1 người có CI20,65–100%, không là bằng chứng gần chắc chắn. Chiều ngược có cùng n cặp nhưng mẫu số nhóm cao khác. Đồng hạng làm nhóm P80 có thể hơn20%; lift gần1 nghĩa X cao ít làm đổi xác suất Y cao so với nền. Ô thiếu khi n X cao=0 không bị gán xác suất0. CI P80 coi ngưỡng thực nghiệm cố định; các CI là xấp xỉ theo mô hình độc lập.
-
+**Diễn giải bảng:** Mẫu số của tỷ lệ có điều kiện là n nhóm X cao, không phải n cặp. Đọc CI Wilson cùng tỷ lệ:100% với1/1 người có CI20,65–100%, không là bằng chứng gần chắc chắn. Chiều ngược có cùng n cặp nhưng mẫu số nhóm cao khác. Đồng hạng làm nhóm P80 có thể hơn 20%; lift gần1 nghĩa X cao ít làm đổi xác suất Y cao so với nền. Ô thiếu khi n X cao=0 không bị gán xác suất0. CI P80 coi ngưỡng thực nghiệm cố định; các CI là xấp xỉ theo mô hình độc lập.
 
 ### Ngưỡng 8 điểm — 2025
 
@@ -2450,30 +2195,25 @@ Phương pháp: [Pearson/CI](https://docs.scipy.org/doc/scipy/reference/generate
 | Vật lý | Công nghệ | 1.121 | 42 | 43,09 | 61,90 | 46,81 | 75,00 | 1,44 |
 | Công nghệ | Vật lý | 1.121 | 483 | 3,75 | 5,38 | 3,70 | 7,77 | 1,44 |
 
-**Diễn giải bảng:** Mẫu số của tỷ lệ có điều kiện là n nhóm X cao, không phải n cặp. Đọc CI Wilson cùng tỷ lệ:100% với1/1 người có CI20,65–100%, không là bằng chứng gần chắc chắn. Chiều ngược có cùng n cặp nhưng mẫu số nhóm cao khác. Đồng hạng làm nhóm P80 có thể hơn20%; lift gần1 nghĩa X cao ít làm đổi xác suất Y cao so với nền. Ô thiếu khi n X cao=0 không bị gán xác suất0. CI P80 coi ngưỡng thực nghiệm cố định; các CI là xấp xỉ theo mô hình độc lập.
+**Diễn giải bảng:** Mẫu số của tỷ lệ có điều kiện là n nhóm X cao, không phải n cặp. Đọc CI Wilson cùng tỷ lệ:100% với1/1 người có CI20,65–100%, không là bằng chứng gần chắc chắn. Chiều ngược có cùng n cặp nhưng mẫu số nhóm cao khác. Đồng hạng làm nhóm P80 có thể hơn 20%; lift gần1 nghĩa X cao ít làm đổi xác suất Y cao so với nền. Ô thiếu khi n X cao=0 không bị gán xác suất0. CI P80 coi ngưỡng thực nghiệm cố định; các CI là xấp xỉ theo mô hình độc lập.
 
-
-**Kế thừa Duy:** Bản Duy đã có r/rho ở8 môn chung, ví dụ điểm cao và PCA5 khối. Báo cáo mở rộng mọi môn có điểm, giữ số mẫu từng cặp, ma trận chênh theo năm, điều kiện điểm cao hai chiều, đủ24 nhãn khối/23 bộ PCA và giải thích loading/cách chọn mẫu. Tỷ lệ Toán cao→Lý cao2025 là60,2871%, làm tròn60,29%; không làm tròn thành60,00%.
-
+**Kế thừa Duy:** Bản Duy đã có r/rho ở8 môn chung, ví dụ điểm cao và PCA5 khối. Báo cáo mở rộng mọi môn có điểm, giữ số mẫu từng cặp, ma trận chênh theo năm, điều kiện điểm cao hai chiều, đủ24 nhãn khối/23 bộ PCA và giải thích loading/cách chọn mẫu. Tỷ lệ Toán cao→Lý cao2025 là 60,2871%, làm tròn 60,29%; không làm tròn thành 60,00%.
 
 ## Hồ sơ tính toán và đối chiếu
-
 
 | Năm | Số dòng nguồn | Tệp gốc | SHA-256 |
 | --- | --- | --- | --- |
 | 2023 | 1.022.060 | original.csv | cdf22a6b45f8e23b522beb1c521782e36486cac39d3fb64bca2a2395edec39b5 |
 | 2025 | 1.131.136 | dataset_diem_thi_thpt_2025.csv | 0db00925d51bcb14dfb6c92efeee9926524aba8938288987a95c38d34484e6ed |
 
-**Diễn giải bảng:** Hash khóa đúng hai phiên bản dữ liệu đã tính. Số dòng nguồn gồm cả người không có điểm; n trong từng phép tính chỉ đếm điểm hợp lệ/đủ cặp/đủ khối. Dữ liệu gốc và kết quả phần3 được giữ nguyên. Không sao chép lại bộ dữ liệu cho báo cáo này.
+**Diễn giải bảng:** Hash khóa đúng hai phiên bản dữ liệu đã tính. Số dòng nguồn gồm cả người không có điểm; n trong từng phép tính chỉ đếm điểm hợp lệ/đủ cặp/đủ khối. Dữ liệu gốc và kết quả phần 3 được giữ nguyên. Không sao chép lại bộ dữ liệu cho báo cáo này.
 
-
-**Cấu hình tái lập:** Seed gốc20261021; thứ tự môn theo ID sắp xếp, seed riêng mỗi mục bằng seed gốc cộng chỉ số từ0; khối cộng thêm10000, d bootstrap cộng tiếp100. KS hoán vị1999 lần theo phân bổ hypergeometric trên tần số điểm, p=(1+số D hoán vị≥D quan sát)/(1999+1). CI d percentile từ999 mẫu bootstrap multinomial độc lập từng năm. Tương quan ba cặp minh họa bootstrap999 lần trên tần số cặp điểm cùng người; seed theo thứ tự cặp. Mọi CI95%, các phép thử hai phía. P80 dùng quantile method=higher, tính cả đồng hạng ở ngưỡng; không ép nhóm cao đúng20%.
-
+**Cấu hình tái lập:** Seed gốc 20261021; thứ tự môn theo ID sắp xếp, seed riêng mỗi mục bằng seed gốc cộng chỉ số từ 0; khối cộng thêm 10000, d bootstrap cộng tiếp 100. KS hoán vị 1999 lần theo phân bổ hypergeometric trên tần số điểm, p=(1+số D hoán vị≥D quan sát)/(1999+1). CI d percentile từ 999 mẫu bootstrap multinomial độc lập từng năm. Tương quan ba cặp minh họa bootstrap 999 lần trên tần số cặp điểm cùng người; seed theo thứ tự cặp. Mọi CI 95%, các phép thử hai phía. P80 dùng quantile method=higher, tính cả đồng hạng ở ngưỡng; không ép nhóm cao đúng 20%.
 
 **Môi trường thực thi:** python 3.12.14, numpy 2.5.3, pandas 3.0.1, scipy 1.18.1, matplotlib 3.11.2. PCA dùng NumPy SVD trên z có SD mẫu ddof1, eigenvalue=s²/(n−1), loading=v√λ. Thư viện và phương pháp đã tra tài liệu chính thức SciPy cùng Context7.
 
-
-**Kiểm chứng số:** 8 môn chung khớp n/mean/d với Sơn (sai số tuyệt đối<10⁻¹⁰); 56 dòng cặp của Duy khớp n/r/rho, kể cả ô không đồng quan sát; 10 mô hình của5 khối Duy khớp n và EVR (sai số<10⁻⁸ điểm phần trăm). 48 số đếm mã–năm khớp phần3; mọi tổng2025 đã lưu được so với tổng đủ ba môn và không có sai lệch trên ngưỡng10⁻⁸ điểm. B08/D08 dùng chung,23 bộ/năm. Các quy tắc thiếu/zero/alias/biến hằng và bất biến dấu PCA đã được kiểm tra trên dữ liệu thử riêng.
-
+**Kiểm chứng số:** 8 môn chung khớp n/mean/d với Sơn (sai số tuyệt đối<10⁻¹⁰); 56 dòng cặp của Duy khớp n/r/rho, kể cả ô không đồng quan sát; 10 mô hình của 5 khối Duy khớp n và EVR (sai số<10⁻⁸ điểm phần trăm). 48 số đếm mã–năm khớp phần 3; mọi tổng 2025 đã lưu được so với tổng đủ ba môn và không có sai lệch trên ngưỡng10⁻⁸ điểm. B08/D08 dùng chung, 23 bộ/năm. Các quy tắc thiếu/zero/alias/biến hằng và bất biến dấu PCA đã được kiểm tra trên dữ liệu thử riêng.
 
 **Nguồn phương pháp:** [Welch](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html), [MWU](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mannwhitneyu.html), [KS hai mẫu](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ks_2samp.html), [Levene/Brown–Forsythe](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.levene.html), [PCA](https://scikit-learn.org/stable/modules/decomposition.html#pca). Các nguồn định nghĩa phương pháp; số liệu trong bài được tính từ hai tệp điểm trên.
+
+**Kiểm tra trước bàn giao:** 15 trường hợp QA đều đạt; hai notebook kiểm chứng chạy hết 13 ô code, không lỗi. Tính lại cùng seed cho các bảng kiểm định, tương quan, xác suất điểm cao và PCA cho kết quả khớp. Rà soát độc lập từ bảng xác nhận Welch/d/CI và loading PCA phù hợp; các điểm cần ghi rõ mẫu nhỏ và mapping đã được bổ sung. Bộ bàn giao chỉ giữ hai Markdown và ảnh được dùng trong bài; mã/CSV/notebook/kế hoạch trung gian do phiên này tạo được dọn theo yêu cầu. Dữ liệu và phần3 được bảo toàn.
