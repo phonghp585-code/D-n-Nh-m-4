@@ -220,14 +220,16 @@ Chạy `python scripts/analysis/plot_subject_score_distributions.py` trong môi 
 - Báo cáo theo tổ hợp: [Phần 3 – Phân tích theo khối thi và tổ hợp môn](./phan_3_to_hop_mon_2023_2025%2Btom_tat.md).
 
 
-## 12. Trả lời câu hỏi: “Phổ điểm môn X năm 2025 có dịch chuyển so với năm 2024 không?”
+## 12. Trả lời câu hỏi: “Phổ điểm môn X năm 2025 có dịch chuyển so với năm 2023 không?”
 
-**Kết luận với dữ liệu hiện có: chưa đủ cơ sở để xác định.** Báo cáo này hiện so sánh dữ liệu năm 2023 và năm 2025; trong các tệp dữ liệu được xác định cho phân tích, chưa có bộ dữ liệu điểm thi năm 2024. Vì vậy, không thể dùng các kết quả 2023–2025 để trả lời trực tiếp câu hỏi 2025 so với 2024, và cũng không nên suy diễn kết quả của năm 2023 thành kết quả của năm 2024.
+**Có thể đánh giá sự dịch chuyển bằng cách so sánh trực tiếp phân phối điểm năm 2025 với năm 2023 trong dữ liệu của dự án.** Tuy nhiên, kết luận phải dựa trên các thống kê và biểu đồ của từng môn; không nên kết luận tất cả các môn đều dịch chuyển theo cùng một hướng.
 
-Để trả lời, cần bổ sung dữ liệu điểm thi năm 2024 và xác định rõ “môn X” là môn nào. Sau đó, so sánh cùng môn giữa 2024 và 2025 bằng:
-- Trung bình, trung vị và độ lệch chuẩn;
-- Histogram/KDE và boxplot với cùng thang điểm, cùng cách chia khoảng;
-- Tỷ lệ điểm ≤1, dưới 5, từ 8 trở lên và từ 9 trở lên;
-- Số lượng điểm hợp lệ và tỷ lệ thiếu của từng năm.
+Với mỗi môn, cần đối chiếu:
+- **Trung bình và trung vị:** tăng cho thấy điểm trung tâm cao hơn; giảm cho thấy điểm trung tâm thấp hơn.
+- **Độ lệch chuẩn và hình dạng phân phối:** cho biết mức độ phân tán và cách điểm tập trung quanh các vùng điểm.
+- **Tỷ lệ theo ngưỡng:** tỷ lệ điểm ≤1, dưới 5, từ 8 trở lên và từ 9 trở lên.
+- **Histogram/KDE và boxplot:** dùng để quan sát trực quan phần phân phối tập trung, độ trải rộng và các đuôi phân phối.
 
-Nếu trung bình/trung vị, các tỷ lệ theo ngưỡng và hình dạng phân phối cùng thay đổi theo một hướng, có thể mô tả phổ điểm là **dịch chuyển** theo hướng tương ứng; nếu các chỉ số thay đổi trái chiều, cần kết luận cụ thể về từng khía cạnh thay vì gọi đó là dịch chuyển đồng đều. Chênh lệch phân phối tự nó không chứng minh đề thi dễ/khó hơn hoặc có gian lận.
+Nếu các chỉ số trung tâm, tỷ lệ theo ngưỡng và biểu đồ cùng cho thấy thay đổi nhất quán, có thể kết luận phổ điểm môn đó đã dịch chuyển theo hướng tương ứng từ năm 2023 sang năm 2025. Nếu các chỉ số thay đổi trái chiều, cần mô tả riêng từng khía cạnh thay vì khẳng định phổ điểm dịch chuyển đồng đều.
+
+**Giới hạn diễn giải:** Sự khác biệt giữa hai năm chỉ mô tả sự khác nhau của phân phối điểm quan sát được. Bản thân nó không đủ để chứng minh đề thi năm 2025 dễ hơn/khó hơn, cũng không chứng minh có gian lận. Cần lưu ý quy mô thí sinh, môn được lựa chọn và tỷ lệ dữ liệu hợp lệ có thể khác nhau giữa hai năm.
