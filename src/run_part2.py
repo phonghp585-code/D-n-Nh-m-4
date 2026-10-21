@@ -6,11 +6,11 @@ import pandas as pd
 from src.inference_io import ROOT,load_inputs,write_tables,make_metadata,validate_metadata,validate_report_links
 from src.analysis_catalog import subject_values,subject_catalog,label
 from src.statistical_tests import analyze_subjects,compare_values,ks_discrete,bootstrap_d,adjust_pvalues,apply_families,clean_values,describe_values
-from src.inference_plots import distribution_plot,effect_overview,safe_name
+from src.inference_plots import distribution_plot,effect_overview,safe_name,density_curve
 from src.report_part2 import render_report,build_notebook,REPORT
 
-CONFIG=dict(seed=20261021,bootstrap=999,permutations=1999,phase='subject_statistics',domain=[0,10])
-FUNCTIONS=[subject_values,subject_catalog,label,analyze_subjects,compare_values,ks_discrete,bootstrap_d,adjust_pvalues,apply_families,clean_values,describe_values]
+CONFIG=dict(seed=20261021,bootstrap=999,permutations=1999,phase='subject_statistics',domain=[0,10],density='Gaussian fine-bin KDE; reflected boundaries; bandwidth=0.20')
+FUNCTIONS=[subject_values,subject_catalog,label,analyze_subjects,compare_values,ks_discrete,bootstrap_d,adjust_pvalues,apply_families,clean_values,describe_values,density_curve,distribution_plot,effect_overview]
 
 def validate_outputs(root:Path=ROOT):
     folder=root/'outputs/statistics';meta=validate_metadata(root,folder,FUNCTIONS,CONFIG)

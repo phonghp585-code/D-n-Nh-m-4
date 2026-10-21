@@ -43,3 +43,13 @@ Chạy các tuần theo thứ tự; tuần 4 dùng Parquet do tuần 3 tạo. Tu
 ```
 
 Notebook tuần 5 đọc các đầu ra đã có; `Run All` trong notebook không thay lệnh `src/main.py`. Số báo danh và các mã cần đọc dạng chuỗi để giữ số 0 đầu. Dữ liệu cuối giữ nguyên điểm 0 và ô thiếu; các nhãn nhóm môn chỉ dựa trên điểm quan sát, không xác nhận hồ sơ đăng ký thi.
+
+
+## Phần 2 — Kiểm định thống kê
+
+[Báo cáo phần 2](docs/phan_2_kiem_dinh_thong_ke_2023_2025.md) chứa toàn bộ môn có điểm, bảng/đường KDE mượt/ECDF và giải nghĩa ngay dưới kết quả. Ngoại ngữ tách theo mã; điểm 0 giữ nguyên, không điền thiếu.
+
+```powershell
+& ./.venv/Scripts/python.exe -m src.run_part2 --rerun
+& ./.venv/Scripts/python.exe -m src.run_part2 --validate
+```

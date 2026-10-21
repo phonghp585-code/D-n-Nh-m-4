@@ -15,7 +15,7 @@ def _entity_section(row,descriptions,figure,heading,maximum=10):
     if compared:
         direction='tăng' if row.delta_mean>=0 else 'giảm'
         magnitude=abs(row.cohen_d)
-        band='dưới mốc 0,2' if magnitude<.2 else ('trong khoảng 0,2–0,5' if magnitude<.5 else ('trong khoảng 0,5–0,8' if magnitude<.8 else 'từ 0,8 trở lên'))
+        band='không xác định' if pd.isna(magnitude) else ('dưới mốc 0,2' if magnitude<.2 else ('trong khoảng 0,2–0,5' if magnitude<.5 else ('trong khoảng 0,5–0,8' if magnitude<.8 else 'từ 0,8 trở lên')))
         parts.append(f'**Nhận xét bằng số:** Trung bình {n(row.mean_2023)} → {n(row.mean_2025)}, {direction} {n(abs(row.delta_mean))} điểm; trung vị {n(row.median_2023)} → {n(row.median_2025)}. Cohen’s d={n(row.cohen_d,3)} ({band} về |d| theo quy ước tham khảo). Tỷ số phương sai 2025/2023={n(row.variance_ratio,3)}. Không dùng nhãn độ lớn như kết luận hai năm tương đương.\n')
         methods=pd.DataFrame([
             ['Welch: trung bình',f't={n(row.welch_t,3)}, df={n(row.welch_df,1)}',ptext(row.welch_p),ptext(row.welch_p_holm)],
@@ -26,14 +26,14 @@ def _entity_section(row,descriptions,figure,heading,maximum=10):
         parts.append(md_table(methods))
         parts.append(f'**Diễn giải bảng:** Welch dùng Holm trong family {int(row.welch_family_size)} phép thử trung bình; ba phép thăm dò dùng BH chung trong family {int(row.exploratory_family_size)} p hữu hạn. KS dùng hoán vị {int(row.ks_permutations):,} lần, p nhỏ nhất phân giải được là 0,0005. Giá trị “≈0” ở các phép tiệm cận là giới hạn tính số, không phải xác suất bằng 0.\n')
         parts.append(f'**Khoảng tin cậy và độ lớn:** Chênh trung bình có CI 95% [{n(row.delta_ci_low,3)}; {n(row.delta_ci_high,3)}] **điểm**. d có CI bootstrap 95% [{n(row.d_ci_low,3)}; {n(row.d_ci_high,3)}] **SD gộp**; Hedges’ g={n(row.hedges_g,3)}. A={n(row.mwu_A,3)} là xác suất thắng cộng nửa xác suất hòa, không phải chỉ P(2025>2023).\n')
-        expl=f'Xanh là 2023, cam là 2025; histogram chia theo % trong từng năm, không theo số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D={n(row.ks_D,3)}, gần mốc {n(row.ks_location)}; đây là {n(100*row.ks_D,1)} điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.'
+        expl=f'Xanh nét đứt là 2023, cam nét liền là 2025; KDE mượt là mật độ, diện tích trên thang điểm bằng 1, không phải số người tuyệt đối. Ở ECDF, chiều cao là % điểm không vượt ngưỡng. Khoảng cách lớn nhất hai ECDF là D={n(row.ks_D,3)}, gần mốc {n(row.ks_location)}; đây là {n(100*row.ks_D,1)} điểm phần trăm ở mốc đó, không phải tỷ lệ người tiến bộ.'
         p=row.welch_p_holm
-        inference='có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm' if pd.notna(p) and p<.05 else 'chưa có bằng chứng chênh trung bình ở mức 0,05 sau Holm'
+        inference='không xác định phép thử Welch ở mẫu này' if pd.isna(p) else 'có bằng chứng chênh trung bình theo mô hình ở mức 0,05 sau Holm' if pd.notna(p) and p<.05 else 'chưa có bằng chứng chênh trung bình ở mức 0,05 sau Holm'
         conclusion=f'Kết quả {inference}. Điều này cần đọc cùng mức đổi {n(row.delta_mean,3)} điểm, |d| và hình dạng; p lớn không chứng minh tương đương. So sánh là giữa hai tập điểm quan sát, không tách được độ khó, chương trình, cách chấm và thành phần thí sinh.'
     else:
         reason=row.get('reason','Không có dữ liệu so sánh phù hợp.')
         parts.append(f'**Phạm vi so sánh:** {reason} Có thống kê và hình cho năm hiện có; ô thiếu không được thay bằng 0 và không tạo p-value/CI liên năm giả.\n')
-        expl='Chỉ vẽ các năm có điểm thực. Histogram là tỷ lệ trong từng mẫu; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.'
+        expl='Chỉ vẽ các năm có điểm thực. KDE là mật độ mượt từ điểm quan sát; ECDF mô tả phần tích lũy. Không có đường của một năm không có nghĩa điểm của năm đó bằng 0.'
         conclusion='Kết quả mô tả đúng mẫu có điểm. Mục này không được đưa vào family kiểm định liên năm chính; khác môn/chương trình không được diễn giải như cùng một thang năng lực.'
     parts.append(image_block(figure,title+' — phổ điểm và ECDF',expl))
     parts.append('**Ý nghĩa và giới hạn:** '+conclusion+'\n')
@@ -60,7 +60,7 @@ def render_report(root:Path,*,include_combinations=False)->str:
         '**Welch t-test** hỏi trung bình hai nhóm có khác không, không giả định phương sai bằng nhau. H0: hai trung bình bằng nhau; H1 hai phía: khác nhau. **p-value** đo độ bất tương thích với mô hình H0, không là xác suất H0 đúng, không đo độ lớn thay đổi. P rất nhỏ ở mẫu lớn phải đi kèm Δ và d.\n',
         '**Cohen’s d** = (mean2025−mean2023)/SD gộp. Dấu chỉ hướng; |d| 0,2/0,5/0,8 là mốc tham khảo, không ranh giới phổ quát. **Hedges’ g** hiệu chỉnh mẫu nhỏ; ở mẫu lớn g gần d. CI d bootstrap 999 lần theo tần số điểm, CI percentile; CI mean từ Welch. CI không là khoảng chứa 95% học sinh.\n',
         '**Mann–Whitney U** đối chiếu thứ hạng/phân phối, không mặc định kiểm định mean hay median. **A**=P(X2025>X2023)+0,5P(bằng điểm); **rank-biserial**=2A−1. Điểm trùng đã được hiệu chỉnh khi tính p MWU.\n',
-        '**KS D** là khoảng cách lớn nhất giữa hai ECDF. P tiêu chuẩn giả thiết liên tục chỉ để tham khảo; p chính dùng hoán vị nhãn theo tần số điểm giữ đúng n hai năm (1.999 lần, seed cố định). **Brown–Forsythe** là Levene quanh median; đọc cùng SD/IQR/tỷ số phương sai, không đồng nhất với chất lượng phân hóa của đề. Levene quanh mean được giữ ở CSV như đối chiếu bổ sung.\n',
+        '**Phổ điểm mượt KDE:** dùng toàn bộ điểm, histogram mịn được làm mượt bằng kernel Gaussian, bandwidth 0,20 điểm và phản xạ ở biên 0/10; diện tích chuẩn hóa bằng 1. Cách này ước lượng hình dạng thực, không ép điểm theo phân phối chuẩn. Thống kê/kiểm định vẫn tính trên điểm gốc, không trên đường đã làm mượt.\n\n**KS D** là khoảng cách lớn nhất giữa hai ECDF. P tiêu chuẩn giả thiết liên tục chỉ để tham khảo; p chính dùng hoán vị nhãn theo tần số điểm giữ đúng n hai năm (1.999 lần, seed cố định). **Brown–Forsythe** là Levene quanh median; đọc cùng SD/IQR/tỷ số phương sai, không đồng nhất với chất lượng phân hóa của đề. Levene quanh mean được giữ ở CSV như đối chiếu bổ sung.\n',
         '**Đa kiểm định:** Holm cho family Welch; BH chung cho MWU/KS/Brown–Forsythe. Môn một năm không thêm phép thử. Dữ liệu gần toàn bộ thí sinh quan sát mỗi năm nên Δ mô tả trực tiếp tập đó; p/CI chỉ có nghĩa dưới mô hình suy luận/độc lập rộng hơn. Có thể có người thi lại, số báo danh không nhận diện người liên năm.\n',
         '## 2.4. Bảng, hình và diễn giải từng môn\n']
     for i,r in enumerate(t.itertuples(index=False),1):
