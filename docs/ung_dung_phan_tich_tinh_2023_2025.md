@@ -1,47 +1,96 @@
-# Ứng dụng phân tích điểm thi THPT theo địa phương, 2023–2025
+# Báo cáo từng bước: phân tích điểm thi THPT theo tỉnh, 2023–2025
 
-## Mục tiêu
+Báo cáo này dẫn người đọc qua dữ liệu theo đúng thứ tự đặt câu hỏi → đọc biểu đồ → diễn giải → xác định việc có thể làm tiếp. Hình minh họa đều là ảnh đã có trong dự án tại `docs/assets/thpt_2023_2024_2025/`; không tạo biểu đồ mới.
 
-Tài liệu này chuyển các thống kê đã có trong [báo cáo phổ điểm 2023–2025](bao_cao_thpt_2023_2024_2025.md) thành bốn câu hỏi ứng dụng. Phạm vi là điểm thi theo môn và tổ hợp, theo địa phương/mã hội đồng thi lịch sử, trong ba năm. “Địa phương” ở đây không đồng nghĩa nơi cư trú hay trường học.
+**Báo cáo số liệu đầy đủ:** [Phổ điểm THPT 2023–2025 theo môn, tổ hợp và tỉnh](bao_cao_thpt_2023_2024_2025.md).
 
-Bộ dữ liệu trong báo cáo bao phủ 63 địa phương mỗi năm (189 nhóm địa phương × năm). Với mỗi môn, mẫu số là số thí sinh có điểm môn đó; với tổ hợp, chỉ tính thí sinh có đủ điểm thành phần. Không điền điểm thiếu thành 0.
+## Bước 0 — Xác định dữ liệu đang nói về ai
 
-## 1. Theo dõi chênh lệch kết quả và cơ hội giữa các tỉnh
+Báo cáo nền có 63 địa phương/mã hội đồng thi lịch sử trong mỗi năm, tổng cộng 189 nhóm tỉnh × năm. Mỗi môn có mẫu số riêng theo số thí sinh có điểm môn đó; tổ hợp chỉ gồm người có đủ điểm thành phần. Điểm 0 được giữ, điểm thiếu không được đổi thành 0.
 
-**Cách dùng:** so sánh P10, trung vị, P90, IQR và tỷ lệ dưới ngưỡng theo địa phương × năm × môn/tổ hợp; luôn đặt cạnh cỡ mẫu. Có thể ưu tiên xem các địa phương nằm ở nhóm thấp qua nhiều năm thay vì xếp hạng theo một điểm trung bình.
+Mã địa phương phản ánh nơi đăng ký dự thi theo hội đồng thi, không xác nhận nơi cư trú hay trường học. Ba năm là ba đoàn hệ khác nhau. Năm 2025 có thay đổi đề và chương trình; vì vậy, so sánh qua năm là mô tả kết quả của từng kỳ thi, không phải theo dõi cùng học sinh hay đo trực tiếp biến động năng lực.
 
-**Kết quả hiện có:** báo cáo tổng hợp các phân vị, tỷ lệ ngưỡng và phân phối cho từng địa phương, đồng thời có atlas theo tỉnh. Ví dụ, trung bình Toán toàn quốc được báo cáo là 6,251 (2023), 6,447 (2024) và 4,783 (2025). Đây là khác biệt giữa ba đoàn hệ và ba bối cảnh đề thi/chương trình, không phải bằng chứng rằng năng lực của học sinh giảm.
+## Bước 1 — Nhìn thay đổi chung trước khi đi vào tỉnh
 
-**Hành động phù hợp:** dùng danh sách tỉnh–môn có P10 thấp hoặc tỷ lệ dưới ngưỡng cao kéo dài để đặt câu hỏi hỗ trợ; không xem thứ hạng là đánh giá chất lượng của tỉnh. Khi công bố, kèm n và khoảng tin cậy nếu dùng tỷ lệ.
+Biểu đồ dumbbell đặt trung bình mỗi môn của ba năm cạnh nhau:
 
-## 2. Theo dõi thay đổi lựa chọn môn giữa các tỉnh
+![Điểm trung bình theo môn trong ba năm](assets/thpt_2023_2024_2025/phan_phoi/mean_dumbbell.png)
 
-**Cách dùng:** so sánh số dự thi và tỷ lệ tham gia từng môn/tổ hợp theo tỉnh–năm; xem thêm các môn thường đi cùng nhau và mức tập trung lựa chọn.
+Báo cáo ghi nhận trung bình Toán là 6,251 năm 2023, 6,447 năm 2024 và 4,783 năm 2025. Một thay đổi lớn như vậy cho biết kết quả quan sát khác nhau giữa các kỳ thi; riêng biểu đồ này không cho biết nguyên nhân, cũng không đủ để kết luận năng lực học sinh giảm. Hãy đọc cùng thay đổi đề, chương trình, cơ cấu môn lựa chọn và độ bao phủ nguồn.
 
-**Kết quả hiện có:** báo cáo đã tính cơ cấu môn, mức đủ điều kiện lập tổ hợp và thống kê cho 24 tổ hợp từ ba môn thành phần. Ví dụ, số tỉnh có ít nhất 100 thí sinh ở tổ hợp B00 là 63 năm 2023, 63 năm 2024 và 62 năm 2025. Các tổ hợp chứa GDCD ở năm 2023–2024 và GDKT&PL năm 2025 cần được đọc như khác biệt thành phần môn, không gộp cơ học.
+**Câu hỏi dẫn sang bước tiếp:** mức thay đổi chung có giống nhau ở các tỉnh không?
 
-**Hành động phù hợp:** theo dõi tỉnh có tỷ lệ chọn môn đổi nhanh để hỗ trợ lập kế hoạch giáo viên và nguồn lực; báo cáo cả số người và tỷ lệ vì quy mô đoàn hệ giữa tỉnh khác nhau.
+## Bước 2 — Xem chênh lệch giữa các tỉnh và môn
 
-## 3. Sàng lọc phân phối bất thường để ưu tiên rà soát
+Các heatmap dưới đây cho thấy trung bình và tỷ lệ đạt từ 9 điểm trở lên theo tỉnh × môn, mỗi năm một cặp. Chúng giúp tìm nơi cần xem kỹ hơn; nên đọc cả hai chỉ số vì trung bình và đuôi điểm trả lời hai câu hỏi khác nhau.
 
-**Cách dùng:** kết hợp nhiều tín hiệu trong cùng môn/năm: hình dạng ECDF, đuôi điểm, phân vị, tỷ lệ điểm cao/thấp và cỡ mẫu. Các cờ thống kê chỉ tạo danh sách cần kiểm tra thêm.
+### Năm 2023
+
+![Trung bình theo tỉnh và môn, 2023](assets/thpt_2023_2024_2025/tong_quan/province_matrix_2023_mean.png)
+
+![Tỷ lệ đạt từ 9 điểm theo tỉnh và môn, 2023](assets/thpt_2023_2024_2025/tong_quan/province_matrix_2023_ge9.png)
+
+### Năm 2024
+
+![Trung bình theo tỉnh và môn, 2024](assets/thpt_2023_2024_2025/tong_quan/province_matrix_2024_mean.png)
+
+![Tỷ lệ đạt từ 9 điểm theo tỉnh và môn, 2024](assets/thpt_2023_2024_2025/tong_quan/province_matrix_2024_ge9.png)
+
+### Năm 2025
+
+![Trung bình theo tỉnh và môn, 2025](assets/thpt_2023_2024_2025/tong_quan/province_matrix_2025_mean.png)
+
+![Tỷ lệ đạt từ 9 điểm theo tỉnh và môn, 2025](assets/thpt_2023_2024_2025/tong_quan/province_matrix_2025_ge9.png)
+
+**Cách chuyển thành chỉ báo hỗ trợ:** không chỉ xếp theo điểm trung bình. Trong bảng chi tiết, xem P10/trung vị/P90, IQR, tỷ lệ dưới ngưỡng và cỡ mẫu. Tỉnh–môn nằm ở nhóm thấp qua nhiều năm là nơi hợp lý để đặt câu hỏi về hỗ trợ học tập; các thống kê này không chỉ ra nguyên nhân và không phải đánh giá chất lượng địa phương.
+
+**Câu hỏi dẫn sang bước tiếp:** chênh lệch nằm ở toàn bộ phân phối hay chỉ ở một phần đuôi?
+
+## Bước 3 — Đọc hình dạng phân phối trước khi gắn cờ bất thường
+
+ECDF Ngữ văn đặt phân phối quan sát cạnh đường chuẩn tham chiếu. Đường chuẩn chỉ giúp hình dung độ lệch; điểm thi rời rạc, bị chặn từ 0 đến 10 và không bắt buộc phải có dạng chuông.
 
 ![ECDF Ngữ văn và đường chuẩn tham chiếu](assets/thpt_2023_2024_2025/phan_phoi/ecdf_normal_literature.png)
 
-**Kết quả hiện có:** báo cáo ghi nhận người có ít nhất một điểm môn bị cờ ngoại lệ là 43.642 (2023), 49.786 (2024), 38.640 (2025). Cờ IQR hoặc z-score được tính riêng theo tỉnh × môn; tiêu chí đuôi cao kết hợp cỡ mẫu, số điểm đạt ngưỡng, tỷ lệ so với phần còn lại, chênh lệch tuyệt đối và hiệu chỉnh Benjamini–Hochberg. Những cờ này không xác định sai phạm.
+Tỷ lệ đuôi điểm cao và thấp giữa các môn/năm được tổng hợp ở biểu đồ sau:
 
-Một ví dụ minh họa là Ngữ văn Nghệ An: tỷ lệ ≥9 trong dữ liệu được báo cáo là 5,62% (2023), 19,69% (2024), 17,99% (2025). Sau đối chiếu mô tả theo dải điểm Toán, mức chênh so với kỳ vọng lần lượt là +1,67, +11,38 và +14,62 điểm phần trăm. Phép điều chỉnh này chỉ kiểm soát một phần cơ cấu điểm, không loại trừ các khác biệt khác.
+![Tổng hợp tỷ lệ điểm ở các ngưỡng](assets/thpt_2023_2024_2025/phan_phoi/tail_rates_overview.png)
 
-**Hành động phù hợp:** chuyển cờ sang bước rà soát hồ sơ. Để xác minh gian lận cần dữ liệu cấp câu hỏi/mã đề, phòng thi, chấm và phúc khảo cùng bằng chứng độc lập; phổ điểm tổng hợp không đủ để quy kết cho tỉnh hay thí sinh.
+Báo cáo nền còn có các profile tỉnh theo Isolation Forest. Chúng là công cụ xếp hạng điểm khác biệt trên các đặc trưng phân phối, không phải xác suất gian lận.
 
-## 4. Dự báo nhóm có nguy cơ điểm thấp để phân bổ hỗ trợ
+![Profile khác biệt phân phối môn Ngữ văn theo tỉnh](assets/thpt_2023_2024_2025/phan_phoi/province_anomaly_literature.png)
 
-**Đánh giá khả thi với dữ liệu hiện có: chưa đủ điều kiện xây mô hình dự báo trước kỳ thi.** Các tệp điểm hiện tại chủ yếu chứa kết quả thi cuối kỳ; không có thông tin đầu vào sẵn có trước kỳ thi như điểm đánh giá định kỳ, lịch sử học tập, điều kiện tiếp cận hỗ trợ hoặc trường học. Dùng điểm của môn khác cùng kỳ để dự báo sẽ chỉ là phân loại sau khi thi, không phải cảnh báo sớm. Ba năm cũng gồm thay đổi chương trình/đề thi nên không nên chia ngẫu nhiên bản ghi để tạo cảm giác mô hình dự báo ổn định.
+Trong thống kê nền, số người có ít nhất một điểm môn bị gắn cờ ngoại lệ là 43.642 (2023), 49.786 (2024) và 38.640 (2025). Cờ IQR/z-score được tính riêng cho từng tỉnh × môn. Cờ đuôi cao kết hợp cỡ mẫu, số điểm đạt ngưỡng, tỷ lệ so với phần còn lại, mức chênh tuyệt đối và hiệu chỉnh nhiều kiểm định.
 
-**Bước tiếp theo nếu muốn triển khai:** xác định trước ngưỡng “điểm thấp” và hành động hỗ trợ; bổ sung biến có sẵn trước kỳ thi; huấn luyện trên các khóa cũ và đánh giá theo năm kế tiếp; so sánh với baseline đơn giản; kiểm tra hiệu năng theo tỉnh và nhóm học sinh; kiểm tra rò rỉ dữ liệu trước khi dùng kết quả phân bổ hỗ trợ. Cho đến khi có các dữ liệu này, nên dùng chỉ báo mô tả ở bài toán 1 để ưu tiên hỗ trợ cấp tỉnh–môn, không gắn nhãn rủi ro cá nhân.
+Ví dụ Ngữ văn Nghệ An: tỷ lệ đạt từ 9 điểm là 5,62% năm 2023, 19,69% năm 2024 và 17,99% năm 2025. Sau đối chiếu mô tả theo dải điểm Toán, mức chênh so với kỳ vọng ghi trong báo cáo là +1,67, +11,38 và +14,62 điểm phần trăm. Đây là hiệu chỉnh một phần cơ cấu, không kiểm soát mọi khác biệt giữa thí sinh hay kỳ thi.
 
-## Nguồn và giới hạn tái lập
+**Kết luận của bước:** biểu đồ có thể giúp chọn địa phương/môn cần rà soát; không thể dùng phổ điểm tổng hợp để quy kết gian lận. Muốn xác minh cần dữ liệu cấp câu hỏi/mã đề, phòng thi, chấm/phúc khảo và bằng chứng liên quan.
 
-Báo cáo chi tiết ghi nguồn dữ liệu 2023, 2024 và 2025 cùng SHA-256, nhưng trong cây tệp của commit nền `codex/statistics-correlation-pca` hiện không có `data/raw/diem_thi_thpt_2024.csv`. Nguồn 2024 được mô tả là bản thu thập công khai ngày 17/07/2024 từ [anhdung98/diem_thi_2024](https://github.com/anhdung98/diem_thi_2024), chưa gồm phúc khảo. Vì vậy, các con số trích ở đây là kết quả đã ghi trong báo cáo nền; việc tái tạo độc lập toàn bộ báo cáo từ chính nhánh này cần bổ sung tệp 2024 (hoặc quy trình tải có phiên bản/hash) và mã sinh báo cáo.
+## Bước 4 — Đặt phân phối môn và tổ hợp cạnh nhau để hiểu lựa chọn
 
-Báo cáo nền cũng ghi CSV 2024 có 1.045.613 điểm Toán, ít hơn 30 so với phổ điểm công bố. Không tự suy đoán hay điền các bản ghi thiếu. Khác biệt địa giới, lựa chọn môn, thay đổi đề/chương trình và phạm vi nguồn đều giới hạn so sánh qua năm. Xem [báo cáo chi tiết](bao_cao_thpt_2023_2024_2025.md) để biết định nghĩa, thống kê theo tỉnh và các giới hạn khác.
+Báo cáo nền tính số dự thi/tỷ lệ tham gia, các môn thường đi cùng nhau và đủ 24 tổ hợp từ ba môn thành phần. Trong dữ liệu tổ hợp, B00 có ít nhất 100 thí sinh tại 63 tỉnh năm 2023, 63 tỉnh năm 2024 và 62 tỉnh năm 2025.
+
+Hai biểu đồ Nghệ An minh họa cách chuyển từ phổ điểm môn sang phổ điểm tổ hợp:
+
+![Phân bố điểm môn 2023–2025 tại Nghệ An](assets/thpt_2023_2024_2025/tinh/29_subjects.png)
+
+![Phân bố điểm tổ hợp 2023–2025 tại Nghệ An](assets/thpt_2023_2024_2025/tinh/29_combinations.png)
+
+Các hình này so sánh phân phối điểm; chúng không tự thể hiện tỷ lệ thí sinh chọn từng môn. Để lập kế hoạch giáo viên/nguồn lực, hãy dùng bảng số dự thi và tỷ lệ chọn môn bên cạnh hình. Cũng cần đọc riêng GDCD ở 2023–2024 và GDKT&PL ở 2025 vì tên môn và nội dung đánh giá đã thay đổi.
+
+## Bước 5 — Chuyển kết quả thành hành động phù hợp
+
+| Kết quả đọc được | Hành động có thể cân nhắc | Không nên kết luận |
+| --- | --- | --- |
+| Một số tỉnh × môn có phân vị thấp hoặc tỷ lệ dưới ngưỡng cao kéo dài | Ưu tiên trao đổi về nguồn lực, dạy học và hỗ trợ môn đó; theo dõi lại bằng cùng chỉ số | Tỉnh đó có chất lượng kém vì điểm trung bình thấp |
+| Tỷ lệ chọn môn/tổ hợp thay đổi giữa các năm | Cập nhật nhu cầu giáo viên, tài liệu và kế hoạch ôn tập; luôn xem cả số lượng và tỷ lệ | Điểm môn thay đổi chỉ do học sinh giỏi/yếu hơn |
+| ECDF, đuôi điểm hoặc profile tỉnh khác biệt rõ | Đưa vào danh sách cần kiểm tra thêm, kết hợp hồ sơ độc lập | Có gian lận dựa trên biểu đồ điểm |
+| Có nhu cầu dự báo học sinh cần hỗ trợ | Bổ sung dữ liệu có trước kỳ thi rồi đánh giá mô hình theo năm kế tiếp | Dùng điểm môn khác cùng kỳ như cảnh báo trước thi |
+
+Với dữ liệu hiện tại, chưa nên huấn luyện mô hình dự báo cá nhân trước kỳ thi: các tệp điểm là kết quả cuối kỳ, thiếu biến đầu vào sẵn có trước kỳ thi. Nếu có thêm điểm đánh giá định kỳ/hồ sơ học tập, cần đặt ngưỡng và hành động hỗ trợ trước, dùng chia tập theo thời gian, so sánh với baseline và kiểm tra hiệu năng giữa các tỉnh trước khi áp dụng.
+
+## Giới hạn nguồn và khả năng tái lập
+
+Các số liệu và biểu đồ trên được dẫn từ báo cáo nền. Tại commit nền `codex/statistics-correlation-pca`, tệp `data/raw/diem_thi_thpt_2024.csv` không có trong cây tệp dù báo cáo ghi đường dẫn và SHA-256. Nguồn được nêu là bản công khai ngày 17/07/2024, chưa gồm phúc khảo; báo cáo ghi nhận 1.045.613 điểm Toán, ít hơn 30 so với phổ điểm công bố. Cần bổ sung đúng snapshot nguồn và mã sinh báo cáo để người khác chạy lại toàn bộ kết quả từ đầu.
+
+Xem [báo cáo nền đầy đủ](bao_cao_thpt_2023_2024_2025.md) để tra bảng chi tiết theo tỉnh, môn và tổ hợp.
