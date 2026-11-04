@@ -101,7 +101,7 @@ Không dùng một thứ hạng hay trung bình để quyết định nơi hỗ 
 Bộ phân tích tính số dự thi/tỷ lệ tham gia môn và **24 mã tổ hợp** theo tỉnh và năm. Các tổ hợp cần đủ ba điểm thành phần; quy mô nhóm thay đổi theo tỉnh. Báo cáo đầy đủ có bảng tỉnh × năm × môn/tổ hợp, còn thư mục biểu đồ chứa hai hình cho từng mã địa phương: phổ điểm môn và phổ điểm tổ hợp.
 
 - [Mở toàn bộ atlas 63 địa phương — biểu đồ môn và tổ hợp](assets/thpt_2023_2024_2025/tinh/)
-- [Mở phần bảng tổ hợp toàn quốc và theo tỉnh](bao_cao_thpt_2023_2024_2025.md#áp-dụng-cho-tổ-hợp-môn)
+- [Mở báo cáo đầy đủ để xem bảng tổ hợp toàn quốc và theo tỉnh](bao_cao_thpt_2023_2024_2025.md)
 
 Cần dùng số lượng và tỷ lệ dự thi cùng nhau khi lập kế hoạch giáo viên, lớp ôn và tài liệu. Thay đổi năm 2025 có thể phản ánh thay đổi cấu trúc kỳ thi và quyết định chọn môn, không tự nó phản ánh học sinh giỏi/yếu hơn. GDCD năm 2023–2024 và GDKT&PL năm 2025 được giữ riêng, không gộp như một môn đồng nhất.
 
