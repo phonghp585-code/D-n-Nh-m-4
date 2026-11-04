@@ -96,6 +96,8 @@ Trong cả ba năm, Hà Giang có trung bình Toán thấp nhất trong các t�
 
 ![Bản đồ nhiệt trung bình theo tỉnh và môn năm 2025](assets/thpt_2023_2024_2025/tong_quan/province_matrix_2025_mean.png)
 
+![Phân phối điểm các môn của Hà Giang trong ba năm](assets/thpt_2023_2024_2025/tinh/05_subjects.png)
+
 **Hành động có thể cân nhắc:** làm việc với Sở/trường ở Hà Giang để tổ chức đánh giá chẩn đoán Toán tại trường, xác định nhóm kiến thức cần củng cố, rồi bố trí tiết phụ đạo/tài liệu phù hợp. Theo dõi lại tỷ lệ dưới ngưỡng, trung vị và P10 ở kỳ sau với cùng định nghĩa. Dữ liệu hiện có chỉ cho biết kết quả tổng hợp môn; chưa chỉ ra trường hay chủ đề Toán nào cần hỗ trợ.
 
 **Cách đọc thận trọng:** năm 2025 có thay đổi đề/chương trình. Không diễn giải mức 86,52% như bằng chứng năng lực của cùng học sinh giảm từ năm trước. Đây là lý do để ưu tiên chẩn đoán tại chỗ, không phải căn cứ gán nguyên nhân cho địa phương.
