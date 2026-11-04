@@ -86,11 +86,13 @@ Các ví dụ dưới đây lấy số trực tiếp từ bảng chi tiết tỉ
 
 Trong cả ba năm, Hà Giang có trung bình Toán thấp nhất trong các tỉnh ở bảng so sánh chung. Môn Toán cũng có độ bao phủ cao tại tỉnh, nên đây là tín hiệu phù hợp để ưu tiên trao đổi về hỗ trợ học tập ở cấp tỉnh/trường.
 
-| Năm | Thí sinh có điểm Toán (n) | Tham gia trong nhóm có ít nhất một điểm | Trung bình | Trung vị | Dưới 5 điểm |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| 2023 | 6.093 | 97,3% | 4,315 | 4,000 | 67,91% |
-| 2024 | 6.644 | 96,0% | 4,585 | 4,400 | 61,18% |
-| 2025 | 7.047 | 99,0% | 3,449 | 3,250 | 86,52% |
+| Năm | Thí sinh có điểm Toán (n) | Tham gia trong nhóm có ít nhất một điểm | Trung bình | Trung vị | Dưới 5 điểm | Số dưới 5 ước tính* |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2023 | 6.093 | 97,3% | 4,315 | 4,000 | 67,91% | ≈4.138 |
+| 2024 | 6.644 | 96,0% | 4,585 | 4,400 | 61,18% | ≈4.065 |
+| 2025 | 7.047 | 99,0% | 3,449 | 3,250 | 86,52% | ≈6.097 |
+
+*Số dưới 5 ước tính bằng n × tỷ lệ đã làm tròn trong báo cáo; dùng để hình dung quy mô, không phải số đếm chính xác người cần hỗ trợ.*
 
 ![Bản đồ nhiệt trung bình theo tỉnh và môn năm 2025](assets/thpt_2023_2024_2025/tong_quan/province_matrix_2025_mean.png)
 
