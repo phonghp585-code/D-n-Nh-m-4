@@ -78,16 +78,56 @@ Hai biểu đồ Nghệ An minh họa cách chuyển từ phổ điểm môn san
 
 Các hình này so sánh phân phối điểm; chúng không tự thể hiện tỷ lệ thí sinh chọn từng môn. Để lập kế hoạch giáo viên/nguồn lực, hãy dùng bảng số dự thi và tỷ lệ chọn môn bên cạnh hình. Cũng cần đọc riêng GDCD ở 2023–2024 và GDKT&PL ở 2025 vì tên môn và nội dung đánh giá đã thay đổi.
 
-## Bước 5 — Chuyển kết quả thành hành động phù hợp
+## Bước 5 — Từ tín hiệu đến hành động: ví dụ theo tỉnh và môn
 
-| Kết quả đọc được | Hành động có thể cân nhắc | Không nên kết luận |
+Các ví dụ dưới đây lấy số trực tiếp từ bảng chi tiết tỉnh trong báo cáo nền. Ngưỡng `<5 điểm` là ngưỡng mô tả để rà soát phân phối, không mặc định là chuẩn đánh giá hay điều kiện chính sách hỗ trợ.
+
+### Ví dụ A — Ưu tiên hỗ trợ học Toán ở Hà Giang
+
+Trong cả ba năm, Hà Giang có trung bình Toán thấp nhất trong các tỉnh ở bảng so sánh chung. Môn Toán cũng có độ bao phủ cao tại tỉnh, nên đây là tín hiệu phù hợp để ưu tiên trao đổi về hỗ trợ học tập ở cấp tỉnh/trường.
+
+| Năm | Thí sinh có điểm Toán (n) | Tham gia trong tỉnh | Trung bình | Trung vị | Dưới 5 điểm |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 2023 | 6.093 | 97,3% | 4,315 | 4,000 | 67,91% |
+| 2024 | 6.644 | 96,0% | 4,585 | 4,400 | 61,18% |
+| 2025 | 7.047 | 99,0% | 3,449 | 3,250 | 86,52% |
+
+![Bản đồ nhiệt trung bình theo tỉnh và môn năm 2025](assets/thpt_2023_2024_2025/tong_quan/province_matrix_2025_mean.png)
+
+**Hành động có thể cân nhắc:** làm việc với Sở/trường ở Hà Giang để tổ chức đánh giá chẩn đoán Toán tại trường, xác định nhóm kiến thức cần củng cố, rồi bố trí tiết phụ đạo/tài liệu phù hợp. Theo dõi lại tỷ lệ dưới ngưỡng, trung vị và P10 ở kỳ sau với cùng định nghĩa. Dữ liệu hiện có chỉ cho biết kết quả tổng hợp môn; chưa chỉ ra trường hay chủ đề Toán nào cần hỗ trợ.
+
+**Cách đọc thận trọng:** năm 2025 có thay đổi đề/chương trình. Không diễn giải mức 86,52% như bằng chứng năng lực của cùng học sinh giảm từ năm trước. Đây là lý do để ưu tiên chẩn đoán tại chỗ, không phải căn cứ gán nguyên nhân cho địa phương.
+
+### Ví dụ B — Lập kế hoạch môn lựa chọn ở Nghệ An
+
+Tỷ lệ thí sinh có điểm Sinh học trong tổng hồ sơ Nghệ An là khoảng 26,5% năm 2023 (9.716/36.886), 26,5% năm 2024 (9.723/36.729) và 8,8% năm 2025 (3.437/39.183). Đây là thay đổi rõ về số người dự thi quan sát được; năm 2025 cũng thay đổi quy tắc lựa chọn môn và cơ cấu kỳ thi.
+
+![Phân bố điểm môn theo năm tại Nghệ An](assets/thpt_2023_2024_2025/tinh/29_subjects.png)
+
+**Hành động có thể cân nhắc:** trước khi xếp lịch giáo viên/lớp ôn Sinh học cho năm tới, đối chiếu số liệu này với đăng ký môn ở từng trường, kế hoạch mở lớp và khảo sát lựa chọn học sinh. Nếu số đăng ký hiện tại xác nhận nhu cầu thấp hơn, điều chỉnh quy mô lớp hoặc dùng chung nguồn lực liên trường; nếu số đăng ký không giảm tương ứng, kiểm tra độ bao phủ dữ liệu trước khi đổi kế hoạch.
+
+**Không nên suy ra:** điểm Sinh học thấp hơn hoặc ít điểm Sinh học hơn có nghĩa học sinh Nghệ An yếu hơn. Tỷ lệ dự thi phản ánh lựa chọn/độ bao phủ; biểu đồ phổ điểm không cho biết lý do từng em chọn hay không chọn môn.
+
+### Ví dụ C — Rà soát thêm tín hiệu đuôi cao ở Ngữ văn Nghệ An
+
+Tỷ lệ Ngữ văn đạt từ 9 điểm tại Nghệ An là 5,62% năm 2023 (n=36.273), 19,69% năm 2024 (n=36.273) và 17,99% năm 2025 (n=39.062). Báo cáo còn đối chiếu theo dải điểm Toán; mức chênh so với tỷ lệ kỳ vọng lần lượt là +1,67, +11,38 và +14,62 điểm phần trăm. Đây là một dấu hiệu để đặt câu hỏi kiểm tra.
+
+![ECDF Ngữ văn và đường chuẩn tham chiếu](assets/thpt_2023_2024_2025/phan_phoi/ecdf_normal_literature.png)
+
+**Hành động có thể cân nhắc:** xem phân phối theo trường/điểm thi và đối chiếu với đáp án, mã đề, quy trình chấm/phúc khảo nếu nhóm có quyền truy cập; xem liệu chênh lệch có tập trung vào một nhóm cụ thể hay trải rộng. Chỉ đưa vào danh sách rà soát sau khi kiểm tra cỡ mẫu, nguồn và các khác biệt về đề/chương trình.
+
+**Không nên kết luận:** chênh lệch đuôi điểm hoặc ECDF khác nhau đồng nghĩa với gian lận. Biểu đồ điểm không phải bằng chứng về hành vi.
+
+### Ví dụ D — Học sinh nào cần hỗ trợ?
+
+Các ví dụ Hà Giang ở trên chỉ ra **địa phương–môn nên được ưu tiên đánh giá hỗ trợ**. Chúng chưa xác định học sinh cụ thể nào cần hỗ trợ. Muốn lập danh sách hậu kiểm sau kỳ thi, nhà trường cần ghép kết quả cá nhân với dữ liệu học tập được phép sử dụng và bảo vệ thông tin định danh. Muốn cảnh báo **trước kỳ thi**, cần các biến đã có trước kỳ thi như điểm đánh giá định kỳ; không dùng điểm môn khác của chính kỳ thi làm đầu vào vì khi đó kết quả đã xảy ra.
+
+| Kết quả quan sát | Ví dụ cụ thể | Hành động cân nhắc |
 | --- | --- | --- |
-| Một số tỉnh × môn có phân vị thấp hoặc tỷ lệ dưới ngưỡng cao kéo dài | Ưu tiên trao đổi về nguồn lực, dạy học và hỗ trợ môn đó; theo dõi lại bằng cùng chỉ số | Tỉnh đó có chất lượng kém vì điểm trung bình thấp |
-| Tỷ lệ chọn môn/tổ hợp thay đổi giữa các năm | Cập nhật nhu cầu giáo viên, tài liệu và kế hoạch ôn tập; luôn xem cả số lượng và tỷ lệ | Điểm môn thay đổi chỉ do học sinh giỏi/yếu hơn |
-| ECDF, đuôi điểm hoặc profile tỉnh khác biệt rõ | Đưa vào danh sách cần kiểm tra thêm, kết hợp hồ sơ độc lập | Có gian lận dựa trên biểu đồ điểm |
-| Có nhu cầu dự báo học sinh cần hỗ trợ | Bổ sung dữ liệu có trước kỳ thi rồi đánh giá mô hình theo năm kế tiếp | Dùng điểm môn khác cùng kỳ như cảnh báo trước thi |
-
-Với dữ liệu hiện tại, chưa nên huấn luyện mô hình dự báo cá nhân trước kỳ thi: các tệp điểm là kết quả cuối kỳ, thiếu biến đầu vào sẵn có trước kỳ thi. Nếu có thêm điểm đánh giá định kỳ/hồ sơ học tập, cần đặt ngưỡng và hành động hỗ trợ trước, dùng chia tập theo thời gian, so sánh với baseline và kiểm tra hiệu năng giữa các tỉnh trước khi áp dụng.
+| Kết quả thấp kéo dài ở môn có độ bao phủ cao | Hà Giang – Toán: trung bình thấp nhất cả ba năm; 61,18–86,52% dưới 5 | Ưu tiên chẩn đoán học tập ở trường, bố trí hỗ trợ Toán, theo dõi lại bằng cùng chỉ số |
+| Cơ cấu dự thi thay đổi | Nghệ An – Sinh học: khoảng 26,5% năm 2023–2024 xuống 8,8% năm 2025 | Đối chiếu đăng ký môn theo trường trước khi phân bổ giáo viên/lớp ôn |
+| Đuôi điểm khác biệt | Nghệ An – Ngữ văn: ≥9 là 19,69% năm 2024; chênh điều chỉnh theo Toán +11,38 điểm phần trăm | Kiểm tra hồ sơ và dữ liệu độc lập; không gắn nhãn gian lận |
+| Cần nhận diện từng học sinh | Dữ liệu tổng hợp tỉnh không chứa nguyên nhân hay thông tin trước thi | Bổ sung dữ liệu học tập phù hợp; đánh giá theo thời gian và bảo vệ dữ liệu cá nhân |
 
 ## Giới hạn nguồn và khả năng tái lập
 
