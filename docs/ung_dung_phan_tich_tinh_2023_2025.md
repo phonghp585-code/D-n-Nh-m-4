@@ -80,13 +80,13 @@ Các hình này so sánh phân phối điểm; chúng không tự thể hiện t
 
 ## Bước 5 — Từ tín hiệu đến hành động: ví dụ theo tỉnh và môn
 
-Các ví dụ dưới đây lấy số trực tiếp từ bảng chi tiết tỉnh trong báo cáo nền. Ngưỡng `<5 điểm` là ngưỡng mô tả để rà soát phân phối, không mặc định là chuẩn đánh giá hay điều kiện chính sách hỗ trợ.
+Các ví dụ dưới đây lấy số trực tiếp từ bảng chi tiết tỉnh trong báo cáo nền. Tỷ lệ tham gia dùng mẫu số hồ sơ có ít nhất một điểm ở tỉnh đó. Ngưỡng `<5 điểm` là ngưỡng mô tả để rà soát phân phối, không mặc định là chuẩn đánh giá hay điều kiện chính sách hỗ trợ.
 
 ### Ví dụ A — Ưu tiên hỗ trợ học Toán ở Hà Giang
 
 Trong cả ba năm, Hà Giang có trung bình Toán thấp nhất trong các tỉnh ở bảng so sánh chung. Môn Toán cũng có độ bao phủ cao tại tỉnh, nên đây là tín hiệu phù hợp để ưu tiên trao đổi về hỗ trợ học tập ở cấp tỉnh/trường.
 
-| Năm | Thí sinh có điểm Toán (n) | Tham gia trong tỉnh | Trung bình | Trung vị | Dưới 5 điểm |
+| Năm | Thí sinh có điểm Toán (n) | Tham gia trong nhóm có ít nhất một điểm | Trung bình | Trung vị | Dưới 5 điểm |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | 2023 | 6.093 | 97,3% | 4,315 | 4,000 | 67,91% |
 | 2024 | 6.644 | 96,0% | 4,585 | 4,400 | 61,18% |
@@ -100,7 +100,7 @@ Trong cả ba năm, Hà Giang có trung bình Toán thấp nhất trong các t�
 
 ### Ví dụ B — Lập kế hoạch môn lựa chọn ở Nghệ An
 
-Tỷ lệ thí sinh có điểm Sinh học trong tổng hồ sơ Nghệ An là khoảng 26,5% năm 2023 (9.716/36.886), 26,5% năm 2024 (9.723/36.729) và 8,8% năm 2025 (3.437/39.183). Đây là thay đổi rõ về số người dự thi quan sát được; năm 2025 cũng thay đổi quy tắc lựa chọn môn và cơ cấu kỳ thi.
+Tỷ lệ thí sinh có điểm Sinh học trong nhóm hồ sơ có ít nhất một điểm của Nghệ An là khoảng 26,5% năm 2023 (9.716/36.669), 26,5% năm 2024 (9.723/36.729) và 8,8% năm 2025 (3.437/39.182). Đây là thay đổi rõ về số người dự thi quan sát được; năm 2025 cũng thay đổi quy tắc lựa chọn môn và cơ cấu kỳ thi.
 
 ![Phân bố điểm môn theo năm tại Nghệ An](assets/thpt_2023_2024_2025/tinh/29_subjects.png)
 
