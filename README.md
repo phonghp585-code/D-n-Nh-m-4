@@ -2,6 +2,7 @@
 
 ## Báo cáo theo địa phương 2023–2025
 
+- [Báo cáo dành cho giảng viên — bản trực quan, cô đọng](docs/bao_cao_giang_vien_thpt_2023_2025.md): câu hỏi nghiên cứu, cách làm, phát hiện cụ thể, hàm ý giảng dạy và giới hạn.
 - [Báo cáo từng bước qua biểu đồ trực quan](docs/ung_dung_phan_tich_tinh_2023_2025.md): đi từ phạm vi dữ liệu, chênh lệch điểm theo môn/tỉnh, lựa chọn môn/tổ hợp, đến sàng lọc tín hiệu và khuyến nghị hành động.
 - [Báo cáo phổ điểm chi tiết 2023–2025](docs/bao_cao_thpt_2023_2024_2025.md): thống kê đầy đủ theo môn, tổ hợp và địa phương cùng nguồn và giới hạn diễn giải.
 
