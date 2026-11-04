@@ -1,5 +1,10 @@
 # Phân tích điểm thi THPT 2023 và 2025
 
+## Phân tích theo địa phương 2023–2025
+
+- [Tóm tắt bốn bài toán ứng dụng](docs/ung_dung_phan_tich_tinh_2023_2025.md): chênh lệch cơ hội, lựa chọn môn, sàng lọc tín hiệu bất thường và đánh giá khả thi dự báo.
+- [Báo cáo phổ điểm chi tiết 2023–2025](docs/bao_cao_thpt_2023_2024_2025.md): thống kê theo môn, tổ hợp và địa phương cùng nguồn và giới hạn diễn giải.
+
 ## Báo cáo phần 3 — tổ hợp môn thi
 
 **Đọc báo cáo:** [Phần 3 — Phân tích tổ hợp môn thi THPT 2023 và 2025](docs/phan_3_to_hop_mon_2023_2025.md).
