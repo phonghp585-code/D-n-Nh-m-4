@@ -4,7 +4,7 @@
 
 ## Tóm tắt kết quả
 
-- Theo quy ước sàng lọc nhất quán trên hai năm cùng cơ chế thi (2023–2024), có **37 cặp tỉnh–môn ở 23 tỉnh** cần ưu tiên tìm hiểu hỗ trợ: Toán, Ngữ văn, Lịch sử, Địa lý và Tiếng Anh. Danh sách và số liệu đủ 3 năm ở Mục 3.
+- Theo quy ước sàng lọc nhất quán trên hai năm cùng cơ chế thi (2023–2024), có **37 cặp tỉnh–môn ở 21 tỉnh** cần ưu tiên tìm hiểu hỗ trợ: Toán, Ngữ văn, Lịch sử, Địa lý và Tiếng Anh. Danh sách và số liệu đủ 3 năm ở Mục 3.
 - Điểm trung bình cao không đảm bảo phần điểm thấp nhỏ: Thanh Hóa năm 2025 có TB Địa lý 6,668 nhưng **21,37%** bài dưới 5; Lịch sử TB 6,600 nhưng **20,01%** dưới 5.
 - Tỷ lệ dự thi môn thay đổi mạnh năm 2025: Sinh học từ khoảng 32% xuống 6,2%; Tiếng Anh từ khoảng 85% xuống 31,1%; Lịch sử/Địa lý từ khoảng 66% xuống khoảng 42%. Đây là thay đổi cơ cấu dự thi; **không đủ bằng chứng để kết luận học sinh né môn khó**.
 - TB Toán năm 2025 giảm 1,664 điểm so với 2024 và tỷ lệ dưới 5 tăng từ 17,49% lên 56,39%. Tuy nhiên nhiều môn đổi theo hướng khác; dữ liệu không chuẩn hóa độ khó đề nên không tách được ảnh hưởng của đề và năng lực.
@@ -84,7 +84,7 @@ Một cặp **tỉnh–môn** được đánh dấu nếu thỏa cả bốn đi�
 
 Các ngưỡng là **quy ước ưu tiên phân tích**, không phải chuẩn chính sách hay ngưỡng năng lực. Tỷ lệ toàn quốc được ước tính bằng cách gia quyền n các tỷ lệ tỉnh đã làm tròn trong báo cáo nền. Quy tắc giúp thu hẹp nơi cần khảo sát, không xếp hạng tỉnh hay quyết định hỗ trợ tự động. Môn có độ bao phủ thấp bị loại khỏi quy tắc chính để giảm ảnh hưởng của tự chọn; điều đó không có nghĩa các môn ấy không cần hỗ trợ.
 
-### Danh sách đầy đủ: 37 cặp tỉnh–môn thuộc 23 địa phương
+### Danh sách đầy đủ: 37 cặp tỉnh–môn thuộc 21 địa phương
 
 Mỗi ô ghi **TB / tỷ lệ dưới 5% (n; tỷ lệ tham gia môn tại tỉnh)**. Cột 2023–2024 xác định danh sách; cột 2025 cho biết ảnh chụp năm mới, không theo dõi cùng học sinh. Với môn tự chọn, thành phần người dự thi đổi đáng kể.
 
