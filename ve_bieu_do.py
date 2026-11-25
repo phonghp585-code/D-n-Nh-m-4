@@ -1,9 +1,4 @@
 """
-TÁI DỰNG CÁC BIỂU ĐỒ TRONG BÁO CÁO "Phân tích phổ điểm thi THPT Quốc gia 2023-2025"
-
-Mọi số liệu được chép trực tiếp từ bảng/hình in trong PDF báo cáo,
-nên KHÔNG cần file CSV. Chạy:
-
     pip install numpy matplotlib
     python ve_bieu_do_giong_bao_cao.py
 
