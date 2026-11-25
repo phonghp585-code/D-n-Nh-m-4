@@ -7,11 +7,6 @@ nên KHÔNG cần file CSV. Chạy:
     pip install numpy matplotlib
     python ve_bieu_do_giong_bao_cao.py
 
-Ảnh lưu vào  outputs/figures_bao_cao/
-
-LƯU Ý: đây là bản vẽ lại (không phải code gốc của nhóm), nên màu/font có thể
-lệch nhẹ so với ảnh trong báo cáo. Các hình cần dữ liệu thô (hexbin, ECDF,
-n_pair, SD-IQR, đuôi điểm, Cohen's d) KHÔNG có ở đây vì PDF không in đủ số liệu.
 """
 import os
 import numpy as np
